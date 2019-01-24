@@ -5,19 +5,13 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="我的第一篇文章, 想当年,php,php技术分享">
-    <meta name="description" content="我的第一篇文章
-这是我的第一篇文章，主要记录一下hexo博客的建立和使用方法。
+    <meta name="keywords" content="cgi，fast-cgi，php-cgi，php-fpm 几个概念的总结, 想当年,php,php技术分享">
+    <meta name="description" content="
+在开始学php的时候有几个概念一直没有弄明白，最近查了些资料，特此补充记录一下，以防忘记。有不对的地方还请高手指点。
 
-参考资料搭建参考
-主题配置
-搭建过程环境安装
-需要安装git和Node.js
-注册Github账号
-
-安装Hexo
-使用npm全局安装hexo
-sudo np">
+结论
+CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。
+FastCGI：同 CGI 一样，也是">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -25,7 +19,7 @@ sudo np">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>我的第一篇文章 | 想当年的博客</title>
+    <title>cgi，fast-cgi，php-cgi，php-fpm 几个概念的总结 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -281,13 +275,13 @@ sudo np">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/featureimages/7.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/featureimages/16.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        我的第一篇文章
+                        cgi，fast-cgi，php-cgi，php-fpm 几个概念的总结
                     </div>
                 </div>
             </div>
@@ -398,8 +392,8 @@ sudo np">
             
             <div class="article-tag">
                 
-                <a href="/tags/hexo/" target="_blank">
-                    <span class="chip bg-color">hexo</span>
+                <a href="/tags/php/" target="_blank">
+                    <span class="chip bg-color">php</span>
                 </a>
                 
             </div>
@@ -410,15 +404,15 @@ sudo np">
                 <!--<span class="post-cate" style="margin-right: 0px">-->
                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                     
-                    <a href="/categories/小技巧/" class="post-category" target="_blank">
-                        小技巧
+                    <a href="/categories/php/" class="post-category" target="_blank">
+                        php
                     </a>
                     
                 </span>
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2019-01-21
+                    <i class="fa fa-clock-o fa-fw"></i>2019-01-24
                 </span>
 				
 				
@@ -430,86 +424,20 @@ sudo np">
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="我的第一篇文章"><a href="#我的第一篇文章" class="headerlink" title="我的第一篇文章"></a>我的第一篇文章</h1><blockquote>
-<p>这是我的第一篇文章，主要记录一下hexo博客的建立和使用方法。</p>
+                <blockquote>
+<p>在开始学php的时候有几个概念一直没有弄明白，最近查了些资料，特此补充记录一下，以防忘记。有不对的地方还请高手指点。</p>
 </blockquote>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/HarleyWang93/blog/issues/1" target="_blank" rel="noopener">搭建参考</a></p>
-<p><a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" target="_blank" rel="noopener">主题配置</a></p>
-<h2 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h2><h3 id="环境安装"><a href="#环境安装" class="headerlink" title="环境安装"></a>环境安装</h3><ol>
-<li>需要安装git和Node.js</li>
-<li>注册Github账号</li>
-</ol>
-<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><ol>
-<li><p>使用npm全局安装hexo</p>
-<pre class=" language-yaml"><code class="language-yaml">sudo npm install <span class="token punctuation">-</span>g hexo<span class="token punctuation">-</span>cli
-</code></pre>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
+<li>CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。</li>
+<li>FastCGI：同 CGI 一样，也是一种协议，只是在效率上比 CGI 好一些。</li>
+<li>PHP-CGI：fastCGI 协议的一种实现。(也就是 php 可执行目录下的php-cgi程序)。他有2个问题。<ul>
+<li>更改配置文件后无法平滑重启。</li>
+<li>无法动态调整进制多少。</li>
+</ul>
 </li>
-<li><p>使用hexo init 初始化项目</p>
-<pre class=" language-yaml"><code class="language-yaml">hexo init blog
-</code></pre>
-</li>
-<li><p>使用hexo s查看状态(默认访问该地址<a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000 </a>)</p>
-<pre class=" language-yaml"><code class="language-yaml">hexo s
-</code></pre>
-</li>
-</ol>
-<h3 id="关联Github"><a href="#关联Github" class="headerlink" title="关联Github"></a>关联Github</h3><ol>
-<li>创建仓库</li>
-<li>开启Github Pages</li>
-<li>选择分支</li>
-</ol>
-<h3 id="修改全局配置-注意：每个冒号后面都有个空格"><a href="#修改全局配置-注意：每个冒号后面都有个空格" class="headerlink" title="修改全局配置(注意：每个冒号后面都有个空格)"></a>修改全局配置(注意：每个冒号后面都有个空格)</h3><p>在项目中找到_config.yml文件，在文件最后添加如下内容：</p>
-<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">deploy</span><span class="token punctuation">:</span>
-    <span class="token key atrule">type</span><span class="token punctuation">:</span> git
-    <span class="token key atrule">repository</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//github.com/xxx/xxx.github.io.git
-  <span class="token key atrule">branch</span><span class="token punctuation">:</span> master
-</code></pre>
-<h3 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h3><ol>
-<li>执行生成静态文件命令</li>
-</ol>
-<pre class=" language-yaml"><code class="language-yaml">hexo g
-</code></pre>
-<ol start="2">
-<li>安装git上传插件</li>
-</ol>
-<pre class=" language-yaml"><code class="language-yaml">npm install hexo<span class="token punctuation">-</span>deployer<span class="token punctuation">-</span>git <span class="token punctuation">-</span><span class="token punctuation">-</span>save
-</code></pre>
-<ol start="3">
-<li>执行上传静态文件命令</li>
-</ol>
-<pre class=" language-yaml"><code class="language-yaml">hexo d
-</code></pre>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code>hexo new &quot;文章标题&quot;         //新建文章
-hexo new page &quot;页面名&quot;      //新建页面
-hexo g                     //生成静态文件至public目录
-hexo server                //开启本地访问
-hexo deploy                //部署到github
-</code></pre><h2 id="主题使用"><a href="#主题使用" class="headerlink" title="主题使用"></a>主题使用</h2><blockquote>
-<p>具体详细内容查看项目链接 <a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md" target="_blank" rel="noopener">hexo-theme-matery</a></p>
-</blockquote>
-<h3 id="文章头部示例"><a href="#文章头部示例" class="headerlink" title="文章头部示例"></a>文章头部示例</h3><pre class=" language-yaml"><code class="language-yaml"><span class="token punctuation">---</span>
-<span class="token key atrule">title</span><span class="token punctuation">:</span> typora<span class="token punctuation">-</span>vue<span class="token punctuation">-</span>theme主题介绍
-<span class="token key atrule">date</span><span class="token punctuation">:</span> <span class="token datetime number">2018-09-07 09:25:00</span>
-<span class="token key atrule">author</span><span class="token punctuation">:</span> 赵奇
-<span class="token key atrule">img</span><span class="token punctuation">:</span> /source/images/xxx.jpg <span class="token comment" spellcheck="true"># 或者:http://xxx.com/xxx.jpg</span>
-<span class="token key atrule">top</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment" spellcheck="true"># 如果top值为true，则会是首页推荐文章</span>
-<span class="token comment" spellcheck="true"># 如果要对文章设置阅读验证密码的话，就可以在设置password的值，该值必须是用SHA256加密后的密码，防止被他人识破</span>
-<span class="token key atrule">password</span><span class="token punctuation">:</span> 8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92
-<span class="token comment" spellcheck="true"># 本文章是否开启mathjax，且需要在主题的_config.yml文件中也需要开启才行</span>
-<span class="token key atrule">mathjax</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
-<span class="token key atrule">categories</span><span class="token punctuation">:</span> Markdown
-<span class="token key atrule">tags</span><span class="token punctuation">:</span>
-  <span class="token punctuation">-</span> Typora
-  <span class="token punctuation">-</span> Markdown
-<span class="token punctuation">---</span>
-</code></pre>
-<blockquote>
-<ol>
-<li>如果img属性不填写的话，文章特色图会根据文章标题的hashcode的值取余，然后选取主题中对应的特色图片，从而达到让所有文章都的特色图各有特色。</li>
-<li>date的值尽量保证每篇文章是唯一的，因为本主题中Gitalk和Gitment识别id是通过date的值来作为唯一标识的。</li>
-<li>如果要对文章设置阅读验证密码的功能，不仅要在Front-matter中设置采用了SHA256加密的password的值，还需要在主题的_config.yml中激活了配置。有些在线的 SHA256 加密的地址，可供你使用：开源中国在线工具、chahuo、站长工具。</li>
-</ol>
-</blockquote>
+<li>spawn-fcgi：解决了 php-cgi 出现的问题。但器仅仅是一个进程管理器。</li>
+<li>PHP-FPM：实现了 Fast-CGI 协议并且之前平滑重启，同时还带有进程管理功能。</li>
+</ul>
 
             </div>
             <hr>
@@ -648,7 +576,7 @@ hexo deploy                //部署到github
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://blog.xiangdangnian.net.cn" class="b-link-green">想当年的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/21/wo-de-di-yi-pian-wen-zhang/" class="b-link-green">我的第一篇文章</a>
+                    <a href="/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/" class="b-link-green">cgi，fast-cgi，php-cgi，php-fpm 几个概念的总结</a>
                 </p>
             </div>
         </div>
@@ -929,7 +857,7 @@ hexo deploy                //部署到github
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
                 <a href="/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/">
                     <div class="card-image">
@@ -948,9 +876,9 @@ hexo deploy                //部署到github
 CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。
 FastCGI：同 CGI 一样，也是</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -963,6 +891,7 @@ FastCGI：同 CGI 一样，也是</div>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -977,7 +906,7 @@ FastCGI：同 CGI 一样，也是</div>
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">本篇</div>
+            <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
                 <a href="/2019/01/21/wo-de-di-yi-pian-wen-zhang/">
                     <div class="card-image">
@@ -1017,7 +946,6 @@ sudo np</div>
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

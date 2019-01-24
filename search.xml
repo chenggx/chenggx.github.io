@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>cgi，fast-cgi，php-cgi，php-fpm 几个概念的总结</title>
+      <link href="/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/"/>
+      <url>/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>在开始学php的时候有几个概念一直没有弄明白，最近查了些资料，特此补充记录一下，以防忘记。有不对的地方还请高手指点。</p></blockquote><h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul><li>CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。</li><li>FastCGI：同 CGI 一样，也是一种协议，只是在效率上比 CGI 好一些。</li><li>PHP-CGI：fastCGI 协议的一种实现。(也就是 php 可执行目录下的php-cgi程序)。他有2个问题。<ul><li>更改配置文件后无法平滑重启。</li><li>无法动态调整进制多少。</li></ul></li><li>spawn-fcgi：解决了 php-cgi 出现的问题。但器仅仅是一个进程管理器。</li><li>PHP-FPM：实现了 Fast-CGI 协议并且之前平滑重启，同时还带有进程管理功能。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> php </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> php </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>我的第一篇文章</title>
       <link href="/2019/01/21/wo-de-di-yi-pian-wen-zhang/"/>
       <url>/2019/01/21/wo-de-di-yi-pian-wen-zhang/</url>
