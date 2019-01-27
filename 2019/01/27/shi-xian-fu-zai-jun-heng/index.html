@@ -5,13 +5,12 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结, 想当年,php,php技术分享">
-    <meta name="description" content="
-在开始学php的时候有几个概念一直没有弄明白，最近查了些资料，特此补充记录一下，以防忘记。有不对的地方还请高手指点。
+    <meta name="keywords" content="实现负载均衡, 想当年,php,php技术分享">
+    <meta name="description" content="架构图
 
-结论
-CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。
-FastCGI：同 CGI 一样，也是">
+简介： 用户访问负载均衡服务器，负载均衡服务器将相应的请求转发至应用服务器APP1或APP2。当前其中一台应用服务器down调的时候，负载均衡服务器将会把请求转发至另一台正常的服务器上。
+
+步骤安装负载均衡服务器安装并启">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@ FastCGI：同 CGI 一样，也是">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结 | 想当年的博客</title>
+    <title>实现负载均衡 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -275,13 +274,13 @@ FastCGI：同 CGI 一样，也是">
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/timg.jpeg')">
+<div class="bg-cover post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/634961P08Q83_13445R462-0-750x410.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结
+                        实现负载均衡
                     </div>
                 </div>
             </div>
@@ -396,6 +395,14 @@ FastCGI：同 CGI 一样，也是">
                     <span class="chip bg-color">php</span>
                 </a>
                 
+                <a href="/tags/nginx/" target="_blank">
+                    <span class="chip bg-color">nginx</span>
+                </a>
+                
+                <a href="/tags/负载均衡/" target="_blank">
+                    <span class="chip bg-color">负载均衡</span>
+                </a>
+                
             </div>
             
             <div class="post-info">
@@ -404,15 +411,15 @@ FastCGI：同 CGI 一样，也是">
                 <!--<span class="post-cate" style="margin-right: 0px">-->
                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                     
-                    <a href="/categories/php/" class="post-category" target="_blank">
-                        php
+                    <a href="/categories/服务器/" class="post-category" target="_blank">
+                        服务器
                     </a>
                     
                 </span>
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2019-01-24
+                    <i class="fa fa-clock-o fa-fw"></i>2019-01-27
                 </span>
 				
 				
@@ -424,25 +431,78 @@ FastCGI：同 CGI 一样，也是">
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>在开始学php的时候有几个概念一直没有弄明白，最近查了些资料，特此补充记录一下，以防忘记。有不对的地方还请高手指点。</p>
+                <h2 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h2><p><img src="http://static.xiangdangnian.net.cn/blog/2019-01-273.56.02.png" alt="架构图"></p>
+<blockquote>
+<p>简介： 用户访问负载均衡服务器，负载均衡服务器将相应的请求转发至应用服务器APP1或APP2。当前其中一台应用服务器down调的时候，负载均衡服务器将会把请求转发至另一台正常的服务器上。</p>
 </blockquote>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
-<li>CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。</li>
-<li>FastCGI：同 CGI 一样，也是一种协议，只是在效率上比 CGI 好一些。</li>
-<li>PHP-CGI：fastCGI 协议的一种实现。(也就是 php 可执行目录下的php-cgi程序)。他有2个问题。<ul>
-<li>更改配置文件后无法平滑重启。</li>
-<li>无法动态调整进制多少。</li>
-</ul>
-</li>
-<li>spawn-fcgi：解决了 php-cgi 出现的问题。但器仅仅是一个进程管理器。</li>
-<li>PHP-FPM：实现了 Fast-CGI 协议并且之前平滑重启，同时还带有进程管理功能。</li>
-</ul>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://www.ietf.org/rfc/rfc3875" target="_blank" rel="noopener">CGI 协议内容</a></p>
-<p><a href="http://andylin02.iteye.com/blog/648412" target="_blank" rel="noopener">Fast-CGI 协议内容</a></p>
-<p><a href="http://yongxiong.leanote.com/post/%E4%BB%8ECGI%E5%88%B0FastCGI%E5%88%B0PHP-FPM" target="_blank" rel="noopener">从CGI到FastCGI到PHP-FPM</a></p>
-<p><a href="https://www.awaimai.com/371.html" target="_blank" rel="noopener">CGI、FastCGI和PHP-FPM关系图解</a></p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="安装负载均衡服务器"><a href="#安装负载均衡服务器" class="headerlink" title="安装负载均衡服务器"></a>安装负载均衡服务器</h3><h4 id="安装并启动-nginx-使用-jellybool-的-sh-脚本"><a href="#安装并启动-nginx-使用-jellybool-的-sh-脚本" class="headerlink" title="安装并启动 nginx (使用 jellybool 的 sh 脚本)"></a>安装并启动 nginx (<a href="https://github.com/JellyBool/laravel-server-script/blob/master/laravel-nginx-proxy-server.sh" target="_blank" rel="noopener">使用 jellybool 的 sh 脚本</a>)</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
 
+<span class="token function">sudo</span> LC_ALL<span class="token operator">=</span>en_US.UTF-8 add-apt-repository ppa:nginx/development -y
+
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> nginx
+
+<span class="token function">sudo</span> <span class="token function">cp</span> /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+
+<span class="token function">sudo</span> <span class="token function">service</span> nginx start
+</code></pre>
+<h4 id="配置-nginx-服务器为负载均衡服务器"><a href="#配置-nginx-服务器为负载均衡服务器" class="headerlink" title="配置 nginx 服务器为负载均衡服务器"></a>配置 nginx 服务器为负载均衡服务器</h4><pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">upstream</span> backend <span class="token punctuation">{</span>
+    <span class="token keyword">server</span> pravite<span class="token operator">-</span>ip<span class="token operator">-</span>address<span class="token number">-1</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">#应用服务器ip地址</span>
+    <span class="token keyword">server</span> pravite<span class="token operator">-</span>ip<span class="token operator">-</span>address<span class="token number">-2</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">#应用服务器ip地址</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">listen</span> <span class="token number">80</span> default_server<span class="token punctuation">;</span>
+    <span class="token keyword">listen</span> <span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">:</span><span class="token number">80</span> default_server<span class="token punctuation">;</span>
+    <span class="token keyword">server_name</span> nuli<span class="token punctuation">.</span>io www<span class="token punctuation">.</span>nuli<span class="token punctuation">.</span>io<span class="token punctuation">;</span>
+
+    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
+        <span class="token keyword">add_header</span> X<span class="token operator">-</span>Content<span class="token operator">-</span>Type<span class="token operator">-</span>Options nosniff<span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Scheme <span class="token variable">$scheme</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Real<span class="token operator">-</span>IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Forwarded<span class="token operator">-</span>For <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Host <span class="token variable">$http_host</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>NginX<span class="token operator">-</span><span class="token keyword">Proxy</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_hide_header</span> X<span class="token operator">-</span>Powered<span class="token operator">-</span>By<span class="token punctuation">;</span>
+        <span class="token keyword">proxy_hide_header</span> Vary<span class="token punctuation">;</span>
+
+        <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>backend<span class="token punctuation">;</span>
+        <span class="token keyword">proxy_redirect</span> off<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="检测-nginx-配置并重启-nginx-服务"><a href="#检测-nginx-配置并重启-nginx-服务" class="headerlink" title="检测 nginx 配置并重启 nginx 服务"></a>检测 nginx 配置并重启 nginx 服务</h4><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> nginx -t
+<span class="token function">sudo</span> <span class="token function">service</span> nginx reload
+</code></pre>
+<h3 id="安装应用服务器-APP1"><a href="#安装应用服务器-APP1" class="headerlink" title="安装应用服务器 APP1"></a>安装应用服务器 APP1</h3><h4 id="安装-nginx-和-php-以及-php-扩展-使用-jellybool-的-sh-脚本"><a href="#安装-nginx-和-php-以及-php-扩展-使用-jellybool-的-sh-脚本" class="headerlink" title="安装 nginx 和 php 以及 php 扩展  使用 jellybool 的 sh 脚本"></a>安装 nginx 和 php 以及 php 扩展  <a href="https://github.com/JellyBool/laravel-server-script/blob/master/laravel-app-server.sh" target="_blank" rel="noopener">使用 jellybool 的 sh 脚本</a></h4><pre class=" language-bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> zsh <span class="token function">htop</span> <span class="token function">zip</span> unzip composer
+
+<span class="token function">sudo</span> LC_ALL<span class="token operator">=</span>en_US.UTF-8 add-apt-repository ppa:nginx/development -y
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> nginx
+<span class="token function">sudo</span> <span class="token function">service</span> nginx start
+
+<span class="token function">sudo</span> LC_ALL<span class="token operator">=</span>en_US.UTF-8 add-apt-repository ppa:ondrej/php -y
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> php7.2
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> php7.2-mysql
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> php7.2-fpm
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> php7.2-curl php7.2-xml php7.2-json php7.2-gd php7.2-mbstring php7.2-bcmath
+
+<span class="token function">sudo</span> <span class="token function">service</span> php7.2-fpm restart
+
+<span class="token function">sudo</span> <span class="token function">cp</span> /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+</code></pre>
+<h3 id="安装应用服务器-APP2-同-APP1"><a href="#安装应用服务器-APP2-同-APP1" class="headerlink" title="安装应用服务器 APP2 (同 APP1)"></a>安装应用服务器 APP2 (同 APP1)</h3><h3 id="测试负载均衡"><a href="#测试负载均衡" class="headerlink" title="测试负载均衡"></a>测试负载均衡</h3><ol>
+<li>在 APP1 服务器上的 <code>/var/www/html</code> 目录下将 <code>index.html</code>文件内容更改为 APP1。</li>
+<li>在 APP2 服务器上的 <code>/var/www/html</code> 目录下将 <code>index.html</code>文件内容更改为 APP2。</li>
+<li>访问负载均衡服务器 ip 地址或配置的域名。此时页面将交替显示 APP1 和 APP2 。~~~成功。</li>
+</ol>
+<h3 id="部署-Laravel-项目"><a href="#部署-Laravel-项目" class="headerlink" title="部署 Laravel 项目"></a>部署 Laravel 项目</h3>
             </div>
             <hr>
 
@@ -580,7 +640,7 @@ FastCGI：同 CGI 一样，也是">
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://blog.xiangdangnian.net.cn" class="b-link-green">想当年的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/" class="b-link-green">CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结</a>
+                    <a href="/2019/01/27/shi-xian-fu-zai-jun-heng/" class="b-link-green">实现负载均衡</a>
                 </p>
             </div>
         </div>
@@ -861,7 +921,7 @@ FastCGI：同 CGI 一样，也是">
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
                 <a href="/2019/01/27/shi-xian-fu-zai-jun-heng/">
                     <div class="card-image">
@@ -878,9 +938,9 @@ FastCGI：同 CGI 一样，也是">
 
 步骤安装负载均衡服务器安装并启</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -893,6 +953,7 @@ FastCGI：同 CGI 一样，也是">
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -917,38 +978,31 @@ FastCGI：同 CGI 一样，也是">
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2019/01/21/wo-de-di-yi-pian-wen-zhang/">
+                <a href="/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/">
                     <div class="card-image">
                         
+                        <img src="http://static.xiangdangnian.net.cn/blog/timg.jpeg" class="responsive-img" alt="CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结">
                         
-                        <img src="http://static.xiangdangnian.net.cn/featureimages/7.jpg" class="responsive-img" alt="我的第一篇文章">
-                        
-                        <span class="card-title">我的第一篇文章</span>
+                        <span class="card-title">CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">我的第一篇文章
-这是我的第一篇文章，主要记录一下hexo博客的建立和使用方法。
+                    <div class="summary">
+在开始学php的时候有几个概念一直没有弄明白，最近查了些资料，特此补充记录一下，以防忘记。有不对的地方还请高手指点。
 
-参考资料搭建参考
-主题配置
-搭建过程环境安装
-需要安装git和Node.js
-注册Github账号
-
-安装Hexo
-使用npm全局安装hexo
-sudo np</div>
+结论
+CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。
+FastCGI：同 CGI 一样，也是</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-21
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-24
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/小技巧/" class="post-category" target="_blank">
-                                    小技巧
+                            <a href="/categories/php/" class="post-category" target="_blank">
+                                    php
                                 </a>
                             
                             
@@ -958,8 +1012,8 @@ sudo np</div>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/" target="_blank">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/php/" target="_blank">
+                        <span class="chip bg-color">php</span>
                     </a>
                     
                 </div>
