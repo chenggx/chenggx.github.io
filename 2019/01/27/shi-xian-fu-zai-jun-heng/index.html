@@ -502,7 +502,30 @@
 <li>在 APP2 服务器上的 <code>/var/www/html</code> 目录下将 <code>index.html</code>文件内容更改为 APP2。</li>
 <li>访问负载均衡服务器 ip 地址或配置的域名。此时页面将交替显示 APP1 和 APP2 。~~~成功。</li>
 </ol>
-<h3 id="使用-Envoy-将-Laravel-项目同时部署在所有负载均衡的机器上"><a href="#使用-Envoy-将-Laravel-项目同时部署在所有负载均衡的机器上" class="headerlink" title="使用 Envoy 将 Laravel 项目同时部署在所有负载均衡的机器上"></a>使用 Envoy 将 Laravel 项目同时部署在所有负载均衡的机器上</h3>
+<h3 id="使用-Envoy-将-Laravel-项目同时部署在所有负载均衡的机器上"><a href="#使用-Envoy-将-Laravel-项目同时部署在所有负载均衡的机器上" class="headerlink" title="使用 Envoy 将 Laravel 项目同时部署在所有负载均衡的机器上"></a>使用 Envoy 将 Laravel 项目同时部署在所有负载均衡的机器上</h3><ol>
+<li>在本机上创建 Laravel 项目</li>
+<li>将项目提交到 coding 或 github 上</li>
+<li>配置 coding 或 github 的ssh （可选）</li>
+<li>使用 ssh 或 https 的方式将项目部署到 APP1 和 APP2 服务器上</li>
+<li>配置两台服务器的 .env 文件 <strong>*保证两台服务器的 APP_KEY 要一直**</strong></li>
+<li>测试——<em>访问负载均衡服务器可以看到 Laravel 欢迎语</em></li>
+<li>在本机中的 Laravel 项目中安装 Envoy 扩展  <a href="https://laravel-china.org/docs/laravel/5.7/envoy/2307" target="_blank" rel="noopener">参考文档</a></li>
+<li>在项目根目录新增 <code>Envoy.blade.php</code> 文件并在文件中增加如下内容。「需要注意的是：本机可以通过 ssh 的方式访问对应的服务器」</li>
+</ol>
+<pre class=" language-php"><code class="language-php">@<span class="token function">servers</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'web-1'</span>  <span class="token operator">=</span><span class="token operator">></span>  <span class="token string">'ssh root@192.168.3.11'</span><span class="token punctuation">,</span> <span class="token string">'web-2'</span>  <span class="token operator">=</span><span class="token operator">></span>  <span class="token string">'ssh root@192.168.3.11'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+@<span class="token function">task</span><span class="token punctuation">(</span><span class="token string">'deploy'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'on'</span>  <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span><span class="token string">'web-1'</span><span class="token punctuation">,</span> <span class="token string">'web-2'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'parallel'</span>  <span class="token operator">=</span><span class="token operator">></span>  <span class="token boolean">true</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+cd <span class="token operator">/</span><span class="token keyword">var</span><span class="token operator">/</span>www<span class="token operator">/</span>laravel<span class="token operator">-</span>deploy   
+
+sudo git pull origin master
+
+@endtask
+</code></pre>
+<ol start="9">
+<li>运行部署命令 <code>envoy run deploy</code>,如果输出内容没有错误的话，就表示部署成功，就可以在负载均衡服务器上进行查看了。</li>
+</ol>
+
             </div>
             <hr>
 
