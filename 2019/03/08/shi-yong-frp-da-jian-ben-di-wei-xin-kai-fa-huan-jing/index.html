@@ -6,7 +6,15 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="使用frp搭建本地微信开发环境, 想当年,php,php技术分享">
-    <meta name="description" content="原因之前在做相关微信开发时，因为需要验证公网可以访问的到的域名，所以总是将代码推到线上服务器进行相关的测试。每次有些小改动也要进本地代码推送到服务器，服务器拉取最新代码这种重复性的操作，感觉十分繁琐，一直想找一个简单方便的方式进行微信本地环">
+    <meta name="description" content="
+2019-3-10 更新记录
+
+再使用 TP5 进行开发的时候需要注意一下几点
+
+关闭 trace 调试模式。
+在使用路由的时候尽量确定对应接口请求的类型，如果不知道类型建议使用 Route::any();
+
+可以使用 微信消息测试工具进">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -424,7 +432,16 @@
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>之前在做相关微信开发时，因为需要验证公网可以访问的到的域名，所以总是将代码推到线上服务器进行相关的测试。每次有些小改动也要进本地代码推送到服务器，服务器拉取最新代码这种重复性的操作，感觉十分繁琐，一直想找一个简单方便的方式进行微信本地环境的开发。😓 无奈之前自己太懒了……总是拖。最近几天好好研究了下特此记录下来。</p>
+                <blockquote>
+<p><strong>2019-3-10</strong> 更新记录</p>
+</blockquote>
+<p>再使用 TP5 进行开发的时候需要注意一下几点</p>
+<ol>
+<li>关闭 trace 调试模式。</li>
+<li>在使用路由的时候尽量确定对应接口请求的类型，如果不知道类型建议使用 <strong>Route::any()</strong>;</li>
+</ol>
+<p><em>可以使用 <a href="http://www.fangbei.org/tool/message" target="_blank" rel="noopener">微信消息测试工具</a>进行测试</em>。</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>之前在做相关微信开发时，因为需要验证公网可以访问的到的域名，所以总是将代码推到线上服务器进行相关的测试。每次有些小改动也要进本地代码推送到服务器，服务器拉取最新代码这种重复性的操作，感觉十分繁琐，一直想找一个简单方便的方式进行微信本地环境的开发。😓 无奈之前自己太懒了……总是拖。最近几天好好研究了下特此记录下来。</p>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
 <li>一台公网可以访问的服务器（或使用海外服务器）。</li>
 <li>一个已经备案的域名。</li>
@@ -923,7 +940,15 @@
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">原因之前在做相关微信开发时，因为需要验证公网可以访问的到的域名，所以总是将代码推到线上服务器进行相关的测试。每次有些小改动也要进本地代码推送到服务器，服务器拉取最新代码这种重复性的操作，感觉十分繁琐，一直想找一个简单方便的方式进行微信本地环</div>
+                    <div class="summary">
+2019-3-10 更新记录
+
+再使用 TP5 进行开发的时候需要注意一下几点
+
+关闭 trace 调试模式。
+在使用路由的时候尽量确定对应接口请求的类型，如果不知道类型建议使用 Route::any();
+
+可以使用 微信消息测试工具进</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-08
