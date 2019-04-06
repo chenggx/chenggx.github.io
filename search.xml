@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>git常用命令总结</title>
+      <link href="/2019/04/06/git-chang-yong-ming-ling-zong-jie/"/>
+      <url>/2019/04/06/git-chang-yong-ming-ling-zong-jie/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>内容不定期更新</p></blockquote><h2 id="1-git-commit-–amend"><a href="#1-git-commit-–amend" class="headerlink" title="1. git commit –amend"></a>1. git commit –amend</h2><pre class=" language-git"><code class="language-git">git commit --amend</code></pre><blockquote><p>解释：当第一次 commit 之后，发现没有修改正确，但是又不想在 git log 中出现两次提交记录，那么在第二次修改后，可以使用 git commit –amend 命令进行修改提交。此时提交成功后就只有一条 commit 记录了。</p></blockquote><h2 id="2-gitignore-生效"><a href="#2-gitignore-生效" class="headerlink" title="2. gitignore 生效"></a>2. gitignore 生效</h2><blockquote><p>解释: .gitignore 文件是忽略 git 项目中不需要提交的内容的配置文件。但是当某次提交的时候把不需要的内容提交到 git 版本控制中了之后。再想修改 .gitignore 文件来忽略那个文件的话是不会生效的。需要先想文件在 git 缓存中删除，然后在进行提交。就可以了。（下面是操作步骤）</p></blockquote><pre class=" language-git"><code class="language-git">git rm -r --cached .   //如何是目录的话，增加 -r 参数git add .git commit -m <span class="token string">'fix ignore'</span>//删除指定文件的缓存git rm --cached xx.html</code></pre><h2 id="3-git-reset-–soft-hard-hash"><a href="#3-git-reset-–soft-hard-hash" class="headerlink" title="3. git reset –soft/hard  hash*"></a>3. git reset –soft/hard  <strong>hash*</strong></h2><pre class=" language-git"><code class="language-git">git reset --soft  **hash***git reset --hard  **hash***</code></pre><blockquote><p>解释：当执行 git commit 之后，想回到之前的版本，可以使用 git reset 进行版本回退。–sorf 参数的意思是，git log 撤销版本，但代码中的内容没有回退。 –hard 参数的意思是，git log 中的记录和 文件内容完全回退到选的的版本。（–hard 更常用）</p></blockquote><h2 id="4-git-stash"><a href="#4-git-stash" class="headerlink" title="4. git stash"></a>4. git stash</h2><pre class=" language-git"><code class="language-git">git stash           //将当前工作去内容进行暂存，然后就进行切换分支或其他的操作了git stash list      //查看当前已经暂存的记录列表git stash pop       //将当前暂存内容回复到工作区并删除暂存记录列表中的内容git stash apply     //将当前暂存内容回复到工作区，不删除记录</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用frp搭建本地微信开发环境</title>
       <link href="/2019/03/08/shi-yong-frp-da-jian-ben-di-wei-xin-kai-fa-huan-jing/"/>
       <url>/2019/03/08/shi-yong-frp-da-jian-ben-di-wei-xin-kai-fa-huan-jing/</url>

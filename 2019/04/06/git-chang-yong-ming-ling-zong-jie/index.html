@@ -5,16 +5,14 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="使用frp搭建本地微信开发环境, 想当年,php,php技术分享">
+    <meta name="keywords" content="git常用命令总结, 想当年,php,php技术分享">
     <meta name="description" content="
-2019-3-10 更新记录
+内容不定期更新
 
-再使用 TP5 进行开发的时候需要注意一下几点
+1. git commit –amendgit commit --amend
 
-关闭 trace 调试模式。
-在使用路由的时候尽量确定对应接口请求的类型，如果不知道类型建议使用 Route::any();
 
-可以使用 微信消息测试工具进">
+解释：当第一次 commit 之后，发现没有修改正确，但是又不想在 git log 中出现两次提交记录，那么在第二次修改后，可以使用 gi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>使用frp搭建本地微信开发环境 | 想当年的博客</title>
+    <title>git常用命令总结 | 想当年的博客</title>
     <meta name="google-site-verification" content="vMFiTYHsmjJ1_4kEuowoifhWqIiZFr8apxJep6yWzY4">
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
@@ -279,13 +277,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/fhdfjsklfjsj12334jl432;.jpeg')">
+<div class="bg-cover post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/d24925e626c0493d8e0e8f3c0bb6210c.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        使用frp搭建本地微信开发环境
+                        git常用命令总结
                     </div>
                 </div>
             </div>
@@ -396,12 +394,8 @@
             
             <div class="article-tag">
                 
-                <a href="/tags/frp/" target="_blank">
-                    <span class="chip bg-color">frp</span>
-                </a>
-                
-                <a href="/tags/开发环境/" target="_blank">
-                    <span class="chip bg-color">开发环境</span>
+                <a href="/tags/git/" target="_blank">
+                    <span class="chip bg-color">git</span>
                 </a>
                 
             </div>
@@ -412,15 +406,15 @@
                 <!--<span class="post-cate" style="margin-right: 0px">-->
                     <i class="fa fa-bookmark fa-fw icon-category"></i>
                     
-                    <a href="/categories/开发环境/" class="post-category" target="_blank">
-                        开发环境
+                    <a href="/categories/git/" class="post-category" target="_blank">
+                        git
                     </a>
                     
                 </span>
                 
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2019-03-08
+                    <i class="fa fa-clock-o fa-fw"></i>2019-04-06
                 </span>
 				
 				
@@ -433,83 +427,35 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p><strong>2019-3-10</strong> 更新记录</p>
+<p>内容不定期更新</p>
 </blockquote>
-<p>再使用 TP5 进行开发的时候需要注意一下几点</p>
-<ol>
-<li>关闭 trace 调试模式。</li>
-<li>在使用路由的时候尽量确定对应接口请求的类型，如果不知道类型建议使用 <strong>Route::any()</strong>;</li>
-</ol>
-<p><em>可以使用 <a href="http://www.fangbei.org/tool/message" target="_blank" rel="noopener">微信消息测试工具</a>进行测试</em>。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>之前在做相关微信开发时，因为需要验证公网可以访问的到的域名，所以总是将代码推到线上服务器进行相关的测试。每次有些小改动也要进本地代码推送到服务器，服务器拉取最新代码这种重复性的操作，感觉十分繁琐，一直想找一个简单方便的方式进行微信本地环境的开发。😓 无奈之前自己太懒了……总是拖。最近几天好好研究了下特此记录下来。</p>
-<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
-<li>一台公网可以访问的服务器（或使用海外服务器）。</li>
-<li>一个已经备案的域名。</li>
-<li>内网穿透工具 <a href="https://github.com/fatedier/frp" target="_blank" rel="noopener">frp</a></li>
-</ol>
-<h2 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h2><h3 id="下载-frp"><a href="#下载-frp" class="headerlink" title="下载 frp"></a>下载 frp</h3><p>下载对应系统的 <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">frp</a> 包。因为我的公网服务器是 centOS6-x64 所以下载了 <code>frp_0.24.1_linux_amd64.tar.gz</code> 包。</p>
-<h3 id="配置-frp-服务端"><a href="#配置-frp-服务端" class="headerlink" title="配置 frp 服务端"></a>配置 frp 服务端</h3><ol>
-<li>在服务器上解压下载好的 frp 包。</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash"> <span class="token function">tar</span> zxvf frp_0.24.1_linux_amd64.tar.gz
+<h2 id="1-git-commit-–amend"><a href="#1-git-commit-–amend" class="headerlink" title="1. git commit –amend"></a>1. git commit –amend</h2><pre class=" language-git"><code class="language-git">git commit --amend
 </code></pre>
-<ol start="2">
-<li><p>进入解压好的目录，编辑 frp 服务器端配置文件 <strong>frps.ini</strong>。</p>
-<pre class=" language-ini"><code class="language-ini"><span class="token selector">[common]</span>
-<span class="token constant">bind_port</span> <span class="token attr-value"><span class="token punctuation">=</span> 7000             #frp 绑定的端口</span>
-<span class="token constant">vhost_http_port</span> <span class="token attr-value"><span class="token punctuation">=</span> 8000       #http 访问端口</span>
-</code></pre>
-<ol start="3">
-<li>启动服务端 frp</li>
-</ol>
-<pre class=" language-bash"><code class="language-bash">./frps -c ./frps.ini
-</code></pre>
-</li>
-</ol>
-<h2 id="解析域名"><a href="#解析域名" class="headerlink" title="解析域名"></a>解析域名</h2><p>在域名服务商配置域名解析，将域名解析到上面的服务器 ip 地址上。</p>
-<h2 id="配置-nginx-反向代理进行-frp-端口的转发"><a href="#配置-nginx-反向代理进行-frp-端口的转发" class="headerlink" title="配置 nginx 反向代理进行 frp 端口的转发"></a>配置 nginx 反向代理进行 frp 端口的转发</h2><ol>
-<li>配置 nginx </li>
-</ol>
-<pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">server</span> <span class="token punctuation">{</span>
-    <span class="token keyword">listen</span> <span class="token number">80</span><span class="token punctuation">;</span>
-    <span class="token keyword">server_name</span> wx<span class="token punctuation">.</span>domain<span class="token punctuation">.</span>com<span class="token punctuation">;</span> <span class="token comment" spellcheck="true"># 绑定域名</span>
-
-    <span class="token keyword">location</span> <span class="token operator">/</span> <span class="token punctuation">{</span>
-        <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>localhost<span class="token punctuation">:</span><span class="token number">8000</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true"># 转发至本机8000,即在frps.ini中配置>的vhost_http_port</span>
-        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Real<span class="token operator">-</span>IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
-        <span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span><span class="token punctuation">;</span>
-        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Forwarded<span class="token operator">-</span>For <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<ol start="2">
-<li>重启 nginx</li>
-</ol>
-<h2 id="本地端配置"><a href="#本地端配置" class="headerlink" title="本地端配置"></a>本地端配置</h2><blockquote>
-<p> 本地使用的是 vagrant 虚拟机。使用的同样是 centOS6-x64。在配置 frp 客户端之前需要将项目代码在 nginx 中正确配置，指定的域名就是上面解析的域名。</p>
+<blockquote>
+<p>解释：当第一次 commit 之后，发现没有修改正确，但是又不想在 git log 中出现两次提交记录，那么在第二次修改后，可以使用 git commit –amend 命令进行修改提交。此时提交成功后就只有一条 commit 记录了。</p>
 </blockquote>
-<ol>
-<li>根据本地系统环境下载对应的  <a href="https://github.com/fatedier/frp/releases" target="_blank" rel="noopener">frp</a> 包。</li>
-<li><p>编辑 frp 客户端配置文件 <strong>frpc.ini</strong>。</p>
-<pre class=" language-ini"><code class="language-ini"><span class="token selector">[common]</span>
-<span class="token constant">server_addr</span> <span class="token attr-value"><span class="token punctuation">=</span> x.x.x.x     #frps 所在的服务器的 IP</span>
-<span class="token constant">server_port</span> <span class="token attr-value"><span class="token punctuation">=</span> 7000        #frps 绑定的端口</span>
-<span class="token constant">use_encryption</span> <span class="token attr-value"><span class="token punctuation">=</span> true     #将 frpc 与 frps 之间的通信内容加密传输，将会有效防止流量被拦截。 </span>
-<span class="token constant">use_compression</span> <span class="token attr-value"><span class="token punctuation">=</span> true     # 对传输内容进行压缩，可以有效减小 frpc 与 frps 之间的网络流量，加快流量转发速度，但是会额外消耗一些 cpu 资源。</span>
+<h2 id="2-gitignore-生效"><a href="#2-gitignore-生效" class="headerlink" title="2. gitignore 生效"></a>2. gitignore 生效</h2><blockquote>
+<p>解释: .gitignore 文件是忽略 git 项目中不需要提交的内容的配置文件。但是当某次提交的时候把不需要的内容提交到 git 版本控制中了之后。再想修改 .gitignore 文件来忽略那个文件的话是不会生效的。需要先想文件在 git 缓存中删除，然后在进行提交。就可以了。（下面是操作步骤）</p>
+</blockquote>
+<pre class=" language-git"><code class="language-git">git rm -r --cached .   //如何是目录的话，增加 -r 参数
+git add .
+git commit -m <span class="token string">'fix ignore'</span>
 
-<span class="token selector">[web]</span>
-<span class="token constant">type</span> <span class="token attr-value"><span class="token punctuation">=</span> http</span>
-<span class="token constant">local_port</span> <span class="token attr-value"><span class="token punctuation">=</span> 80   #为本地机器上 web 服务对应的端口</span>
-<span class="token constant">custom_domains</span> <span class="token attr-value"><span class="token punctuation">=</span> wx.domain.com   #上一步中解析好的域名</span>
+//删除指定文件的缓存
+git rm --cached xx.html
+
 </code></pre>
-</li>
-</ol>
-<ol start="3">
-<li>启动 frp 客户端<pre class=" language-bash"><code class="language-bash">./frpc -c ./frpc.ini
+<h2 id="3-git-reset-–soft-hard-hash"><a href="#3-git-reset-–soft-hard-hash" class="headerlink" title="3. git reset –soft/hard  hash*"></a>3. git reset –soft/hard  <strong>hash*</strong></h2><pre class=" language-git"><code class="language-git">git reset --soft  **hash***
+git reset --hard  **hash***
 </code></pre>
-</li>
-</ol>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>如果一切正常那么现在随便找一台设备，访问刚才的域名就可以访问到本地的项目了。</p>
+<blockquote>
+<p>解释：当执行 git commit 之后，想回到之前的版本，可以使用 git reset 进行版本回退。–sorf 参数的意思是，git log 撤销版本，但代码中的内容没有回退。 –hard 参数的意思是，git log 中的记录和 文件内容完全回退到选的的版本。（–hard 更常用）</p>
+</blockquote>
+<h2 id="4-git-stash"><a href="#4-git-stash" class="headerlink" title="4. git stash"></a>4. git stash</h2><pre class=" language-git"><code class="language-git">git stash           //将当前工作去内容进行暂存，然后就进行切换分支或其他的操作了
+git stash list      //查看当前已经暂存的记录列表
+git stash pop       //将当前暂存内容回复到工作区并删除暂存记录列表中的内容
+git stash apply     //将当前暂存内容回复到工作区，不删除记录
+</code></pre>
 
             </div>
             <hr>
@@ -648,7 +594,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="http://blog.xiangdangnian.net.cn" class="b-link-green">想当年的博客</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2019/03/08/shi-yong-frp-da-jian-ben-di-wei-xin-kai-fa-huan-jing/" class="b-link-green">使用frp搭建本地微信开发环境</a>
+                    <a href="/2019/04/06/git-chang-yong-ming-ling-zong-jie/" class="b-link-green">git常用命令总结</a>
                 </p>
             </div>
         </div>
@@ -929,7 +875,7 @@
     <div class="row article-row">
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge left-badge text-color">上一篇</div>
+            <div class="article-badge left-badge text-color">本篇</div>
             <div class="card">
                 <a href="/2019/04/06/git-chang-yong-ming-ling-zong-jie/">
                     <div class="card-image">
@@ -948,9 +894,9 @@
 
 解释：当第一次 commit 之后，发现没有修改正确，但是又不想在 git log 中出现两次提交记录，那么在第二次修改后，可以使用 gi</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-06
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -963,6 +909,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -979,29 +926,34 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">下一篇</div>
             <div class="card">
-                <a href="/2019/02/14/ge-chong-suo-de-li-jie/">
+                <a href="/2019/03/08/shi-yong-frp-da-jian-ben-di-wei-xin-kai-fa-huan-jing/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/v2-3df7ae4d5895ec40000b5311a0f93800_1200x500.jpg" class="responsive-img" alt="MySQL 各种锁的理解">
+                        <img src="http://static.xiangdangnian.net.cn/blog/fhdfjsklfjsj12334jl432;.jpeg" class="responsive-img" alt="使用frp搭建本地微信开发环境">
                         
-                        <span class="card-title">MySQL 各种锁的理解</span>
+                        <span class="card-title">使用frp搭建本地微信开发环境</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary">
-之前总是听说 MySQL 中的锁，一直没有具体的看过，晚上抽了空看了一点就先记录了下来，后面有机会在补充。
+2019-3-10 更新记录
 
-为什么需要锁因为数据库是一个多用户共享的资源，也就是任何人都可以访问数据。当有一个商品表库存为1，当一个用户购买该商品的时候，首</div>
+再使用 TP5 进行开发的时候需要注意一下几点
+
+关闭 trace 调试模式。
+在使用路由的时候尽量确定对应接口请求的类型，如果不知道类型建议使用 Route::any();
+
+可以使用 微信消息测试工具进</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-14
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/mysql/" class="post-category" target="_blank">
-                                    mysql
+                            <a href="/categories/开发环境/" class="post-category" target="_blank">
+                                    开发环境
                                 </a>
                             
                             
@@ -1011,8 +963,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mysql/" target="_blank">
-                        <span class="chip bg-color">mysql</span>
+                    <a href="/tags/frp/" target="_blank">
+                        <span class="chip bg-color">frp</span>
+                    </a>
+                    
+                    <a href="/tags/开发环境/" target="_blank">
+                        <span class="chip bg-color">开发环境</span>
                     </a>
                     
                 </div>
