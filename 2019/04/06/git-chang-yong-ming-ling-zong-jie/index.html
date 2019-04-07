@@ -456,6 +456,16 @@ git stash list      //查看当前已经暂存的记录列表
 git stash pop       //将当前暂存内容回复到工作区并删除暂存记录列表中的内容
 git stash apply     //将当前暂存内容回复到工作区，不删除记录
 </code></pre>
+<h2 id="5-git-rebase-变基"><a href="#5-git-rebase-变基" class="headerlink" title="5. git rebase (变基)"></a>5. git rebase (变基)</h2><blockquote>
+<p>解释：当在两个分支进行操作的时候，一般我们使用 merge 将两个分支进行合并，但是这样会产生一个新的提交，并且另一个分支的提交记录在当前分支是不存在的。为了解决这个问题，可以使用 rebase。</p>
+</blockquote>
+<pre class=" language-git"><code class="language-git">//前提：master 分支和 new-feature 分支都进行了多次提交
+
+git checkout new-feature        //首先切换到新分支
+git rebase master               //将 master 分支的提交记录添加到当前分支
+git checkout master             //切换回 master 分支
+git merge new-feature           //将 new-feature 分支合并入master，此时 master 分支中就有了 new-feature 分支的提交记录，但是不会产生新的提交记录。此命令可以使提交历史更为整洁。
+</code></pre>
 
             </div>
             <hr>
