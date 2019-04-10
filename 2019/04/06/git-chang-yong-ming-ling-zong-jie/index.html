@@ -9,10 +9,7 @@
     <meta name="description" content="
 内容不定期更新
 
-1. git commit –amendgit commit --amend
-
-
-解释：当第一次 commit 之后，发现没有修改正确，但是又不想在 git log 中出现两次提交记录，那么在第二次修改后，可以使用 gi">
+自己常用的 git aliasalias gl=&#34;git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -429,6 +426,10 @@
                 <blockquote>
 <p>内容不定期更新</p>
 </blockquote>
+<h2 id="自己常用的-git-alias"><a href="#自己常用的-git-alias" class="headerlink" title="自己常用的 git alias"></a>自己常用的 git alias</h2><pre class=" language-shell"><code class="language-shell">alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+
+alias gll="git log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'"
+</%an></code></pre>
 <h2 id="1-git-commit-–amend"><a href="#1-git-commit-–amend" class="headerlink" title="1. git commit –amend"></a>1. git commit –amend</h2><pre class=" language-git"><code class="language-git">git commit --amend
 </code></pre>
 <blockquote>
@@ -899,10 +900,7 @@ git merge new-feature           //将 new-feature 分支合并入master，此时
                     <div class="summary">
 内容不定期更新
 
-1. git commit –amendgit commit --amend
-
-
-解释：当第一次 commit 之后，发现没有修改正确，但是又不想在 git log 中出现两次提交记录，那么在第二次修改后，可以使用 gi</div>
+自己常用的 git aliasalias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) </div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-06
