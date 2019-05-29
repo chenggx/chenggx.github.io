@@ -1,53 +1,52 @@
 <!DOCTYPE HTML>
 <html lang="zh-CN">
-<head>
-    
+
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     <meta name="keywords" content="关于, 想当年,php,php技术分享">
     <meta name="description" content="关于 | 想当年的博客">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>关于 | 想当年的博客</title>
-    <meta name="google-site-verification" content="vMFiTYHsmjJ1_4kEuowoifhWqIiZFr8apxJep6yWzY4">
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/materialize/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/lightGallery/css/lightgallery.min.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/css/matery.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/css/my.css">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    <style type="text/css">
+        
+    </style>
 
-    <script src="http://static.xiangdangnian.net.cn/source/libs/jquery/jquery-2.2.0.min.js"></script>
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
-</head>
 
 <body>
 
 <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="container">
-            <div class="nav-wrapper">
-                <div class="brand-logo">
-                    <a href="/" class="waves-effect waves-light">
-                        
-                        <img src="http://static.xiangdangnian.net.cn/source/medias/logo.png" class="logo-img hide-on-small-only">
-                        
-                        <span class="logo-span">想当年的博客</span>
-                    </a>
-                </div>
-                
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="http://static.xiangdangnian.net.cn/source/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">想当年的博客</span>
+                </a>
+            </div>
+            
 
-<a href="#" data-activates="mobile-nav" class="button-collapse"><i class="fa fa-navicon"></i></a>
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
 <ul class="right">
     
     <li class="hide-on-med-and-down">
@@ -105,14 +104,13 @@
     </li>
     
     <li>
-        <a id="toggleSearch" class="waves-effect waves-light">
-            <i id="searchIcon" class="mdi-action-search"></i>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
         </a>
     </li>
-
 </ul>
 
-<div class="side-nav" id="mobile-nav">
+<div id="mobile-nav" class="side-nav sidenav">
 
     <div class="mobile-head bg-color">
         
@@ -193,25 +191,12 @@
         </li>
         
     </ul>
-
-    <div class="social-link"><a href="https://github.com/chenggx" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="mailto:chengguangxin927@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 527992744" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
-
-</div>
 </div>
 
-            </div>
         </div>
 
         
-        <style>
+            <style>
     .nav-transparent .github-corner {
         display: none !important;
     }
@@ -265,6 +250,7 @@
 </a>
         
     </nav>
+
 </header>
 
 <style type="text/css">
@@ -274,33 +260,31 @@
     }
 </style>
 
-<div class="bg-cover  about-cover" style="background-image: url('http://static.xiangdangnian.net.cn/source/medias/cover.jpg')">
+<div class="bg-cover pd-header about-cover">
     <div class="container">
-        <div class="row">
-            <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-                <div class="brand">
-                    <div class="title center-align">
-                    
-                        记录历程，分享美好
-                    
-                    </div>
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    记录历程，分享美好
+                
+            </div>
 
-                    <div class="description center-align">
-                    
-                        坚持就是胜利！！！
-                    
-                    </div>
-                </div>
+            <div class="description center-align">
+                
+                    坚持就是胜利！！！
+                
             </div>
         </div>
-        
     </div>
 </div>
-
 <script>
-// Dynamically switch banner pictures every day.
-$('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/banner/' + new Date().getDay() + '.jpg)');
+// 每天切换 banner 图.  Switch banner image every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
+    </div>
+</div>
 
 <main class="content">
 
@@ -361,15 +345,19 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
                                 <div class="title">chenggx</div>
                                 <div class="career">PHP</div>
                                 <div class="social-link hide-on-large-only" data-aos="zoom-in-left">
-                                    <a href="https://github.com/chenggx" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="mailto:chengguangxin927@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 527992744" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
+                                    
+
+
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
 
 
                                 </div>
@@ -378,15 +366,19 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
                     </div>
                     <div class="col l4 hide-on-med-and-down" data-aos="zoom-in-left">
                         <div class="social-link">
-                            <a href="https://github.com/chenggx" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="mailto:chengguangxin927@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 527992744" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
+                            
+
+
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
 
 
                         </div>
@@ -407,7 +399,9 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
 </style>
 
 <div id="postCharts" class="post-charts">
-    <div class="title center-align" data-aos="zoom-in-up">文章统计图</div>
+    <div class="title center-align" data-aos="zoom-in-up">
+        <i class="fa fa-bar-chart"></i>&nbsp;&nbsp;文章统计图
+    </div>
     <div class="row">
         <div class="chart col s12 m6 l4" data-aos="zoom-in-up">
             <div id="posts-chart"></div>
@@ -494,7 +488,7 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"php","value":1},{"name":"git","value":1},{"name":"开发环境","value":1},{"name":"mysql","value":1},{"name":"小技巧","value":1},{"name":"服务器","value":1},{"name":"其他","value":1}],
+                data: [{"name":"php","value":1},{"name":"git","value":1},{"name":"服务器","value":1},{"name":"开发环境","value":1},{"name":"mysql","value":1},{"name":"小技巧","value":1},{"name":"其他","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -518,7 +512,7 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
         xAxis: [
             {
                 type: 'category',
-                data: ["php","git","frp","开发环境","mysql","hexo","nginx","负载均衡","摘录"]
+                data: ["php","git","nginx","负载均衡","frp","开发环境","mysql","hexo","摘录"]
             }
         ],
         yAxis: [
@@ -578,25 +572,37 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
             <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
 
             
+
+            
 			
                 <br>
+                
                 <span id="busuanzi_container_site_pv">
-                    本站总访问量 <span id="busuanzi_value_site_pv" style="color: #fff;"></span> 次,&nbsp;
+                    <i class="fa fa-heart-o"></i>
+                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
                 </span>
-				<span id="busuanzi_container_site_uv">
-                    访客数 <span id="busuanzi_value_site_uv" style="color: #fff;"></span> 人.
+                
+                
+                <span id="busuanzi_container_site_uv">
+                    <i class="fa fa-users"></i>
+                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
                 </span>
-			
+                
+            
         </div>
-        <div class="col s12 m4 l4 social-link social-statis"><a href="https://github.com/chenggx" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-    <i class="fa fa-github"></i>
-</a>
-<a href="mailto:chengguangxin927@sina.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-    <i class="fa fa-envelope-open"></i>
-</a>
-<a href="#!" class="tooltipped" data-tooltip="QQ联系我: 527992744" data-position="top" data-delay="50">
-    <i class="fa fa-qq"></i>
-</a>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
 
 </div>
     </div>
@@ -609,8 +615,8 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title">搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input" autofocus>
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
@@ -618,7 +624,9 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
 
 <script src="/js/search.js"></script>
 <script type="text/javascript">
+$(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
 </script>
 <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
@@ -628,12 +636,12 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
 </div>
 
 
-<script src="http://static.xiangdangnian.net.cn/source/libs/materialize/js/materialize.min.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/libs/aos/aos.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/js/matery.js"></script>
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 
@@ -649,22 +657,9 @@ $('.bg-cover').css('background-image', 'url(http://static.xiangdangnian.net.cn/b
 </script>
 
 
-<!-- Global site tag (gtag.js) - Baidu Analytics -->
-
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?562387fc095f6d883578908436c5b0d4";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 
 
-
-
-    <script async src="http://static.xiangdangnian.net.cn/source/libs/others/busuanzi.pure.mini.js"></script>
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
 
 
 </body>
