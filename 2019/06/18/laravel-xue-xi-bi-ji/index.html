@@ -4,10 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="网易云音乐评论摘录, 想当年,php,php技术分享">
-    <meta name="description" content="网易云音乐里有才的人实在太多，写出来的歌词或评论是真的不错。这里就把我觉得还不错的收藏一波吧（不定期更新）。
-评论
-人会长大三次：第一次是在发现自己不是世界的中心的时候。第二次是在发现即使在怎么努力，终究还是有些事令人无能为力的时候。第三次">
+    <meta name="keywords" content="Laravel学习笔记, 想当年,php,php技术分享">
+    <meta name="description" content="第一步：了解几个常用名称
+Service Container、Service Provider、Facades、Contracts。当第一次使用 Laravel 框架的时候被这几个词直接搞蒙圈了，完全不知道是什么意思，尤其是在看完文档之后，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>网易云音乐评论摘录 | 想当年的博客</title>
+    <title>Laravel学习笔记 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/awesome/css/font-awesome.min.css">
@@ -259,13 +258,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/9bdf52a4830779a1383ac24f1b3ed054.jpeg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/laravel.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        网易云音乐评论摘录
+                        Laravel学习笔记
                     </div>
                 </div>
             </div>
@@ -376,8 +375,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/摘录/" target="_blank">
-                                <span class="chip bg-color">摘录</span>
+                            <a href="/tags/laravel/" target="_blank">
+                                <span class="chip bg-color">laravel</span>
+                            </a>
+                        
+                            <a href="/tags/php/" target="_blank">
+                                <span class="chip bg-color">php</span>
                             </a>
                         
                     </div>
@@ -388,8 +391,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/其他/" class="post-category" target="_blank">
-                                其他
+                            <a href="/categories/php/" class="post-category" target="_blank">
+                                php
                             </a>
                         
                     </div>
@@ -400,7 +403,7 @@
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-05-28
+                    2019-06-18
                 </div>
 
                 
@@ -416,40 +419,168 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>网易云音乐里有才的人实在太多，写出来的歌词或评论是真的不错。这里就把我觉得还不错的收藏一波吧（不定期更新）。</p>
-<h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2><blockquote>
-<p>人会长大三次：<br>第一次是在发现自己不是世界的中心的时候。<br>第二次是在发现即使在怎么努力，终究还是有些事令人无能为力的时候。<br>第三次是在，明知道有些事可能会无能为力，但还是会尽力争取的时候。<br>————《一如少年模样》</p>
+                <h2 id="第一步：了解几个常用名称"><a href="#第一步：了解几个常用名称" class="headerlink" title="第一步：了解几个常用名称"></a>第一步：了解几个常用名称</h2><blockquote>
+<p>Service Container、Service Provider、Facades、Contracts。当第一次使用 Laravel 框架的时候被这几个词直接搞蒙圈了，完全不知道是什么意思，尤其是在看完文档之后，真的想说 WTF 。不过不知道也不会太影响使用。（😅有个朋友说过，不管用着在 NB 的框架，依然可以写出屎一样的代码）</p>
 </blockquote>
+<h3 id="Service-Container"><a href="#Service-Container" class="headerlink" title="Service Container"></a>Service Container</h3><p>中文解释：服务容器 （😂 是不是看完这个翻译更不知道是啥了）</p>
+<p>我的理解：一个装着各种各样的服务实例的容器。这些服务就是 Laravel 中的各种模块，如 Redis、Route 等等。</p>
+<p>实现一个简单的容器：</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">class</span> <span class="token class-name">Container</span>
+<span class="token punctuation">{</span>
+  <span class="token keyword">protected</span> <span class="token variable">$binds</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">protected</span> <span class="token variable">$instances</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">bind</span><span class="token punctuation">(</span><span class="token variable">$abstract</span><span class="token punctuation">,</span> <span class="token variable">$concrete</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//Todo: 向 container 添加一种对象的的生产方式</span>
+
+    <span class="token comment" spellcheck="true">//$abstract: 第一个参数 $abstract, 一般为一个字符串(有时候也会是一个接口), 当你需要 make 这个类的对象的时候, 传入这个字符串(或者接口), 这样make 就知道制造什么样的对象了</span>
+    <span class="token comment" spellcheck="true">//$concrete: 第二个参数 $concrete, 一般为一个 Closure 或者 一个单例对象, 用于说明制造这个对象的方式</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$concrete</span> <span class="token keyword">instanceof</span> <span class="token class-name">Closure</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">binds</span><span class="token punctuation">[</span><span class="token variable">$abstract</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$concrete</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">instances</span><span class="token punctuation">[</span><span class="token variable">$abstract</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$concrete</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token variable">$abstract</span><span class="token punctuation">,</span> <span class="token variable">$parameters</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+  <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//Todo: 生产一种对象</span>
+
+    <span class="token comment" spellcheck="true">//$abstract: 在bind方法中已经介绍过</span>
+    <span class="token comment" spellcheck="true">//$parameters: 生产这种对象所需要的参数</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">instances</span><span class="token punctuation">[</span><span class="token variable">$abstract</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">instances</span><span class="token punctuation">[</span><span class="token variable">$abstract</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">array_unshift</span><span class="token punctuation">(</span><span class="token variable">$parameters</span><span class="token punctuation">,</span> <span class="token variable">$this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token function">call_user_func_array</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">binds</span><span class="token punctuation">[</span><span class="token variable">$abstract</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$parameters</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="为什么理解-IOC-Container-对于理解-Laravel-架构是如此的重要？"><a href="#为什么理解-IOC-Container-对于理解-Laravel-架构是如此的重要？" class="headerlink" title="为什么理解 IOC Container 对于理解 Laravel 架构是如此的重要？"></a>为什么理解 IOC Container 对于理解 Laravel 架构是如此的重要？</h4><blockquote>
+<p>因为在 Laravel 中，你所能使用到的 Laravel 的特性和功能几乎全部是由 IOC Container 实现的。</p>
+</blockquote>
+<pre class=" language-php"><code class="language-php">Cache<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+Route<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token string">'HomeController@index'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>上面的 Cache、Route 都是通过把各自类的实现 bind 到 Container 中，然后 Container make 出的一个实例。<br>那么它们是在哪里进行的 bind 呢？没错就是 Service Provider 中。</p>
+<h3 id="Service-Provider"><a href="#Service-Provider" class="headerlink" title="Service Provider"></a>Service Provider</h3><p>在 Laravel 中有两种方式来使用 IOC Container：</p>
+<ol>
+<li>通过 Service Provider</li>
+<li>不通过 Service Provider<blockquote>
+<p>一般情况都是使用第一种方式。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="不通过-Service-Provider-来使用-IOC-Container"><a href="#不通过-Service-Provider-来使用-IOC-Container" class="headerlink" title="不通过 Service Provider 来使用 IOC Container"></a>不通过 Service Provider 来使用 IOC Container</h4><p>实例：</p>
+<pre class=" language-php"><code class="language-php"><span class="token comment" spellcheck="true">//web.php</span>
+
+
+<span class="token comment" spellcheck="true">//创建一个类</span>
+<span class="token keyword">class</span> <span class="token class-name">Apple</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token variable">$id</span> <span class="token operator">=</span> <span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+Route<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">//使用 app() 辅助方法将 Apple 类 bind 到 IOC Container 中  </span>
+  App<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token string">'apple'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Apple</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">//使用 App() 辅助方法将 Apple 实例 make 出来</span>
+  <span class="token variable">$apple</span> <span class="token operator">=</span> App<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">make</span><span class="token punctuation">(</span><span class="token string">'apple'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment" spellcheck="true">//使用 Apple 类中的属性</span>
+  <span class="token keyword">return</span> <span class="token variable">$apple</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">id</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="通过-Service-Provider-来使用-IOC-Container"><a href="#通过-Service-Provider-来使用-IOC-Container" class="headerlink" title="通过 Service Provider 来使用 IOC Container"></a>通过 Service Provider 来使用 IOC Container</h4><blockquote>
+<p>原因：我们知道，有时候我们的类、模块会有需要其他类和组件的情况，为了保证初始化阶段不会出现所需要的模块和组件没有注册的情况，laravel 将注册和初始化行为进行拆分，注册的时候就只能注册，初始化的时候就是初始化。拆分后的产物就是现在的 服务提供者。<br>可以想象这样一个场景，你要绑定 3 个类 A B C 到 IOC Container 中。 A，B，C 都是非常复杂的类。在 bind A 时，引用了一个类 B 的实例，那么想要获得类 B 的实例，就需要 B 已经被 bind，只有这样，我们的 IOC Container 才有能力 make 出一个 B 的实例。 而在 bind B 时，恰好又需要 C 的实例.<br>如果是这样的逻辑，那么在 bind A B C 时，就必须手动的严格安排 bind 的次序，而且这只是 3 个类的情况，如果有几十个类的话，人工已经无法完成了.<br>而这时就需要 Service Provider 的作用了。</p>
 <blockquote>
-<p>白天要好好读书 书里有您不知道的<br>夜里要好好睡觉 梦里有你想要的<br>————《他》</p>
+<p>引用自——<a href="https://learnku.com/laravel/t/3361/starting-with-the-1-line-of-code-with-a-systematic-understanding-of-the-core-concepts-of-service-container#e9b441" target="_blank" rel="noopener">从 1 行代码开始，带你系统性地理解 Service Container 核心概念
+</a></p>
 </blockquote>
+</blockquote>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+<span class="token comment" spellcheck="true">// 1. 创建一个 Apple 类 app/Test/Apple.php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Test</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Apple</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token variable">$id</span> <span class="token operator">=</span> <span class="token string">'agg'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">//2. 使用 php artisan make:provider AppleProvider 生成 provider</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Providers</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>ServiceProvider</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Test<span class="token punctuation">\</span>Apple</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AppleProvider</span> <span class="token keyword">extends</span> <span class="token class-name">ServiceProvider</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * Register services.
+     *
+     * @return void
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">app</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">singleton</span><span class="token punctuation">(</span><span class="token string">'apple'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token variable">$app</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Apple</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Bootstrap services.
+     *
+     * @return void
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">boot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">// 3. 在 config/app.php 中注册 APPServiceProvider</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token string">'providers'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    App\<span class="token package">Providers<span class="token punctuation">\</span>AppleProvider</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+<span class="token comment" spellcheck="true">// 4. 最终在 route/web.php 中使用</span>
+
+Route<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">app</span><span class="token punctuation">(</span><span class="token string">'apple'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token function">app</span><span class="token punctuation">(</span><span class="token string">'apple'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+输出结果，因为使用了单例的模式进行绑定所以输出的两个实例的编号是一致的
+object(App\Test\Apple)#206 (1) { ["id"]=> string(3) "agg" } 
+object(App\Test\Apple)#206 (1) { ["id"]=> string(3) "agg" }
+*/</span>
+</code></pre>
+<h3 id="Facades"><a href="#Facades" class="headerlink" title="Facades"></a>Facades</h3><pre class=" language-php"><code class="language-php">Route<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token string">'HomeController@index'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 <blockquote>
-<p>你哭的最伤心的那个晚上变成大人了么？不是，是我忍住没哭的那个晚上。<br>————林宥嘉《天真有邪》</p>
+<p>想必大家在第一使用 Laravel 的时候一定会注意到这行代码。在使用 phpStorm 之类的 IDE 工具是无法跳转到对应的类文件。那么这是为啥呢？</p>
 </blockquote>
-<blockquote>
-<p>小时候，把一片口香糖掰成两块儿，很舍不得吃。那时候就天真的想，等我长大了，有钱了，就一口气嚼一包！一定特别甜！今天突然想到了儿时的这个梦想，就买了一包，当我把口香糖一片片塞进嘴里的时候，我的眼泪夺目而出。。。我哽咽着大口的嚼着。。。心里却满是酸楚，我想，这时光一点也不甜。。。<br>————周传雄《黄昏》 </p>
-</blockquote>
-<blockquote>
-<p>爱上一个人，始于颜值，陷于才华，忠于人品；爱上一首歌，始于歌名，陷于旋律，忠于词义。</p>
-</blockquote>
-<blockquote>
-<p>当我孑然一身的时候，贫穷与我不过是晚上吃馒头还是牛排的问题，无损我的快乐，当但我爱上一个姑娘的时候，我才深深感受到了贫穷所带来的自卑。</p>
-</blockquote>
-<blockquote>
-<p>古代药房门口会挂着：<br>但愿世上无疾苦，宁可架上药生尘。<br>现在药房门口贴着：<br>会员积分，买十赠五，消费满58送20个鸡蛋。<br>————《只要平凡》</p>
-</blockquote>
-<blockquote>
-<p>月老，麻烦下次为我牵红线的时候能换成钢丝吗，红线老TM断。<br>————《猫都瞧不起我》</p>
-</blockquote>
-<blockquote>
-<p>我告诉你我喜欢你，并不是一定要和你在一起，只是希望今后的您，在遭遇人生低谷的时候，不要灰心，至少曾经有人被你的魅力所吸引，曾经是，以后也会是。<br>————《我要你》</p>
-</blockquote>
-<h2 id="歌词"><a href="#歌词" class="headerlink" title="歌词"></a>歌词</h2><blockquote>
-<p>你是我患得患失的梦 我是你可有可无的人 毕竟这穿越山河的剑 刺的都是用情至极的人 你是我辗转反侧的梦 我是你如梦山河的古人<br>————解忧少帅《写给黄淮》</p>
-</blockquote>
-<blockquote>
-<p>像我这样优秀的人 本该灿烂过一生 怎么二十多年到头来 还在人海里浮沉<br>———— 毛不易《像我这样的人》</p>
-</blockquote>
+<p>你是无法找到对 Route 类的声明的，是因为使用了别名。别名是 PHP 的一个特性（ <a href="https://www.php.net/manual/zh/function.class-alias.php" target="_blank" rel="noopener">class_alias</a> 方法 ）。</p>
+<p>别名在哪里设置呢——app/config/app.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token string">'aliases'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token string">'Route'</span> <span class="token operator">=</span><span class="token operator">></span> Illuminate\<span class="token package">Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>Route</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
 
             </div>
             <hr>
@@ -605,9 +736,9 @@
             </div>
             <br>
             <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">
-                    《网易云音乐评论摘录》
+                    《Laravel学习笔记》
                 </span> 由
-            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/05/28/wang-yi-yun-yin-le-ping-lun-zhai-lu/" property="cc:attributionName" rel="cc:attributionURL">
+            <a xmlns:cc="http://creativecommons.org/ns#" href="/2019/06/18/laravel-xue-xi-bi-ji/" property="cc:attributionName" rel="cc:attributionURL">
                 chenggx
             </a> 采用
             <a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh">
@@ -907,7 +1038,8 @@
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/06/18/laravel-xue-xi-bi-ji/">
                     <div class="card-image">
@@ -925,9 +1057,9 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用 
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -940,6 +1072,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用 
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -962,33 +1095,32 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用 
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/04/06/git-chang-yong-ming-ling-zong-jie/">
+                <a href="/2019/05/28/wang-yi-yun-yin-le-ping-lun-zhai-lu/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/d24925e626c0493d8e0e8f3c0bb6210c.jpg" class="responsive-img" alt="git常用命令总结">
+                        <img src="http://static.xiangdangnian.net.cn/blog/9bdf52a4830779a1383ac24f1b3ed054.jpeg" class="responsive-img" alt="网易云音乐评论摘录">
                         
-                        <span class="card-title">git常用命令总结</span>
+                        <span class="card-title">网易云音乐评论摘录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-内容不定期更新
-
-自己常用的 git alias 可以在命令行中更好的显示 log 信息alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cre
+                            网易云音乐里有才的人实在太多，写出来的歌词或评论是真的不错。这里就把我觉得还不错的收藏一波吧（不定期更新）。
+评论
+人会长大三次：第一次是在发现自己不是世界的中心的时候。第二次是在发现即使在怎么努力，终究还是有些事令人无能为力的时候。第三次
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-06
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-28
                             </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/git/" class="post-category" target="_blank">
-                                    git
+                            <a href="/categories/其他/" class="post-category" target="_blank">
+                                    其他
                                 </a>
                             
                             
@@ -998,8 +1130,8 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用 
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/" target="_blank">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/摘录/" target="_blank">
+                        <span class="chip bg-color">摘录</span>
                     </a>
                     
                 </div>
