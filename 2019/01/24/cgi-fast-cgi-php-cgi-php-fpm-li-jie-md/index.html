@@ -6,11 +6,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结, 想当年,php,php技术分享">
     <meta name="description" content="
-在开始学php的时候有几个概念一直没有弄明白，最近查了些资料，特此补充记录一下，以防忘记。有不对的地方还请高手指点。
+2019-6-27 更新
 
+ 最近又看到了类似的文章，发现之前记录的好像是不太对。现在也不知道哪个是正确的，就都先记下来吧。 
 结论
-CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。
-FastCGI：同 CGI 一样，也是">
+CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 方式。
+">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -420,9 +421,20 @@ FastCGI：同 CGI 一样，也是">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
+<p>2019-6-27 更新</p>
+</blockquote>
+<p><strong> 最近又看到了类似的文章，发现之前记录的好像是不太对。现在也不知道哪个是正确的，就都先记下来吧。</strong> </p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ol>
+<li>CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 方式。</li>
+<li>PHP-FPM（FastCGI Process Manager） 只是 FastCGI 的进程管理器。</li>
+<li>PHP-CGI 只是 Fast-CGI 的子进程。</li>
+</ol>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://www.jb51.net/article/62554.htm" target="_blank" rel="noopener">php 的4种常见运行方式</a></p>
+<hr>
+<blockquote>
 <p>在开始学php的时候有几个概念一直没有弄明白，最近查了些资料，特此补充记录一下，以防忘记。有不对的地方还请高手指点。</p>
 </blockquote>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><ul>
+<h2 id="结论-1"><a href="#结论-1" class="headerlink" title="结论"></a>结论</h2><ul>
 <li>CGI：WEB 服务器与 WEB 应用程序之间交换数据的一种协议。</li>
 <li>FastCGI：同 CGI 一样，也是一种协议，只是在效率上比 CGI 好一些。</li>
 <li>PHP-CGI：fastCGI 协议的一种实现。(也就是 php 可执行目录下的php-cgi程序)。他有2个问题。<ul>

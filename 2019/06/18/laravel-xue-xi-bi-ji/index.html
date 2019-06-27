@@ -581,6 +581,26 @@ object(App\Test\Apple)#206 (1) { ["id"]=> string(3) "agg" }
   <span class="token string">'Route'</span> <span class="token operator">=</span><span class="token operator">></span> Illuminate\<span class="token package">Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>Route</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span>
   <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 </code></pre>
+<p>查看 <em>vendor/laravel/framework/src/Illuminate/Support/Facades/Route.php</em> 文件….哎？怎么只有这么点东西，get 呢？</p>
+<pre class=" language-php"><code class="language-php"><span class="token keyword">namespace</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/*
+ * @see \Illuminate\Routing\Router
+ */</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Route</span> <span class="token keyword">extends</span> <span class="token class-name">Facade</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */</span>
+    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getFacadeAccessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">'router'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
             </div>
             <hr>

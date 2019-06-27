@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://blog.xiangdangnian.net.cn/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/</loc>
+    <lastmod>2019-06-27</lastmod>
+  </url>  <url>
     <loc>http://blog.xiangdangnian.net.cn/2019/06/18/laravel-xue-xi-bi-ji/</loc>
     <lastmod>2019-06-19</lastmod>
   </url>  <url>
@@ -18,9 +21,6 @@
   </url>  <url>
     <loc>http://blog.xiangdangnian.net.cn/2019/01/27/shi-xian-fu-zai-jun-heng/</loc>
     <lastmod>2019-01-28</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/</loc>
-    <lastmod>2019-01-24</lastmod>
   </url>  <url>
     <loc>http://blog.xiangdangnian.net.cn/2019/01/21/wo-de-di-yi-pian-wen-zhang/</loc>
     <lastmod>2019-01-22</lastmod>
