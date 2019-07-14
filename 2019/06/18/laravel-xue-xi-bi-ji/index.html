@@ -6,7 +6,10 @@
     <meta charset="utf-8">
     <meta name="keywords" content="Laravel学习笔记, 想当年,php,php技术分享">
     <meta name="description" content="第一步：了解几个常用名称
-Service Container、Service Provider、Facades、Contracts。当第一次使用 Laravel 框架的时候被这几个词直接搞蒙圈了，完全不知道是什么意思，尤其是在看完文档之后，">
+代码基于 Laravel-5.8 部分内容给其他版本不一致，但整体逻辑是没有太大差别的。
+
+
+Service Container、Service Provider、Facades、Contracts。当第一次使用 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -375,12 +378,12 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用 
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/laravel/" target="_blank">
-                                <span class="chip bg-color">laravel</span>
-                            </a>
-                        
                             <a href="/tags/php/" target="_blank">
                                 <span class="chip bg-color">php</span>
+                            </a>
+                        
+                            <a href="/tags/laravel/" target="_blank">
+                                <span class="chip bg-color">laravel</span>
                             </a>
                         
                     </div>
@@ -420,6 +423,9 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h2 id="第一步：了解几个常用名称"><a href="#第一步：了解几个常用名称" class="headerlink" title="第一步：了解几个常用名称"></a>第一步：了解几个常用名称</h2><blockquote>
+<p>代码基于 Laravel-5.8 部分内容给其他版本不一致，但整体逻辑是没有太大差别的。</p>
+</blockquote>
+<blockquote>
 <p>Service Container、Service Provider、Facades、Contracts。当第一次使用 Laravel 框架的时候被这几个词直接搞蒙圈了，完全不知道是什么意思，尤其是在看完文档之后，真的想说 WTF 。不过不知道也不会太影响使用。（😅有个朋友说过，不管用着在 NB 的框架，依然可以写出屎一样的代码）</p>
 </blockquote>
 <h3 id="Service-Container"><a href="#Service-Container" class="headerlink" title="Service Container"></a>Service Container</h3><p>中文解释：服务容器 （😂 是不是看完这个翻译更不知道是啥了）</p>
@@ -585,6 +591,7 @@ object(App\Test\Apple)#206 (1) { ["id"]=> string(3) "agg" }
 <pre class=" language-php"><code class="language-php"><span class="token keyword">namespace</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/*
+   通过这行注释可以找到真实的 Route 类在什么地方
  * @see \Illuminate\Routing\Router
  */</span>
 
@@ -601,6 +608,72 @@ object(App\Test\Apple)#206 (1) { ["id"]=> string(3) "agg" }
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<blockquote>
+<p>首先要知道 Facade 的作用：使用一个简单的语法，让你从 Laravel 的 IOC Container 中方便的 make 出你想要的对象。</p>
+</blockquote>
+<h4 id="Facade-实现原理（make）"><a href="#Facade-实现原理（make）" class="headerlink" title="Facade 实现原理（make）"></a>Facade 实现原理（make）</h4><ol>
+<li>首先 Route 继承自 <code>Illuminate\Support\Facades</code>。</li>
+<li><code>Illuminate\Support\Facades</code> 里也没有 get 静态方法。</li>
+<li>使用了 <a href="https://www.php.net/manual/zh/language.oop5.overloading.php#object.callstatic" target="_blank" rel="noopener">__callStatic()</a> 魔术方法。</li>
+<li>在 Route 中调用静态的 get 方法，实际上 Illuminate\Support\Facades 中的 <code>__callStatic</code> 魔术方法被调用。</li>
+<li>在 <a href="https://www.php.net/manual/zh/language.oop5.overloading.php#object.callstatic" target="_blank" rel="noopener">__callStatic()</a> 方法中调用了静态的 getFaRoot 方法。</li>
+<li>在 <code>getFacadeRoot</code> 方法中调用了静态的 <code>resolveFacadeInstance</code> 方法。</li>
+<li><code>resolveFacadeInstance</code> 方法需要传递一个参数，该参数通过静态 <code>getFacadeAccessor</code> 方法获得。</li>
+<li><code>getFacadeAccessor</code> 该方法在 Route 类中实现了 <code>getFacadeAccessor</code>并返回 route。</li>
+<li><code>resolveFacadeInstance</code> 方法接收 route 字符串参数。首先判断是否为对象，当然不是啦，$name 是字符串。 然后判断该 <code>resolvedInstance</code> 数组中是否存在 route 相关信息，因为我们的程序是第一次运行当然也是没有的。 最后返回 <code>static::$app[&#39;route&#39;]</code>,同时把结果保存到 <code>resolvedInstance</code> 数组中。</li>
+<li>$app 其实就是前面说的 Application 类的实例对象，这个类是一个 IOC Container，实例化过程在 Laravel 最开始的时候。Facade 初始化的时候也让自己有了一个 $app,这个就是 Application 类的实例化对象。</li>
+<li>其实此时 $app 中并没有 ‘route’ 属性，那么为什么可以调用呢？因为 Application 继承了 Container, 而 Container 又继承了 ArrayAccess 类,并实现了 offsetGet 方法。 该方法的内容为 <code>return $this-&gt;make($key);</code> 这里就很明显了，直接make 出了一个 route 实例。</li>
+<li>最终相当于 <code>$instance = static::getFacadeRoot();</code> 与 <code>$instance = $app-&gt;make(&#39;router&#39;);</code> 是相等的。</li>
+</ol>
+<pre class=" language-php"><code class="language-php">    <span class="token comment" spellcheck="true">//Illuminate\Support\Facades\Facades.php;</span>
+
+    <span class="token comment" spellcheck="true">//以上内容省略</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getFacadeRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">static</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">resolveFacadeInstance</span><span class="token punctuation">(</span><span class="token keyword">static</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getFacadeAccessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+     <span class="token comment" spellcheck="true">//该方法被子类复写</span>
+    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">getFacadeAccessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">'Facade does not implement getFacadeAccessor method.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">protected</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">resolveFacadeInstance</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">is_object</span><span class="token punctuation">(</span><span class="token variable">$name</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token variable">$name</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token keyword">static</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token variable">$resolvedInstance</span><span class="token punctuation">[</span><span class="token variable">$name</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token keyword">static</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token variable">$resolvedInstance</span><span class="token punctuation">[</span><span class="token variable">$name</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">static</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token variable">$resolvedInstance</span><span class="token punctuation">[</span><span class="token variable">$name</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">static</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token variable">$app</span><span class="token punctuation">[</span><span class="token variable">$name</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+   <span class="token comment" spellcheck="true">//以下内容省略 </span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">__callStatic</span><span class="token punctuation">(</span><span class="token variable">$method</span><span class="token punctuation">,</span> <span class="token variable">$args</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$instance</span> <span class="token operator">=</span> <span class="token keyword">static</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">getFacadeRoot</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span> <span class="token variable">$instance</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RuntimeException</span><span class="token punctuation">(</span><span class="token string">'A facade root has not been set.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> <span class="token variable">$instance</span><span class="token operator">-</span><span class="token operator">></span><span class="token variable">$method</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token variable">$args</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h4 id="Facade-实现原理（bind）"><a href="#Facade-实现原理（bind）" class="headerlink" title="Facade 实现原理（bind）"></a>Facade 实现原理（bind）</h4><blockquote>
+<p>在最开始就了解到，既然要 make，必须首先 bind。而且最好的方式是通过 serviceProvider 来 bind 类。 而且不论是 make 还是 bind 都需要一个 key，用来在容器中保存和查找这个类。上面讲的是使用 route 关键字进行 make 的过程。那么我们可以肯定在之前一定有一个使用 route 进行 bind 的操作。下面就进行 bind 的讲解。</p>
+</blockquote>
+<ol>
+<li>首先 ServiceProvider 需要在 <code>config/app.php</code> 进行注册，我们在文件中找到对应 route 相关的内容，就是 <code>App\Providers\RouteServiceProvider::class,</code>。</li>
+</ol>
 
             </div>
             <hr>
@@ -1073,7 +1146,10 @@ object(App\Test\Apple)#206 (1) { ["id"]=> string(3) "agg" }
                     <div class="summary block-with-text">
                         
                             第一步：了解几个常用名称
-Service Container、Service Provider、Facades、Contracts。当第一次使用 Laravel 框架的时候被这几个词直接搞蒙圈了，完全不知道是什么意思，尤其是在看完文档之后，
+代码基于 Laravel-5.8 部分内容给其他版本不一致，但整体逻辑是没有太大差别的。
+
+
+Service Container、Service Provider、Facades、Contracts。当第一次使用 
                         
                     </div>
                     <div class="publish-info">
@@ -1096,12 +1172,12 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用 
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/laravel/" target="_blank">
-                        <span class="chip bg-color">laravel</span>
-                    </a>
-                    
                     <a href="/tags/php/" target="_blank">
                         <span class="chip bg-color">php</span>
+                    </a>
+                    
+                    <a href="/tags/laravel/" target="_blank">
+                        <span class="chip bg-color">laravel</span>
                     </a>
                     
                 </div>
