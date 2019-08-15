@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>使用LaraDock配置laravel-echo-sever遇到的坑</title>
+      <link href="/2019/08/15/shi-yong-laradock-pei-zhi-laravel-echo-sever-yu-dao-de-keng/"/>
+      <url>/2019/08/15/shi-yong-laradock-pei-zhi-laravel-echo-sever-yu-dao-de-keng/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>前情提要：项目需要使用 webSocket 进行通信，并且使用的是 <a href="https://laradock.io/" target="_blank" rel="noopener">LaraDock</a> 作为环境。所以使用 laravel-echo-server、laravel-horizon、php-worker 容器进行环境的部署。因为对 Docker 并不懂，仅仅只是使用 LaraDock，所以过程中遇到了很多问题，特此记录下来。</p></blockquote><h2 id="坑二-参考资料"><a href="#坑二-参考资料" class="headerlink" title="坑二 参考资料"></a>坑二 <a href="https://github.com/laradock/laradock/issues/1340#issuecomment-390484505" target="_blank" rel="noopener">参考资料</a></h2><blockquote><p>LaraDock 的 Nginx 使用多站点配置的时候，laravel-echo-server 无法链接到 web 进行认证。</p></blockquote><p>通过在 nginx 容器配置中添加别名 <strong> laradock/docker-compose.yml </strong></p><pre class=" language-yml"><code class="language-yml">### NGINX Server #########################################    nginx:      build:        context: ./nginx        args:          - PHP_UPSTREAM_CONTAINER=${NGINX_PHP_UPSTREAM_CONTAINER}          - PHP_UPSTREAM_PORT=${NGINX_PHP_UPSTREAM_PORT}      volumes:        - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}        - ${NGINX_HOST_LOG_PATH}:/var/log/nginx        - ${NGINX_SITES_PATH}:/etc/nginx/sites-available      ports:        - "${NGINX_HOST_HTTP_PORT}:80"        - "${NGINX_HOST_HTTPS_PORT}:443"      depends_on:        - php-fpm      networks:        # before ----        # - frontend        # - backend        # end before ----        frontend:        backend:            aliases:              - my-site.com    ##别名地址，在laravel-echo-server.json 中填写该地址就可以了</code></pre><p>更改完配置之后需要重新构建 nginx 和 laravel-echo-server 容器。<br>并重新开启。</p><h2 id="坑二"><a href="#坑二" class="headerlink" title="坑二"></a>坑二</h2><blockquote><p>larave-echo-server 的 ssl 证书</p></blockquote><ol><li>直接配置 ssl 证书。（不明白证书需要发在目录的什么位置，所以 google 了很多内容之后选择了下面的方法。以后如果有机会补充第一点）</li><li>配置 nginx 反向代理。 <a href="https://github.com/tlaverdure/laravel-echo-server" target="_blank" rel="noopener">laravel-echo-server</a></li></ol><pre class=" language-nginx"><code class="language-nginx"><span class="token comment" spellcheck="true">#以下内容需要在你的 nginx 站点配置文件的 server{} 块之内</span><span class="token keyword">location</span> <span class="token operator">/</span>socket<span class="token punctuation">.</span>io <span class="token punctuation">{</span>        <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>laravel<span class="token operator">-</span>echo<span class="token operator">-</span><span class="token keyword">server</span><span class="token punctuation">:</span><span class="token number">6001</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">#填写非 https 的地址进行反向代理，如果 Echo 和 Nginx 在同一个服务器可以填写 localhost</span>        <span class="token keyword">proxy_http_version</span> <span class="token number">1.1</span><span class="token punctuation">;</span>        <span class="token keyword">proxy_set_header</span> Upgrade <span class="token variable">$http_upgrade</span><span class="token punctuation">;</span>        <span class="token keyword">proxy_set_header</span> Connection <span class="token string">"Upgrade"</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span></code></pre><ol start="3"><li>配置 laravel-echo-server 配置文件 laravel-echo-server.json 为如下内容</li></ol><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>        <span class="token property">"authHost"</span><span class="token operator">:</span> <span class="token string">"https://laravel-echo-server"</span><span class="token punctuation">,</span> //注意：改地址指向 web 站点，即 echo-server 想web端认证的地址        <span class="token property">"authEndpoint"</span><span class="token operator">:</span> <span class="token string">"/broadcasting/auth"</span><span class="token punctuation">,</span>        <span class="token property">"clients"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>        <span class="token property">"database"</span><span class="token operator">:</span> <span class="token string">"redis"</span><span class="token punctuation">,</span>        <span class="token property">"databaseConfig"</span><span class="token operator">:</span> <span class="token punctuation">{</span>                <span class="token property">"redis"</span><span class="token operator">:</span> <span class="token punctuation">{</span>                        <span class="token property">"port"</span><span class="token operator">:</span> <span class="token string">"6379"</span><span class="token punctuation">,</span>                        <span class="token property">"host"</span><span class="token operator">:</span> <span class="token string">"redis"</span>                <span class="token punctuation">}</span>        <span class="token punctuation">}</span><span class="token punctuation">,</span>        <span class="token property">"devMode"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>        <span class="token property">"host"</span><span class="token operator">:</span> <span class="token null">null</span><span class="token punctuation">,</span>        <span class="token property">"port"</span><span class="token operator">:</span> <span class="token string">"6001"</span><span class="token punctuation">,</span>        <span class="token property">"protocol"</span><span class="token operator">:</span> <span class="token string">"http"</span><span class="token punctuation">,</span>        <span class="token property">"socketio"</span><span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>        <span class="token property">"sslCertPath"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>        <span class="token property">"sslKeyPath"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">}</span></code></pre><h2 id="操作技巧"><a href="#操作技巧" class="headerlink" title="操作技巧"></a>操作技巧</h2><ol><li>不使用 -d 参数可以更好的进行调试<pre class=" language-shell"><code class="language-shell">docker-compose up laravel-echo-server</code></pre></li><li>使用 logs 参数可以查看详情的日志输出<pre class=" language-shell"><code class="language-shell">docker-compose logs laravel-echo-server</code></pre></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 开发环境 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LaraDock </tag>
+            
+            <tag> 开发环境 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Laravel学习笔记</title>
       <link href="/2019/06/18/laravel-xue-xi-bi-ji/"/>
       <url>/2019/06/18/laravel-xue-xi-bi-ji/</url>
@@ -97,9 +124,9 @@
       
         <tags>
             
-            <tag> frp </tag>
-            
             <tag> 开发环境 </tag>
+            
+            <tag> frp </tag>
             
         </tags>
       
