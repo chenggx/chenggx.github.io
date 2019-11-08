@@ -16,26 +16,23 @@
     <title>想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/materialize/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/aos/aos.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/animate/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="http://static.xiangdangnian.net.cn/source/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/animate.css/3.5.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/lightgallery/1.6.11/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
-    <style type="text/css">
-        
-    </style>
-
-    <script src="http://static.xiangdangnian.net.cn/source/libs/jquery/jquery-2.2.0.min.js"></script>
+    
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
-
-<header class="navbar-fixed">
+    <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
+        <div id="navContainer" class="nav-wrapper head-container">
             <div class="brand-logo">
                 <a href="/" class="waves-effect waves-light">
                     
@@ -46,68 +43,91 @@
             </div>
             
 
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
-<ul class="right">
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
     
-    <li class="hide-on-med-and-down">
-        <a href="/" class="waves-effect waves-light">
-            
-            <i class="fa fa-home"></i>
-            
-            <span>首页</span>
-        </a>
-    </li>
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
     
-    <li class="hide-on-med-and-down">
-        <a href="/tags" class="waves-effect waves-light">
-            
-            <i class="fa fa-tags"></i>
-            
-            <span>标签</span>
-        </a>
-    </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-    <li class="hide-on-med-and-down">
-        <a href="/categories" class="waves-effect waves-light">
-            
-            <i class="fa fa-bookmark"></i>
-            
-            <span>分类</span>
-        </a>
-    </li>
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
     
-    <li class="hide-on-med-and-down">
-        <a href="/archives" class="waves-effect waves-light">
-            
-            <i class="fa fa-archive"></i>
-            
-            <span>归档</span>
-        </a>
-    </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-    <li class="hide-on-med-and-down">
-        <a href="/about" class="waves-effect waves-light">
-            
-            <i class="fa fa-user-circle-o"></i>
-            
-            <span>关于</span>
-        </a>
-    </li>
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
     
-    <li class="hide-on-med-and-down">
-        <a href="/friends" class="waves-effect waves-light">
-            
-            <i class="fa fa-address-book"></i>
-            
-            <span>友情链接</span>
-        </a>
-    </li>
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
     
-    <li>
-        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
-        </a>
-    </li>
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
 </ul>
 
 <div id="mobile-nav" class="side-nav sidenav">
@@ -128,65 +148,88 @@
 
     <ul class="menu-list mobile-menu-list">
         
-        <li>
-            <a href="/" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-home"></i>
-                
-                首页
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/tags" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-tags"></i>
-                
-                标签
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/categories" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-bookmark"></i>
-                
-                分类
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/archives" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-archive"></i>
-                
-                归档
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/about" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-user-circle-o"></i>
-                
-                关于
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
         </li>
         
-        <li>
-            <a href="/friends" class="waves-effect waves-light">
-                
-                <i class="fa fa-fw fa-address-book"></i>
-                
-                友情链接
-            </a>
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			Contact
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
         </li>
         
         
         <li><div class="divider"></div></li>
         <li>
             <a href="https://github.com/chenggx" class="waves-effect waves-light" target="_blank">
-                <i class="fa fa-github-square fa-fw"></i>Fork Me
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
             </a>
         </li>
         
@@ -253,7 +296,7 @@
 
 </header>
 
-
+    
 <style>
     .carousel-control {
         width: 45px;
@@ -293,63 +336,91 @@
         color: #fff;
         font-size: 2.4rem;
     }
+    
+    html, body {
+        height:100%;
+    }
+
+    #page {
+        height:100%;
+        min-height: 100%;
+        width:100%;
+    }
 </style>
 
 
 
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
+<div id="page" class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
     
 
     <div class="carousel-item red white-text bg-cover about-cover">
-        <div class="container">
+        <div class="container" style="right: 0px;left: 0px;">
             <div class="row">
     <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
         <div class="brand">
             <div class="title center-align">
                 
-                    记录历程，分享美好
+                记录历程，分享美好
                 
             </div>
 
             <div class="description center-align">
                 
-                    坚持就是胜利！！！
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['欢迎来到我的地盘',''],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: true
+                    });
+                </script>
                 
             </div>
         </div>
     </div>
 </div>
+
+
 <script>
-// 每天切换 banner 图.  Switch banner image every day.
-$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+    // 每天切换 banner 图.  Switch banner image every day.
+    $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
 </script>
 
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>开始阅读
-                </a>
 
+            <div class="cover-btns">
                 
                 <a href="https://github.com/chenggx" class="waves-effect waves-light btn" target="_blank">
-                    <i class="fa fa-github-alt"></i>Github
+                    <i class="fa-github-alt"></i>Github
                 </a>
                 
             </div>
             <div class="cover-social-link">
 
 
-    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
+
+
+
+
+
+
+
 
 
 </div>
+        </div>
+        <div class="container" style="bottom: 0; position: absolute; top: unset; height: 45px;">
+            <div class="cover-btns" style="top: unset;">
+                <a href="#indexCard" class="waves-effect waves-light btn scroll-down">
+                    <i class="fas fa-angle-double-down"></i>开始阅读
+                </a>
+            </div>
         </div>
     </div>
 
@@ -409,6 +480,41 @@ $(function () {
                     
 
                     
+                        
+
+<link rel="stylesheet" href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css">
+<div class="music-player">
+    
+    <div class="title center-align">
+        <i class="fas fa-music"></i>&nbsp;&nbsp;听听音乐
+    </div>
+    
+    <div class="row">
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="aplayer" class="music"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
+<script>
+$(function () {
+    new APlayer({
+        container: document.getElementById('aplayer'),
+        fixed: 'false' === 'true',
+        autoplay: 'true' === 'true',
+        theme: '#42b983',
+        loop: 'all',
+        order: 'random',
+        preload: 'auto',
+        volume: Number('0.7'),
+        listFolded: 'false' === 'true',
+        listMaxHeight: '',
+        audio: JSON.parse('[{"name":"没有理想的人不伤心","artist":"新裤子乐队","url":"http://static.xiangdangnian.net.cn/blog/%E6%B2%A1%E6%9C%89%E7%90%86%E6%83%B3%E7%9A%84%E4%BA%BA%E4%B8%8D%E4%BC%A4%E5%BF%83%20(1).mp3","cover":"http://static.xiangdangnian.net.cn/blog/cdbf6c81800a19d8443d17e33dfa828ba61e461e.jpg"},{"name":"火车驶向云外，梦安魂与九霄","artist":"刺猬乐队","url":"http://static.xiangdangnian.net.cn/blog/%E5%88%BA%E7%8C%AC%E4%B9%90%E9%98%9F+-+%E7%81%AB%E8%BD%A6%E9%A9%B6%E5%90%91%E4%BA%91%E5%A4%96%EF%BC%8C%E6%A2%A6%E5%AE%89%E9%AD%82%E4%BA%8E%E4%B9%9D%E9%9C%84.mp3","cover":"http://static.xiangdangnian.net.cn/blog/102156eqqqgs6qvkvo7aac.jpg"}]')
+    });
+});
+</script>
+                    
 
                     
 
@@ -430,7 +536,57 @@ $(function () {
     <article id="articles" class="container articles">
         <div class="row article-row">
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/09/27/wo-de-san-shi-sui/">
+                        <div class="card-image">
+                            
+                            <img src="http://static.xiangdangnian.net.cn/blog/14624962.jpg" class="responsive-img" alt="我的三十岁">
+                            
+                            <span class="card-title">我的三十岁</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+没有想到时间过的这么快，就这么来到了三十岁的生日，总觉得需要记录点什么。
+
+没有想三十岁来的这么快，自己还没有完全做好准备。
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/其他/" class="post-category">
+                                    其他
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/生活/">
+                            <span class="chip bg-color">生活</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/08/15/shi-yong-laradock-pei-zhi-laravel-echo-sever-yu-dao-de-keng/">
                         <div class="card-image">
@@ -450,13 +606,13 @@ $(function () {
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-08-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-08-15
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/开发环境/" class="post-category" target="_blank">
+                                <a href="/categories/开发环境/" class="post-category">
                                     开发环境
                                 </a>
                                 
@@ -468,12 +624,12 @@ $(function () {
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/LaraDock/" target="_blank">
-                            <span class="chip bg-color">LaraDock</span>
+                        <a href="/tags/开发环境/">
+                            <span class="chip bg-color">开发环境</span>
                         </a>
                         
-                        <a href="/tags/开发环境/" target="_blank">
-                            <span class="chip bg-color">开发环境</span>
+                        <a href="/tags/LaraDock/">
+                            <span class="chip bg-color">LaraDock</span>
                         </a>
                         
                     </div>
@@ -481,7 +637,7 @@ $(function () {
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/06/18/laravel-xue-xi-bi-ji/">
                         <div class="card-image">
@@ -504,13 +660,13 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-06-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-06-18
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/php/" class="post-category" target="_blank">
+                                <a href="/categories/php/" class="post-category">
                                     php
                                 </a>
                                 
@@ -522,11 +678,11 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/php/" target="_blank">
+                        <a href="/tags/php/">
                             <span class="chip bg-color">php</span>
                         </a>
                         
-                        <a href="/tags/laravel/" target="_blank">
+                        <a href="/tags/laravel/">
                             <span class="chip bg-color">laravel</span>
                         </a>
                         
@@ -535,7 +691,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/05/28/wang-yi-yun-yin-le-ping-lun-zhai-lu/">
                         <div class="card-image">
@@ -556,13 +712,13 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-05-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-05-28
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/其他/" class="post-category" target="_blank">
+                                <a href="/categories/其他/" class="post-category">
                                     其他
                                 </a>
                                 
@@ -574,7 +730,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/摘录/" target="_blank">
+                        <a href="/tags/摘录/">
                             <span class="chip bg-color">摘录</span>
                         </a>
                         
@@ -583,7 +739,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/04/06/git-chang-yong-ming-ling-zong-jie/">
                         <div class="card-image">
@@ -605,13 +761,13 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-04-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-04-06
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/git/" class="post-category" target="_blank">
+                                <a href="/categories/git/" class="post-category">
                                     git
                                 </a>
                                 
@@ -623,7 +779,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/git/" target="_blank">
+                        <a href="/tags/git/">
                             <span class="chip bg-color">git</span>
                         </a>
                         
@@ -632,7 +788,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/03/08/shi-yong-frp-da-jian-ben-di-wei-xin-kai-fa-huan-jing/">
                         <div class="card-image">
@@ -659,13 +815,13 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-03-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-08
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/开发环境/" class="post-category" target="_blank">
+                                <a href="/categories/开发环境/" class="post-category">
                                     开发环境
                                 </a>
                                 
@@ -677,12 +833,12 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/开发环境/" target="_blank">
-                            <span class="chip bg-color">开发环境</span>
+                        <a href="/tags/frp/">
+                            <span class="chip bg-color">frp</span>
                         </a>
                         
-                        <a href="/tags/frp/" target="_blank">
-                            <span class="chip bg-color">frp</span>
+                        <a href="/tags/开发环境/">
+                            <span class="chip bg-color">开发环境</span>
                         </a>
                         
                     </div>
@@ -690,7 +846,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/02/14/ge-chong-suo-de-li-jie/">
                         <div class="card-image">
@@ -712,13 +868,13 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-02-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-02-14
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/mysql/" class="post-category" target="_blank">
+                                <a href="/categories/mysql/" class="post-category">
                                     mysql
                                 </a>
                                 
@@ -730,7 +886,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/mysql/" target="_blank">
+                        <a href="/tags/mysql/">
                             <span class="chip bg-color">mysql</span>
                         </a>
                         
@@ -739,7 +895,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/01/27/shi-xian-fu-zai-jun-heng/">
                         <div class="card-image">
@@ -762,13 +918,13 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-27
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/服务器/" class="post-category" target="_blank">
+                                <a href="/categories/服务器/" class="post-category">
                                     服务器
                                 </a>
                                 
@@ -780,15 +936,15 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/php/" target="_blank">
+                        <a href="/tags/php/">
                             <span class="chip bg-color">php</span>
                         </a>
                         
-                        <a href="/tags/nginx/" target="_blank">
+                        <a href="/tags/nginx/">
                             <span class="chip bg-color">nginx</span>
                         </a>
                         
-                        <a href="/tags/负载均衡/" target="_blank">
+                        <a href="/tags/负载均衡/">
                             <span class="chip bg-color">负载均衡</span>
                         </a>
                         
@@ -797,7 +953,7 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/">
                         <div class="card-image">
@@ -822,13 +978,13 @@ CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-24
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-24
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/php/" class="post-category" target="_blank">
+                                <a href="/categories/php/" class="post-category">
                                     php
                                 </a>
                                 
@@ -840,7 +996,7 @@ CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/php/" target="_blank">
+                        <a href="/tags/php/">
                             <span class="chip bg-color">php</span>
                         </a>
                         
@@ -849,7 +1005,7 @@ CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4 overflow-policy" data-aos="zoom-in">
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
                     <a href="/2019/01/21/wo-de-di-yi-pian-wen-zhang/">
                         <div class="card-image">
@@ -880,13 +1036,13 @@ sudo np
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019-01-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-21
                             </span>
                             <span class="publish-author">
                                 
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/小技巧/" class="post-category" target="_blank">
+                                <a href="/categories/小技巧/" class="post-category">
                                     小技巧
                                 </a>
                                 
@@ -898,7 +1054,7 @@ sudo np
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/hexo/" target="_blank">
+                        <a href="/tags/hexo/">
                             <span class="chip bg-color">hexo</span>
                         </a>
                         
@@ -914,44 +1070,94 @@ sudo np
 
 
 
-<footer class="page-footer bg-color">
+
+    <footer class="page-footer bg-color">
     <div class="container row center-align">
         <div class="col s12 m8 l8 copy-right">
-            本站由&copy;<a href="https://blinkfox.github.io/" target="_blank">Blinkfox</a>基于
-            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
-            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
-
+            Copyright&nbsp;&copy;
+            <span id="year">年份</span>
+            <a href="http://blog.xiangdangnian.net.cn" target="_blank">chenggx</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
             
-
             
-			
-                <br>
-                
-                <span id="busuanzi_container_site_pv">
-                    <i class="fa fa-heart-o"></i>
-                    本站总访问量 <span id="busuanzi_value_site_pv" class="white-color"></span>
-                </span>
-                
-                
-                <span id="busuanzi_container_site_uv">
-                    <i class="fa fa-users"></i>
-                    次,&nbsp;访客数 <span id="busuanzi_value_site_uv" class="white-color"></span> 人.
-                </span>
-                
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    window.setTimeout("siteTime()", 1000);
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2019";
+                    var startMonth = "6";
+                    var startDate = "28";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
             
         </div>
         <div class="col s12 m4 l4 social-link social-statis">
 
 
-    <a href="mailto:xxx@xx.xx" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fa fa-envelope-open"></i>
-    </a>
 
 
 
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=123123123" class="tooltipped" data-tooltip="QQ联系我: 123123123" data-position="top" data-delay="50">
-        <i class="fa fa-qq"></i>
-    </a>
+
+
+
+
+
+
+
 
 
 </div>
@@ -961,11 +1167,11 @@ sudo np
 <div class="progress-bar"></div>
 
 
-<!-- 搜索遮罩框 -->
+    <!-- 搜索遮罩框 -->
 <div id="searchModal" class="modal">
     <div class="modal-content">
         <div class="search-header">
-            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
             <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
         </div>
         <div id="searchResult"></div>
@@ -978,22 +1184,22 @@ $(function () {
     searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
 });
 </script>
-<!-- 回到顶部按钮 -->
+    <!-- 回到顶部按钮 -->
 <div id="backTop" class="top-scroll">
     <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fa fa-angle-up"></i>
+        <i class="fas fa-arrow-up"></i>
     </a>
 </div>
 
 
-<script src="http://static.xiangdangnian.net.cn/source/libs/materialize/materialize.min.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/libs/masonry/masonry.pkgd.min.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/libs/aos/aos.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/libs/scrollprogress/scrollProgress.min.js"></script>
-<script src="http://static.xiangdangnian.net.cn/source/libs/lightGallery/js/lightgallery-all.min.js"></script>
-<script src="/js/matery.js"></script>
+    <script src="https://cdn.bootcss.com/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="https://cdn.bootcss.com/masonry/4.0.0/masonry.pkgd.min.js"></script>
+    <script src="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.js"></script>
+    <script src="https://cdn.bootcss.com/scrollprogress/3.0.2/scrollProgress.min.js"></script>
+    <script src="https://cdn.bootcss.com/lightgallery/1.6.11/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
 
-<!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134755036-1"></script>
 <script>
@@ -1007,10 +1213,53 @@ $(function () {
 </script>
 
 
+    <!-- Baidu Analytics -->
 
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?562387fc095f6d883578908436c5b0d4";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
 
-    <script async src="http://static.xiangdangnian.net.cn/source/libs/others/busuanzi.pure.mini.js"></script>
+    <!-- Baidu Push -->
 
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
 
 </body>
+
 </html>

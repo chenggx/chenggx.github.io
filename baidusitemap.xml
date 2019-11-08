@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://blog.xiangdangnian.net.cn/2019/05/28/wang-yi-yun-yin-le-ping-lun-zhai-lu/</loc>
+    <lastmod>2019-11-07</lastmod>
+  </url>  <url>
+    <loc>http://blog.xiangdangnian.net.cn/2019/09/27/wo-de-san-shi-sui/</loc>
+    <lastmod>2019-09-27</lastmod>
+  </url>  <url>
     <loc>http://blog.xiangdangnian.net.cn/2019/08/15/shi-yong-laradock-pei-zhi-laravel-echo-sever-yu-dao-de-keng/</loc>
     <lastmod>2019-08-15</lastmod>
   </url>  <url>
@@ -9,9 +15,6 @@
   </url>  <url>
     <loc>http://blog.xiangdangnian.net.cn/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/</loc>
     <lastmod>2019-06-27</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/05/28/wang-yi-yun-yin-le-ping-lun-zhai-lu/</loc>
-    <lastmod>2019-06-01</lastmod>
   </url>  <url>
     <loc>http://blog.xiangdangnian.net.cn/2019/04/06/git-chang-yong-ming-ling-zong-jie/</loc>
     <lastmod>2019-04-10</lastmod>
