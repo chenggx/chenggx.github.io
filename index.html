@@ -458,7 +458,7 @@ $(function () {
     new APlayer({
         container: document.getElementById('aplayer'),
         fixed: 'false' === 'true',
-        autoplay: 'true' === 'true',
+        autoplay: 'false' === 'true',
         theme: '#42b983',
         loop: 'all',
         order: 'random',
@@ -491,6 +491,55 @@ $(function () {
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/">
+                        <div class="card-image">
+                            
+                            <img src="http://static.xiangdangnian.net.cn/blog/long-exposure-photography-of-vehicle-lights-3171592%202.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之列表">
+                            
+                            <span class="card-title">redis学习笔记-----基本数据类型之列表</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                List 列表LPUSH、RPUSH、LRANGE
+lpush 可以将一个或多个值插入到列表的头部
+rpush 可以将一个或多个值插入到列表的头部
+lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最后一个元素，-2 表示
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-01
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/redis/" class="post-category">
+                                    redis
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/redis/">
+                            <span class="chip bg-color">redis</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -955,58 +1004,6 @@ Service Container、Service Provider、Facades、Contracts。当第一次使用
                         
                         <a href="/tags/负载均衡/">
                             <span class="chip bg-color">负载均衡</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/">
-                        <div class="card-image">
-                            
-                            <img src="http://static.xiangdangnian.net.cn/blog/timg.jpeg" class="responsive-img" alt="CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结">
-                            
-                            <span class="card-title">CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-2019-6-27 更新
-
- 最近又看到了类似的文章，发现之前记录的好像是不太对。现在也不知道哪个是正确的，就都先记下来吧。 
-结论
-CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 方式。
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-01-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/php/" class="post-category">
-                                    php
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/php/">
-                            <span class="chip bg-color">php</span>
                         </a>
                         
                     </div>

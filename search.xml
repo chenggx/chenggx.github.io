@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>redis学习笔记-----基本数据类型之列表</title>
+      <link href="/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/"/>
+      <url>/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/</url>
+      
+        <content type="html"><![CDATA[<h1 id="List-列表"><a href="#List-列表" class="headerlink" title="List 列表"></a>List 列表</h1><h2 id="LPUSH、RPUSH、LRANGE"><a href="#LPUSH、RPUSH、LRANGE" class="headerlink" title="LPUSH、RPUSH、LRANGE"></a>LPUSH、RPUSH、LRANGE</h2><ul><li>lpush 可以将一个或多个值插入到列表的头部</li><li>rpush 可以将一个或多个值插入到列表的头部</li><li>lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最后一个元素，-2 表示倒数第二个元素，以此类推</li></ul><pre><code>&gt; rpush mylist A    //将 A 插入到 mylist 列表的尾部(integer) 1&gt; rpush mylist B    //将 B 插入到 mylist 列表的尾部(integer) 2&gt; lpush mylist first    //将 first 插入到 mylist 列表的头部(integer) 3&gt; rpush mylist C D E    //将 C、D、E 插入到列表 mylist 的尾部(integer) 6&gt; lrange mylist 0 -1    //从列表的头部查看列表的全部内容1) &quot;first&quot;2) &quot;A&quot;3) &quot;B&quot;4) &quot;C&quot;5) &quot;D&quot;6) &quot;E&quot;&gt; lrange mylist 0 2 //从列表的头部查看 mylist 列表，从 0 开始，到 2 结束（元素下标从 0 开始，-1 表示最后一个元素，-2 表示倒数第二个元素，以此类推）1) &quot;first&quot;2) &quot;A&quot;3) &quot;B&quot;</code></pre><h2 id="LPOP、RPOP"><a href="#LPOP、RPOP" class="headerlink" title="LPOP、RPOP"></a>LPOP、RPOP</h2><ul><li>lpop 移除并返回头部元素</li><li>rpop 移除并返回尾部元素</li></ul><pre><code>&gt; lrange mylist 0 -11) &quot;first&quot;2) &quot;A&quot;3) &quot;B&quot;4) &quot;C&quot;5) &quot;D&quot;6) &quot;E&quot;&gt; lpop mylist       //移除头部元素，并返回该元素&quot;first&quot;&gt; lrange mylist 0 -11) &quot;A&quot;2) &quot;B&quot;3) &quot;C&quot;4) &quot;D&quot;5) &quot;E&quot;&gt; rpop mylist   //移除尾部元素，并返回该元素&quot;E&quot;&gt; lrange mylist 0 -11) &quot;A&quot;2) &quot;B&quot;3) &quot;C&quot;4) &quot;D&quot;&gt; rpop abc  //当 abc 列表不存在时，返回 nil(nil)</code></pre><h2 id="LINDEX"><a href="#LINDEX" class="headerlink" title="LINDEX"></a>LINDEX</h2><ul><li>返回列表指定下标的元素（下标从0开始，-1 为最后一个元素）</li></ul><pre><code>&gt; lrange mylist 0 -11) &quot;A&quot;2) &quot;B&quot;3) &quot;C&quot;4) &quot;D&quot;&gt; lindex mylist -1&quot;D&quot;&gt; lindex mylist 2&quot;C&quot;</code></pre><h2 id="LTRIM"><a href="#LTRIM" class="headerlink" title="LTRIM"></a>LTRIM</h2><ul><li>让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。下标与之前介绍的写法都一致，这里不赘述</li></ul><pre><code>&gt; lrange mylist 0 -11) &quot;A&quot;2) &quot;B&quot;3) &quot;C&quot;4) &quot;D&quot;&gt; ltrim mylist 0 1OK&gt; lrange mylist 0 -11) &quot;A&quot;2) &quot;B&quot;</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> redis </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> redis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>1、Redis 学习笔记————基本数据类型之字符串</title>
       <link href="/2019/11/27/redis-xue-xi-bi-ji/"/>
       <url>/2019/11/27/redis-xue-xi-bi-ji/</url>

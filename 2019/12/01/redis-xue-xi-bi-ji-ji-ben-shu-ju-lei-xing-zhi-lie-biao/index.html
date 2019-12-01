@@ -4,15 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="1、Redis 学习笔记————基本数据类型之字符串, 想当年,php,php技术分享">
-    <meta name="description" content="字符串（string）SET、GET |基本操作
-使用 set 关键字设置
-使用 get 关键字获取字符串
-值可以是任何类型的字符串（包括二进制，例如图片），值不能超过512 MB
-
-&amp;gt; set key value
-OK
-&amp;gt; g">
+    <meta name="keywords" content="redis学习笔记-----基本数据类型之列表, 想当年,php,php技术分享">
+    <meta name="description" content="List 列表LPUSH、RPUSH、LRANGE
+lpush 可以将一个或多个值插入到列表的头部
+rpush 可以将一个或多个值插入到列表的头部
+lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最后一个元素，-2 表示">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -20,7 +16,7 @@ OK
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>1、Redis 学习笔记————基本数据类型之字符串 | 想当年的博客</title>
+    <title>redis学习笔记-----基本数据类型之列表 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -276,13 +272,13 @@ OK
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/b65c86ab1cbdae10bfb99911def7ad59.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/long-exposure-photography-of-vehicle-lights-3171592%202.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        1、Redis 学习笔记————基本数据类型之字符串
+                        redis学习笔记-----基本数据类型之列表
                     </div>
                 </div>
             </div>
@@ -419,7 +415,7 @@ OK
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-11-27
+                    2019-12-01
                 </div>
                 
 
@@ -428,14 +424,14 @@ OK
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    732
+                    565
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
 				
@@ -451,152 +447,97 @@ OK
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="字符串（string）"><a href="#字符串（string）" class="headerlink" title="字符串（string）"></a>字符串（string）</h2><h3 id="SET、GET-基本操作"><a href="#SET、GET-基本操作" class="headerlink" title="SET、GET |基本操作"></a>SET、GET |基本操作</h3><ul>
-<li>使用 set 关键字设置</li>
-<li>使用 get 关键字获取字符串</li>
-<li>值可以是任何类型的字符串（包括二进制，例如图片），值不能超过512 MB</li>
+                <h1 id="List-列表"><a href="#List-列表" class="headerlink" title="List 列表"></a>List 列表</h1><h2 id="LPUSH、RPUSH、LRANGE"><a href="#LPUSH、RPUSH、LRANGE" class="headerlink" title="LPUSH、RPUSH、LRANGE"></a>LPUSH、RPUSH、LRANGE</h2><ul>
+<li>lpush 可以将一个或多个值插入到列表的头部</li>
+<li>rpush 可以将一个或多个值插入到列表的头部</li>
+<li>lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最后一个元素，-2 表示倒数第二个元素，以此类推</li>
 </ul>
-<pre><code>&gt; set key value
-OK
-&gt; get key
-&quot;value&quot;
-</code></pre><h3 id="APPEND-追加值"><a href="#APPEND-追加值" class="headerlink" title="APPEND |追加值"></a>APPEND |追加值</h3><ul>
-<li>append 命令，如果 key 存在，则在 value 后追加值，不存在，则先创建一个 value 为空字符串的 key，然后在追加。</li>
-</ul>
-<pre><code>&gt; append haha 123
-(integer) 3
-
-&gt; get haha
-&quot;123&quot;
-
-&gt; append haha 456
-(integer) 6
-
-&gt; get haha
-&quot;123456&quot;
-</code></pre><h3 id="MSET-一次存储或获取多个-key"><a href="#MSET-一次存储或获取多个-key" class="headerlink" title="MSET |一次存储或获取多个 key"></a>MSET |一次存储或获取多个 key</h3><pre><code>&gt; mset a 10 b 20 c 30
-OK
-
-&gt; mget a b c
-1) &quot;10&quot;
-2) &quot;20&quot;
-3) &quot;30&quot;
-</code></pre><h3 id="GETSET-获取原值并赋予新值"><a href="#GETSET-获取原值并赋予新值" class="headerlink" title="GETSET |获取原值并赋予新值"></a>GETSET |获取原值并赋予新值</h3><ul>
-<li>获取 key 原有的值，并赋予新值</li>
-</ul>
-<pre><code>&gt; set num 100
-OK
-&gt; getset num 50
-&quot;100&quot;
-&gt; get num
-&quot;50&quot;
-</code></pre><h3 id="EXISTS、DEL-删除键、检查键是否存在"><a href="#EXISTS、DEL-删除键、检查键是否存在" class="headerlink" title="EXISTS、DEL |删除键、检查键是否存在"></a>EXISTS、DEL |删除键、检查键是否存在</h3><ul>
-<li>删除成功返回 1，失败返回 0</li>
-<li>存在返回 1，不存在返回 0</li>
-</ul>
-<pre><code>&gt; set abc 123
-OK
-
-&gt; exists def
-(integer) 0
-
-&gt; exists abc
+<pre><code>&gt; rpush mylist A    //将 A 插入到 mylist 列表的尾部
 (integer) 1
 
-&gt; del def
-(integer) 0
+&gt; rpush mylist B    //将 B 插入到 mylist 列表的尾部
+(integer) 2
 
-&gt; del abc
-(integer) 1
-</code></pre><h3 id="TYPE-查看数据类型操作命令"><a href="#TYPE-查看数据类型操作命令" class="headerlink" title="TYPE |查看数据类型操作命令"></a>TYPE |查看数据类型操作命令</h3><ul>
-<li>查询的键存在返回相应的数据类型，不存在返回 none</li>
-</ul>
-<pre><code>&gt; set hello word
-OK
-
-&gt; type hello
-string
-
-&gt; type word
-none
-</code></pre><h3 id="SETEX、TTL、PSETEX、PTTL-设置过期时间（1-秒-1000-毫秒）"><a href="#SETEX、TTL、PSETEX、PTTL-设置过期时间（1-秒-1000-毫秒）" class="headerlink" title="SETEX、TTL、PSETEX、PTTL |设置过期时间（1 秒 = 1000 毫秒）"></a>SETEX、TTL、PSETEX、PTTL |设置过期时间（1 秒 = 1000 毫秒）</h3><ul>
-<li>使用 setex 设置以秒为单位的过期时间</li>
-<li>使用 psetex 设置以毫秒为单位的过期时间</li>
-<li>使用 ttl 获取以秒为单位的剩余时间</li>
-<li>使用 pttl 获取以毫秒为单位的剩余时间<blockquote>
-<p><strong>使用 ttl 和 pttl 查询键的过期时间，键不存在返回 -2，没有设置过期时间返回 -1，其他情况返回以秒为单位的剩余时间</strong></p>
-</blockquote>
-</li>
-</ul>
-<pre><code>// 秒为单位
-&gt; setex hello 10 11111
-OK
-
-&gt; ttl hello
-(integer) 6
-
-&gt; ttl hello
-(integer) 4
-
-&gt; ttl hello
+&gt; lpush mylist first    //将 first 插入到 mylist 列表的头部
 (integer) 3
 
-&gt; get hello
-(nil)
-</code></pre><pre><code>//毫秒为单位
-&gt; psetex test 10000 1111
-OK
-
-&gt; pttl test
-(integer) 8455
-
-&gt; pttl test
-(integer) 7430
-
-&gt; pttl test
-(integer) 6733
-
-&gt; get test
-(nil)
-</code></pre><h3 id="INCR、INCRBY、DECR、DECRBY-原子递增递减"><a href="#INCR、INCRBY、DECR、DECRBY-原子递增递减" class="headerlink" title="INCR、INCRBY、DECR、DECRBY |原子递增递减"></a>INCR、INCRBY、DECR、DECRBY |原子递增递减</h3><ul>
-<li>set 一个值为整型的字符串，可以使用 incr 操作命令自增</li>
-<li>可以使用 incrby 操作命令指定步长自增</li>
-<li>incr 是原子操作。也就是说客户端 1 和客户端 2 同时读出10，他们俩都对其加 1 操作，最终的值一定是12。</li>
-<li>相应的有 decr 和 decrby 操作命令进行递减操作</li>
-</ul>
-<pre><code>&gt; set count 100
-OK
-
-&gt; incr count
-(integer) 101
-&gt; incr count
-(integer) 102
-
-&gt; incrby count 100
-(integer) 202
-</code></pre><h3 id="SETNX-不存在则设置，存在则不进行任何操作"><a href="#SETNX-不存在则设置，存在则不进行任何操作" class="headerlink" title="SETNX |不存在则设置，存在则不进行任何操作"></a>SETNX |不存在则设置，存在则不进行任何操作</h3><ul>
-<li>set 命令在执行的时候，如果 key 已经存在，则新值会覆盖旧值。</li>
-<li>setnx 命令，如果 key 存在，则不做任何操作，否则等同于 set。</li>
-</ul>
-<pre><code>&gt; set test 123
-OK
-
-&gt; set test 456
-OK
-
-&gt; get test
-&quot;456&quot;
-
-&gt; setnx test aaa
-(integer) 0
-
-&gt; get test
-&quot;456&quot;
-</code></pre><h3 id="STRLEN-计算-value-的长度"><a href="#STRLEN-计算-value-的长度" class="headerlink" title="STRLEN | 计算 value 的长度"></a>STRLEN | 计算 value 的长度</h3><pre><code>&gt; set xixi abc123
-OK
-
-&gt; strlen xixi
+&gt; rpush mylist C D E    //将 C、D、E 插入到列表 mylist 的尾部
 (integer) 6
+
+&gt; lrange mylist 0 -1    //从列表的头部查看列表的全部内容
+1) &quot;first&quot;
+2) &quot;A&quot;
+3) &quot;B&quot;
+4) &quot;C&quot;
+5) &quot;D&quot;
+6) &quot;E&quot;
+
+&gt; lrange mylist 0 2 //从列表的头部查看 mylist 列表，从 0 开始，到 2 结束（元素下标从 0 开始，-1 表示最后一个元素，-2 表示倒数第二个元素，以此类推）
+1) &quot;first&quot;
+2) &quot;A&quot;
+3) &quot;B&quot;
+</code></pre><h2 id="LPOP、RPOP"><a href="#LPOP、RPOP" class="headerlink" title="LPOP、RPOP"></a>LPOP、RPOP</h2><ul>
+<li>lpop 移除并返回头部元素</li>
+<li>rpop 移除并返回尾部元素</li>
+</ul>
+<pre><code>&gt; lrange mylist 0 -1
+1) &quot;first&quot;
+2) &quot;A&quot;
+3) &quot;B&quot;
+4) &quot;C&quot;
+5) &quot;D&quot;
+6) &quot;E&quot;
+
+&gt; lpop mylist       //移除头部元素，并返回该元素
+&quot;first&quot;
+
+&gt; lrange mylist 0 -1
+1) &quot;A&quot;
+2) &quot;B&quot;
+3) &quot;C&quot;
+4) &quot;D&quot;
+5) &quot;E&quot;
+
+&gt; rpop mylist   //移除尾部元素，并返回该元素
+&quot;E&quot;
+
+&gt; lrange mylist 0 -1
+1) &quot;A&quot;
+2) &quot;B&quot;
+3) &quot;C&quot;
+4) &quot;D&quot;
+
+&gt; rpop abc  //当 abc 列表不存在时，返回 nil
+(nil)
+</code></pre><h2 id="LINDEX"><a href="#LINDEX" class="headerlink" title="LINDEX"></a>LINDEX</h2><ul>
+<li>返回列表指定下标的元素（下标从0开始，-1 为最后一个元素）</li>
+</ul>
+<pre><code>&gt; lrange mylist 0 -1
+1) &quot;A&quot;
+2) &quot;B&quot;
+3) &quot;C&quot;
+4) &quot;D&quot;
+
+&gt; lindex mylist -1
+&quot;D&quot;
+
+&gt; lindex mylist 2
+&quot;C&quot;
+</code></pre><h2 id="LTRIM"><a href="#LTRIM" class="headerlink" title="LTRIM"></a>LTRIM</h2><ul>
+<li>让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。下标与之前介绍的写法都一致，这里不赘述</li>
+</ul>
+<pre><code>&gt; lrange mylist 0 -1
+1) &quot;A&quot;
+2) &quot;B&quot;
+3) &quot;C&quot;
+4) &quot;D&quot;
+
+&gt; ltrim mylist 0 1
+OK
+
+&gt; lrange mylist 0 -1
+1) &quot;A&quot;
+2) &quot;B&quot;
 </code></pre>
             </div>
             <hr>
@@ -622,7 +563,7 @@ OK
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2019/11/27/redis-xue-xi-bi-ji/">http://blog.xiangdangnian.net.cn/2019/11/27/redis-xue-xi-bi-ji/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/">http://blog.xiangdangnian.net.cn/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1092,7 +1033,8 @@ OK
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/">
                     <div class="card-image">
@@ -1112,9 +1054,9 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1127,6 +1069,7 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1145,34 +1088,37 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/09/27/wo-de-san-shi-sui/">
+                <a href="/2019/11/27/redis-xue-xi-bi-ji/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/14624962.jpg" class="responsive-img" alt="我的三十岁">
+                        <img src="http://static.xiangdangnian.net.cn/blog/b65c86ab1cbdae10bfb99911def7ad59.jpg" class="responsive-img" alt="1、Redis 学习笔记————基本数据类型之字符串">
                         
-                        <span class="card-title">我的三十岁</span>
+                        <span class="card-title">1、Redis 学习笔记————基本数据类型之字符串</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-没有想到时间过的这么快，就这么来到了三十岁的生日，总觉得需要记录点什么。
+                            字符串（string）SET、GET |基本操作
+使用 set 关键字设置
+使用 get 关键字获取字符串
+值可以是任何类型的字符串（包括二进制，例如图片），值不能超过512 MB
 
-没有想三十岁来的这么快，自己还没有完全做好准备。
-
+&gt; set key value
+OK
+&gt; g
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-09-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/其他/" class="post-category">
-                                    其他
+                            <a href="/categories/redis/" class="post-category">
+                                    redis
                                 </a>
                             
                             
@@ -1182,8 +1128,8 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/生活/">
-                        <span class="chip bg-color">生活</span>
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
