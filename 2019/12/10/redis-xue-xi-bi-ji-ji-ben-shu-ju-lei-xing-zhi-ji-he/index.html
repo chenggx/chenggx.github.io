@@ -4,11 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="redis学习笔记-----基本数据类型之列表, 想当年,php,php技术分享">
-    <meta name="description" content="List 列表LPUSH、RPUSH、LRANGE
-lpush 可以将一个或多个值插入到列表的头部
-rpush 可以将一个或多个值插入到列表的头部
-lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最后一个元素，-2 表示">
+    <meta name="keywords" content="redis学习笔记-----基本数据类型之集合, 想当年,php,php技术分享">
+    <meta name="description" content="集合（Set）SADD
+将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。
+假如key不存在，则创建一个只包含member元素作成员的集合。
+当key不是集合类型时，返回一个错误。
+
+&amp;gt; sa">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +18,7 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>redis学习笔记-----基本数据类型之列表 | 想当年的博客</title>
+    <title>redis学习笔记-----基本数据类型之集合 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,13 +274,13 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/long-exposure-photography-of-vehicle-lights-3171592%202.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/59b775569da2a.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        redis学习笔记-----基本数据类型之列表
+                        redis学习笔记-----基本数据类型之集合
                     </div>
                 </div>
             </div>
@@ -415,7 +417,7 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-01
+                    2019-12-10
                 </div>
                 
 
@@ -424,14 +426,14 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    565
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 				
@@ -447,97 +449,243 @@ lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="List-列表"><a href="#List-列表" class="headerlink" title="List 列表"></a>List 列表</h1><h2 id="LPUSH、RPUSH、LRANGE"><a href="#LPUSH、RPUSH、LRANGE" class="headerlink" title="LPUSH、RPUSH、LRANGE"></a>LPUSH、RPUSH、LRANGE</h2><ul>
-<li>lpush 可以将一个或多个值插入到列表的头部</li>
-<li>rpush 可以将一个或多个值插入到列表的头部</li>
-<li>lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最后一个元素，-2 表示倒数第二个元素，以此类推</li>
+                <h1 id="集合（Set）"><a href="#集合（Set）" class="headerlink" title="集合（Set）"></a>集合（Set）</h1><h2 id="SADD"><a href="#SADD" class="headerlink" title="SADD"></a>SADD</h2><ul>
+<li>将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。</li>
+<li>假如key不存在，则创建一个只包含member元素作成员的集合。</li>
+<li>当key不是集合类型时，返回一个错误。</li>
 </ul>
-<pre><code>&gt; rpush mylist A    //将 A 插入到 mylist 列表的尾部
-(integer) 1
-
-&gt; rpush mylist B    //将 B 插入到 mylist 列表的尾部
+<pre><code>&gt; sadd k1 v1 v2 v3
+(integer) 3
+</code></pre><h2 id="SMEMBERS"><a href="#SMEMBERS" class="headerlink" title="SMEMBERS"></a>SMEMBERS</h2><ul>
+<li>返回集合key中的所有成员。</li>
+</ul>
+<pre><code>&gt; smembers k1
+1) &quot;v2&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+</code></pre><h2 id="SREM"><a href="#SREM" class="headerlink" title="SREM"></a>SREM</h2><ul>
+<li>移除集合key中的一个或多个member元素，不存在的member元素会被忽略。</li>
+<li>当key不是集合类型，返回一个错误。</li>
+</ul>
+<pre><code>&gt; srem k1 v2 v1
 (integer) 2
 
-&gt; lpush mylist first    //将 first 插入到 mylist 列表的头部
+&gt; smembers k1
+1) &quot;v3&quot;
+</code></pre><h2 id="SISMEMBER"><a href="#SISMEMBER" class="headerlink" title="SISMEMBER"></a>SISMEMBER</h2><ul>
+<li>判断 member 元素是否是集合 key 的成员。</li>
+<li>返回 1，则 member 元素在集合中。返回 0，则不在集合中。</li>
+</ul>
+<pre><code>&gt; sismember k1 v3
+(integer) 1
+
+&gt; sismember k1 v2
+(integer) 0
+</code></pre><h2 id="SCARD"><a href="#SCARD" class="headerlink" title="SCARD"></a>SCARD</h2><ul>
+<li>返回集合key的基数(集合中元素的数量)。</li>
+</ul>
+<pre><code>&gt; scard k1
+(integer) 1
+
+&gt; sadd k1 v4 v5
+(integer) 2
+
+&gt; scard k1
+(integer) 3
+</code></pre><h2 id="SMOVE"><a href="#SMOVE" class="headerlink" title="SMOVE"></a>SMOVE</h2><ul>
+<li>将 member 元素从 source 集合移动到 destination 集合。</li>
+<li>如果 source 集合不存在或不包含指定的 member 元素，则命令不执行任何操作，仅返回0。</li>
+<li>当 destination 集合已经包含 member 元素时，则命令只是简单地将 source 集合中的 member 元素删除。</li>
+<li>当source或destination不是集合类型时，返回一个错误。</li>
+</ul>
+<pre><code>&gt; smembers k1
+1) &quot;v4&quot;
+2) &quot;v5&quot;
+3) &quot;v3&quot;
+
+&gt; smembers k2
+(empty list or set)
+
+&gt; smove k1 k2 v4
+(integer) 1
+
+&gt; smembers k1
+1) &quot;v5&quot;
+2) &quot;v3&quot;
+
+&gt; smembers k2
+1) &quot;v4&quot;
+</code></pre><h2 id="SPOP"><a href="#SPOP" class="headerlink" title="SPOP"></a>SPOP</h2><ul>
+<li>移除并返回集合中的一个随机元素。</li>
+<li>被移除的随机元素。</li>
+<li>当key不存在或key是空集时，返回nil。</li>
+</ul>
+<pre><code>&gt; smembers k1
+1) &quot;v5&quot;
+2) &quot;v3&quot;
+
+&gt; spop k1
+&quot;v3&quot;
+
+&gt; smembers k1
+1) &quot;v5&quot;
+
+&gt; spop k1
+&quot;v5&quot;
+
+&gt; smembers k1
+(empty list or set)
+
+&gt; spop k1
+(nil)
+</code></pre><h2 id="SRANDMEMBER"><a href="#SRANDMEMBER" class="headerlink" title="SRANDMEMBER"></a>SRANDMEMBER</h2><ul>
+<li>返回集合中的一个随机元素。(不删除)</li>
+<li>返回值为被选中的随机元素。 当 key 不存在或 key 是空集时，返回nil。</li>
+</ul>
+<pre><code>&gt; sadd k1 v1 v2 v3
 (integer) 3
 
-&gt; rpush mylist C D E    //将 C、D、E 插入到列表 mylist 的尾部
+&gt; smembers k1
+1) &quot;v2&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+
+&gt; srandmember k1
+&quot;v3&quot;
+
+&gt; smembers k1
+1) &quot;v2&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+</code></pre><h2 id="SINTER"><a href="#SINTER" class="headerlink" title="SINTER"></a>SINTER</h2><ul>
+<li>返回给定的集合的交集。</li>
+<li>当给定集合当中有一个空集时，结果也为空集(根据集合运算定律)。</li>
+</ul>
+<pre><code>&gt; smembers k1
+1) &quot;v2&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+
+&gt; smembers k2
+1) &quot;v4&quot;
+2) &quot;v1&quot;
+3) &quot;v2&quot;
+4) &quot;v5&quot;
+5) &quot;v6&quot;
+
+&gt; sinter k1 k2
+1) &quot;v2&quot;
+2) &quot;v1&quot;
+</code></pre><h2 id="SINTERSTORE"><a href="#SINTERSTORE" class="headerlink" title="SINTERSTORE"></a>SINTERSTORE</h2><ul>
+<li>基本等同于 sinter 命令，但它将结果保存在一个新的集合里。</li>
+<li>如果要保存的集合已经存在，则将其覆盖。</li>
+<li>返回结果集合中成员的数量。</li>
+</ul>
+<pre><code>&gt; smembers k1
+1) &quot;v2&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+
+&gt; smembers k2
+1) &quot;v4&quot;
+2) &quot;v1&quot;
+3) &quot;v2&quot;
+4) &quot;v5&quot;
+5) &quot;v6&quot;
+
+&gt; sinterstore k3 k1 k2
+(integer) 2
+
+&gt; smembers k3
+1) &quot;v2&quot;
+2) &quot;v1&quot;
+</code></pre><h2 id="SUNION"><a href="#SUNION" class="headerlink" title="SUNION"></a>SUNION</h2><ul>
+<li>返回给定的所有集合的并集。</li>
+</ul>
+<pre><code>&gt; smembers k1
+1) &quot;v2&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+
+&gt; smembers k2
+1) &quot;v4&quot;
+2) &quot;v1&quot;
+3) &quot;v2&quot;
+4) &quot;v5&quot;
+5) &quot;v6&quot;
+
+&gt; sunion k1 k2
+1) &quot;v4&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+4) &quot;v2&quot;
+5) &quot;v5&quot;
+6) &quot;v6&quot;
+</code></pre><h2 id="SUNIONSTORE"><a href="#SUNIONSTORE" class="headerlink" title="SUNIONSTORE"></a>SUNIONSTORE</h2><ul>
+<li>基本等同于 sunion 命令，但它将结果保存在一个新的集合里。</li>
+<li>如果要保存的集合已经存在，则将其覆盖。</li>
+<li>返回结果集合中成员的数量。</li>
+</ul>
+<pre><code>&gt; smembers k1
+1) &quot;v2&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+
+&gt; smembers k2
+1) &quot;v4&quot;
+2) &quot;v1&quot;
+3) &quot;v2&quot;
+4) &quot;v5&quot;
+5) &quot;v6&quot;
+
+&gt; sunionstore k4 k1 k2
 (integer) 6
 
-&gt; lrange mylist 0 -1    //从列表的头部查看列表的全部内容
-1) &quot;first&quot;
-2) &quot;A&quot;
-3) &quot;B&quot;
-4) &quot;C&quot;
-5) &quot;D&quot;
-6) &quot;E&quot;
-
-&gt; lrange mylist 0 2 //从列表的头部查看 mylist 列表，从 0 开始，到 2 结束（元素下标从 0 开始，-1 表示最后一个元素，-2 表示倒数第二个元素，以此类推）
-1) &quot;first&quot;
-2) &quot;A&quot;
-3) &quot;B&quot;
-</code></pre><h2 id="LPOP、RPOP"><a href="#LPOP、RPOP" class="headerlink" title="LPOP、RPOP"></a>LPOP、RPOP</h2><ul>
-<li>lpop 移除并返回头部元素</li>
-<li>rpop 移除并返回尾部元素</li>
+&gt; smembers k4
+1) &quot;v4&quot;
+2) &quot;v3&quot;
+3) &quot;v1&quot;
+4) &quot;v2&quot;
+5) &quot;v5&quot;
+6) &quot;v6&quot;
+</code></pre><h2 id="SDIFF"><a href="#SDIFF" class="headerlink" title="SDIFF"></a>SDIFF</h2><ul>
+<li>返回给定的所有集合的差集。</li>
 </ul>
-<pre><code>&gt; lrange mylist 0 -1
-1) &quot;first&quot;
-2) &quot;A&quot;
-3) &quot;B&quot;
-4) &quot;C&quot;
-5) &quot;D&quot;
-6) &quot;E&quot;
+<pre><code>&gt; smembers tom
+1) &quot;orange&quot;
+2) &quot;banner&quot;
+3) &quot;apple&quot;
 
-&gt; lpop mylist       //移除头部元素，并返回该元素
-&quot;first&quot;
+&gt; smembers jack
+1) &quot;pants&quot;
+2) &quot;t-shirt&quot;
+3) &quot;apple&quot;
 
-&gt; lrange mylist 0 -1
-1) &quot;A&quot;
-2) &quot;B&quot;
-3) &quot;C&quot;
-4) &quot;D&quot;
-5) &quot;E&quot;
-
-&gt; rpop mylist   //移除尾部元素，并返回该元素
-&quot;E&quot;
-
-&gt; lrange mylist 0 -1
-1) &quot;A&quot;
-2) &quot;B&quot;
-3) &quot;C&quot;
-4) &quot;D&quot;
-
-&gt; rpop abc  //当 abc 列表不存在时，返回 nil
-(nil)
-</code></pre><h2 id="LINDEX"><a href="#LINDEX" class="headerlink" title="LINDEX"></a>LINDEX</h2><ul>
-<li>返回列表指定下标的元素（下标从0开始，-1 为最后一个元素）</li>
+&gt; sdiff tom jack
+1) &quot;orange&quot;
+2) &quot;banner&quot;
+</code></pre><p>SDIFFSTORE</p>
+<ul>
+<li>基本等同于 sdiff 命令，但它将结果保存在一个新的集合里。</li>
+<li>如果要保存的集合已经存在，则将其覆盖。</li>
+<li>返回结果集合中成员的数量。</li>
 </ul>
-<pre><code>&gt; lrange mylist 0 -1
-1) &quot;A&quot;
-2) &quot;B&quot;
-3) &quot;C&quot;
-4) &quot;D&quot;
+<pre><code>&gt; smembers tom
+1) &quot;orange&quot;
+2) &quot;banner&quot;
+3) &quot;apple&quot;
 
-&gt; lindex mylist -1
-&quot;D&quot;
+&gt; smembers jack
+1) &quot;pants&quot;
+2) &quot;t-shirt&quot;
+3) &quot;apple&quot;
 
-&gt; lindex mylist 2
-&quot;C&quot;
-</code></pre><h2 id="LTRIM"><a href="#LTRIM" class="headerlink" title="LTRIM"></a>LTRIM</h2><ul>
-<li>让列表只保留指定区间内的元素，不在指定区间之内的元素都将被删除。下标与之前介绍的写法都一致，这里不赘述</li>
-</ul>
-<pre><code>&gt; lrange mylist 0 -1
-1) &quot;A&quot;
-2) &quot;B&quot;
-3) &quot;C&quot;
-4) &quot;D&quot;
+&gt; sdiffstore new tom jack
+(integer) 2
 
-&gt; ltrim mylist 0 1
-OK
-
-&gt; lrange mylist 0 -1
-1) &quot;A&quot;
-2) &quot;B&quot;
+&gt; smembers new
+1) &quot;orange&quot;
+2) &quot;banner&quot;
 </code></pre>
             </div>
             <hr>
@@ -563,7 +711,7 @@ OK
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/">http://blog.xiangdangnian.net.cn/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/">http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1033,7 +1181,8 @@ OK
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/">
                     <div class="card-image">
@@ -1055,9 +1204,9 @@ OK
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1070,6 +1219,7 @@ OK
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1088,30 +1238,26 @@ OK
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/11/27/redis-xue-xi-bi-ji/">
+                <a href="/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/b65c86ab1cbdae10bfb99911def7ad59.jpg" class="responsive-img" alt="1、Redis 学习笔记————基本数据类型之字符串">
+                        <img src="http://static.xiangdangnian.net.cn/blog/long-exposure-photography-of-vehicle-lights-3171592%202.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之列表">
                         
-                        <span class="card-title">1、Redis 学习笔记————基本数据类型之字符串</span>
+                        <span class="card-title">redis学习笔记-----基本数据类型之列表</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            字符串（string）SET、GET |基本操作
-使用 set 关键字设置
-使用 get 关键字获取字符串
-值可以是任何类型的字符串（包括二进制，例如图片），值不能超过512 MB
-
-&gt; set key value
-OK
-&gt; g
+                            List 列表LPUSH、RPUSH、LRANGE
+lpush 可以将一个或多个值插入到列表的头部
+rpush 可以将一个或多个值插入到列表的头部
+lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最后一个元素，-2 表示
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-11-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-01
                             </span>
                         <span class="publish-author">
                             
