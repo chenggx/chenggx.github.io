@@ -1090,35 +1090,31 @@ HSET、HMSET
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/">
+                <a href="/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/9c41d85e67935e1404a8037ea49b1ba3473fe13f.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之哈希（HASH）">
+                        <img src="http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之有序集合">
                         
-                        <span class="card-title">redis学习笔记-----基本数据类型之哈希（HASH）</span>
+                        <span class="card-title">redis学习笔记-----基本数据类型之有序集合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            哈希（HASH）
-哈希就像是一个微缩版的 redis。由键值对组成。一般讲数据库中的记录取出直接放入 redis 中使用。
+                            有序集合（sort sets）
+与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。
+使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 
 
-HSET、HMSET
-设置单个key
-一次设置多个key
-
-
-经过测试当前版本5.0.4，hset 也可以一次设置
+ZADD
+将一个或多个元素以及其 
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-26
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1131,7 +1127,6 @@ HSET、HMSET
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1161,12 +1156,12 @@ HSET、HMSET
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            集合（Set）SADD
-将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。
-假如key不存在，则创建一个只包含member元素作成员的集合。
-当key不是集合类型时，返回一个错误。
+                            集合（Set）
+与 list 类似，区别是 set 中的值是不重复的。
 
-&gt; sa
+SADD
+将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。
+假如key不存在，则创建一个只包含member元素作成员的集合
                         
                     </div>
                     <div class="publish-info">

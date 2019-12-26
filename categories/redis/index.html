@@ -315,18 +315,18 @@
                 </a>
                 
                 
-                <a href="/categories/redis/" title="redis: 4">
+                <a href="/categories/git/" title="git: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active " style="background-color: #F5EEF8;">redis
-                        <span class="tag-length">4</span>
+                             chip-default " style="background-color: #F5EEF8;">git
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/git/" title="git: 1">
+                <a href="/categories/redis/" title="redis: 5">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #D5F5E3;">git
-                        <span class="tag-length">1</span>
+                             chip-active " style="background-color: #D5F5E3;">redis
+                        <span class="tag-length">5</span>
                     </span>
                 </a>
                 
@@ -355,18 +355,18 @@
                 </a>
                 
                 
-                <a href="/categories/小技巧/" title="小技巧: 1">
+                <a href="/categories/其他/" title="其他: 2">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #82E0AA;">小技巧
-                        <span class="tag-length">1</span>
+                             chip-default " style="background-color: #82E0AA;">其他
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
                 
-                <a href="/categories/其他/" title="其他: 2">
+                <a href="/categories/小技巧/" title="小技巧: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default " style="background-color: #D7BDE2;">其他
-                        <span class="tag-length">2</span>
+                             chip-default " style="background-color: #D7BDE2;">小技巧
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -380,6 +380,56 @@
 
     <article id="articles" class="container articles">
         <div class="row tags-posts">
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/">
+                        <div class="card-image tag-image">
+                            
+                            <img src="http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之有序集合">
+                            
+                            <span class="card-title">redis学习笔记-----基本数据类型之有序集合</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                有序集合（sort sets）
+与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。
+使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 
+
+ZADD
+将一个或多个元素以及其 
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-26
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/redis/" class="post-category">
+                                    redis
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/redis/">
+                            <span class="chip bg-color">redis</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -447,12 +497,12 @@ HSET、HMSET
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                集合（Set）SADD
-将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。
-假如key不存在，则创建一个只包含member元素作成员的集合。
-当key不是集合类型时，返回一个错误。
+                                集合（Set）
+与 list 类似，区别是 set 中的值是不重复的。
 
-&gt; sa
+SADD
+将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。
+假如key不存在，则创建一个只包含member元素作成员的集合
                             
                         </div>
                         <div class="publish-info">

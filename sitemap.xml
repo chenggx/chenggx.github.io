@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.xiangdangnian.net.cn/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/</loc>
+    
+    <lastmod>2019-12-26T14:25:59.216Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/</loc>
+    
+    <lastmod>2019-12-26T13:18:34.559Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xiangdangnian.net.cn/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/</loc>
     
     <lastmod>2019-12-26T12:39:00.823Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>http://blog.xiangdangnian.net.cn/2019/11/27/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-zi-fu-chuan/</loc>
     
     <lastmod>2019-12-26T11:33:11.201Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/</loc>
-    
-    <lastmod>2019-12-10T12:48:16.503Z</lastmod>
     
   </url>
   
