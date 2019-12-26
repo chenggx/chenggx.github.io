@@ -1,5 +1,5 @@
+http://blog.xiangdangnian.net.cn/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/
 http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/
 http://blog.xiangdangnian.net.cn/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/
-http://blog.xiangdangnian.net.cn/2019/11/27/redis-xue-xi-bi-ji/
+http://blog.xiangdangnian.net.cn/2019/11/27/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-zi-fu-chuan/
 http://blog.xiangdangnian.net.cn/2019/09/27/wo-de-san-shi-sui/
-http://blog.xiangdangnian.net.cn/2019/08/15/shi-yong-laradock-pei-zhi-laravel-echo-sever-yu-dao-de-keng/

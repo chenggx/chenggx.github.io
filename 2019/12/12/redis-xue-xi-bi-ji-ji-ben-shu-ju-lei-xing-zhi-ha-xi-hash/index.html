@@ -4,13 +4,16 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="redis学习笔记-----基本数据类型之集合, 想当年,php,php技术分享">
-    <meta name="description" content="集合（Set）SADD
-将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。
-假如key不存在，则创建一个只包含member元素作成员的集合。
-当key不是集合类型时，返回一个错误。
+    <meta name="keywords" content="redis学习笔记-----基本数据类型之哈希（HASH）, 想当年,php,php技术分享">
+    <meta name="description" content="哈希（HASH）
+哈希就像是一个微缩版的 redis。由键值对组成。一般讲数据库中的记录取出直接放入 redis 中使用。
 
-&amp;gt; sa">
+HSET、HMSET
+设置单个key
+一次设置多个key
+
+
+经过测试当前版本5.0.4，hset 也可以一次设置">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +21,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>redis学习笔记-----基本数据类型之集合 | 想当年的博客</title>
+    <title>redis学习笔记-----基本数据类型之哈希（HASH） | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -274,13 +277,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/59b775569da2a.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/9c41d85e67935e1404a8037ea49b1ba3473fe13f.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        redis学习笔记-----基本数据类型之集合
+                        redis学习笔记-----基本数据类型之哈希（HASH）
                     </div>
                 </div>
             </div>
@@ -417,7 +420,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-10
+                    2019-12-12
                 </div>
                 
 
@@ -426,14 +429,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    666
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    3 分
                 </div>
                 
 				
@@ -449,243 +452,149 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="集合（Set）"><a href="#集合（Set）" class="headerlink" title="集合（Set）"></a>集合（Set）</h1><h2 id="SADD"><a href="#SADD" class="headerlink" title="SADD"></a>SADD</h2><ul>
-<li>将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。</li>
-<li>假如key不存在，则创建一个只包含member元素作成员的集合。</li>
-<li>当key不是集合类型时，返回一个错误。</li>
+                <h1 id="哈希（HASH）"><a href="#哈希（HASH）" class="headerlink" title="哈希（HASH）"></a>哈希（HASH）</h1><blockquote>
+<p>哈希就像是一个微缩版的 redis。由键值对组成。一般讲数据库中的记录取出直接放入 redis 中使用。</p>
+</blockquote>
+<h2 id="HSET、HMSET"><a href="#HSET、HMSET" class="headerlink" title="HSET、HMSET"></a>HSET、HMSET</h2><ul>
+<li>设置单个key</li>
+<li>一次设置多个key</li>
 </ul>
-<pre><code>&gt; sadd k1 v1 v2 v3
-(integer) 3
-</code></pre><h2 id="SMEMBERS"><a href="#SMEMBERS" class="headerlink" title="SMEMBERS"></a>SMEMBERS</h2><ul>
-<li>返回集合key中的所有成员。</li>
-</ul>
-<pre><code>&gt; smembers k1
-1) &quot;v2&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
-</code></pre><h2 id="SREM"><a href="#SREM" class="headerlink" title="SREM"></a>SREM</h2><ul>
-<li>移除集合key中的一个或多个member元素，不存在的member元素会被忽略。</li>
-<li>当key不是集合类型，返回一个错误。</li>
-</ul>
-<pre><code>&gt; srem k1 v2 v1
+<blockquote>
+<p>经过测试当前版本5.0.4，hset 也可以一次设置多个 key</p>
+</blockquote>
+<h3 id="hset-设置多个-key"><a href="#hset-设置多个-key" class="headerlink" title="hset 设置多个 key"></a>hset 设置多个 key</h3><pre><code>&gt; hset user:1 name jack email jack@qq.com
 (integer) 2
 
-&gt; smembers k1
-1) &quot;v3&quot;
-</code></pre><h2 id="SISMEMBER"><a href="#SISMEMBER" class="headerlink" title="SISMEMBER"></a>SISMEMBER</h2><ul>
-<li>判断 member 元素是否是集合 key 的成员。</li>
-<li>返回 1，则 member 元素在集合中。返回 0，则不在集合中。</li>
-</ul>
-<pre><code>&gt; sismember k1 v3
-(integer) 1
+&gt; hget user:1 name
+&quot;jack&quot;
 
-&gt; sismember k1 v2
-(integer) 0
-</code></pre><h2 id="SCARD"><a href="#SCARD" class="headerlink" title="SCARD"></a>SCARD</h2><ul>
-<li>返回集合key的基数(集合中元素的数量)。</li>
-</ul>
-<pre><code>&gt; scard k1
-(integer) 1
-
-&gt; sadd k1 v4 v5
+&gt; hget user:1 email
+&quot;jack@qq.com&quot;
+</code></pre><h3 id="hset-设置单个-key"><a href="#hset-设置单个-key" class="headerlink" title="hset 设置单个 key"></a>hset 设置单个 key</h3><pre><code>&gt; hset user:2 name tom email tom@qq.com
 (integer) 2
 
-&gt; scard k1
-(integer) 3
-</code></pre><h2 id="SMOVE"><a href="#SMOVE" class="headerlink" title="SMOVE"></a>SMOVE</h2><ul>
-<li>将 member 元素从 source 集合移动到 destination 集合。</li>
-<li>如果 source 集合不存在或不包含指定的 member 元素，则命令不执行任何操作，仅返回0。</li>
-<li>当 destination 集合已经包含 member 元素时，则命令只是简单地将 source 集合中的 member 元素删除。</li>
-<li>当source或destination不是集合类型时，返回一个错误。</li>
+&gt; hget user:2 name
+&quot;tom&quot;
+
+&gt; hget user:2 email
+&quot;tom@qq.com&quot;
+</code></pre><h2 id="HGET、HMGET"><a href="#HGET、HMGET" class="headerlink" title="HGET、HMGET"></a>HGET、HMGET</h2><ul>
+<li>hget 获取单个 key 的值</li>
+<li>hmget 一次获取多个 key 的值</li>
 </ul>
-<pre><code>&gt; smembers k1
-1) &quot;v4&quot;
-2) &quot;v5&quot;
-3) &quot;v3&quot;
-
-&gt; smembers k2
-(empty list or set)
-
-&gt; smove k1 k2 v4
+<pre><code>&gt; hmget user:2 name email
+1) &quot;tom&quot;
+2) &quot;tom@qq.com&quot;
+</code></pre><h2 id="HEDL"><a href="#HEDL" class="headerlink" title="HEDL"></a>HEDL</h2><ul>
+<li>删除一个或多个指定的key</li>
+</ul>
+<pre><code>&gt; hdel user:2 name
 (integer) 1
 
-&gt; smembers k1
-1) &quot;v5&quot;
-2) &quot;v3&quot;
-
-&gt; smembers k2
-1) &quot;v4&quot;
-</code></pre><h2 id="SPOP"><a href="#SPOP" class="headerlink" title="SPOP"></a>SPOP</h2><ul>
-<li>移除并返回集合中的一个随机元素。</li>
-<li>被移除的随机元素。</li>
-<li>当key不存在或key是空集时，返回nil。</li>
-</ul>
-<pre><code>&gt; smembers k1
-1) &quot;v5&quot;
-2) &quot;v3&quot;
-
-&gt; spop k1
-&quot;v3&quot;
-
-&gt; smembers k1
-1) &quot;v5&quot;
-
-&gt; spop k1
-&quot;v5&quot;
-
-&gt; smembers k1
-(empty list or set)
-
-&gt; spop k1
+&gt; hget user:2 name
 (nil)
-</code></pre><h2 id="SRANDMEMBER"><a href="#SRANDMEMBER" class="headerlink" title="SRANDMEMBER"></a>SRANDMEMBER</h2><ul>
-<li>返回集合中的一个随机元素。(不删除)</li>
-<li>返回值为被选中的随机元素。 当 key 不存在或 key 是空集时，返回nil。</li>
+
+&gt; hget user:2 email
+&quot;tom@qq.com&quot;
+</code></pre><h2 id="HSETNX"><a href="#HSETNX" class="headerlink" title="HSETNX"></a>HSETNX</h2><ul>
+<li>设置指定key的值，如果可以已经存在，则不进行任何操作</li>
 </ul>
-<pre><code>&gt; sadd k1 v1 v2 v3
+<pre><code>&gt; hsetnx user:2 email 2@qq.com
+(integer) 0
+
+&gt; hsetnx user:2 name tome
+(integer) 1
+
+&gt; hmget user:2 name email
+1) &quot;tome&quot;
+2) &quot;tom@qq.com&quot;
+</code></pre><h2 id="HVALS"><a href="#HVALS" class="headerlink" title="HVALS"></a>HVALS</h2><p>-返回所有格值</p>
+<pre><code>&gt; hvals user:2
+1) &quot;tom@qq.com&quot;
+2) &quot;tome&quot;
+</code></pre><h2 id="HKEYS"><a href="#HKEYS" class="headerlink" title="HKEYS"></a>HKEYS</h2><ul>
+<li>返回所有的键</li>
+</ul>
+<pre><code>&gt; hkeys user:2
+1) &quot;email&quot;
+2) &quot;name&quot;
+</code></pre><h2 id="HGETALL"><a href="#HGETALL" class="headerlink" title="HGETALL"></a>HGETALL</h2><ul>
+<li>返回所有的键和值</li>
+<li>返回值中，每个字段名的下一个就是他的值</li>
+</ul>
+<pre><code>&gt; hgetall user:2
+1) &quot;email&quot;
+2) &quot;tom@qq.com&quot;
+3) &quot;name&quot;
+4) &quot;tome&quot;
+</code></pre><h2 id="HEXISTS"><a href="#HEXISTS" class="headerlink" title="HEXISTS"></a>HEXISTS</h2><ul>
+<li>检查指定键是否存在</li>
+</ul>
+<pre><code>&gt; hexists user:2 class
+(integer) 0
+
+&gt; hexists user:2 email
+(integer) 1
+</code></pre><h2 id="HINCRBY"><a href="#HINCRBY" class="headerlink" title="HINCRBY"></a>HINCRBY</h2><ul>
+<li>对哈希中指定的键进行自增操作，如果对应的键不存在，则创建。如果存在，直接新增</li>
+<li>所操作的键的值必须为整型</li>
+</ul>
+<pre><code>&gt; hincrby user:2 old 1
+(integer) 1
+
+&gt; hgetall user:2
+1) &quot;email&quot;
+2) &quot;tom@qq.com&quot;
+3) &quot;name&quot;
+4) &quot;tome&quot;
+5) &quot;sex&quot;
+6) &quot;man&quot;
+7) &quot;old&quot;
+8) &quot;1&quot;
+
+&gt; hincrby user:2 old 2
 (integer) 3
 
-&gt; smembers k1
-1) &quot;v2&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
 
-&gt; srandmember k1
-&quot;v3&quot;
+&gt; hgetall user:2
+1) &quot;email&quot;
+2) &quot;tom@qq.com&quot;
+3) &quot;name&quot;
+4) &quot;tome&quot;
+5) &quot;sex&quot;
+6) &quot;man&quot;
+7) &quot;old&quot;
+8) &quot;3&quot;
 
-&gt; smembers k1
-1) &quot;v2&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
-</code></pre><h2 id="SINTER"><a href="#SINTER" class="headerlink" title="SINTER"></a>SINTER</h2><ul>
-<li>返回给定的集合的交集。</li>
-<li>当给定集合当中有一个空集时，结果也为空集(根据集合运算定律)。</li>
+&gt; hincrby user:2 name 1
+(error) ERR hash value is not an integer
+</code></pre><h2 id="HINCRBYFLOAT"><a href="#HINCRBYFLOAT" class="headerlink" title="HINCRBYFLOAT"></a>HINCRBYFLOAT</h2><ul>
+<li>同上面的 hincrby，只不过支持的值是 float 类型</li>
 </ul>
-<pre><code>&gt; smembers k1
-1) &quot;v2&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
-
-&gt; smembers k2
-1) &quot;v4&quot;
-2) &quot;v1&quot;
-3) &quot;v2&quot;
-4) &quot;v5&quot;
-5) &quot;v6&quot;
-
-&gt; sinter k1 k2
-1) &quot;v2&quot;
-2) &quot;v1&quot;
-</code></pre><h2 id="SINTERSTORE"><a href="#SINTERSTORE" class="headerlink" title="SINTERSTORE"></a>SINTERSTORE</h2><ul>
-<li>基本等同于 sinter 命令，但它将结果保存在一个新的集合里。</li>
-<li>如果要保存的集合已经存在，则将其覆盖。</li>
-<li>返回结果集合中成员的数量。</li>
+<h2 id="HLEN"><a href="#HLEN" class="headerlink" title="HLEN"></a>HLEN</h2><ul>
+<li>返回指定哈希所包含的字段数量（key 的数量）</li>
 </ul>
-<pre><code>&gt; smembers k1
-1) &quot;v2&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
+<pre><code>&gt; hlen user:2
+(integer) 4
 
-&gt; smembers k2
-1) &quot;v4&quot;
-2) &quot;v1&quot;
-3) &quot;v2&quot;
-4) &quot;v5&quot;
-5) &quot;v6&quot;
-
-&gt; sinterstore k3 k1 k2
-(integer) 2
-
-&gt; smembers k3
-1) &quot;v2&quot;
-2) &quot;v1&quot;
-</code></pre><h2 id="SUNION"><a href="#SUNION" class="headerlink" title="SUNION"></a>SUNION</h2><ul>
-<li>返回给定的所有集合的并集。</li>
+&gt; hgetall user:2
+1) &quot;email&quot;
+2) &quot;tom@qq.com&quot;
+3) &quot;name&quot;
+4) &quot;tome&quot;
+5) &quot;sex&quot;
+6) &quot;man&quot;
+7) &quot;old&quot;
+8) &quot;3&quot;
+</code></pre><h2 id="HSTRLEN"><a href="#HSTRLEN" class="headerlink" title="HSTRLEN"></a>HSTRLEN</h2><ul>
+<li>返回指定 key 的 value 的字符串长度</li>
+<li>如果 value 或 哈希不存在，则返回0</li>
 </ul>
-<pre><code>&gt; smembers k1
-1) &quot;v2&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
+<pre><code>&gt; hstrlen user:2 name
+(integer) 4
 
-&gt; smembers k2
-1) &quot;v4&quot;
-2) &quot;v1&quot;
-3) &quot;v2&quot;
-4) &quot;v5&quot;
-5) &quot;v6&quot;
-
-&gt; sunion k1 k2
-1) &quot;v4&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
-4) &quot;v2&quot;
-5) &quot;v5&quot;
-6) &quot;v6&quot;
-</code></pre><h2 id="SUNIONSTORE"><a href="#SUNIONSTORE" class="headerlink" title="SUNIONSTORE"></a>SUNIONSTORE</h2><ul>
-<li>基本等同于 sunion 命令，但它将结果保存在一个新的集合里。</li>
-<li>如果要保存的集合已经存在，则将其覆盖。</li>
-<li>返回结果集合中成员的数量。</li>
-</ul>
-<pre><code>&gt; smembers k1
-1) &quot;v2&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
-
-&gt; smembers k2
-1) &quot;v4&quot;
-2) &quot;v1&quot;
-3) &quot;v2&quot;
-4) &quot;v5&quot;
-5) &quot;v6&quot;
-
-&gt; sunionstore k4 k1 k2
-(integer) 6
-
-&gt; smembers k4
-1) &quot;v4&quot;
-2) &quot;v3&quot;
-3) &quot;v1&quot;
-4) &quot;v2&quot;
-5) &quot;v5&quot;
-6) &quot;v6&quot;
-</code></pre><h2 id="SDIFF"><a href="#SDIFF" class="headerlink" title="SDIFF"></a>SDIFF</h2><ul>
-<li>返回给定的所有集合的差集。</li>
-</ul>
-<pre><code>&gt; smembers tom
-1) &quot;orange&quot;
-2) &quot;banner&quot;
-3) &quot;apple&quot;
-
-&gt; smembers jack
-1) &quot;pants&quot;
-2) &quot;t-shirt&quot;
-3) &quot;apple&quot;
-
-&gt; sdiff tom jack
-1) &quot;orange&quot;
-2) &quot;banner&quot;
-</code></pre><p>SDIFFSTORE</p>
-<ul>
-<li>基本等同于 sdiff 命令，但它将结果保存在一个新的集合里。</li>
-<li>如果要保存的集合已经存在，则将其覆盖。</li>
-<li>返回结果集合中成员的数量。</li>
-</ul>
-<pre><code>&gt; smembers tom
-1) &quot;orange&quot;
-2) &quot;banner&quot;
-3) &quot;apple&quot;
-
-&gt; smembers jack
-1) &quot;pants&quot;
-2) &quot;t-shirt&quot;
-3) &quot;apple&quot;
-
-&gt; sdiffstore new tom jack
-(integer) 2
-
-&gt; smembers new
-1) &quot;orange&quot;
-2) &quot;banner&quot;
+&gt; hget user:2 name
+&quot;tome&quot;
 </code></pre>
             </div>
             <hr>
@@ -711,7 +620,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/">http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/">http://blog.xiangdangnian.net.cn/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1181,7 +1090,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/">
                     <div class="card-image">
@@ -1206,9 +1116,9 @@ HSET、HMSET
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1221,6 +1131,7 @@ HSET、HMSET
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1239,26 +1150,28 @@ HSET、HMSET
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/">
+                <a href="/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/long-exposure-photography-of-vehicle-lights-3171592%202.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之列表">
+                        <img src="http://static.xiangdangnian.net.cn/blog/59b775569da2a.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之集合">
                         
-                        <span class="card-title">redis学习笔记-----基本数据类型之列表</span>
+                        <span class="card-title">redis学习笔记-----基本数据类型之集合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            List 列表LPUSH、RPUSH、LRANGE
-lpush 可以将一个或多个值插入到列表的头部
-rpush 可以将一个或多个值插入到列表的头部
-lrange 从列表的头部查看列表，元素下标从 0 开始，-1 表示最后一个元素，-2 表示
+                            集合（Set）SADD
+将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。
+假如key不存在，则创建一个只包含member元素作成员的集合。
+当key不是集合类型时，返回一个错误。
+
+&gt; sa
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
                             </span>
                         <span class="publish-author">
                             
