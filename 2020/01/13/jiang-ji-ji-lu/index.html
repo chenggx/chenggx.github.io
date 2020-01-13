@@ -4,13 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="redis学习笔记-----基本数据类型之有序集合, 想当年,php,php技术分享">
-    <meta name="description" content="有序集合（sort sets）
-与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。
-使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 
+    <meta name="keywords" content="ipad-mini2 降级记录, 想当年,php,php技术分享">
+    <meta name="description" content="
+主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程
 
-ZADD
-将一个或多个元素以及其 ">
+最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用狗子搜索">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +16,7 @@ ZADD
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>redis学习笔记-----基本数据类型之有序集合 | 想当年的博客</title>
+    <title>ipad-mini2 降级记录 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -274,13 +272,13 @@ ZADD
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        redis学习笔记-----基本数据类型之有序集合
+                        ipad-mini2 降级记录
                     </div>
                 </div>
             </div>
@@ -392,8 +390,8 @@ ZADD
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/redis/">
-                                <span class="chip bg-color">redis</span>
+                            <a href="/tags/ios/">
+                                <span class="chip bg-color">ios</span>
                             </a>
                         
                     </div>
@@ -404,8 +402,8 @@ ZADD
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/redis/" class="post-category">
-                                redis
+                            <a href="/categories/ios/" class="post-category">
+                                ios
                             </a>
                         
                     </div>
@@ -417,7 +415,7 @@ ZADD
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-12-26
+                    2020-01-13
                 </div>
                 
 
@@ -426,14 +424,14 @@ ZADD
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    774
+                    736
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    2 分
                 </div>
                 
 				
@@ -449,95 +447,33 @@ ZADD
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="有序集合（sort-sets）"><a href="#有序集合（sort-sets）" class="headerlink" title="有序集合（sort sets）"></a>有序集合（sort sets）</h1><ul>
-<li>与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。</li>
-<li>使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 </li>
-</ul>
-<h2 id="ZADD"><a href="#ZADD" class="headerlink" title="ZADD"></a>ZADD</h2><ul>
-<li>将一个或多个元素以及其 score 值加入到 key 中。</li>
-<li>如果某个元素已经在有序集合中，则更新该元素的 score 值。</li>
-<li>score 值可以是整数或双精度浮点数。</li>
-</ul>
-<pre><code>127.0.0.1:6379&gt; zadd language 100 php 90 java 80 js
-(integer) 3
-</code></pre><h2 id="ZCARD"><a href="#ZCARD" class="headerlink" title="ZCARD"></a>ZCARD</h2><ul>
-<li>返回有序集合 key 的值得个数</li>
-<li>如果 key 不存在，则返回 0</li>
-</ul>
-<pre><code>127.0.0.1:6379&gt; zcard language
-(integer) 3
-
-127.0.0.1:6379&gt; zcard xxxxx
-(integer) 0
-</code></pre><h2 id="ZCOUNT"><a href="#ZCOUNT" class="headerlink" title="ZCOUNT"></a>ZCOUNT</h2><ul>
-<li>返回有序集合 key 中，score 的值在 min 和 max 直接的成员个数。（包含 min 和 max）</li>
-<li>如果在统计时，不需要包含某个 score时 ，则添加一个 ( 即可。<br><code>`</code><br>127.0.0.1:6379&gt; zcount language 80 100<br>(integer) 3</li>
-</ul>
-<p>127.0.0.1:6379&gt; zcount language 80 (100<br>(integer) 2</p>
-<pre><code>
-## ZSCORE
-
-- 返回有序集合 key 中，成员的score值
-
-</code></pre><p>127.0.0.1:6379&gt; zscore language php<br>“100”</p>
-<pre><code>
-## ZRANGE
-
-- 格式：zrange key start stop [withscores]
-- 根据索引返回元素
-- withscores 参数可以连同元素的 score 一起返回。
-- start 为 0，stop 为 -1，即可返回整个有序集合。
-
-</code></pre><p>127.0.0.1:6379&gt; zrange language 0 2<br>1) “js”<br>2) “java”<br>3) “php”</p>
-<p>127.0.0.1:6379&gt; zrange language 0 2 withscores<br>1) “js”<br>2) “80”<br>3) “java”<br>4) “90”<br>5) “php”<br>6) “100”</p>
-<pre><code>
-## ZREVRANGE
-
-- 同 zrange 基本一致，区别是 zrevrange 是反者来的。
-
-</code></pre><p>127.0.0.1:6379&gt; zrevrange language 0 2<br>1) “php”<br>2) “java”<br>3) “js”</p>
-<p>127.0.0.1:6379&gt; zrevrange language 0 2 withscores<br>1) “php”<br>2) “100”<br>3) “java”<br>4) “90”<br>5) “js”<br>6) “80”</p>
-<pre><code>
-## ZRANGEBYSCORE
-
-- 返回有序集合 key 中，score 的值在 min 和 max 直接的成员。（包含 min 和 max）
-- 如果不需要包含某个 score时 ，则添加一个 ( 即可。
-
-</code></pre><p>127.0.0.1:6379&gt; zrangebyscore language 80 100<br>1) “js”<br>2) “java”<br>3) “php”</p>
-<p>127.0.0.1:6379&gt; zrangebyscore language 80 100 withscores<br>1) “js”<br>2) “80”<br>3) “java”<br>4) “90”<br>5) “php”<br>6) “100”</p>
-<p>127.0.0.1:6379&gt; zrangebyscore language 80 (100<br>1) “js”<br>2) “java”</p>
-<pre><code>
-## ZRANK
-
-- 返回有序集合 key 中成员 member 在集合中的排名序号。（排名按 score 值从小到大的顺序）。
-- 排名序号从 0 开始。(即 序号为 0 的 score 值最小)
-
-</code></pre><p>127.0.0.1:6379&gt; zrank language php<br>(integer) 2</p>
-<p>127.0.0.1:6379&gt; zrank language js<br>(integer) 0</p>
-<p>127.0.0.1:6379&gt; zrank language java<br>(integer) 1</p>
-<pre><code>
-## ZREVRANK 
-- 同上面的 zrank。区别是 zrevrank 的排序是从大到小
-
-</code></pre><p>127.0.0.1:6379&gt; zrevrank language php<br>(integer) 0</p>
-<p>127.0.0.1:6379&gt; zrevrank language js<br>(integer) 2</p>
-<p>127.0.0.1:6379&gt; zrevrank language java<br>(integer) 1</p>
-<pre><code>
-## ZINCRBY
-
-- 格式：zincrby key increment member
-- 向有序集合 key 中的成员 member 的 score 值进行增加。
-- 如果 key 中不存在 member，则在 key 中创建一个 member，并且该 member 的 score 为 设置的值。
-
-</code></pre><p>127.0.0.1:6379&gt; zincrby language 100 php<br>“200”</p>
-<p>127.0.0.1:6379&gt; zincrby language 100 python<br>“100”</p>
-<pre><code>
-## ZREM
-
-- 从集合中删除指定 member。
-
-</code></pre><p> 127.0.0.1:6379&gt; zrem language python<br>(integer) 1</p>
-<p>127.0.0.1:6379&gt; zrange language 0 -1 withscores<br>1) “js”<br>2) “80”<br>3) “java”<br>4) “90”<br>5) “php”<br>6) “200”<br> <code>`</code></p>
+                <blockquote>
+<p>主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程</p>
+</blockquote>
+<p>最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用<a href="https://www.dogedoge.com" target="_blank" rel="noopener">狗子</a>搜索了一下。竟然让我找到了<a href="https://www.v2ex.com/t/608874" target="_blank" rel="noopener">V2ex上的一个讨论</a>，仔细一看感觉挺靠谱，接下来就搞了。</p>
+<blockquote>
+<p>下面基本上都是废话，会玩直接看 v2 的帖子应该就可以搞定了，上面贴出了 GitHub 上项目的地址，基本上就是一键操作。</p>
+</blockquote>
+<p>根据的帖子给出的 github 链接查看项目，发现该项目已经不再维护了，但是好在项目又给出了一个新的地址。赶紧进入新的项目看一下。</p>
+<p>项目提示中指明了可以降级到10.3.3 的设备为 iPhone 5s, iPad Air, iPad Mini 2 (Not iPad4,6)。</p>
+<p>其他还有可以降级到8.4.1 的设备为iPhone 5, iPhone 4s, iPad 2, iPad 3, iPad 4, iPad Mini 1, iPod 5。</p>
+<p>以及可以降级到 6.1.3 的设备 iPhone 4s, iPad 2 (Not iPad2,4)。</p>
+<p>需要的小伙伴们自取。我只实验了ipad mini2 可以成功降级，其他的大家烧香祷告吧。^_^</p>
+<p>首先将项目克隆到本地，接着进入项目目录，并执行 <code>pip3 install -r requirements.txt</code> 安装项目需要的扩展。（确保当前系统中已经安装了python3，至少为3.5）</p>
+<p>下载 ios 10.3.3 的镜像文件。可以使用<a href="https://www.i4.cn/firmware_iPad_iPad%20mini%202__A1489_10.3.3__.html" target="_blank" rel="noopener">爱思助手</a>提供的镜像，下载速度那是杠杠的。</p>
+<p>接下来就是将 ipad 进入 DFU 模式。（这里吐槽一下，因为我不怎么用 ios 的设备，不知道 DFU 到底是个什么鬼，搜索了半天，很多人给出的方法根本不是进入 DFU的方法，最后还是在刚才那个 V2 讨论里面看到有朋友的回复，才明白了该怎么进入 DFU 模式。）</p>
+<p><strong> 这里说一下进入 DFU 模式的方法， </strong></p>
+<ol>
+<li>将 ipad 链接电脑</li>
+<li>经 ipad 关机</li>
+<li>长按电源键和 home 键 10 秒以上然后只松开电源键并保持 home 一直按着，当电脑上提示已经进入恢复模式则可以松开 home 键了。这个时候 ipad 屏幕是黑的。</li>
+</ol>
+<p><img src="http://static.xiangdangnian.net.cn/blog/sssdfsdfsdjkl23jk23j4lk23j423lklkwfjs.png" alt="DFU 模式"></p>
+<p>然后在项目里面执行 <code>./vieux -i .....ipsw</code>。 后面的省略号表示刚才下载的 ios10.3.3 的镜像文件。</p>
+<p>最后尽是等待了。</p>
+<p>我的一次成功，所以也没有什么好分享的啦，就先记录到这里啦。</p>
+<p>对了，最后说一下这个项目应该是只能在 macOS 下操作，windows 是不支持的。在一个就是最好可以使用梯子，要不然项目下载的一下东西可能会很慢，或者完全下不来。</p>
+<p>最后感谢 V2ex，啦啦啦啦又可以愉快地使用 Ipad 啦。</p>
 
             </div>
             <hr>
@@ -563,7 +499,7 @@ ZADD
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/">http://blog.xiangdangnian.net.cn/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/01/13/jiang-ji-ji-lu/">http://blog.xiangdangnian.net.cn/2020/01/13/jiang-ji-ji-lu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -601,8 +537,8 @@ ZADD
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/redis/">
-                                    <span class="chip bg-color">redis</span>
+                                <a href="/tags/ios/">
+                                    <span class="chip bg-color">ios</span>
                                 </a>
                             
                         </div>
@@ -1033,7 +969,8 @@ ZADD
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/01/13/jiang-ji-ji-lu/">
                     <div class="card-image">
@@ -1054,9 +991,9 @@ ZADD
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1069,6 +1006,7 @@ ZADD
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1087,31 +1025,28 @@ ZADD
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/">
+                <a href="/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/9c41d85e67935e1404a8037ea49b1ba3473fe13f.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之哈希（HASH）">
+                        <img src="http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之有序集合">
                         
-                        <span class="card-title">redis学习笔记-----基本数据类型之哈希（HASH）</span>
+                        <span class="card-title">redis学习笔记-----基本数据类型之有序集合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            哈希（HASH）
-哈希就像是一个微缩版的 redis。由键值对组成。一般讲数据库中的记录取出直接放入 redis 中使用。
+                            有序集合（sort sets）
+与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。
+使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 
 
-HSET、HMSET
-设置单个key
-一次设置多个key
-
-
-经过测试当前版本5.0.4，hset 也可以一次设置
+ZADD
+将一个或多个元素以及其 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-26
                             </span>
                         <span class="publish-author">
                             
