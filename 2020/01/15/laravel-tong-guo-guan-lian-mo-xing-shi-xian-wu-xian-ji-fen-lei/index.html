@@ -4,11 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="ipad-mini2 降级记录, 想当年,php,php技术分享">
-    <meta name="description" content="
-主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程
-
-最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用狗子搜索">
+    <meta name="keywords" content="laravel通过关联模型实现无限极分类, 想当年,php,php技术分享">
+    <meta name="description" content="Laravel 通过关联模型实现无限极分类
+这个内容是在 Laravel-China 论坛上看到的，怕以后不好找，这里记录一下。原文地址为：https://learnku.com/articles/14068/simple-practice">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ipad-mini2 降级记录 | 想当年的博客</title>
+    <title>laravel通过关联模型实现无限极分类 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,13 +270,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/kuala-lumpur-1820944_1280.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ipad-mini2 降级记录
+                        laravel通过关联模型实现无限极分类
                     </div>
                 </div>
             </div>
@@ -390,8 +388,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ios/">
-                                <span class="chip bg-color">ios</span>
+                            <a href="/tags/php/">
+                                <span class="chip bg-color">php</span>
+                            </a>
+                        
+                            <a href="/tags/laravel/">
+                                <span class="chip bg-color">laravel</span>
                             </a>
                         
                     </div>
@@ -402,8 +404,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/ios/" class="post-category">
-                                ios
+                            <a href="/categories/mysql/" class="post-category">
+                                mysql
                             </a>
                         
                     </div>
@@ -415,7 +417,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-13
+                    2020-01-15
                 </div>
                 
 
@@ -424,14 +426,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    736
+                    194
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 				
@@ -447,33 +449,62 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程</p>
+                <h1 id="Laravel-通过关联模型实现无限极分类"><a href="#Laravel-通过关联模型实现无限极分类" class="headerlink" title="Laravel 通过关联模型实现无限极分类"></a>Laravel 通过关联模型实现无限极分类</h1><blockquote>
+<p>这个内容是在 Laravel-China 论坛上看到的，怕以后不好找，这里记录一下。原文地址为：<a href="https://learnku.com/articles/14068/simple-practice-of-laravel-infinite-class-classification" target="_blank" rel="noopener">https://learnku.com/articles/14068/simple-practice-of-laravel-infinite-class-classification</a></p>
 </blockquote>
-<p>最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用<a href="https://www.dogedoge.com" target="_blank" rel="noopener">狗子</a>搜索了一下。竟然让我找到了<a href="https://www.v2ex.com/t/608874" target="_blank" rel="noopener">V2ex上的一个讨论</a>，仔细一看感觉挺靠谱，接下来就搞了。</p>
-<blockquote>
-<p>下面基本上都是废话，会玩直接看 v2 的帖子应该就可以搞定了，上面贴出了 GitHub 上项目的地址，基本上就是一键操作。</p>
+<h2 id="数据库结构"><a href="#数据库结构" class="headerlink" title="数据库结构"></a>数据库结构</h2><p>这里使用省市区结构</p>
+<pre class=" language-php"><code class="language-php">
+<span class="token keyword">class</span> <span class="token class-name">CreateAreasTable</span> <span class="token keyword">extends</span> <span class="token class-name">Migration</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">.</span>
+    <span class="token punctuation">.</span>
+    <span class="token punctuation">.</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">up</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        Schema<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token string">'areas'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>Blueprint <span class="token variable">$table</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">unsignedInteger</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">comment</span><span class="token punctuation">(</span><span class="token string">'城市名称'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">unsignedInteger</span><span class="token punctuation">(</span><span class="token string">'pid'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">default</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">comment</span><span class="token punctuation">(</span><span class="token string">'父级id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token punctuation">.</span>
+    <span class="token punctuation">.</span>
+    <span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h2 id="Area-模型增加关联方法"><a href="#Area-模型增加关联方法" class="headerlink" title="Area 模型增加关联方法"></a>Area 模型增加关联方法</h2><pre class=" language-php"><code class="language-php">
+<span class="token keyword">class</span> <span class="token class-name">Area</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
+<span class="token punctuation">{</span>
+    <span class="token punctuation">.</span>
+    <span class="token punctuation">.</span>
+    <span class="token punctuation">.</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">childArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">hasMany</span><span class="token punctuation">(</span>Area<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span><span class="token string">'pid'</span><span class="token punctuation">,</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">allChildArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">childArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">with</span><span class="token punctuation">(</span><span class="token string">'allChildArea'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token punctuation">.</span>
+    <span class="token punctuation">.</span>
+    <span class="token punctuation">.</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><blockquote>
+<p>通过如下代码可以得到所有地区的无限极分类结构。更改条件可以查看某个地区及其子地区的无限极分类结构</p>
 </blockquote>
-<p>根据的帖子给出的 github 链接查看项目，发现该项目已经不再维护了，但是好在项目又给出了一个新的地址。赶紧进入新的项目看一下。</p>
-<p>项目提示中指明了可以降级到10.3.3 的设备为 iPhone 5s, iPad Air, iPad Mini 2 (Not iPad4,6)。</p>
-<p>其他还有可以降级到8.4.1 的设备为iPhone 5, iPhone 4s, iPad 2, iPad 3, iPad 4, iPad Mini 1, iPod 5。</p>
-<p>以及可以降级到 6.1.3 的设备 iPhone 4s, iPad 2 (Not iPad2,4)。</p>
-<p>需要的小伙伴们自取。我只实验了ipad mini2 可以成功降级，其他的大家烧香祷告吧。^_^</p>
-<p>首先将项目克隆到本地，接着进入项目目录，并执行 <code>pip3 install -r requirements.txt</code> 安装项目需要的扩展。（确保当前系统中已经安装了python3，至少为3.5）</p>
-<p>下载 ios 10.3.3 的镜像文件。可以使用<a href="https://www.i4.cn/firmware_iPad_iPad%20mini%202__A1489_10.3.3__.html" target="_blank" rel="noopener">爱思助手</a>提供的镜像，下载速度那是杠杠的。</p>
-<p>接下来就是将 ipad 进入 DFU 模式。（这里吐槽一下，因为我不怎么用 ios 的设备，不知道 DFU 到底是个什么鬼，搜索了半天，很多人给出的方法根本不是进入 DFU的方法，最后还是在刚才那个 V2 讨论里面看到有朋友的回复，才明白了该怎么进入 DFU 模式。）</p>
-<p><strong> 这里说一下进入 DFU 模式的方法， </strong></p>
-<ol>
-<li>将 ipad 链接电脑</li>
-<li>经 ipad 关机</li>
-<li>长按电源键和 home 键 10 秒以上然后只松开电源键并保持 home 一直按着，当电脑上提示已经进入恢复模式则可以松开 home 键了。这个时候 ipad 屏幕是黑的。</li>
-</ol>
-<p><img src="http://static.xiangdangnian.net.cn/blog/sssdfsdfsdjkl23jk23j4lk23j423lklkwfjs.png" alt="DFU 模式"></p>
-<p>然后在项目里面执行 <code>./vieux -i .....ipsw</code>。 后面的省略号表示刚才下载的 ios10.3.3 的镜像文件。</p>
-<p>最后尽是等待了。</p>
-<p>我的一次成功，所以也没有什么好分享的啦，就先记录到这里啦。</p>
-<p>对了，最后说一下这个项目应该是只能在 macOS 下操作，windows 是不支持的。在一个就是最好可以使用梯子，要不然项目下载的一下东西可能会很慢，或者完全下不来。</p>
-<p>最后感谢 V2ex，啦啦啦啦又可以愉快地使用 Ipad 啦。</p>
+<pre class=" language-php"><code class="language-php">
+<span class="token variable">$res</span> <span class="token operator">=</span> Area<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">with</span><span class="token punctuation">(</span><span class="token string">'allChildArea'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'pid'</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
+
+</code></pre>
 
             </div>
             <hr>
@@ -499,7 +530,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/01/13/jiang-ji-ji-lu/">http://blog.xiangdangnian.net.cn/2020/01/13/jiang-ji-ji-lu/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/">http://blog.xiangdangnian.net.cn/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -537,8 +568,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ios/">
-                                    <span class="chip bg-color">ios</span>
+                                <a href="/tags/php/">
+                                    <span class="chip bg-color">php</span>
+                                </a>
+                            
+                                <a href="/tags/laravel/">
+                                    <span class="chip bg-color">laravel</span>
                                 </a>
                             
                         </div>
@@ -969,7 +1004,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/">
                     <div class="card-image">
@@ -987,9 +1023,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1002,6 +1038,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1024,35 +1061,34 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/">
+                <a href="/2020/01/13/jiang-ji-ji-lu/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之有序集合">
                         
-                        <span class="card-title">redis学习笔记-----基本数据类型之有序集合</span>
+                        <img src="http://static.xiangdangnian.net.cn/featureimages/17.jpg" class="responsive-img" alt="ipad-mini2 降级记录">
+                        
+                        <span class="card-title">ipad-mini2 降级记录</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有序集合（sort sets）
-与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。
-使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 
+                            
+主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程
 
-ZADD
-将一个或多个元素以及其 
+最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用狗子搜索
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category">
-                                    redis
+                            <a href="/categories/ios/" class="post-category">
+                                    ios
                                 </a>
                             
                             
@@ -1062,8 +1098,8 @@ ZADD
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/ios/">
+                        <span class="chip bg-color">ios</span>
                     </a>
                     
                 </div>

@@ -1,5 +1,5 @@
+http://blog.xiangdangnian.net.cn/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/
 http://blog.xiangdangnian.net.cn/2020/01/13/jiang-ji-ji-lu/
 http://blog.xiangdangnian.net.cn/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/
 http://blog.xiangdangnian.net.cn/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/
 http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/
-http://blog.xiangdangnian.net.cn/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/
