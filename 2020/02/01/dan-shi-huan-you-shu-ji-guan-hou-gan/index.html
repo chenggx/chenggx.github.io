@@ -4,9 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="laravel通过关联模型实现无限极分类, 想当年,php,php技术分享">
-    <meta name="description" content="Laravel 通过关联模型实现无限极分类
-这个内容是在 Laravel-China 论坛上看到的，怕以后不好找，这里记录一下。原文地址为：https://learnku.com/articles/14068/simple-practice">
+    <meta name="keywords" content="《但是还有书籍》观后感, 想当年,php,php技术分享">
+    <meta name="description" content="
+今天在 B 站上看了一部人文类的纪录片《但是还有书籍》，看过后激发了我内心深处那一丝文艺青年的骚动。(😓)所以就有了下面的内容。
+
+第一集「书海编舟记」一群隐身于书背后的人，他们穿梭于字里行间，钻研着逗号、句号的学问，他们以敏锐的眼光探">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>laravel通过关联模型实现无限极分类 | 想当年的博客</title>
+    <title>《但是还有书籍》观后感 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -270,13 +272,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/kuala-lumpur-1820944_1280.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/b65c86ab1cbdae10bfb99911def7ad59.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        laravel通过关联模型实现无限极分类
+                        《但是还有书籍》观后感
                     </div>
                 </div>
             </div>
@@ -388,27 +390,18 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/php/">
-                                <span class="chip bg-color">php</span>
+                            <a href="/tags/随笔/">
+                                <span class="chip bg-color">随笔</span>
                             </a>
                         
-                            <a href="/tags/laravel/">
-                                <span class="chip bg-color">laravel</span>
+                            <a href="/tags/观后感/">
+                                <span class="chip bg-color">观后感</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/mysql/" class="post-category">
-                                mysql
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -417,7 +410,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-15
+                    2020-02-01
                 </div>
                 
 
@@ -426,14 +419,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    194
+                    687
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 				
@@ -449,62 +442,16 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Laravel-通过关联模型实现无限极分类"><a href="#Laravel-通过关联模型实现无限极分类" class="headerlink" title="Laravel 通过关联模型实现无限极分类"></a>Laravel 通过关联模型实现无限极分类</h1><blockquote>
-<p>这个内容是在 Laravel-China 论坛上看到的，怕以后不好找，这里记录一下。原文地址为：<a href="https://learnku.com/articles/14068/simple-practice-of-laravel-infinite-class-classification" target="_blank" rel="noopener">https://learnku.com/articles/14068/simple-practice-of-laravel-infinite-class-classification</a></p>
+                <blockquote>
+<p>今天在 B 站上看了一部人文类的纪录片《但是还有书籍》，看过后激发了我内心深处那一丝文艺青年的骚动。(😓)所以就有了下面的内容。</p>
 </blockquote>
-<h2 id="数据库结构"><a href="#数据库结构" class="headerlink" title="数据库结构"></a>数据库结构</h2><p>这里使用省市区结构</p>
-<pre class=" language-php"><code class="language-php">
-<span class="token keyword">class</span> <span class="token class-name">CreateAreasTable</span> <span class="token keyword">extends</span> <span class="token class-name">Migration</span>
-<span class="token punctuation">{</span>
-    <span class="token punctuation">.</span>
-    <span class="token punctuation">.</span>
-    <span class="token punctuation">.</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">up</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        Schema<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token string">'areas'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>Blueprint <span class="token variable">$table</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">unsignedInteger</span><span class="token punctuation">(</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">comment</span><span class="token punctuation">(</span><span class="token string">'城市名称'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token variable">$table</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">unsignedInteger</span><span class="token punctuation">(</span><span class="token string">'pid'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">default</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">comment</span><span class="token punctuation">(</span><span class="token string">'父级id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token punctuation">.</span>
-    <span class="token punctuation">.</span>
-    <span class="token punctuation">.</span>
-<span class="token punctuation">}</span>
-
-</code></pre>
-<h2 id="Area-模型增加关联方法"><a href="#Area-模型增加关联方法" class="headerlink" title="Area 模型增加关联方法"></a>Area 模型增加关联方法</h2><pre class=" language-php"><code class="language-php">
-<span class="token keyword">class</span> <span class="token class-name">Area</span> <span class="token keyword">extends</span> <span class="token class-name">Model</span>
-<span class="token punctuation">{</span>
-    <span class="token punctuation">.</span>
-    <span class="token punctuation">.</span>
-    <span class="token punctuation">.</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">childArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">hasMany</span><span class="token punctuation">(</span>Area<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">,</span><span class="token string">'pid'</span><span class="token punctuation">,</span><span class="token string">'id'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">allChildArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
-        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">childArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">with</span><span class="token punctuation">(</span><span class="token string">'allChildArea'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-
-    <span class="token punctuation">.</span>
-    <span class="token punctuation">.</span>
-    <span class="token punctuation">.</span>
-
-<span class="token punctuation">}</span>
-
-</code></pre>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><blockquote>
-<p>通过如下代码可以得到所有地区的无限极分类结构。更改条件可以查看某个地区及其子地区的无限极分类结构</p>
-</blockquote>
-<pre class=" language-php"><code class="language-php">
-<span class="token variable">$res</span> <span class="token operator">=</span> Area<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">with</span><span class="token punctuation">(</span><span class="token string">'allChildArea'</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">where</span><span class="token punctuation">(</span><span class="token string">'pid'</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">get</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">return</span> <span class="token variable">$res</span><span class="token punctuation">;</span>
-
-</code></pre>
+<h2 id="第一集「书海编舟记」"><a href="#第一集「书海编舟记」" class="headerlink" title="第一集「书海编舟记」"></a>第一集「书海编舟记」</h2><p><em>一群隐身于书背后的人，他们穿梭于字里行间，钻研着逗号、句号的学问，他们以敏锐的眼光探寻文学的矿脉，他们以细微琐碎的工作搭建起跨越语言的桥梁，摆渡于作者和读者之间，编织着航行于浩瀚文海中的思想之舟。</em></p>
+<p>上面的文字是这一集的开篇语，读过上面的文字相信大家应该已经知道这一集讲述的是什么内容了吧。没错！就是书籍编辑者和书籍翻译者。</p>
+<p>这一集主要讲述了3个人的故事。</p>
+<p>第一位叫做朱岳，是后浪文学的一名主编也是一名作者。主要是将一些台湾、新加坡之类的华语类文学引入国内，让国内的我们也可以读到这些地方的作品。第二位叫做俞国林，是中华书局学术著作出版中心的主任。通过他的努力，历时十三年的时间终于在2018年1月出版了《郑天挺西南联大日记》一书，该书的出版对研究西南联大校史、近代学术史都是极为重要的史料。第三位叫做范晔是北京大学外国语学院西葡语系的系主任。他是《百年孤独》中文版的译者，为了能够更好的表达作者的意思且可以在10个月内完成翻译，他翻遍了马尔克斯其他的作品，一遍一遍的查字典、翻阅资料，终于在2011年6月花了11月翻译的作品出版了。</p>
+<p>虽然三位平凡的文字工作者在平凡的工作 岗位上做着平凡的事情，但是因为他们的努力我们才能看到其他地区华语文学作品，让我们得以了解他们的生活、文化。也是他们的努力让我可以了解历史，获悉曾经发生的故事。还是他们的努力让我们可以看到其他外国文学。</p>
+<h2 id="第二集「二手书的奇幻漂流」"><a href="#第二集「二手书的奇幻漂流」" class="headerlink" title="第二集「二手书的奇幻漂流」"></a>第二集「二手书的奇幻漂流」</h2><p><em>书籍从一诞生便开始了他的奇幻之旅。从书店到读书人手中，从一个书房到另一个书房，他们在漫长的岁月中辗转流徙，不断增添新的痕迹与记忆，与人共同书写着一段段故事与传奇</em></p>
+<p>这一集也是3个人的故事。</p>
 
             </div>
             <hr>
@@ -530,7 +477,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/">http://blog.xiangdangnian.net.cn/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/02/01/dan-shi-huan-you-shu-ji-guan-hou-gan/">http://blog.xiangdangnian.net.cn/2020/02/01/dan-shi-huan-you-shu-ji-guan-hou-gan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,12 +515,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/php/">
-                                    <span class="chip bg-color">php</span>
+                                <a href="/tags/随笔/">
+                                    <span class="chip bg-color">随笔</span>
                                 </a>
                             
-                                <a href="/tags/laravel/">
-                                    <span class="chip bg-color">laravel</span>
+                                <a href="/tags/观后感/">
+                                    <span class="chip bg-color">观后感</span>
                                 </a>
                             
                         </div>
@@ -1004,7 +951,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/01/dan-shi-huan-you-shu-ji-guan-hou-gan/">
                     <div class="card-image">
@@ -1024,9 +972,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1035,6 +983,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1057,34 +1006,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/13/jiang-ji-ji-lu/">
+                <a href="/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/">
                     <div class="card-image">
                         
+                        <img src="http://static.xiangdangnian.net.cn/blog/kuala-lumpur-1820944_1280.jpg" class="responsive-img" alt="laravel通过关联模型实现无限极分类">
                         
-                        <img src="http://static.xiangdangnian.net.cn/featureimages/17.jpg" class="responsive-img" alt="ipad-mini2 降级记录">
-                        
-                        <span class="card-title">ipad-mini2 降级记录</span>
+                        <span class="card-title">laravel通过关联模型实现无限极分类</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程
-
-最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用狗子搜索
+                            Laravel 通过关联模型实现无限极分类
+这个内容是在 Laravel-China 论坛上看到的，怕以后不好找，这里记录一下。原文地址为：https://learnku.com/articles/14068/simple-practice
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/ios/" class="post-category">
-                                    ios
+                            <a href="/categories/mysql/" class="post-category">
+                                    mysql
                                 </a>
                             
                             
@@ -1094,8 +1040,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/ios/">
-                        <span class="chip bg-color">ios</span>
+                    <a href="/tags/php/">
+                        <span class="chip bg-color">php</span>
+                    </a>
+                    
+                    <a href="/tags/laravel/">
+                        <span class="chip bg-color">laravel</span>
                     </a>
                     
                 </div>
