@@ -6,12 +6,11 @@
     <meta charset="utf-8">
     <meta name="keywords" content="CGI, Fast-CGI，PHP-CGI，PHP-FPM 几个概念的总结, 想当年,php,php技术分享">
     <meta name="description" content="
-2019-6-27 更新
+2020-2-6 更新
 
- 最近又看到了类似的文章，发现之前记录的好像是不太对。现在也不知道哪个是正确的，就都先记下来吧。 
-结论
-CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 方式。
-">
+ 最近又看到一篇文章，讲解的非常到位，在更正一下之前的结论  
+
+cgi、fast-cgi 都是协议，规定了 web server 需要传递那些数据给 php 解释器。他们的区别是 cgi 每次都需要加载配置文件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -427,14 +426,14 @@ CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    339
+                    543
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 				
@@ -451,6 +450,17 @@ CGI、FastCGI 只是PHP的的运行方式。其他的还有APACHE2HANDLER、CLI 
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
+<p>2020-2-6 更新</p>
+</blockquote>
+<p><strong> 最近又看到一篇<a href="https://segmentfault.com/q/1010000000256516" target="_blank" rel="noopener">文章</a>，讲解的非常到位，在更正一下之前的结论  </strong></p>
+<ol>
+<li><p>cgi、fast-cgi 都是协议，规定了 web server 需要传递那些数据给 php 解释器。他们的区别是 cgi 每次都需要加载配置文件来初始化，而 fast-cgi 会先启一个master，解析配置文件，初始化执行环境，然后再启动多个worker。当请求过来时，master会传递给一个worker，然后立即可以接受下一个请求。这样就避免了重复的劳动，效率自然是高。</p>
+</li>
+<li><p>php-cgi 相当于 php 的一个解释器是一个具体的程序，也就是系统中的进程。而 php-fpm 是一个实现了 fast-cgi 的具体程序，用来管理 php-cgi 进程。</p>
+</li>
+</ol>
+<hr>
+<blockquote>
 <p>2019-6-27 更新</p>
 </blockquote>
 <p><strong> 最近又看到了类似的文章，发现之前记录的好像是不太对。现在也不知道哪个是正确的，就都先记下来吧。</strong> </p>

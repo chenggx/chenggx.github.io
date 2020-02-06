@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.xiangdangnian.net.cn/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/</loc>
+    
+    <lastmod>2020-02-06T08:20:11.163Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xiangdangnian.net.cn/2020/02/01/dan-shi-huan-you-shu-ji-guan-hou-gan/</loc>
     
     <lastmod>2020-02-02T07:10:56.000Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://blog.xiangdangnian.net.cn/2019/06/18/laravel-xue-xi-bi-ji/</loc>
     
     <lastmod>2019-07-10T14:42:17.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/</loc>
-    
-    <lastmod>2019-06-27T15:23:16.000Z</lastmod>
     
   </url>
   
