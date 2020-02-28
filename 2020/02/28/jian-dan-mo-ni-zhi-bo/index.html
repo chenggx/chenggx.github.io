@@ -4,11 +4,15 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="《但是还有书籍》观后感, 想当年,php,php技术分享">
+    <meta name="keywords" content="使用 websocket 简单模拟直播效果（初级版）, 想当年,php,php技术分享">
     <meta name="description" content="
-今天在 B 站上看了一部人文类的纪录片《但是还有书籍》，看过后激发了我内心深处那一丝文艺青年的骚动。(😓)所以就有了下面的内容。
+基于 swoole 通过 websocket 简单实现直播效果。（主要学习一下 websocket 相关知识点）
 
-第一集「书海编舟记」一群隐身于书背后的人，他们穿梭于字里行间，钻研着逗号、句号的学问，他们以敏锐的眼光探">
+
+流程
+在直播页使用视频的方式模拟摄像头
+利用 canvas 绘制视频内容
+通过 canvas 将绘制的图片转化为 bas">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +20,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>《但是还有书籍》观后感 | 想当年的博客</title>
+    <title>使用 websocket 简单模拟直播效果（初级版） | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,13 +276,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/b65c86ab1cbdae10bfb99911def7ad59.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/time-lapse-photography-of-road-with-high-rise-buildings-1306699.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        《但是还有书籍》观后感
+                        使用 websocket 简单模拟直播效果（初级版）
                     </div>
                 </div>
             </div>
@@ -390,12 +394,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/随笔/">
-                                <span class="chip bg-color">随笔</span>
+                            <a href="/tags/php/">
+                                <span class="chip bg-color">php</span>
                             </a>
                         
-                            <a href="/tags/观后感/">
-                                <span class="chip bg-color">观后感</span>
+                            <a href="/tags/swoole/">
+                                <span class="chip bg-color">swoole</span>
                             </a>
                         
                     </div>
@@ -410,7 +414,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-01
+                    2020-02-28
                 </div>
                 
 
@@ -419,7 +423,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    676
+                    507
                 </div>
                 
 
@@ -443,14 +447,126 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>今天在 B 站上看了一部人文类的纪录片《但是还有书籍》，看过后激发了我内心深处那一丝文艺青年的骚动。(😓)所以就有了下面的内容。</p>
+<p>基于 swoole 通过 websocket 简单实现直播效果。（主要学习一下 websocket 相关知识点）</p>
 </blockquote>
-<h2 id="第一集「书海编舟记」"><a href="#第一集「书海编舟记」" class="headerlink" title="第一集「书海编舟记」"></a>第一集「书海编舟记」</h2><p><em>一群隐身于书背后的人，他们穿梭于字里行间，钻研着逗号、句号的学问，他们以敏锐的眼光探寻文学的矿脉，他们以细微琐碎的工作搭建起跨越语言的桥梁，摆渡于作者和读者之间，编织着航行于浩瀚文海中的思想之舟。</em></p>
-<p>上面的文字是这一集的开篇语，读过上面的文字相信大家应该已经知道这一集讲述的是什么内容了吧。没错！就是书籍编辑者和书籍翻译者。</p>
-<p>这一集主要讲述了3个人的故事。</p>
-<p>第一位叫做朱岳，是后浪文学的一名主编也是一名作者。主要是将一些台湾、新加坡之类的华语类文学引入国内，让国内的我们也可以读到这些地方的作品。第二位叫做俞国林，是中华书局学术著作出版中心的主任。通过他的努力，历时十三年的时间终于在2018年1月出版了《郑天挺西南联大日记》一书，该书的出版对研究西南联大校史、近代学术史都是极为重要的史料。第三位叫做范晔是北京大学外国语学院西葡语系的系主任。他是《百年孤独》中文版的译者，为了能够更好的表达作者的意思且可以在10个月内完成翻译，他翻遍了马尔克斯其他的作品，一遍一遍的查字典、翻阅资料，终于在2011年6月花了11月翻译的作品出版了。</p>
-<p>虽然三位平凡的文字工作者在平凡的工作 岗位上做着平凡的事情，但是因为他们的努力我们才能看到其他地区华语文学作品，让我们得以了解他们的生活、文化。也是他们的努力让我可以了解历史，获悉曾经发生的故事。还是他们的努力让我们可以看到其他外国文学。</p>
-<h2 id="第二集「二手书的奇幻漂流」"><a href="#第二集「二手书的奇幻漂流」" class="headerlink" title="第二集「二手书的奇幻漂流」"></a>第二集「二手书的奇幻漂流」</h2><p><em>书籍从一诞生便开始了他的奇幻之旅。从书店到读书人手中，从一个书房到另一个书房，他们在漫长的岁月中辗转流徙，不断增添新的痕迹与记忆，与人共同书写着一段段故事与传奇</em></p>
+<p><img src="http://static.xiangdangnian.net.cn/blog/wesocket.jpg" alt="流程图"></p>
+<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><ol>
+<li>在直播页使用视频的方式模拟摄像头</li>
+<li>利用 canvas 绘制视频内容</li>
+<li>通过 canvas 将绘制的图片转化为 base64 格式</li>
+<li>使用 settimeout 定时执行，通过 websocket 将 base64 格式图片传递到服务端</li>
+<li>服务端接收到数据之后，通过广播的形式进行推送</li>
+<li>客户端页面通过 websocket 接收服务端发来的数据在页面上循环展示</li>
+<li>完成</li>
+</ol>
+<h2 id="直播页"><a href="#直播页" class="headerlink" title="直播页"></a>直播页</h2><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>video</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>xszr.mp4<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>video<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>400<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>400<span class="token punctuation">"</span></span> <span class="token attr-name">autoplay</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span> <span class="token attr-name">controls</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>video</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>canvas</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>canvas<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1280<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>720<span class="token punctuation">"</span></span> <span class="token attr-name">hidden</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>canvas</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+    ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">"ws://test.test/ws"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">var</span> video <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'video'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> canvas <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'canvas'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> context <span class="token operator">=</span> canvas<span class="token punctuation">.</span><span class="token function">getContext</span><span class="token punctuation">(</span><span class="token string">'2d'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        context<span class="token punctuation">.</span><span class="token function">drawImage</span><span class="token punctuation">(</span>video<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ws<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>canvas<span class="token punctuation">.</span><span class="token function">toDataURL</span><span class="token punctuation">(</span><span class="token string">'image/jpeg'</span><span class="token punctuation">,</span><span class="token number">0.4</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span>draw<span class="token punctuation">,</span><span class="token number">80</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+
+    ws<span class="token punctuation">.</span>onopen <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">draw</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<h2 id="websocket-服务端"><a href="#websocket-服务端" class="headerlink" title="websocket 服务端"></a>websocket 服务端</h2><pre class=" language-php"><code class="language-php"><span class="token variable">$ws</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">swoole_websocket_server</span><span class="token punctuation">(</span><span class="token string">'0.0.0.0'</span><span class="token punctuation">,</span><span class="token number">9527</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">//监听WebSocket消息事件</span>
+<span class="token variable">$ws</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$ws</span><span class="token punctuation">,</span> <span class="token variable">$frame</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token function">var_dump</span><span class="token punctuation">(</span><span class="token variable">$ws</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">connections</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$ws</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">connections</span> <span class="token keyword">as</span> <span class="token variable">$fd</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$ws</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">push</span><span class="token punctuation">(</span><span class="token variable">$fd</span><span class="token punctuation">,</span><span class="token variable">$frame</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">data</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment" spellcheck="true">//监听WebSocket连接关闭事件</span>
+<span class="token variable">$ws</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'close'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$ws</span><span class="token punctuation">,</span> <span class="token variable">$fd</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string">"client-{$fd} is closed\n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$ws</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Title<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>img<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1280<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>720<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script language-javascript">
+    ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">"ws://test.test/ws"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    img <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'img'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+
+    ws<span class="token punctuation">.</span>onmessage <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>event<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        img<span class="token punctuation">.</span>src <span class="token operator">=</span> event<span class="token punctuation">.</span>data
+    <span class="token punctuation">}</span>
+
+</span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
+</code></pre>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="http://static.xiangdangnian.net.cn/blog/fdssddsfsdfsdf.gif" alt="最终效果"></p>
+<h3 id="nginx-配置"><a href="#nginx-配置" class="headerlink" title="nginx 配置"></a>nginx 配置</h3><pre class=" language-nginx"><code class="language-nginx"><span class="token keyword">upstream</span> test <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true"># 因为使用的laradock 所以是workspace，其他环境根据具体情况填写对应 ip 地址</span>
+    <span class="token keyword">server</span> workspace<span class="token punctuation">:</span><span class="token number">9527</span> weight<span class="token operator">=</span><span class="token number">5</span> max_fails<span class="token operator">=</span><span class="token number">3</span> fail_timeout<span class="token operator">=</span>30s<span class="token punctuation">;</span>
+    <span class="token keyword">keepalive</span> <span class="token number">16</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">server</span> <span class="token punctuation">{</span>
+    <span class="token keyword">listen</span> <span class="token number">80</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">server_name</span> test<span class="token punctuation">.</span>test<span class="token punctuation">;</span>
+    <span class="token keyword">root</span> <span class="token operator">/</span>var<span class="token operator">/</span>www<span class="token operator">/</span>test<span class="token punctuation">;</span>
+    <span class="token keyword">index</span> <span class="token keyword">index</span><span class="token punctuation">.</span>php <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true"># 因为 laradock 开启其他端口比较麻烦，所以使用该方法进行转发</span>
+    <span class="token keyword">location</span> <span class="token operator">=</span><span class="token operator">/</span>ws <span class="token punctuation">{</span>
+        <span class="token keyword">proxy_http_version</span> <span class="token number">1.1</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Real<span class="token operator">-</span>IP <span class="token variable">$remote_addr</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Real<span class="token operator">-</span>PORT <span class="token variable">$remote_port</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> X<span class="token operator">-</span>Forwarded<span class="token operator">-</span>For <span class="token variable">$proxy_add_x_forwarded_for</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Host <span class="token variable">$http_host</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Scheme <span class="token variable">$scheme</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> <span class="token keyword">Server</span><span class="token operator">-</span><span class="token keyword">Protocol</span> <span class="token variable">$server_protocol</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> <span class="token keyword">Server</span><span class="token operator">-</span>Name <span class="token variable">$server_name</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> <span class="token keyword">Server</span><span class="token operator">-</span>Addr <span class="token variable">$server_addr</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> <span class="token keyword">Server</span><span class="token operator">-</span>Port <span class="token variable">$server_port</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Upgrade <span class="token variable">$http_upgrade</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_set_header</span> Connection <span class="token variable">$connection_upgrade</span><span class="token punctuation">;</span>
+        <span class="token keyword">proxy_pass</span> <span class="token keyword">http</span><span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span>test<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
 
             </div>
             <hr>
@@ -476,7 +592,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/02/01/dan-shi-huan-you-shu-ji-guan-hou-gan/">http://blog.xiangdangnian.net.cn/2020/02/01/dan-shi-huan-you-shu-ji-guan-hou-gan/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/02/28/jian-dan-mo-ni-zhi-bo/">http://blog.xiangdangnian.net.cn/2020/02/28/jian-dan-mo-ni-zhi-bo/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -514,12 +630,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/随笔/">
-                                    <span class="chip bg-color">随笔</span>
+                                <a href="/tags/php/">
+                                    <span class="chip bg-color">php</span>
                                 </a>
                             
-                                <a href="/tags/观后感/">
-                                    <span class="chip bg-color">观后感</span>
+                                <a href="/tags/swoole/">
+                                    <span class="chip bg-color">swoole</span>
                                 </a>
                             
                         </div>
@@ -950,7 +1066,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/02/28/jian-dan-mo-ni-zhi-bo/">
                     <div class="card-image">
@@ -974,9 +1091,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -985,6 +1102,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1007,33 +1125,31 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/">
+                <a href="/2020/02/01/dan-shi-huan-you-shu-ji-guan-hou-gan/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/kuala-lumpur-1820944_1280.jpg" class="responsive-img" alt="laravel通过关联模型实现无限极分类">
+                        <img src="http://static.xiangdangnian.net.cn/blog/b65c86ab1cbdae10bfb99911def7ad59.jpg" class="responsive-img" alt="《但是还有书籍》观后感">
                         
-                        <span class="card-title">laravel通过关联模型实现无限极分类</span>
+                        <span class="card-title">《但是还有书籍》观后感</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Laravel 通过关联模型实现无限极分类
-这个内容是在 Laravel-China 论坛上看到的，怕以后不好找，这里记录一下。原文地址为：https://learnku.com/articles/14068/simple-practice
+                            
+今天在 B 站上看了一部人文类的纪录片《但是还有书籍》，看过后激发了我内心深处那一丝文艺青年的骚动。(😓)所以就有了下面的内容。
+
+第一集「书海编舟记」一群隐身于书背后的人，他们穿梭于字里行间，钻研着逗号、句号的学问，他们以敏锐的眼光探
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-01-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-01
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/mysql/" class="post-category">
-                                    mysql
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            chenggx
                             
                         </span>
                     </div>
@@ -1041,12 +1157,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/php/">
-                        <span class="chip bg-color">php</span>
+                    <a href="/tags/随笔/">
+                        <span class="chip bg-color">随笔</span>
                     </a>
                     
-                    <a href="/tags/laravel/">
-                        <span class="chip bg-color">laravel</span>
+                    <a href="/tags/观后感/">
+                        <span class="chip bg-color">观后感</span>
                     </a>
                     
                 </div>
