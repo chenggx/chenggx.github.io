@@ -4,11 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="《被讨厌的勇气》读后感, 想当年,php,php技术分享">
-    <meta name="description" content="
-自从从外地回到家里，感觉焦虑的情绪比之前更深了。就这本读后感来记录一下近期的情况吧。
-
-发现这本书也是一个偶然的机会吧。因为已经30岁了还没有结婚，而且也从来没有谈过恋爱，那么从回到家开始家里人就一直在张罗相亲的事情。最近认识了一个女生，">
+    <meta name="keywords" content="docker 学习笔记（一）, 想当年,php,php技术分享">
+    <meta name="description" content="docker 介绍docker 这个东西应该做开发的应该都有听说过，但是不知道大家有没有详细的了解过。反正我是属于听说过，大概知道是个什么东西，能特别简单的使用。但是一直没有深入的学习过，今天在这里我想把学习 docker 的过程记录下来，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>《被讨厌的勇气》读后感 | 想当年的博客</title>
+    <title>docker 学习笔记（一） | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -259,7 +256,7 @@
 <script src="https://cdn.bootcss.com/crypto-js/3.1.9-1/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '8855751e3ea124816dc67c13577ceef48ddeab77fd534e7f9a9e914ca998d32c';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
                 alert('密码错误，将返回主页！');
@@ -272,13 +269,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/b65c86ab1cbdae10bfb99911def7ad59.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2020/08/10/20-46-42-247cb7b419a0fbdc33d90c75ceea78cb-cfef34.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        《被讨厌的勇气》读后感
+                        docker 学习笔记（一）
                     </div>
                 </div>
             </div>
@@ -390,18 +387,23 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/随笔/">
-                                <span class="chip bg-color">随笔</span>
-                            </a>
-                        
-                            <a href="/tags/观后感/">
-                                <span class="chip bg-color">观后感</span>
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Docker/" class="post-category">
+                                Docker
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -410,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-06-09
+                    2020-08-09
                 </div>
                 
 
@@ -419,14 +421,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    634
+                    969
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 				
@@ -442,27 +444,69 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>自从从外地回到家里，感觉焦虑的情绪比之前更深了。就这本读后感来记录一下近期的情况吧。</p>
+                <h2 id="docker-介绍"><a href="#docker-介绍" class="headerlink" title="docker 介绍"></a>docker 介绍</h2><p>docker 这个东西应该做开发的应该都有听说过，但是不知道大家有没有详细的了解过。反正我是属于听说过，大概知道是个什么东西，能特别简单的使用。但是一直没有深入的学习过，今天在这里我想把学习 docker 的过程记录下来，方便日后查找。</p>
+<p>那么下面开始啦。~~~</p>
+<h2 id="为啥要使用-docker"><a href="#为啥要使用-docker" class="headerlink" title="为啥要使用 docker"></a>为啥要使用 docker</h2><blockquote>
+<p>在我电脑上运行的是正常的啊？怎么到了别人的电脑上就不能正常运行了呢？</p>
 </blockquote>
-<p>发现这本书也是一个偶然的机会吧。因为已经30岁了还没有结婚，而且也从来没有谈过恋爱，那么从回到家开始家里人就一直在张罗相亲的事情。最近认识了一个女生，也见过几面，聊的也算还行，就是比较客气的问候以及随便的闲聊。大概持续了得有2个月左右吧。近期感觉在微信上聊得非常不错，本想着约出来表白一下。也不知道那天是什么原因，吃饭的时候来到一家刚开也的烧烤店，因为刚开业在做活动，外面不停的有人在唱歌，声音很大听不清说话的那种。然后这顿饭就吃的不是很愉快，期间也没怎么聊。饭后大家就坐车回去了。到家后我就感觉不知道为什么都认识也算挺久的了，怎么在一起的时候还是像普通人一样，非常的客气、生疏，完全不像微信里聊天的那种感觉，更别说恋爱的感觉了。</p>
-<p>后来我就这反思，究竟什么原因造成了现在的这种局面。我承认自己性格内向，不善于表达。但是平常在一些朋友同、事面前表现的也还好。然后就在网络上查这是怎么回事。有人提到了「社交恐惧症」。</p>
-<p>之前也知道这么个词语，但真的没往自己身上想，就是觉得自己有点内向，不爱说话罢了。然而仔细看了下社恐的症状——可能我真的有些轻微的社恐了。</p>
-<p>下面讲下重点——《被讨厌的勇气》这本书。</p>
-<ul>
-<li><p>本书主要通过哲人和以为青年之间的对话的方式引出了阿德勒心理学的相关内容。</p>
+<p>如果你也碰到上面的问题了，那么请你也开始 docker 的学习吧。这个时候有人会说为啥不用虚拟机呢，因为虚拟机是完全模拟一台正常运行的。就算你只是需要运行一个 php 的环境，那么系统默认的一些其他进程也是会启动的，这样就会降低我们电脑的利用率。还有一点就是虚拟机一般是不能再生产环境中使用的。但是 docker 没有问题。总而言之一句话，虚拟机不好，我们要用 docker 。</p>
+<h2 id="docker-的用途"><a href="#docker-的用途" class="headerlink" title="docker 的用途"></a>docker 的用途</h2><ol>
+<li>提供一次性的环境。比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</li>
+<li>提供弹性的云服务。因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
+<li>组建微服务架构。通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
+</ol>
+<h2 id="docker-的安装"><a href="#docker-的安装" class="headerlink" title="docker 的安装"></a>docker 的安装</h2><p>docker 分为社区版（CE）、企业版本（EE）<br>win 和 mac 安装很简单，就是正常的安装软件的方法，而用能用 linux 系统的，相信你也有办法找到安装的方法的。</p>
+<p>安装完成之后使用如下命令验证是否安装成功</p>
+<pre class=" language-bash"><code class="language-bash">$ docker version
+<span class="token comment" spellcheck="true"># 或者</span>
+$ docker info
+</code></pre>
+<p><strong>Docker 需要用户具有 sudo 权限，为了避免每次命令都输入sudo，可以把用户加入 Docker 用户组</strong></p>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">sudo</span> <span class="token function">usermod</span> -aG docker <span class="token variable">$USER</span>
+</code></pre>
+<p>使用如下命令启动 docker</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># service 命令的用法</span>
+$ <span class="token function">sudo</span> <span class="token function">service</span> docker start
+
+<span class="token comment" spellcheck="true"># systemctl 命令的用法</span>
+$ <span class="token function">sudo</span> systemctl start docker
+</code></pre>
+<h2 id="第一个实例-hello-world"><a href="#第一个实例-hello-world" class="headerlink" title="第一个实例 hello world"></a>第一个实例 hello world</h2><pre class=" language-bash"><code class="language-bash">$ docker container run hello-world
+</code></pre>
+<p>如果运行成功，你会在屏幕上读到下面的输出。</p>
+<pre class=" language-bash"><code class="language-bash">$ docker container run hello-world
+
+Hello from Docker<span class="token operator">!</span>
+This message shows that your installation appears to be working correctly.
+
+<span class="token punctuation">..</span>. <span class="token punctuation">..</span>.
+</code></pre>
+<p>上面命令的过程就是：</p>
+<ol>
+<li>从 docker 的官方仓库拉取 hello world image 文件到本地</li>
+<li>使用 image 文件 生成 容器文件</li>
+<li>运行 hello world 容器 —&gt; 输出相关内容  —&gt; 容器自动终止（有些容器不会自动终止，因为提供的是服务。比如，安装运行 Ubuntu 的 image，就可以在命令行体验 Ubuntu 系统。）</li>
+</ol>
+<p>通过上面的实例大概知道了 docker 的是怎么回事了。主要就是需要明白两个文件，image文件和容器文件。接下来我们制作一个 image 文件，并通过该文件生成容器并运行。</p>
+<h2 id="制作自己的-docker-容器"><a href="#制作自己的-docker-容器" class="headerlink" title="制作自己的 docker 容器"></a>制作自己的 docker 容器</h2><ol>
+<li>新建一个目录<pre class=" language-bash"><code class="language-bash">$ <span class="token function">mkdir</span> hello <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> hello 
+</code></pre>
 </li>
-<li><p>首先颠覆了弗洛伊德的原因论。</p>
+<li>在目录中新建 .dockerignore 文件（该文件类似于 git 项目中的 .gitignore 文件）</li>
+<li><p>在目录中新建 Dockerfile 文件,内容如下所示<br><img src="http://static.xiangdangnian.net.cn/blog/2020/08/10/20-29-32-9faae2396ce4759958aee55bfcabc924-f01fa1.png" alt=""></p>
 </li>
-<li><p>接下来是人生的烦恼和自卑都是来自有人际关系。</p>
+<li><p>运行命令，进行 image 的构建</p>
+<pre class=" language-bash"><code class="language-bash">$ docker build -t nginx:v1 <span class="token keyword">.</span>
+</code></pre>
+<p>看到如下内容则表示 image 构建成功。<br><img src="http://static.xiangdangnian.net.cn/blog/2020/08/10/20-30-47-a92e94e81727959af077be139e676ed6-044d5a.png" alt=""></p>
 </li>
-<li><p>第三教会我们如何把自己和别人的人生课题分开。</p>
+<li><p>通过 image 文件生成容器文件</p>
+<pre class=" language-bash"><code class="language-bash">$ docker run --name webserver -p 9527:80 nginx:v1
+</code></pre>
 </li>
-<li><p>第四就是标题所讲的内容，要有被讨厌的勇气。</p>
-</li>
-<li><p>最后告知我们要活在当下，即不要纠结过去的原因，也不要畅享未来的美好，过好人生的每一个刹那。</p>
-</li>
-</ul>
+<li>通过浏览器访问 localhost:9527,如果可以看到如下内容则成功<br><img src="http://static.xiangdangnian.net.cn/blog/2020/08/10/20-35-50-6f66e88683370b594f2ec01744c008cf-0c3367.png" alt=""></li>
+</ol>
+<p>一个简单的容器就完成了。通过这个例子我们可以大概了解 docker 的配置，运行， 后面会深入 docker 相关的概念进行学习，并定下第一个计划 ———— 配置一个属于自己的 LNMP docker 测试环境。</p>
 
             </div>
             <hr>
@@ -488,7 +532,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/06/09/bei-tao-yan-de-yong-qi-du-hou-gan/">http://blog.xiangdangnian.net.cn/2020/06/09/bei-tao-yan-de-yong-qi-du-hou-gan/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/08/09/docker-xue-xi-bi-ji-yi/">http://blog.xiangdangnian.net.cn/2020/08/09/docker-xue-xi-bi-ji-yi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -526,12 +570,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/随笔/">
-                                    <span class="chip bg-color">随笔</span>
-                                </a>
-                            
-                                <a href="/tags/观后感/">
-                                    <span class="chip bg-color">观后感</span>
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
                                 </a>
                             
                         </div>
@@ -962,7 +1002,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/08/09/docker-xue-xi-bi-ji-yi/">
                     <div class="card-image">
@@ -979,9 +1020,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -994,6 +1035,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1012,30 +1054,26 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/28/jian-dan-mo-ni-zhi-bo/">
+                <a href="/2020/06/09/bei-tao-yan-de-yong-qi-du-hou-gan/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/time-lapse-photography-of-road-with-high-rise-buildings-1306699.jpg" class="responsive-img" alt="使用 websocket 简单模拟直播效果（初级版）">
+                        <img src="http://static.xiangdangnian.net.cn/blog/b65c86ab1cbdae10bfb99911def7ad59.jpg" class="responsive-img" alt="《被讨厌的勇气》读后感">
                         
-                        <span class="card-title">使用 websocket 简单模拟直播效果（初级版）</span>
+                        <span class="card-title">《被讨厌的勇气》读后感</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-基于 swoole 通过 websocket 简单实现直播效果。（主要学习一下 websocket 相关知识点）
+自从从外地回到家里，感觉焦虑的情绪比之前更深了。就这本读后感来记录一下近期的情况吧。
 
-
-流程
-在直播页使用视频的方式模拟摄像头
-利用 canvas 绘制视频内容
-通过 canvas 将绘制的图片转化为 bas
+发现这本书也是一个偶然的机会吧。因为已经30岁了还没有结婚，而且也从来没有谈过恋爱，那么从回到家开始家里人就一直在张罗相亲的事情。最近认识了一个女生，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-09
                             </span>
                         <span class="publish-author">
                             
@@ -1048,12 +1086,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/php/">
-                        <span class="chip bg-color">php</span>
+                    <a href="/tags/随笔/">
+                        <span class="chip bg-color">随笔</span>
                     </a>
                     
-                    <a href="/tags/swoole/">
-                        <span class="chip bg-color">swoole</span>
+                    <a href="/tags/观后感/">
+                        <span class="chip bg-color">观后感</span>
                     </a>
                     
                 </div>
