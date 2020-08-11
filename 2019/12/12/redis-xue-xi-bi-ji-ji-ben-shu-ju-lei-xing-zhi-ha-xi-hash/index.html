@@ -1092,7 +1092,7 @@ HSET、HMSET
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/">
+                <a href="/2019/12/26/docs/15971493235213/">
                     <div class="card-image">
                         
                         <img src="http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之有序集合">
@@ -1145,28 +1145,31 @@ ZADD
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/">
+                <a href="/2019/12/12/docs/15971493235175/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/59b775569da2a.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之集合">
+                        <img src="http://static.xiangdangnian.net.cn/blog/9c41d85e67935e1404a8037ea49b1ba3473fe13f.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之哈希（HASH）">
                         
-                        <span class="card-title">redis学习笔记-----基本数据类型之集合</span>
+                        <span class="card-title">redis学习笔记-----基本数据类型之哈希（HASH）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            集合（Set）
-与 list 类似，区别是 set 中的值是不重复的。
+                            哈希（HASH）
+哈希就像是一个微缩版的 redis。由键值对组成。一般讲数据库中的记录取出直接放入 redis 中使用。
 
-SADD
-将一个或多个member元素加入到集合key当中，已经存在于集合的member元素将被忽略。
-假如key不存在，则创建一个只包含member元素作成员的集合
+HSET、HMSET
+设置单个key
+一次设置多个key
+
+
+经过测试当前版本5.0.4，hset 也可以一次设置
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
                             </span>
                         <span class="publish-author">
                             

@@ -1035,7 +1035,7 @@ ZADD
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/13/jiang-ji-ji-lu/">
+                <a href="/2020/01/13/docs/15971493234980/">
                     <div class="card-image">
                         
                         
@@ -1087,31 +1087,28 @@ ZADD
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/">
+                <a href="/2019/12/26/docs/15971493235213/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/9c41d85e67935e1404a8037ea49b1ba3473fe13f.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之哈希（HASH）">
+                        <img src="http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之有序集合">
                         
-                        <span class="card-title">redis学习笔记-----基本数据类型之哈希（HASH）</span>
+                        <span class="card-title">redis学习笔记-----基本数据类型之有序集合</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            哈希（HASH）
-哈希就像是一个微缩版的 redis。由键值对组成。一般讲数据库中的记录取出直接放入 redis 中使用。
+                            有序集合（sort sets）
+与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。
+使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 
 
-HSET、HMSET
-设置单个key
-一次设置多个key
-
-
-经过测试当前版本5.0.4，hset 也可以一次设置
+ZADD
+将一个或多个元素以及其 
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-26
                             </span>
                         <span class="publish-author">
                             
