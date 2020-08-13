@@ -1,136 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/08/10/docs/15971493234781/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/08/11/docs/15971493235593/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/11/27/docs/15971493235553/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/03/08/docs/15971493235513/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/04/06/docs/15971493235478/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/10/docs/15971493235444/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/09/27/docs/15971493235402/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/01/21/docs/15971493235360/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/06/09/docs/15971493235322/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/02/01/docs/15971493235287/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/02/28/docs/15971493235250/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/26/docs/15971493235213/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/12/docs/15971493235175/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/02/14/docs/15971493235137/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/01/24/docs/15971493235099/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/01/docs/15971493235061/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/05/28/docs/15971493235021/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/01/13/docs/15971493234980/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/01/15/docs/15971493234940/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/06/18/docs/15971493234899/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/01/27/docs/15971493234860/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/08/09/docs/15971493234821/</loc>
-    <lastmod>2020-08-11</lastmod>
-  </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/08/10/docker-xue-xi-bi-ji-er/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2020/08/10/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/</loc>
     <lastmod>2020-08-10</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/08/09/docker-xue-xi-bi-ji-yi/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2020/08/09/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/</loc>
     <lastmod>2020-08-10</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/06/09/bei-tao-yan-de-yong-qi-du-hou-gan/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2020/06/09/%E8%A2%AB%E8%AE%A8%E5%8E%8C%E7%9A%84%E5%8B%87%E6%B0%94%E8%AF%BB%E5%90%8E%E6%84%9F/</loc>
     <lastmod>2020-07-19</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/02/28/jian-dan-mo-ni-zhi-bo/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2020/02/28/%E7%AE%80%E5%8D%95%E6%A8%A1%E6%8B%9F%E7%9B%B4%E6%92%AD/</loc>
     <lastmod>2020-02-28</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/02/01/dan-shi-huan-you-shu-ji-guan-hou-gan/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2020/02/01/%E4%BD%86%E6%98%AF%E8%BF%98%E6%9C%89%E4%B9%A6%E7%B1%8D%E8%A7%82%E5%90%8E%E6%84%9F/</loc>
     <lastmod>2020-02-20</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm-li-jie-md/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/01/24/cgi-fast-cgi-php-cgi-php-fpm%E7%90%86%E8%A7%A3-md/</loc>
     <lastmod>2020-02-06</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/01/15/laravel-tong-guo-guan-lian-mo-xing-shi-xian-wu-xian-ji-fen-lei/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2020/01/15/laravel%E9%80%9A%E8%BF%87%E5%85%B3%E8%81%94%E6%A8%A1%E5%9E%8B%E5%AE%9E%E7%8E%B0%E6%97%A0%E9%99%90%E6%9E%81%E5%88%86%E7%B1%BB/</loc>
     <lastmod>2020-01-15</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2020/01/13/jiang-ji-ji-lu/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2020/01/13/%E9%99%8D%E7%BA%A7%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2020-01-13</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/26/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-you-xu-ji-he/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/12/26/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88/</loc>
     <lastmod>2019-12-26</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/10/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ji-he/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/12/10/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%9B%86%E5%90%88/</loc>
     <lastmod>2019-12-26</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/12/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-ha-xi-hash/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/12/12/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%93%88%E5%B8%8C%EF%BC%88HASH%EF%BC%89/</loc>
     <lastmod>2019-12-26</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/11/27/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-zi-fu-chuan/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/11/27/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2/</loc>
     <lastmod>2019-12-26</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/12/01/redis-xue-xi-bi-ji-ji-ben-shu-ju-lei-xing-zhi-lie-biao/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/12/01/redis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%88%97%E8%A1%A8/</loc>
     <lastmod>2019-12-01</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/05/28/wang-yi-yun-yin-le-ping-lun-zhai-lu/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/05/28/%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E8%AF%84%E8%AE%BA%E6%91%98%E5%BD%95/</loc>
     <lastmod>2019-11-07</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/09/27/wo-de-san-shi-sui/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/09/27/%E6%88%91%E7%9A%84%E4%B8%89%E5%8D%81%E5%B2%81/</loc>
     <lastmod>2019-09-27</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/08/15/shi-yong-laradock-pei-zhi-laravel-echo-sever-yu-dao-de-keng/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/08/15/%E4%BD%BF%E7%94%A8LaraDock%E9%85%8D%E7%BD%AElaravel-echo-sever%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</loc>
     <lastmod>2019-08-15</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/06/18/laravel-xue-xi-bi-ji/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/06/18/Laravel%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2019-07-10</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/04/06/git-chang-yong-ming-ling-zong-jie/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/04/06/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2019-04-10</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/03/08/shi-yong-frp-da-jian-ben-di-wei-xin-kai-fa-huan-jing/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/03/08/%E4%BD%BF%E7%94%A8frp%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/</loc>
     <lastmod>2019-03-09</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/02/14/ge-chong-suo-de-li-jie/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/02/14/%E5%90%84%E7%A7%8D%E9%94%81%E7%9A%84%E7%90%86%E8%A7%A3/</loc>
     <lastmod>2019-02-19</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/01/27/shi-xian-fu-zai-jun-heng/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/01/27/%E5%AE%9E%E7%8E%B0%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/</loc>
     <lastmod>2019-01-28</lastmod>
   </url>  <url>
-    <loc>http://blog.xiangdangnian.net.cn/2019/01/21/wo-de-di-yi-pian-wen-zhang/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/2019/01/21/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</loc>
     <lastmod>2019-01-22</lastmod>
   </url>
 </urlset>
