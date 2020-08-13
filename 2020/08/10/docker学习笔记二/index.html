@@ -422,14 +422,14 @@ Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    9 分
                 </div>
                 
 				
@@ -575,7 +575,48 @@ REPOSITORY          TAG                 IMAGE ID            CREATED             
 <p>一般来说，虚悬镜像已经失去了存在的价值，是可以随意删除的，可以用下面的命令删除。</p>
 <pre class=" language-bash"><code class="language-bash">$ docker image prune
 </code></pre>
-
+<h3 id="中间层镜像"><a href="#中间层镜像" class="headerlink" title="中间层镜像"></a>中间层镜像</h3><p>为了加速镜像构建、重复利用资源，Docker 会利用 中间层镜像。所以在使用一段时间后，可能会看到一些依赖的中间层镜像。默认的 docker image ls 列表中只会显示顶层镜像，如果希望显示包括中间层镜像在内的所有镜像的话，需要加 -a 参数。</p>
+<pre class=" language-bash"><code class="language-bash">$ docker image <span class="token function">ls</span> -a
+</code></pre>
+<p><strong>这些无标签镜像不应该删除，否则会导致上层镜像因为依赖丢失而出错</strong></p>
+<h3 id="常用列出镜像的命令"><a href="#常用列出镜像的命令" class="headerlink" title="常用列出镜像的命令"></a>常用列出镜像的命令</h3><h4 id="根据仓库名列出镜像"><a href="#根据仓库名列出镜像" class="headerlink" title="根据仓库名列出镜像"></a>根据仓库名列出镜像</h4><pre class=" language-bash"><code class="language-bash">$ docker image <span class="token function">ls</span> ubuntu
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              18.04               f753707788c5        4 weeks ago         127 MB
+ubuntu              latest              f753707788c5        4 weeks ago         127 MB
+</code></pre>
+<h4 id="列出特定的某个镜像"><a href="#列出特定的某个镜像" class="headerlink" title="列出特定的某个镜像"></a>列出特定的某个镜像</h4><pre class=" language-bash"><code class="language-bash">$ docker image <span class="token function">ls</span> ubuntu:18.04
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              18.04               f753707788c5        4 weeks ago         127 MB
+</code></pre>
+<h4 id="只查看镜像ID"><a href="#只查看镜像ID" class="headerlink" title="只查看镜像ID"></a>只查看镜像ID</h4><pre class=" language-bash"><code class="language-bash">$ docker image <span class="token function">ls</span> -q
+5f515359c7f8
+05a60462f8ba
+fe9198c04d62
+00285df0df87
+f753707788c5
+f753707788c5
+1e0c3dd64ccd
+</code></pre>
+<h4 id="以表格等距显示，并且有标题行"><a href="#以表格等距显示，并且有标题行" class="headerlink" title="以表格等距显示，并且有标题行"></a>以表格等距显示，并且有标题行</h4><pre class=" language-bash"><code class="language-bash">$ docker image <span class="token function">ls</span> --format <span class="token string">"table {{.ID}}\t{{.Repository}}\t{{.Tag}}"</span>
+IMAGE ID            REPOSITORY          TAG
+5f515359c7f8        redis               latest
+05a60462f8ba        nginx               latest
+fe9198c04d62        mongo               3.2
+00285df0df87        <span class="token operator">&lt;</span>none<span class="token operator">></span>              <span class="token operator">&lt;</span>none<span class="token operator">></span>
+f753707788c5        ubuntu              18.04
+f753707788c5        ubuntu              latest
+</code></pre>
+<h2 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h2><blockquote>
+<p>格式</p>
+<pre class=" language-bash"><code class="language-bash">$ docker image <span class="token function">rm</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span> <span class="token operator">&lt;</span>镜像1<span class="token operator">></span> <span class="token punctuation">[</span><span class="token operator">&lt;</span>镜像2<span class="token operator">></span> <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</code></pre>
+<p><strong>其中，&lt;镜像&gt; 可以是 镜像短 ID、镜像长 ID、镜像名 或者 镜像摘要。</strong></p>
+</blockquote>
+<h3 id="Untagged-和-Deleted"><a href="#Untagged-和-Deleted" class="headerlink" title="Untagged 和 Deleted"></a>Untagged 和 Deleted</h3><p>因为一个镜像可以有多个标签，当我们执行 <code>docker image rm</code> 命令时，如果如果还有其他标签指向这个镜像，那么就不会产生 Delete 操作。</p>
+<h3 id="用-docker-image-ls-命令来配合删除"><a href="#用-docker-image-ls-命令来配合删除" class="headerlink" title="用 docker image ls 命令来配合删除"></a>用 docker image ls 命令来配合删除</h3><p>以下命令可以删除所有仓库名为 redis 的镜像</p>
+<pre class=" language-bash"><code class="language-bash">$ docker image <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker image <span class="token function">ls</span> -q redis<span class="token variable">)</span></span>
+</code></pre>
+<h2 id="使用-Dockerfile-文件定制镜像"><a href="#使用-Dockerfile-文件定制镜像" class="headerlink" title="使用 Dockerfile 文件定制镜像"></a>使用 Dockerfile 文件定制镜像</h2>
             </div>
             <hr>
 
