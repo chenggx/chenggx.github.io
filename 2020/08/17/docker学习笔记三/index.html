@@ -4,11 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="git常用命令总结, 想当年,php,php技术分享">
-    <meta name="description" content="
-内容不定期更新
+    <meta name="keywords" content="docker 学习笔记（三）, 想当年,php,php技术分享">
+    <meta name="description" content="docker 容器容器是通过 image 创建的进程。
 
-自己常用的 git alias 可以在命令行中更好的显示 log 信息alias gl=&#34;git log --graph --pretty=format:&#39;%Cred%h%Creset -%C(yellow)%d%Cre">
+镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>git常用命令总结 | 想当年的博客</title>
+    <title>docker 学习笔记（三） | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,13 +271,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/d24925e626c0493d8e0e8f3c0bb6210c.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/pexels-karol-d-409701.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        git常用命令总结
+                        docker 学习笔记（三）
                     </div>
                 </div>
             </div>
@@ -390,8 +389,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
                             </a>
                         
                     </div>
@@ -402,8 +401,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/git/" class="post-category">
-                                git
+                            <a href="/categories/Docker/" class="post-category">
+                                Docker
                             </a>
                         
                     </div>
@@ -415,7 +414,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2019-04-06
+                    2020-08-17
                 </div>
                 
 
@@ -424,7 +423,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    721
+                    701
                 </div>
                 
 
@@ -447,50 +446,68 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>内容不定期更新</p>
-</blockquote>
-<h2 id="自己常用的-git-alias-可以在命令行中更好的显示-log-信息"><a href="#自己常用的-git-alias-可以在命令行中更好的显示-log-信息" class="headerlink" title="自己常用的 git alias 可以在命令行中更好的显示 log 信息"></a>自己常用的 git alias 可以在命令行中更好的显示 log 信息</h2><pre class=" language-shell"><code class="language-shell">alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-
-alias gll="git log --graph --abbrev-commit --decorate --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(dim white) - %an%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n %C(white)%s%C(reset)'"
-</%an></code></pre>
-<h2 id="1-git-commit-–amend"><a href="#1-git-commit-–amend" class="headerlink" title="1. git commit –amend"></a>1. git commit –amend</h2><pre class=" language-git"><code class="language-git">git commit --amend
-</code></pre>
+                <h2 id="docker-容器"><a href="#docker-容器" class="headerlink" title="docker 容器"></a>docker 容器</h2><p>容器是通过 image 创建的进程。</p>
 <blockquote>
-<p>解释：当第一次 commit 之后，发现没有修改正确，但是又不想在 git log 中出现两次提交记录，那么在第二次修改后，可以使用 git commit –amend 命令进行修改提交。此时提交成功后就只有一条 commit 记录了。</p>
+<p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
 </blockquote>
-<h2 id="2-gitignore-生效"><a href="#2-gitignore-生效" class="headerlink" title="2. gitignore 生效"></a>2. gitignore 生效</h2><blockquote>
-<p>解释: .gitignore 文件是忽略 git 项目中不需要提交的内容的配置文件。但是当某次提交的时候把不需要的内容提交到 git 版本控制中了之后。再想修改 .gitignore 文件来忽略那个文件的话是不会生效的。需要先想文件在 git 缓存中删除，然后在进行提交。就可以了。（下面是操作步骤）</p>
-</blockquote>
-<pre class=" language-git"><code class="language-git">git rm -r --cached .   //如何是目录的话，增加 -r 参数
-git add .
-git commit -m <span class="token string">'fix ignore'</span>
+<h3 id="新建并启动容器"><a href="#新建并启动容器" class="headerlink" title="新建并启动容器"></a>新建并启动容器</h3><p>下面的命令的含义：通过 Ubuntu:18.04 这个 image 创建一个容器并运行 /bin/echo ‘Hello world’，完成后停止该容器。</p>
+<pre class=" language-bash"><code class="language-bash">$ docker run ubuntu:18.04 /bin/echo <span class="token string">'Hello world'</span>
+Hello world
+</code></pre>
+<p>使用 docker run 命令，后台实际上执行的内容为：</p>
+<ol>
+<li>检查本地是否存在指定的镜像，不存在就从公有仓库下载</li>
+<li>利用镜像创建并启动一个容器</li>
+<li>分配一个文件系统，并在只读的镜像层外面挂载一层可读写层（后面会学）</li>
+<li>从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去（后面会学）</li>
+<li>从地址池配置一个 ip 地址给容器（后面会学）</li>
+<li>执行用户指定的应用程序</li>
+<li>执行完毕后容器被终止</li>
+</ol>
+<p>上面的示例执行完以后会终止，但是一般我们在使用一个提供服务的容器的时候，不想让它停止，那么可以使用 -d 参数，使容器保持在后台运行。但是需要注意——<strong>容器是否会长久运行，是和 docker run 指定的命令有关，和 -d 参数无关</strong></p>
+<p>如下命令执行完后，容器依然会停止</p>
+<pre class=" language-bash"><code class="language-bash">$ docker run -d ubuntu
+</code></pre>
+<p><img src="http://static.xiangdangnian.net.cn/XF6zB8vbNWw9uPLGrSkiIt3YdZaHc0K7.png" alt="已停止"></p>
+<p>而如下命令执行完后，容器则在后台保持运行</p>
+<pre class=" language-bash"><code class="language-bash">$ docker run -d ubuntu /bin/sh -c <span class="token string">"while true; do echo hello world; sleep 1; done"</span>
+</code></pre>
+<p><img src="http://static.xiangdangnian.net.cn/VcoLwKIYlG65etAO1bCWNfHUES9FpBza.png" alt="运行中"></p>
+<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><h4 id="attach-命令"><a href="#attach-命令" class="headerlink" title="attach 命令"></a>attach 命令</h4><pre class=" language-bash"><code class="language-bash">$ docker run -dit ubuntu
+ffff9516c6151ef3b436df1bccc70ba9da2d0f57bbec5afe19353fe481e12702
 
-//删除指定文件的缓存
-git rm --cached xx.html
+$ docker container <span class="token function">ls</span>
+CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                      NAMES
+ffff9516c615        ubuntu                  <span class="token string">"/bin/bash"</span>              7 seconds ago       Up 6 seconds                                                   elegant_hypatia
 
+$ docker attach ffff9516c615
+root@ffff9516c615:/<span class="token comment" spellcheck="true">#</span>
 </code></pre>
-<h2 id="3-git-reset-–soft-hard-hash"><a href="#3-git-reset-–soft-hard-hash" class="headerlink" title="3. git reset –soft/hard  hash*"></a>3. git reset –soft/hard  <strong>hash*</strong></h2><pre class=" language-git"><code class="language-git">git reset --soft  **hash***
-git reset --hard  **hash***
-</code></pre>
-<blockquote>
-<p>解释：当执行 git commit 之后，想回到之前的版本，可以使用 git reset 进行版本回退。–sorf 参数的意思是，git log 撤销版本，但代码中的内容没有回退。 –hard 参数的意思是，git log 中的记录和 文件内容完全回退到选的的版本。（–hard 更常用）</p>
-</blockquote>
-<h2 id="4-git-stash"><a href="#4-git-stash" class="headerlink" title="4. git stash"></a>4. git stash</h2><pre class=" language-git"><code class="language-git">git stash           //将当前工作去内容进行暂存，然后就进行切换分支或其他的操作了
-git stash list      //查看当前已经暂存的记录列表
-git stash pop       //将当前暂存内容回复到工作区并删除暂存记录列表中的内容
-git stash apply     //将当前暂存内容回复到工作区，不删除记录
-</code></pre>
-<h2 id="5-git-rebase-变基"><a href="#5-git-rebase-变基" class="headerlink" title="5. git rebase (变基)"></a>5. git rebase (变基)</h2><blockquote>
-<p>解释：当在两个分支进行操作的时候，一般我们使用 merge 将两个分支进行合并，但是这样会产生一个新的提交，并且另一个分支的提交记录在当前分支是不存在的。为了解决这个问题，可以使用 rebase。</p>
-</blockquote>
-<pre class=" language-git"><code class="language-git">//前提：master 分支和 new-feature 分支都进行了多次提交
+<p><strong>注意： 如果从这个 stdin 中 exit，会导致容器的停止。</strong></p>
+<h4 id="exec-命令-推荐使用，一般配合-it-参数"><a href="#exec-命令-推荐使用，一般配合-it-参数" class="headerlink" title="exec 命令(推荐使用，一般配合 -it 参数)"></a>exec 命令(推荐使用，一般配合 -it 参数)</h4><pre class=" language-bash"><code class="language-bash">$ docker run -dit ubuntu
+15fc4d97c1b4ea25d76e568fb4e695d5b48d7f13ebbb6d718a80b86a4764a005
 
-git checkout new-feature        //首先切换到新分支
-git rebase master               //将 master 分支的提交记录添加到当前分支
-git checkout master             //切换回 master 分支
-git merge new-feature           //将 new-feature 分支合并入master，此时 master 分支中就有了 new-feature 分支的提交记录，但是不会产生新的提交记录。此命令可以使提交历史更为整洁。
+// 只用 -i 参数时，由于没有分配伪终端，界面没有我们熟悉的 Linux 命令提示符，但命令执行结果仍然可以返回。
+$ docker <span class="token function">exec</span> -i 15fc4d97c1b4ea25 <span class="token function">bash</span>
+<span class="token function">ls</span>
+bin
+boot
+dev
+etc
+<span class="token punctuation">..</span>.
+
+//当 -i -t 参数一起使用时，则可以看到我们熟悉的 Linux 命令提示符。
+$ docker <span class="token function">exec</span> -it 15fc4d97c1b4ea25 <span class="token function">bash</span>
+root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
 </code></pre>
+<p><strong>注意：如果从这个 stdin 中 exit，不会导致容器的停止。</strong></p>
+<h4 id="容器常用命令"><a href="#容器常用命令" class="headerlink" title="容器常用命令"></a>容器常用命令</h4><ol>
+<li>docker container ls –all        <strong>查看当前系统中的所有（运行中、已停止的）容器</strong> </li>
+<li>docker container start XXX       <strong>把已经停止的 XXX 容器启动</strong></li>
+<li>docker container stop XXX        <strong>把运行总的 XXX 容器停止</strong> </li>
+<li>docker container restart XXX     <strong>重新启动运行中的 XXX 容器</strong></li>
+<li>docker container prune           <strong>删除所有处于停止状态的容器</strong></li>
+</ol>
 
             </div>
             <hr>
@@ -516,7 +533,7 @@ git merge new-feature           //将 new-feature 分支合并入master，此时
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2019/04/06/git常用命令总结/">http://blog.xiangdangnian.net.cn/2019/04/06/git常用命令总结/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/08/17/docker学习笔记三/">http://blog.xiangdangnian.net.cn/2020/08/17/docker学习笔记三/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,8 +571,8 @@ git merge new-feature           //将 new-feature 分支合并入master，此时
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
                                 </a>
                             
                         </div>
@@ -986,45 +1003,47 @@ git merge new-feature           //将 new-feature 分支合并入master，此时
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2019/05/28/网易云音乐评论摘录/">
+                <a href="/2020/08/17/docker学习笔记三/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/9bdf52a4830779a1383ac24f1b3ed054.jpeg" class="responsive-img" alt="网易云音乐评论摘录">
+                        <img src="http://static.xiangdangnian.net.cn/pexels-karol-d-409701.jpg" class="responsive-img" alt="docker 学习笔记（三）">
                         
-                        <span class="card-title">网易云音乐评论摘录</span>
+                        <span class="card-title">docker 学习笔记（三）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            网易云音乐里有才的人实在太多，写出来的歌词或评论是真的不错。这里就把我觉得还不错的收藏一波吧（不定期更新）。
-评论
-人会长大三次：第一次是在发现自己不是世界的中心的时候。第二次是在发现即使在怎么努力，终究还是有些事令人无能为力的时候。第三次
+                            docker 容器容器是通过 image 创建的进程。
+
+镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2019-05-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-17
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/其他/" class="post-category">
-                                    其他
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/摘录/">
-                        <span class="chip bg-color">摘录</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -1038,38 +1057,31 @@ git merge new-feature           //将 new-feature 分支合并入master，此时
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/03/08/使用frp搭建本地微信开发环境/">
+                <a href="/2020/08/10/docker学习笔记二/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/fhdfjsklfjsj12334jl432;.jpeg" class="responsive-img" alt="使用frp搭建本地微信开发环境">
+                        <img src="http://static.xiangdangnian.net.cn/blog/2020/08/10/21-07-53-16d1a6fa8852ba7541126a8803fb37bb-75f883.jpg" class="responsive-img" alt="docker 学习笔记（二）">
                         
-                        <span class="card-title">使用frp搭建本地微信开发环境</span>
+                        <span class="card-title">docker 学习笔记（二）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-2019-3-10 更新记录
-
-再使用 TP5 进行开发的时候需要注意一下几点
-
-关闭 trace 调试模式。
-在使用路由的时候尽量确定对应接口请求的类型，如果不知道类型建议使用 Route::any();
-
-可以使用 微信消息测试工具进
+                            镜像 Image简介
+Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-03-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/开发环境/" class="post-category">
-                                    开发环境
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -1079,12 +1091,8 @@ git merge new-feature           //将 new-feature 分支合并入master，此时
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/frp/">
-                        <span class="chip bg-color">frp</span>
-                    </a>
-                    
-                    <a href="/tags/开发环境/">
-                        <span class="chip bg-color">开发环境</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
