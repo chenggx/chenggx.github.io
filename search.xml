@@ -8,7 +8,7 @@
       <link href="/2020/08/19/%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/"/>
       <url>/2020/08/19/%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%94%9F%E6%88%90%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/</url>
       
-        <content type="html"><![CDATA[<h1 id="开源艺术二维码在线生成器工具"><a href="#开源艺术二维码在线生成器工具" class="headerlink" title="开源艺术二维码在线生成器工具"></a>开源艺术二维码在线生成器工具</h1><p><img src="http://static.xiangdangnian.net.cn/I75nBYMS8XAVlLxEzvDiFT4gfotU1dQG.jpg" alt="艺术二维码"></p><blockquote><p>上图中的二维码大家觉得怎么样？是不是非常漂亮，有没有眼前一亮呢？</p></blockquote><p>今天给大家推荐一款在线生成各种艺术二维码的工具。</p><p>首先把工具的地址告诉大家：<a href="https://qrbtf.com/?utm_source=iplaysoft.com&amp;hmsr=iplaysoft.com" target="_blank" rel="noopener">https://qrbtf.com/?utm_source=iplaysoft.com&amp;hmsr=iplaysoft.com</a></p><p>怎么使用呢？</p><p>非常简单，一共就四步</p><ol><li>把需要生成二维码的链接复制进去</li><li>选择对应的模板</li><li>填写相应的参数</li><li>下载</li></ol><p>是不是非常简单，大家赶紧试试吧。</p><p>另外，QRBTF 相比绝大多数“在线二维码制作器”的项目，最大的特色在于它完全是使用 Javascript 前端生成的，有着丰富的参数化样式设置。它不仅能生成矢量的 SVG 格式图片，甚至也提供了 API，适合开发者、网站站长在各类 WEB 项目中调用实现 二维码生成。</p><p>另外，因为 QRBTF 是开源的，所以如果你有自己的服务器，也可以自建一个属于自己的二维码制作网站。而有意学习前端知识和 Javascript 开发的同学，也可以借这个项目的代码深入了解。</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="开源艺术二维码在线生成器工具"><a href="#开源艺术二维码在线生成器工具" class="headerlink" title="开源艺术二维码在线生成器工具"></a>开源艺术二维码在线生成器工具</h1><p><img src="http://static.xiangdangnian.net.cn/I75nBYMS8XAVlLxEzvDiFT4gfotU1dQG.jpg" alt="艺术二维码"></p><blockquote><p>上图中的二维码大家觉得怎么样？是不是非常漂亮，有没有眼前一亮呢？</p></blockquote><p>今天给大家推荐一款在线生成各种艺术二维码的工具。</p><p>首先把工具的地址告诉大家：<a href="https://qrbtf.com" target="_blank" rel="noopener">https://qrbtf.com</a></p><p>怎么使用呢？</p><p>非常简单，一共就四步</p><ol><li>把需要生成二维码的链接复制进去</li><li>选择对应的模板</li><li>填写相应的参数</li><li>下载</li></ol><p>是不是非常简单，大家赶紧试试吧。</p><p>另外，QRBTF 相比绝大多数“在线二维码制作器”的项目，最大的特色在于它完全是使用 Javascript 前端生成的，有着丰富的参数化样式设置。它不仅能生成矢量的 SVG 格式图片，甚至也提供了 API，适合开发者、网站站长在各类 WEB 项目中调用实现 二维码生成。</p><p>另外，因为 QRBTF 是开源的，所以如果你有自己的服务器，也可以自建一个属于自己的二维码制作网站。而有意学习前端知识和 Javascript 开发的同学，也可以借这个项目的代码深入了解。</p>]]></content>
       
       
       <categories>
@@ -410,9 +410,9 @@
       
         <tags>
             
-            <tag> LaraDock </tag>
-            
             <tag> 开发环境 </tag>
+            
+            <tag> LaraDock </tag>
             
         </tags>
       
@@ -514,9 +514,9 @@
       
         <tags>
             
-            <tag> 开发环境 </tag>
-            
             <tag> frp </tag>
+            
+            <tag> 开发环境 </tag>
             
         </tags>
       
