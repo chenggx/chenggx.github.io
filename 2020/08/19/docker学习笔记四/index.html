@@ -4,10 +4,9 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="docker 学习笔记（三）, 想当年,php,php技术分享">
-    <meta name="description" content="docker 容器容器是通过 image 创建的进程。
-
-镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停">
+    <meta name="keywords" content="docker 学习笔记（四）, 想当年,php,php技术分享">
+    <meta name="description" content="docker 网络
+通过前面的学习，我们已经可以通过 image 来创建相关的容器，例如：创建一个 mysql 容器，nginx 容器、php-fpm 容器。但是我们想要使用这些容器作为开发或者生产的环境还缺少关键的一步，那就是容器间的通信">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>docker 学习笔记（三） | 想当年的博客</title>
+    <title>docker 学习笔记（四） | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -271,13 +270,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/pexels-karol-d-409701.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/f5c136ac294b8e7aed0078eaa1baf41377ed5cada858d9afee927b100d223022.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        docker 学习笔记（三）
+                        docker 学习笔记（四）
                     </div>
                 </div>
             </div>
@@ -414,7 +413,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-17
+                    2020-08-19
                 </div>
                 
 
@@ -423,14 +422,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    701
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    8 分
                 </div>
                 
 				
@@ -446,68 +445,214 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="docker-容器"><a href="#docker-容器" class="headerlink" title="docker 容器"></a>docker 容器</h2><p>容器是通过 image 创建的进程。</p>
-<blockquote>
-<p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
+                <h1 id="docker-网络"><a href="#docker-网络" class="headerlink" title="docker 网络"></a>docker 网络</h1><blockquote>
+<p>通过前面的学习，我们已经可以通过 image 来创建相关的容器，例如：创建一个 mysql 容器，nginx 容器、php-fpm 容器。但是我们想要使用这些容器作为开发或者生产的环境还缺少关键的一步，那就是容器间的通信。这一集我们来学习容器间的网络通信</p>
 </blockquote>
-<h3 id="新建并启动容器"><a href="#新建并启动容器" class="headerlink" title="新建并启动容器"></a>新建并启动容器</h3><p>下面的命令的含义：通过 Ubuntu:18.04 这个 image 创建一个容器并运行 /bin/echo ‘Hello world’，完成后停止该容器。</p>
-<pre class=" language-bash"><code class="language-bash">$ docker run ubuntu:18.04 /bin/echo <span class="token string">'Hello world'</span>
-Hello world
+<h2 id="容器间网络互连"><a href="#容器间网络互连" class="headerlink" title="容器间网络互连"></a>容器间网络互连</h2><p>Docker 默认提供了三种网络模式、分别是bridge、host、none。可以使用如下命令查看</p>
+<pre class=" language-bash"><code class="language-bash">$ docker network <span class="token function">ls</span>
+NETWORK ID          NAME                DRIVER              SCOPE
+b7ad6ddfa6be        bridge              bridge              local
+8eceb8218986        host                host                local
+0cedda606a66        none                null                local
 </code></pre>
-<p>使用 docker run 命令，后台实际上执行的内容为：</p>
+<h3 id="bridge-桥接模式"><a href="#bridge-桥接模式" class="headerlink" title="bridge 桥接模式"></a>bridge 桥接模式</h3><p>原理：在主机上虚拟出一个docker0 的<a href="https://baike.baidu.com/item/%E7%BD%91%E6%A1%A5" target="_blank" rel="noopener">网桥</a>，默认创建的容器都会虚拟出网卡和这个网桥连接，容器的 ip 地址从 172.17.0.0/16 地址段生成。</p>
+<p><img src="http://static.xiangdangnian.net.cn/16828bdd2287ee1c.png" alt="网络连接示意图"></p>
+<p><img src="http://static.xiangdangnian.net.cn/FyD8K1folZQ95m6XHPLwTkOzuVJWpaIn.png" alt="docker0"></p>
+<blockquote>
+<p>由于在 mac 和 windows 系统上，docker 的运行方式不太一样（在win、mac 上安装 docker，实际上是安装了一个 docker 虚拟机，而我们创建的容器都是跑在 docker 虚拟机中的）。</p>
+</blockquote>
+<p>mac系统下进入docker 虚拟机 命令</p>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">screen</span> ~/Library/Containers/com.docker.docker/Data/vms/0/tty
+</code></pre>
+<p>docker 版本小于18.06 则使用如下命令</p>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">screen</span> ~/Library/Containers/com.docker.docker/Data/com.docker.driver.amd64-linux/tty
+</code></pre>
+<h4 id="测试桥接模式-提示符为主机、-提示符为容器内"><a href="#测试桥接模式-提示符为主机、-提示符为容器内" class="headerlink" title="测试桥接模式($ 提示符为主机、# 提示符为容器内)"></a>测试桥接模式($ 提示符为主机、# 提示符为容器内)</h4><p>使用 busybox 镜像进行测试。该镜像非常小并且安装了ping、ifconfig等实用工具，非常适合测试。</p>
+<pre class=" language-bash"><code class="language-bash">$ docker run --name box1 -it --rm busybox sh
+
+// 测试网络连通
+/<span class="token comment" spellcheck="true"># ping www.baidu.com  </span>
+
+PING www.baidu.com <span class="token punctuation">(</span>180.97.34.96<span class="token punctuation">)</span>: 56 data bytes
+64 bytes from 180.97.34.96: seq<span class="token operator">=</span>0 ttl<span class="token operator">=</span>45 time<span class="token operator">=</span>10.489 ms
+64 bytes from 180.97.34.96: seq<span class="token operator">=</span>1 ttl<span class="token operator">=</span>45 time<span class="token operator">=</span>10.512 ms
+64 bytes from 180.97.34.96: seq<span class="token operator">=</span>2 ttl<span class="token operator">=</span>45 time<span class="token operator">=</span>10.424 ms
+64 bytes from 180.97.34.96: seq<span class="token operator">=</span>3 ttl<span class="token operator">=</span>45 time<span class="token operator">=</span>10.409 ms
+^C
+--- www.baidu.com <span class="token function">ping</span> statistics ---
+4 packets transmitted, 4 packets received, 0% packet loss
+round-trip min/avg/max <span class="token operator">=</span> 10.409/10.458/10.512 ms
+
+// 查看网卡 ip 地址
+/<span class="token comment" spellcheck="true"># ifconfig</span>
+eth0      Link encap:Ethernet  HWaddr 02:42:AC:11:00:07
+          inet addr:172.17.0.7  Bcast:172.17.255.255  Mask:255.255.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:16 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:8 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:1421 <span class="token punctuation">(</span>1.3 KiB<span class="token punctuation">)</span>  TX bytes:622 <span class="token punctuation">(</span>622.0 B<span class="token punctuation">)</span>
+
+// 退出容器。使用 Ctrl+P+Q 退出容器但是容器不会关闭
+
+// 查看 box1 容器的详细信息,只截取了部分内容
+$ docker inspect box1
+<span class="token keyword">.</span>
+<span class="token keyword">.</span>
+<span class="token keyword">.</span>
+
+<span class="token string">"Networks"</span><span class="token keyword">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"bridge"</span>:<span class="token punctuation">{</span>
+        <span class="token string">"IPAMConfig"</span>:null,
+        <span class="token string">"Links"</span>:null,
+        <span class="token string">"Aliases"</span>:null,
+        <span class="token string">"NetworkID"</span><span class="token keyword">:</span><span class="token string">"b7ad6ddfa6beac6b0ebf87dcec3d7ee933478592f16d48b3c01b28cd6a48a7f9"</span>,
+        <span class="token string">"EndpointID"</span><span class="token keyword">:</span><span class="token string">"30eb2f7a0b5e4dbebe8a8f0522a01e105c65fe6a14d0a6ffe02120af009cff27"</span>,
+        <span class="token string">"Gateway"</span><span class="token keyword">:</span><span class="token string">"172.17.0.1"</span>,
+        <span class="token string">"IPAddress"</span><span class="token keyword">:</span><span class="token string">"172.17.0.7"</span>,
+        <span class="token string">"IPPrefixLen"</span>:16,
+        <span class="token string">"IPv6Gateway"</span><span class="token keyword">:</span><span class="token string">""</span>,
+        <span class="token string">"GlobalIPv6Address"</span><span class="token keyword">:</span><span class="token string">""</span>,
+        <span class="token string">"GlobalIPv6PrefixLen"</span>:0,
+        <span class="token string">"MacAddress"</span><span class="token keyword">:</span><span class="token string">"02:42:ac:11:00:07"</span>,
+        <span class="token string">"DriverOpts"</span>:null
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">.</span>
+<span class="token keyword">.</span>
+<span class="token keyword">.</span>
+
+</code></pre>
+<p>通过上面的例子我们可以很直观的看到 box1 容器使用的是 bridge 模式，分配的 ip 地址为 172.17.0.7 并且可以访问互联网。</p>
+<h3 id="Host-主机模式-提示符为主机、-提示符为容器内"><a href="#Host-主机模式-提示符为主机、-提示符为容器内" class="headerlink" title="Host 主机模式($ 提示符为主机、# 提示符为容器内)"></a>Host 主机模式($ 提示符为主机、# 提示符为容器内)</h3><p>原理：容器不会虚拟出自己的网卡，而是使用宿主机的IP。<br><img src="http://static.xiangdangnian.net.cn/16828bdd20dcb5be" alt="示意图"></p>
+<pre class=" language-bash"><code class="language-bash">// 创建一个容器并加入 host 网络
+$ docker run --name box2 -it --network host busybox
+
+// 在容器中查看网卡 eth0
+<span class="token comment" spellcheck="true"># ifconfig eth0</span>
+eth0      Link encap:Ethernet  HWaddr FA:16:3E:F4:68:C0
+          inet addr:192.168.0.3  Bcast:192.168.0.255  Mask:255.255.255.0
+          inet6 addr: fe80::f816:3eff:fef4:68c0/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:612175 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:203387 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:725999816 <span class="token punctuation">(</span>692.3 MiB<span class="token punctuation">)</span>  TX bytes:74349925 <span class="token punctuation">(</span>70.9 MiB<span class="token punctuation">)</span>
+// 测试网络连通
+/<span class="token comment" spellcheck="true"># ping www.baidu.com  </span>
+
+PING www.baidu.com <span class="token punctuation">(</span>180.97.34.96<span class="token punctuation">)</span>: 56 data bytes
+64 bytes from 180.97.34.96: seq<span class="token operator">=</span>0 ttl<span class="token operator">=</span>45 time<span class="token operator">=</span>10.489 ms
+64 bytes from 180.97.34.96: seq<span class="token operator">=</span>1 ttl<span class="token operator">=</span>45 time<span class="token operator">=</span>10.512 ms
+64 bytes from 180.97.34.96: seq<span class="token operator">=</span>2 ttl<span class="token operator">=</span>45 time<span class="token operator">=</span>10.424 ms
+64 bytes from 180.97.34.96: seq<span class="token operator">=</span>3 ttl<span class="token operator">=</span>45 time<span class="token operator">=</span>10.409 ms
+
+// 退出容器。使用 Ctrl+P+Q 退出容器但是容器不会关闭
+
+//在宿主机上查看网卡 eth0          
+$ <span class="token function">ifconfig</span> eth0
+eth0: flags<span class="token operator">=</span>4163<span class="token operator">&lt;</span>UP,BROADCAST,RUNNING,MULTICAST<span class="token operator">></span>  mtu 1500
+        inet 192.168.0.3  netmask 255.255.255.0  broadcast 192.168.0.255
+        inet6 fe80::f816:3eff:fef4:68c0  prefixlen 64  scopeid 0x20<span class="token operator">&lt;</span>link<span class="token operator">></span>
+        ether fa:16:3e:f4:68:c0  txqueuelen 1000  <span class="token punctuation">(</span>Ethernet<span class="token punctuation">)</span>
+        RX packets 612230  bytes 726004260 <span class="token punctuation">(</span>726.0 MB<span class="token punctuation">)</span>
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 203435  bytes 74354859 <span class="token punctuation">(</span>74.3 MB<span class="token punctuation">)</span>
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+</code></pre>
+<p>通过上面的例子我们可以很直观的看到 box2 容器使用的是 host 模式，ip 地址和宿主机一致，也能访问外网。</p>
+<h3 id="none-无网络模式"><a href="#none-无网络模式" class="headerlink" title="none 无网络模式"></a>none 无网络模式</h3><p>不给容器提供任何网络配置，只有lo 网络接口。需要我们自己为Docker容器添加网卡、配置IP等。<br><img src="http://static.xiangdangnian.net.cn/16828bdd222d2bbb.png" alt="示意图"></p>
+<pre class=" language-bash"><code class="language-bash">$ docker run --name box3 -it --network none --rm  busybox
+
+<span class="token comment" spellcheck="true"># ifconfig</span>
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:65536  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 <span class="token punctuation">(</span>0.0 B<span class="token punctuation">)</span>  TX bytes:0 <span class="token punctuation">(</span>0.0 B<span class="token punctuation">)</span>
+
+$ docker inspect box3
+<span class="token keyword">.</span>
+<span class="token keyword">.</span>
+<span class="token keyword">.</span>
+<span class="token string">"Networks"</span>:<span class="token punctuation">{</span>
+    <span class="token string">"none"</span>:<span class="token punctuation">{</span>
+        <span class="token string">"IPAMConfig"</span>:null,
+        <span class="token string">"Links"</span>:null,
+        <span class="token string">"Aliases"</span>:null,
+        <span class="token string">"NetworkID"</span><span class="token keyword">:</span><span class="token string">"0cedda606a66614ba025ff7a992cb0d405fb567ff8da240310b96fa59f5fe99a"</span>,
+        <span class="token string">"EndpointID"</span><span class="token keyword">:</span><span class="token string">"e4fd85c2629d2524928f34fb428305bf4cf2d99195ff5ce7d428a9cff14902c0"</span>,
+        <span class="token string">"Gateway"</span><span class="token keyword">:</span><span class="token string">""</span>,
+        <span class="token string">"IPAddress"</span><span class="token keyword">:</span><span class="token string">""</span>,
+        <span class="token string">"IPPrefixLen"</span>:0,
+        <span class="token string">"IPv6Gateway"</span><span class="token keyword">:</span><span class="token string">""</span>,
+        <span class="token string">"GlobalIPv6Address"</span><span class="token keyword">:</span><span class="token string">""</span>,
+        <span class="token string">"GlobalIPv6PrefixLen"</span>:0,
+        <span class="token string">"MacAddress"</span><span class="token keyword">:</span><span class="token string">""</span>,
+        <span class="token string">"DriverOpts"</span>:null
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">.</span>
+<span class="token keyword">.</span>
+<span class="token keyword">.</span>
+</code></pre>
+<p>通过上面的例子我们可以很直观的看到 box3 容器使用的是 none 模式，没有网卡，只有 lo 网络接口。</p>
+<h2 id="外部访问容器"><a href="#外部访问容器" class="headerlink" title="外部访问容器"></a>外部访问容器</h2><blockquote>
+<p>容器中可以运行一些网络应用，要让外部也可以访问这些应用，可以通过 -P 或 -p 参数来指定端口映射。</p>
+</blockquote>
 <ol>
-<li>检查本地是否存在指定的镜像，不存在就从公有仓库下载</li>
-<li>利用镜像创建并启动一个容器</li>
-<li>分配一个文件系统，并在只读的镜像层外面挂载一层可读写层（后面会学）</li>
-<li>从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去（后面会学）</li>
-<li>从地址池配置一个 ip 地址给容器（后面会学）</li>
-<li>执行用户指定的应用程序</li>
-<li>执行完毕后容器被终止</li>
+<li>当使用 -P(大写) 标记时，Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口。</li>
+<li>-p 则可以指定要映射的端口，并且，在一个指定端口上只可以绑定一个容器。支持的格式有 ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort。</li>
 </ol>
-<p>上面的示例执行完以后会终止，但是一般我们在使用一个提供服务的容器的时候，不想让它停止，那么可以使用 -d 参数，使容器保持在后台运行。但是需要注意——<strong>容器是否会长久运行，是和 docker run 指定的命令有关，和 -d 参数无关</strong></p>
-<p>如下命令执行完后，容器依然会停止</p>
-<pre class=" language-bash"><code class="language-bash">$ docker run -d ubuntu
-</code></pre>
-<p><img src="http://static.xiangdangnian.net.cn/XF6zB8vbNWw9uPLGrSkiIt3YdZaHc0K7.png" alt="已停止"></p>
-<p>而如下命令执行完后，容器则在后台保持运行</p>
-<pre class=" language-bash"><code class="language-bash">$ docker run -d ubuntu /bin/sh -c <span class="token string">"while true; do echo hello world; sleep 1; done"</span>
-</code></pre>
-<p><img src="http://static.xiangdangnian.net.cn/VcoLwKIYlG65etAO1bCWNfHUES9FpBza.png" alt="运行中"></p>
-<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><h4 id="attach-命令"><a href="#attach-命令" class="headerlink" title="attach 命令"></a>attach 命令</h4><pre class=" language-bash"><code class="language-bash">$ docker run -dit ubuntu
-ffff9516c6151ef3b436df1bccc70ba9da2d0f57bbec5afe19353fe481e12702
+<p>创建一个 nginx 容器，使用 -P 随机产生一个端口号</p>
+<pre class=" language-bash"><code class="language-bash">$ docker run --name <span class="token function">test</span> -P -d  nginx
+769acc819c0dc26848b93c3e39040ba410385c8c7536a39c2a586896e120ae86
 
 $ docker container <span class="token function">ls</span>
-CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                      NAMES
-ffff9516c615        ubuntu                  <span class="token string">"/bin/bash"</span>              7 seconds ago       Up 6 seconds                                                   elegant_hypatia
-
-$ docker attach ffff9516c615
-root@ffff9516c615:/<span class="token comment" spellcheck="true">#</span>
+IMAGE       CONTAINER ID        STATUS         PORTS                  NAMES
+nginx       769acc819c0d        Up 4 minutes   0.0.0.0:32769-<span class="token operator">></span>80/tcp  <span class="token function">test</span>
 </code></pre>
-<p><strong>注意： 如果从这个 stdin 中 exit，会导致容器的停止。</strong></p>
-<h4 id="exec-命令-推荐使用，一般配合-it-参数"><a href="#exec-命令-推荐使用，一般配合-it-参数" class="headerlink" title="exec 命令(推荐使用，一般配合 -it 参数)"></a>exec 命令(推荐使用，一般配合 -it 参数)</h4><pre class=" language-bash"><code class="language-bash">$ docker run -dit ubuntu
-15fc4d97c1b4ea25d76e568fb4e695d5b48d7f13ebbb6d718a80b86a4764a005
+<p>本机访问结果<br><img src="http://static.xiangdangnian.net.cn/WX20200819-145535.png" alt="结果"></p>
+<p><strong>其他端口映射配置可以查看链接</strong> <a href="https://yeasy.gitbook.io/docker_practice/network/port_mapping" target="_blank" rel="noopener">https://yeasy.gitbook.io/docker_practice/network/port_mapping</a></p>
+<h2 id="使用自定义网络实现容器间的互连"><a href="#使用自定义网络实现容器间的互连" class="headerlink" title="使用自定义网络实现容器间的互连"></a>使用自定义网络实现容器间的互连</h2><blockquote>
+<p>在实际应用中各容器间的通信不是通过 ip 地址，而是通过容器名称来连接的，那么这种事如何实现的呢？继续往下看吧。</p>
+</blockquote>
+<h3 id="创建一个自定义网络"><a href="#创建一个自定义网络" class="headerlink" title="创建一个自定义网络"></a>创建一个自定义网络</h3><pre class=" language-bash"><code class="language-bash">$ docker network create my-net
+a4806e9a4874118f1269992086dbe4137024b53603a4ac68cd6c0c548257b6b7 
 
-// 只用 -i 参数时，由于没有分配伪终端，界面没有我们熟悉的 Linux 命令提示符，但命令执行结果仍然可以返回。
-$ docker <span class="token function">exec</span> -i 15fc4d97c1b4ea25 <span class="token function">bash</span>
-<span class="token function">ls</span>
-bin
-boot
-dev
-etc
-<span class="token punctuation">..</span>.
-
-//当 -i -t 参数一起使用时，则可以看到我们熟悉的 Linux 命令提示符。
-$ docker <span class="token function">exec</span> -it 15fc4d97c1b4ea25 <span class="token function">bash</span>
-root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
+$ docker network <span class="token function">ls</span>
+NETWORK ID          NAME                DRIVER              SCOPE
+a4806e9a4874        my-net              bridge              local
 </code></pre>
-<p><strong>注意：如果从这个 stdin 中 exit，不会导致容器的停止。</strong></p>
-<h4 id="容器常用命令"><a href="#容器常用命令" class="headerlink" title="容器常用命令"></a>容器常用命令</h4><ol>
-<li>docker container ls –all        <strong>查看当前系统中的所有（运行中、已停止的）容器</strong> </li>
-<li>docker container start XXX       <strong>把已经停止的 XXX 容器启动</strong></li>
-<li>docker container stop XXX        <strong>把运行总的 XXX 容器停止</strong> </li>
-<li>docker container restart XXX     <strong>重新启动运行中的 XXX 容器</strong></li>
-<li>docker container prune           <strong>删除所有处于停止状态的容器</strong></li>
-</ol>
+<h3 id="创建-2-个容器将其加入自定义网络"><a href="#创建-2-个容器将其加入自定义网络" class="headerlink" title="创建 2 个容器将其加入自定义网络"></a>创建 2 个容器将其加入自定义网络</h3><pre class=" language-bash"><code class="language-bash">$ docker run --name box1 -it --rm  --network my-net busybox sh
+
+<span class="token comment" spellcheck="true"># //退出容器。使用 Ctrl+P+Q 退出容器但是容器不会关闭</span>
+
+$ docker run --name box2 -it --rm  --network my-net busybox sh
+
+<span class="token comment" spellcheck="true"># //退出容器。使用 Ctrl+P+Q 退出容器但是容器不会关闭</span>
+
+$ docker container <span class="token function">ls</span> --format <span class="token string">"table {{.Image}}\t{{.ID}}\t{{.Status}}\t{{.Names}}"</span> --all
+
+IMAGE                   CONTAINER ID        STATUS                      NAMES
+busybox                 5e6a4861f857        Up About a minute           box2
+busybox                 1d7fa8762b4d        Up 2 minutes                box1
+</code></pre>
+<h3 id="通过容器名称进行通信"><a href="#通过容器名称进行通信" class="headerlink" title="通过容器名称进行通信"></a>通过容器名称进行通信</h3><pre class=" language-bash"><code class="language-bash">// 进入 box2 容器进行 <span class="token function">ping</span> 测试连通
+$ docker <span class="token function">exec</span> -it box2 sh
+
+<span class="token comment" spellcheck="true"># ping box1</span>
+PING box1 <span class="token punctuation">(</span>172.19.0.2<span class="token punctuation">)</span>: 56 data bytes
+64 bytes from 172.19.0.2: seq<span class="token operator">=</span>0 ttl<span class="token operator">=</span>64 time<span class="token operator">=</span>0.049 ms
+64 bytes from 172.19.0.2: seq<span class="token operator">=</span>1 ttl<span class="token operator">=</span>64 time<span class="token operator">=</span>0.063 ms
+64 bytes from 172.19.0.2: seq<span class="token operator">=</span>2 ttl<span class="token operator">=</span>64 time<span class="token operator">=</span>0.057 ms
+64 bytes from 172.19.0.2: seq<span class="token operator">=</span>3 ttl<span class="token operator">=</span>64 time<span class="token operator">=</span>0.061 ms
+^C
+<span class="token comment" spellcheck="true">#</span>
+</code></pre>
+<p>好了，今天的网络相关内容就到这里啦，下集见。</p>
 
             </div>
             <hr>
@@ -533,7 +678,7 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/08/17/docker学习笔记三/">http://blog.xiangdangnian.net.cn/2020/08/17/docker学习笔记三/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/08/19/docker学习笔记四/">http://blog.xiangdangnian.net.cn/2020/08/19/docker学习笔记四/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1003,7 +1148,8 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/08/19/docker学习笔记四/">
                     <div class="card-image">
@@ -1021,9 +1167,9 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1036,6 +1182,7 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1054,24 +1201,25 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/10/docker学习笔记二/">
+                <a href="/2020/08/17/docker学习笔记三/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/2020/08/10/21-07-53-16d1a6fa8852ba7541126a8803fb37bb-75f883.jpg" class="responsive-img" alt="docker 学习笔记（二）">
+                        <img src="http://static.xiangdangnian.net.cn/pexels-karol-d-409701.jpg" class="responsive-img" alt="docker 学习笔记（三）">
                         
-                        <span class="card-title">docker 学习笔记（二）</span>
+                        <span class="card-title">docker 学习笔记（三）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            镜像 Image简介
-Docker 镜像是一个特殊的文件系统，除了提供容器运行时所需的程序、库、资源、配置等文件外，还包含了一些为运行时准备的一些配置参数（如匿名卷、环境变量、用户等）。镜像不包含任何动态数据，其内容在构建之后也不会被改变。
+                            docker 容器容器是通过 image 创建的进程。
+
+镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-17
                             </span>
                         <span class="publish-author">
                             
