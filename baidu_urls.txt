@@ -1,5 +1,5 @@
-http://blog.xiangdangnian.net.cn/2020/08/22/docker学习笔记五/
+http://blog.xiangdangnian.net.cn/2020/08/27/docker学习笔记八（docker-compose）/
+http://blog.xiangdangnian.net.cn/2020/08/25/docker学习笔记七（搭建LNMP开发环境）/
+http://blog.xiangdangnian.net.cn/2020/08/24/docker学习笔记六（dockerfile 定制镜像）/
+http://blog.xiangdangnian.net.cn/2020/08/22/docker学习笔记五（数据卷）/
 http://blog.xiangdangnian.net.cn/2020/08/19/二维码生成工具推荐/
-http://blog.xiangdangnian.net.cn/2020/08/19/docker学习笔记四/
-http://blog.xiangdangnian.net.cn/2020/08/17/docker学习笔记三/
-http://blog.xiangdangnian.net.cn/2020/08/10/docker学习笔记二/
