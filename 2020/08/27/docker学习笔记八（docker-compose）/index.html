@@ -421,14 +421,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    903
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 				
@@ -540,6 +540,10 @@ RUN <span class="token function">sed</span> -i <span class="token string">"s@htt
 <pre class=" language-bash"><code class="language-bash">$ docker-compose down
 </code></pre>
 <p>其他一些命令类似有 docker 相关命令，只是把关键指令换成 docker-compose 了，例如 docker-compose ps、docker-compose exec 等，可自行尝试。 <a href="https://yeasy.gitbook.io/docker_practice/compose/commands#exec" target="_blank" rel="noopener">相关文档</a></p>
+<h2 id="优秀项目参考"><a href="#优秀项目参考" class="headerlink" title="优秀项目参考"></a>优秀项目参考</h2><p>上面我们只是简单的搭建了一个开发环境，实际上真实的环境会很复杂，我们自己写一个完整的 docker-compose 文件可能比较困难（大神忽略）。那么有什么简单的方法呢？</p>
+<p>下面我推荐两个我用过还不错的项目，大家可以参考学习。</p>
+<p><a href="https://github.com/laradock/laradock" target="_blank" rel="noopener">laradock</a></p>
+<p><a href="https://github.com/khs1994-docker/lnmp" target="_blank" rel="noopener">LNMP</a></p>
 <p><img src="http://static.xiangdangnian.net.cn/4vB3ZRunrw8VzSW6cLpJyaibKfYTNCU0.png" alt="程序员的艺术人生"></p>
 
             </div>
@@ -1036,27 +1040,36 @@ RUN <span class="token function">sed</span> -i <span class="token string">"s@htt
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/08/27/docker学习笔记八（docker-compose）/">
+                <a href="/2020/08/30/docker学习笔记九（swarm）/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/20200828083314.jpg" class="responsive-img" alt="docker 学习笔记（八）">
+                        <img src="http://static.xiangdangnian.net.cn/blog/2020/08/31/19-16-47-7b7fa6ae2465aeaaf3cf9e709874da3a-d457ee.jpg" class="responsive-img" alt="docker 学习笔记（九）">
                         
-                        <span class="card-title">docker 学习笔记（八）</span>
+                        <span class="card-title">docker 学习笔记（九）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            使用 docker-compose 搭建 LNMP 开发环境上一集我们已经可以通过 docker 搭建 LNMP 的开发环境了，但是想必大家也发现配置挺复杂的，每个容器启动都有好长的命令。那有没有更简单一点的方式呢？有的，就是今天要学习的—
+                            
+Swarm 是 Docker 引擎内置（原生）的集群管理和编排工具
+
+学习 swarm 一定要理解的几个重要概念
+
+节点
+服务
+任务
+
+节点一台物理或云主机加入 docker 集群，那么这台主机就是一个节点。
+节点分为管理 (manage
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-27
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-08-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1069,7 +1082,6 @@ RUN <span class="token function">sed</span> -i <span class="token string">"s@htt
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
