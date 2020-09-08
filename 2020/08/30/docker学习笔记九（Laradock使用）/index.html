@@ -4,11 +4,13 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="ipad-mini2 降级记录, 想当年,php,php技术分享">
-    <meta name="description" content="
-主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程
+    <meta name="keywords" content="docker 学习笔记（九）, 想当年,php,php技术分享">
+    <meta name="description" content="克隆 laradock 到本地$ cd ~
+$ git clone https://github.com/Laradock/laradock.git
+$ cd laradock
+$ git checkout -b v11.0
 
-最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用狗子搜索">
+在 lara">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ipad-mini2 降级记录 | 想当年的博客</title>
+    <title>docker 学习笔记（九） | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,13 +274,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2020/08/31/19-16-47-7b7fa6ae2465aeaaf3cf9e709874da3a-d457ee.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ipad-mini2 降级记录
+                        docker 学习笔记（九）
                     </div>
                 </div>
             </div>
@@ -390,8 +392,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ios/">
-                                <span class="chip bg-color">ios</span>
+                            <a href="/tags/docker/">
+                                <span class="chip bg-color">docker</span>
                             </a>
                         
                     </div>
@@ -402,8 +404,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/ios/" class="post-category">
-                                ios
+                            <a href="/categories/Docker/" class="post-category">
+                                Docker
                             </a>
                         
                     </div>
@@ -415,7 +417,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-13
+                    2020-08-30
                 </div>
                 
 
@@ -424,7 +426,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    736
+                    533
                 </div>
                 
 
@@ -447,33 +449,73 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程</p>
-</blockquote>
-<p>最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用<a href="https://www.dogedoge.com" target="_blank" rel="noopener">狗子</a>搜索了一下。竟然让我找到了<a href="https://www.v2ex.com/t/608874" target="_blank" rel="noopener">V2ex上的一个讨论</a>，仔细一看感觉挺靠谱，接下来就搞了。</p>
-<blockquote>
-<p>下面基本上都是废话，会玩直接看 v2 的帖子应该就可以搞定了，上面贴出了 GitHub 上项目的地址，基本上就是一键操作。</p>
-</blockquote>
-<p>根据的帖子给出的 github 链接查看项目，发现该项目已经不再维护了，但是好在项目又给出了一个新的地址。赶紧进入新的项目看一下。</p>
-<p>项目提示中指明了可以降级到10.3.3 的设备为 iPhone 5s, iPad Air, iPad Mini 2 (Not iPad4,6)。</p>
-<p>其他还有可以降级到8.4.1 的设备为iPhone 5, iPhone 4s, iPad 2, iPad 3, iPad 4, iPad Mini 1, iPod 5。</p>
-<p>以及可以降级到 6.1.3 的设备 iPhone 4s, iPad 2 (Not iPad2,4)。</p>
-<p>需要的小伙伴们自取。我只实验了ipad mini2 可以成功降级，其他的大家烧香祷告吧。^_^</p>
-<p>首先将项目克隆到本地，接着进入项目目录，并执行 <code>pip3 install -r requirements.txt</code> 安装项目需要的扩展。（确保当前系统中已经安装了python3，至少为3.5）</p>
-<p>下载 ios 10.3.3 的镜像文件。可以使用<a href="https://www.i4.cn/firmware_iPad_iPad%20mini%202__A1489_10.3.3__.html" target="_blank" rel="noopener">爱思助手</a>提供的镜像，下载速度那是杠杠的。</p>
-<p>接下来就是将 ipad 进入 DFU 模式。（这里吐槽一下，因为我不怎么用 ios 的设备，不知道 DFU 到底是个什么鬼，搜索了半天，很多人给出的方法根本不是进入 DFU的方法，最后还是在刚才那个 V2 讨论里面看到有朋友的回复，才明白了该怎么进入 DFU 模式。）</p>
-<p><strong> 这里说一下进入 DFU 模式的方法， </strong></p>
-<ol>
-<li>将 ipad 链接电脑</li>
-<li>经 ipad 关机</li>
-<li>长按电源键和 home 键 10 秒以上然后只松开电源键并保持 home 一直按着，当电脑上提示已经进入恢复模式则可以松开 home 键了。这个时候 ipad 屏幕是黑的。</li>
-</ol>
-<p><img src="http://static.xiangdangnian.net.cn/blog/sssdfsdfsdjkl23jk23j4lk23j423lklkwfjs.png" alt="DFU 模式"></p>
-<p>然后在项目里面执行 <code>./vieux -i .....ipsw</code>。 后面的省略号表示刚才下载的 ios10.3.3 的镜像文件。</p>
-<p>最后尽是等待了。</p>
-<p>我的一次成功，所以也没有什么好分享的啦，就先记录到这里啦。</p>
-<p>对了，最后说一下这个项目应该是只能在 macOS 下操作，windows 是不支持的。在一个就是最好可以使用梯子，要不然项目下载的一下东西可能会很慢，或者完全下不来。</p>
-<p>最后感谢 V2ex，啦啦啦啦又可以愉快地使用 Ipad 啦。</p>
+                <h2 id="克隆-laradock-到本地"><a href="#克隆-laradock-到本地" class="headerlink" title="克隆 laradock 到本地"></a>克隆 laradock 到本地</h2><pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> ~
+$ <span class="token function">git</span> clone https://github.com/Laradock/laradock.git
+$ <span class="token function">cd</span> laradock
+$ <span class="token function">git</span> checkout -b v11.0
+</code></pre>
+<h2 id="在-laradock-同级创建-wwwroot-目录作为网站主目录"><a href="#在-laradock-同级创建-wwwroot-目录作为网站主目录" class="headerlink" title="在 laradock 同级创建 wwwroot 目录作为网站主目录"></a>在 laradock 同级创建 wwwroot 目录作为网站主目录</h2><pre class=" language-bash"><code class="language-bash">$ <span class="token function">mkdir</span> ~/wwwroot
+</code></pre>
+<h2 id="复制-laradock-项目中的-env-example-到当前目录并改名为-env"><a href="#复制-laradock-项目中的-env-example-到当前目录并改名为-env" class="headerlink" title="复制 laradock 项目中的 env-example 到当前目录并改名为 .env"></a>复制 laradock 项目中的 env-example 到当前目录并改名为 .env</h2><pre class=" language-bash"><code class="language-bash">$ <span class="token function">cp</span> env-example .env
+</code></pre>
+<h2 id="编辑-env"><a href="#编辑-env" class="headerlink" title="编辑 .env"></a>编辑 .env</h2><p><strong>在该配置文件中可以修改各种容器的配置，例如 mysql 密码、php 版本等，大家可以自行参考</strong></p>
+<p>一下内容是需要修改的地方</p>
+<pre><code># 设置网站主目录
+APP_CODE_PATH_HOST=../wwwroot
+
+# 开启 api 源镜像（嘿嘿，这就是开源软件的好处，我们可以给项目提交 pr，让项目可以兼容我国的网络）
+CHANGE_SOURCE=true
+
+# 设置 composer 镜像地址
+WORKSPACE_COMPOSER_REPO_PACKAGIST=https://mirrors.aliyun.com/composer
+
+# 设置 npm 镜像地址
+WORKSPACE_NPM_REGISTRY=https://registry.npm.taobao.org
+</code></pre><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>启动我们需要等容器，然后就是耐心的等待了</p>
+<pre class=" language-bash"><code class="language-bash">$ docker-compose up -d nginx mysql redis workspace
+</code></pre>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>当看到如下内容就表示启动成功了</p>
+<pre class=" language-bash"><code class="language-bash">Creating laradock_mysql_1            <span class="token punctuation">..</span>. <span class="token keyword">done</span>
+Creating laradock_docker-in-docker_1 <span class="token punctuation">..</span>. <span class="token keyword">done</span>
+Creating laradock_redis_1            <span class="token punctuation">..</span>. <span class="token keyword">done</span>
+Creating laradock_workspace_1        <span class="token punctuation">..</span>. <span class="token keyword">done</span>
+Creating laradock_php-fpm_1          <span class="token punctuation">..</span>. <span class="token keyword">done</span>
+Creating laradock_nginx_1            <span class="token punctuation">..</span>. <span class="token keyword">done</span>
+</code></pre>
+<h2 id="创建-Laravel-项目"><a href="#创建-Laravel-项目" class="headerlink" title="创建 Laravel 项目"></a>创建 Laravel 项目</h2><p>接下来让我们看下 laradock 有什么优势吧</p>
+<h3 id="创建一个-laravel-项目（我们使用-learnku-的电商实战项目进行演示）"><a href="#创建一个-laravel-项目（我们使用-learnku-的电商实战项目进行演示）" class="headerlink" title="创建一个 laravel 项目（我们使用 learnku 的电商实战项目进行演示）"></a>创建一个 laravel 项目（我们使用 learnku 的电商实战项目进行演示）</h3><pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> ~/wwwroot
+$ <span class="token function">git</span> clone -b L05_7.x https://github.com/summerblue/laravel-shop.git
+</code></pre>
+<h3 id="进入-workspace-容器配置项目"><a href="#进入-workspace-容器配置项目" class="headerlink" title="进入 workspace 容器配置项目"></a>进入 workspace 容器配置项目</h3><pre class=" language-bash"><code class="language-bash">$ docker-compose <span class="token function">exec</span> workspace <span class="token function">bash</span>
+
+workspace<span class="token comment" spellcheck="true"># cd laravel-shop</span>
+workspace<span class="token comment" spellcheck="true"># composer install</span>
+workspace<span class="token comment" spellcheck="true"># cp .env.example .env</span>
+workspace<span class="token comment" spellcheck="true"># php artisan key:generate</span>
+workspace<span class="token comment" spellcheck="true"># vim .env    //修改数据库部分，内容如下。</span>
+workspace<span class="token comment" spellcheck="true"># php artisan migrate</span>
+workspace<span class="token comment" spellcheck="true"># php artisan db:seed</span>
+</code></pre>
+<p><img src="http://static.xiangdangnian.net.cn/20200907115535.png" alt="env 配置"></p>
+<p><strong>查看 laradock 中的 .env 文件，获取数据库相关信息</strong><br><img src="http://static.xiangdangnian.net.cn/20200907115641.png" alt=""></p>
+<h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h3><pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> ~/laradock/nginx/sites
+$ <span class="token function">cp</span> laravel.conf.example shop.conf
+//修改配置文件如下图所示
+$ vim shop.conf   
+$ <span class="token function">cd</span> ~/laradock/
+$ docker-compose restart nginx
+</code></pre>
+<p><img src="http://static.xiangdangnian.net.cn/20200907120035.png" alt="nginx 配置文件"></p>
+<h3 id="更改项目所属用户"><a href="#更改项目所属用户" class="headerlink" title="更改项目所属用户"></a>更改项目所属用户</h3><p><strong>由于权限问题，需要将项目的所属用户设置为 laradock 用户</strong></p>
+<pre><code>$ docker-compose exec workspace bash
+# chown -R laradock:laradock laravel-shop
+</code></pre><h3 id="将前端项目打包"><a href="#将前端项目打包" class="headerlink" title="将前端项目打包"></a>将前端项目打包</h3><p>访问我们设置的域名后发现错误了。由于laravel 项目前端需要打包才能正常运行，下面执行打包操作。</p>
+<p><img src="http://static.xiangdangnian.net.cn/20200907142614.png" alt=""> </p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># npm install </span>
+<span class="token comment" spellcheck="true"># npm run prod</span>
+</code></pre>
+<h3 id="重新访问项目"><a href="#重新访问项目" class="headerlink" title="重新访问项目"></a>重新访问项目</h3><p><em>如果能看到下面的内容就表示成功了</em></p>
+<p><img src="http://static.xiangdangnian.net.cn/20200907142935.png" alt=""></p>
 
             </div>
             <hr>
@@ -499,7 +541,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/01/13/降级记录/">http://blog.xiangdangnian.net.cn/2020/01/13/降级记录/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/08/30/docker学习笔记九（Laradock使用）/">http://blog.xiangdangnian.net.cn/2020/08/30/docker学习笔记九（Laradock使用）/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -537,8 +579,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ios/">
-                                    <span class="chip bg-color">ios</span>
+                                <a href="/tags/docker/">
+                                    <span class="chip bg-color">docker</span>
                                 </a>
                             
                         </div>
@@ -971,31 +1013,40 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/01/15/laravel通过关联模型实现无限极分类/">
+                <a href="/2020/09/06/docker学习笔记十（swarm）/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/kuala-lumpur-1820944_1280.jpg" class="responsive-img" alt="laravel通过关联模型实现无限极分类">
+                        <img src="http://static.xiangdangnian.net.cn/blog/2020/09/08/21-27-37-bac515a9f2b23f137a55b053ca6d883e-974f63.jpg" class="responsive-img" alt="docker 学习笔记（十）">
                         
-                        <span class="card-title">laravel通过关联模型实现无限极分类</span>
+                        <span class="card-title">docker 学习笔记（十）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Laravel 通过关联模型实现无限极分类
-这个内容是在 Laravel-China 论坛上看到的，怕以后不好找，这里记录一下。原文地址为：https://learnku.com/articles/14068/simple-practice
+                            
+Swarm 是 Docker 引擎内置（原生）的集群管理和编排工具
+
+学习 swarm 一定要理解的几个重要概念
+
+节点
+服务
+任务
+
+节点一台物理或云主机加入 docker 集群，那么这台主机就是一个节点。
+节点分为管理 (manage
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-15
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-06
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/mysql/" class="post-category">
-                                    mysql
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -1005,12 +1056,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/laravel/">
-                        <span class="chip bg-color">laravel</span>
-                    </a>
-                    
-                    <a href="/tags/php/">
-                        <span class="chip bg-color">php</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -1024,35 +1071,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/26/redis学习笔记-基本数据类型之有序集合/">
+                <a href="/2020/08/27/docker学习笔记八（docker-compose）/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之有序集合">
+                        <img src="http://static.xiangdangnian.net.cn/20200828083314.jpg" class="responsive-img" alt="docker 学习笔记（八）">
                         
-                        <span class="card-title">redis学习笔记-----基本数据类型之有序集合</span>
+                        <span class="card-title">docker 学习笔记（八）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有序集合（sort sets）
-与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。
-使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 
-
-ZADD
-将一个或多个元素以及其 
+                            使用 docker-compose 搭建 LNMP 开发环境上一集我们已经可以通过 docker 搭建 LNMP 的开发环境了，但是想必大家也发现配置挺复杂的，每个容器启动都有好长的命令。那有没有更简单一点的方式呢？有的，就是今天要学习的—
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-27
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category">
-                                    redis
+                            <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                             
                             
@@ -1062,8 +1104,8 @@ ZADD
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
