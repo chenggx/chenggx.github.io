@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://blog.xiangdangnian.net.cn/2020/09/12/git%E6%92%A4%E9%94%80%E7%9B%B8%E5%85%B3%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2020-09-12T11:34:13.158Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://blog.xiangdangnian.net.cn/2020/09/06/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%8D%81%EF%BC%88swarm%EF%BC%89/</loc>
     
-    <lastmod>2020-09-08T13:27:57.799Z</lastmod>
+    <lastmod>2020-09-09T12:04:43.750Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://blog.xiangdangnian.net.cn/2020/08/30/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%9D%EF%BC%88Laradock%E4%BD%BF%E7%94%A8%EF%BC%89/</loc>
     
-    <lastmod>2020-09-08T13:26:20.079Z</lastmod>
+    <lastmod>2020-09-08T13:46:40.456Z</lastmod>
     
   </url>
   

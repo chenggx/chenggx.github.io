@@ -4,13 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="docker 学习笔记（九）, 想当年,php,php技术分享">
-    <meta name="description" content="克隆 laradock 到本地$ cd ~
-$ git clone https://github.com/Laradock/laradock.git
-$ cd laradock
-$ git checkout -b v11.0
+    <meta name="keywords" content="git 撤销相关操作, 想当年,php,php技术分享">
+    <meta name="description" content="每次使用 git 需要进行版本回退相关的操作都要在搜索引擎重新查询相关命令，很是费时间，今天有空总结一下，算是记笔记方便以后使用。
+撤销本地当前所有修改git reset --hard
 
-在 lara">
+如果本地文件修改得一团乱，但是还没有 commit，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +16,7 @@ $ git checkout -b v11.0
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>docker 学习笔记（九） | 想当年的博客</title>
+    <title>git 撤销相关操作 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -274,13 +272,13 @@ $ git checkout -b v11.0
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2020/08/31/19-16-47-7b7fa6ae2465aeaaf3cf9e709874da3a-d457ee.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2020/09/12/19-33-32-a75c69a1c097a6ae4fffdf88b69eb2dc-b631d4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        docker 学习笔记（九）
+                        git 撤销相关操作
                     </div>
                 </div>
             </div>
@@ -392,8 +390,8 @@ $ git checkout -b v11.0
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
                             </a>
                         
                     </div>
@@ -404,8 +402,8 @@ $ git checkout -b v11.0
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Docker/" class="post-category">
-                                Docker
+                            <a href="/categories/git/" class="post-category">
+                                git
                             </a>
                         
                     </div>
@@ -417,7 +415,7 @@ $ git checkout -b v11.0
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-08-30
+                    2020-09-12
                 </div>
                 
 
@@ -426,7 +424,7 @@ $ git checkout -b v11.0
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    533
+                    638
                 </div>
                 
 
@@ -449,73 +447,46 @@ $ git checkout -b v11.0
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="克隆-laradock-到本地"><a href="#克隆-laradock-到本地" class="headerlink" title="克隆 laradock 到本地"></a>克隆 laradock 到本地</h2><pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> ~
-$ <span class="token function">git</span> clone https://github.com/Laradock/laradock.git
-$ <span class="token function">cd</span> laradock
-$ <span class="token function">git</span> checkout -b v11.0
+                <p>每次使用 git 需要进行版本回退相关的操作都要在搜索引擎重新查询相关命令，很是费时间，今天有空总结一下，算是记笔记方便以后使用。</p>
+<h2 id="撤销本地当前所有修改"><a href="#撤销本地当前所有修改" class="headerlink" title="撤销本地当前所有修改"></a>撤销本地当前所有修改</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> reset --hard
 </code></pre>
-<h2 id="在-laradock-同级创建-wwwroot-目录作为网站主目录"><a href="#在-laradock-同级创建-wwwroot-目录作为网站主目录" class="headerlink" title="在 laradock 同级创建 wwwroot 目录作为网站主目录"></a>在 laradock 同级创建 wwwroot 目录作为网站主目录</h2><pre class=" language-bash"><code class="language-bash">$ <span class="token function">mkdir</span> ~/wwwroot
+<p>如果本地文件修改得一团乱，但是还没有 commit，可以通过这个命令恢复到上次 commit 的状态。</p>
+<h2 id="丢弃-commit"><a href="#丢弃-commit" class="headerlink" title="丢弃 commit"></a>丢弃 commit</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> reset --hard commitID
 </code></pre>
-<h2 id="复制-laradock-项目中的-env-example-到当前目录并改名为-env"><a href="#复制-laradock-项目中的-env-example-到当前目录并改名为-env" class="headerlink" title="复制 laradock 项目中的 env-example 到当前目录并改名为 .env"></a>复制 laradock 项目中的 env-example 到当前目录并改名为 .env</h2><pre class=" language-bash"><code class="language-bash">$ <span class="token function">cp</span> env-example .env
+<p>将代码恢复到指定的 commitID 处。如果不指定 –hard 参数，那么不会改变工作区的文件。（一般使用都会带上该参数）</p>
+<h2 id="撤销-commit"><a href="#撤销-commit" class="headerlink" title="撤销 commit"></a>撤销 commit</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> revert HEAD
 </code></pre>
-<h2 id="编辑-env"><a href="#编辑-env" class="headerlink" title="编辑 .env"></a>编辑 .env</h2><p><strong>在该配置文件中可以修改各种容器的配置，例如 mysql 密码、php 版本等，大家可以自行参考</strong></p>
-<p>一下内容是需要修改的地方</p>
-<pre><code># 设置网站主目录
-APP_CODE_PATH_HOST=../wwwroot
+<p>commit 代码以后，你突然意识到这个 commit 有问题，应该撤销掉，这时执行该命令就可以了。该命令会新生成一个 commit 提交记录，并不改变其他内容，在 log 中可查看到撤销记录。基本属于撤销操作的首先方案。</p>
+<blockquote>
+<p>该命令还有两个常用参数</p>
+</blockquote>
+<ul>
+<li>–no-edit：执行时不打开默认编辑器，直接使用 Git 自动生成的提交信息。</li>
+<li>–no-commit：只抵消暂存区和工作区的文件变化，不产生新的提交。</li>
+</ul>
+<h2 id="撤销-add-操作"><a href="#撤销-add-操作" class="headerlink" title="撤销 add 操作"></a>撤销 add 操作</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> reset HEAD <span class="token punctuation">[</span>filename<span class="token punctuation">]</span>
+</code></pre>
+<p>可选参数</p>
+<p>filename 指定撤销的文件。（不使用该参数表示所有已经 add 了的文件全部取消 add 状态）</p>
+<h2 id="替换上一次-commit"><a href="#替换上一次-commit" class="headerlink" title="替换上一次 commit"></a>替换上一次 commit</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> commit --amend -m <span class="token string">"new Message"</span>
+</code></pre>
+<p>如果我们在 commit 之后发现信息写错了，这是可以使用该命令修改信息。</p>
+<p><strong>这时如果暂存区有发生变化的文件（也就是有文件被 add 了），会一起提交到仓库。所以，–amend不仅可以修改提交信息，还可以整个把上一次提交替换掉。</strong></p>
+<h2 id="暂时将未提交的变化移除，稍后再移入"><a href="#暂时将未提交的变化移除，稍后再移入" class="headerlink" title="暂时将未提交的变化移除，稍后再移入"></a>暂时将未提交的变化移除，稍后再移入</h2><p>$ git stash<br>$ git stash pop</p>
+<p>如果我们在修改了一些文件后发现不应该在这个分支上操作，那么我们可以使用 git stash 将当前工作区的文件保存一下，然后切换的新分支，执行 git stash pop 将保存的内容恢复到新分支。</p>
+<h2 id="时光机"><a href="#时光机" class="headerlink" title="时光机"></a>时光机</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> reflog
+</code></pre>
+<p>只要HEAD发生了变化, 就会在reflog里面看得到。</p>
+<p>配合 git reset 命令可以将代码切换到任意状态。</p>
+<h2 id="取消已经-push-的行为（强制-PUSH）"><a href="#取消已经-push-的行为（强制-PUSH）" class="headerlink" title="取消已经 push 的行为（强制 PUSH）"></a>取消已经 push 的行为（强制 PUSH）</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查询 git 所有变化日志</span>
+<span class="token function">git</span> reflog 
 
-# 开启 api 源镜像（嘿嘿，这就是开源软件的好处，我们可以给项目提交 pr，让项目可以兼容我国的网络）
-CHANGE_SOURCE=true
+<span class="token comment" spellcheck="true"># 本地仓库回退到某一版本</span>
+<span class="token function">git</span> reset -hard xxxx
 
-# 设置 composer 镜像地址
-WORKSPACE_COMPOSER_REPO_PACKAGIST=https://mirrors.aliyun.com/composer
-
-# 设置 npm 镜像地址
-WORKSPACE_NPM_REGISTRY=https://registry.npm.taobao.org
-</code></pre><h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>启动我们需要等容器，然后就是耐心的等待了</p>
-<pre class=" language-bash"><code class="language-bash">$ docker-compose up -d nginx mysql redis workspace
+<span class="token comment" spellcheck="true"># 强制 PUSH，此时远程分支已经恢复成指定的 commit 了</span>
+<span class="token function">git</span> push origin master --force
 </code></pre>
-<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>当看到如下内容就表示启动成功了</p>
-<pre class=" language-bash"><code class="language-bash">Creating laradock_mysql_1            <span class="token punctuation">..</span>. <span class="token keyword">done</span>
-Creating laradock_docker-in-docker_1 <span class="token punctuation">..</span>. <span class="token keyword">done</span>
-Creating laradock_redis_1            <span class="token punctuation">..</span>. <span class="token keyword">done</span>
-Creating laradock_workspace_1        <span class="token punctuation">..</span>. <span class="token keyword">done</span>
-Creating laradock_php-fpm_1          <span class="token punctuation">..</span>. <span class="token keyword">done</span>
-Creating laradock_nginx_1            <span class="token punctuation">..</span>. <span class="token keyword">done</span>
-</code></pre>
-<h2 id="创建-Laravel-项目"><a href="#创建-Laravel-项目" class="headerlink" title="创建 Laravel 项目"></a>创建 Laravel 项目</h2><p>接下来让我们看下 laradock 有什么优势吧</p>
-<h3 id="创建一个-laravel-项目（我们使用-learnku-的电商实战项目进行演示）"><a href="#创建一个-laravel-项目（我们使用-learnku-的电商实战项目进行演示）" class="headerlink" title="创建一个 laravel 项目（我们使用 learnku 的电商实战项目进行演示）"></a>创建一个 laravel 项目（我们使用 learnku 的电商实战项目进行演示）</h3><pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> ~/wwwroot
-$ <span class="token function">git</span> clone -b L05_7.x https://github.com/summerblue/laravel-shop.git
-</code></pre>
-<h3 id="进入-workspace-容器配置项目"><a href="#进入-workspace-容器配置项目" class="headerlink" title="进入 workspace 容器配置项目"></a>进入 workspace 容器配置项目</h3><pre class=" language-bash"><code class="language-bash">$ docker-compose <span class="token function">exec</span> workspace <span class="token function">bash</span>
-
-workspace<span class="token comment" spellcheck="true"># cd laravel-shop</span>
-workspace<span class="token comment" spellcheck="true"># composer install</span>
-workspace<span class="token comment" spellcheck="true"># cp .env.example .env</span>
-workspace<span class="token comment" spellcheck="true"># php artisan key:generate</span>
-workspace<span class="token comment" spellcheck="true"># vim .env    //修改数据库部分，内容如下。</span>
-workspace<span class="token comment" spellcheck="true"># php artisan migrate</span>
-workspace<span class="token comment" spellcheck="true"># php artisan db:seed</span>
-</code></pre>
-<p><img src="http://static.xiangdangnian.net.cn/20200907115535.png" alt="env 配置"></p>
-<p><strong>查看 laradock 中的 .env 文件，获取数据库相关信息</strong><br><img src="http://static.xiangdangnian.net.cn/20200907115641.png" alt=""></p>
-<h3 id="配置-nginx"><a href="#配置-nginx" class="headerlink" title="配置 nginx"></a>配置 nginx</h3><pre class=" language-bash"><code class="language-bash">$ <span class="token function">cd</span> ~/laradock/nginx/sites
-$ <span class="token function">cp</span> laravel.conf.example shop.conf
-//修改配置文件如下图所示
-$ vim shop.conf   
-$ <span class="token function">cd</span> ~/laradock/
-$ docker-compose restart nginx
-</code></pre>
-<p><img src="http://static.xiangdangnian.net.cn/20200907120035.png" alt="nginx 配置文件"></p>
-<h3 id="更改项目所属用户"><a href="#更改项目所属用户" class="headerlink" title="更改项目所属用户"></a>更改项目所属用户</h3><p><strong>由于权限问题，需要将项目的所属用户设置为 laradock 用户</strong></p>
-<pre><code>$ docker-compose exec workspace bash
-# chown -R laradock:laradock laravel-shop
-</code></pre><h3 id="将前端项目打包"><a href="#将前端项目打包" class="headerlink" title="将前端项目打包"></a>将前端项目打包</h3><p>访问我们设置的域名后发现错误了。由于laravel 项目前端需要打包才能正常运行，下面执行打包操作。</p>
-<p><img src="http://static.xiangdangnian.net.cn/20200907142614.png" alt=""> </p>
-<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># npm install </span>
-<span class="token comment" spellcheck="true"># npm run prod</span>
-</code></pre>
-<h3 id="重新访问项目"><a href="#重新访问项目" class="headerlink" title="重新访问项目"></a>重新访问项目</h3><p><em>如果能看到下面的内容就表示成功了</em></p>
-<p><img src="http://static.xiangdangnian.net.cn/20200907142935.png" alt=""></p>
 <p><img src="http://static.xiangdangnian.net.cn/4vB3ZRunrw8VzSW6cLpJyaibKfYTNCU0.png" alt="程序员的艺术人生"></p>
 
             </div>
@@ -542,7 +513,7 @@ $ docker-compose restart nginx
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/08/30/docker学习笔记九（Laradock使用）/">http://blog.xiangdangnian.net.cn/2020/08/30/docker学习笔记九（Laradock使用）/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/09/12/git撤销相关操作/">http://blog.xiangdangnian.net.cn/2020/09/12/git撤销相关操作/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -580,8 +551,8 @@ $ docker-compose restart nginx
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
                                 </a>
                             
                         </div>
@@ -1012,7 +983,60 @@ $ docker-compose restart nginx
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/09/12/git撤销相关操作/">
+                    <div class="card-image">
+                        
+                        <img src="http://static.xiangdangnian.net.cn/blog/2020/09/12/19-33-32-a75c69a1c097a6ae4fffdf88b69eb2dc-b631d4.jpg" class="responsive-img" alt="git 撤销相关操作">
+                        
+                        <span class="card-title">git 撤销相关操作</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            每次使用 git 需要进行版本回退相关的操作都要在搜索引擎重新查询相关命令，很是费时间，今天有空总结一下，算是记笔记方便以后使用。
+撤销本地当前所有修改git reset --hard
+
+如果本地文件修改得一团乱，但是还没有 commit，
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-12
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/git/" class="post-category">
+                                    git
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/09/06/docker学习笔记十（swarm）/">
                     <div class="card-image">
@@ -1039,56 +1063,8 @@ Swarm 是 Docker 引擎内置（原生）的集群管理和编排工具
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-06
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Docker/" class="post-category">
-                                    Docker
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/08/27/docker学习笔记八（docker-compose）/">
-                    <div class="card-image">
-                        
-                        <img src="http://static.xiangdangnian.net.cn/20200828083314.jpg" class="responsive-img" alt="docker 学习笔记（八）">
-                        
-                        <span class="card-title">docker 学习笔记（八）</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            使用 docker-compose 搭建 LNMP 开发环境上一集我们已经可以通过 docker 搭建 LNMP 的开发环境了，但是想必大家也发现配置挺复杂的，每个容器启动都有好长的命令。那有没有更简单一点的方式呢？有的，就是今天要学习的—
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-08-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-06
                             </span>
                         <span class="publish-author">
                             
