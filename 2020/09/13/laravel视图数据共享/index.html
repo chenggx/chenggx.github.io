@@ -4,11 +4,8 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="git 撤销相关操作, 想当年,php,php技术分享">
-    <meta name="description" content="每次使用 git 需要进行版本回退相关的操作都要在搜索引擎重新查询相关命令，很是费时间，今天有空总结一下，算是记笔记方便以后使用。
-撤销本地当前所有修改git reset --hard
-
-如果本地文件修改得一团乱，但是还没有 commit，">
+    <meta name="keywords" content="laravel 视图数据共享, 想当年,php,php技术分享">
+    <meta name="description" content="在我们做网站的时候有些数据是每个视图页面都需要的（导航、侧边栏等内容），但如果我们在每个视图的控制器里面都写向视图传递数据的操作则会显得代码比较冗余。那么在 laravel 中我们一般可以使用 viewShare 和 viewCompose">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +13,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>git 撤销相关操作 | 想当年的博客</title>
+    <title>laravel 视图数据共享 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,13 +269,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2020/09/12/19-33-32-a75c69a1c097a6ae4fffdf88b69eb2dc-b631d4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2020/09/14/21-30-35-d84e9c675dc1332aa70a59158eef496d-91c21f.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        git 撤销相关操作
+                        laravel 视图数据共享
                     </div>
                 </div>
             </div>
@@ -390,8 +387,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/laravel/">
+                                <span class="chip bg-color">laravel</span>
                             </a>
                         
                     </div>
@@ -402,8 +399,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/git/" class="post-category">
-                                git
+                            <a href="/categories/laravel/" class="post-category">
+                                laravel
                             </a>
                         
                     </div>
@@ -415,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-12
+                    2020-09-13
                 </div>
                 
 
@@ -424,7 +421,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    638
+                    598
                 </div>
                 
 
@@ -447,46 +444,193 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>每次使用 git 需要进行版本回退相关的操作都要在搜索引擎重新查询相关命令，很是费时间，今天有空总结一下，算是记笔记方便以后使用。</p>
-<h2 id="撤销本地当前所有修改"><a href="#撤销本地当前所有修改" class="headerlink" title="撤销本地当前所有修改"></a>撤销本地当前所有修改</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> reset --hard
+                <p>在我们做网站的时候有些数据是每个视图页面都需要的（导航、侧边栏等内容），但如果我们在每个视图的控制器里面都写向视图传递数据的操作则会显得代码比较冗余。那么在 laravel 中我们一般可以使用 viewShare 和 viewComposer 的方式来进行视图页面数据的共享。</p>
+<h2 id="viewShare"><a href="#viewShare" class="headerlink" title="viewShare"></a>viewShare</h2><h3 id="首先需要在-AppServiceProvider-中的-boot-方法中定义需要共享的数据。"><a href="#首先需要在-AppServiceProvider-中的-boot-方法中定义需要共享的数据。" class="headerlink" title="首先需要在 AppServiceProvider 中的 boot 方法中定义需要共享的数据。"></a>首先需要在 AppServiceProvider 中的 boot 方法中定义需要共享的数据。</h3><p>app/Providers/AppServiceProvider.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Providers</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>ServiceProvider</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>View</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AppServiceProvider</span> <span class="token keyword">extends</span> <span class="token class-name">ServiceProvider</span>
+<span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * Register any application services.
+     *
+     * @return void
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">boot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        View<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">share</span><span class="token punctuation">(</span><span class="token string">'sitename'</span><span class="token punctuation">,</span><span class="token string">'xxx的网站'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>如果本地文件修改得一团乱，但是还没有 commit，可以通过这个命令恢复到上次 commit 的状态。</p>
-<h2 id="丢弃-commit"><a href="#丢弃-commit" class="headerlink" title="丢弃 commit"></a>丢弃 commit</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> reset --hard commitID
+<h3 id="定义两个路由文件"><a href="#定义两个路由文件" class="headerlink" title="定义两个路由文件"></a>定义两个路由文件</h3><p>routes/web.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>Route</span><span class="token punctuation">;</span>
+
+Route<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/product'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">view</span><span class="token punctuation">(</span><span class="token string">'product'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Route<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/blog'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">view</span><span class="token punctuation">(</span><span class="token string">'blog'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>
-<p>将代码恢复到指定的 commitID 处。如果不指定 –hard 参数，那么不会改变工作区的文件。（一般使用都会带上该参数）</p>
-<h2 id="撤销-commit"><a href="#撤销-commit" class="headerlink" title="撤销 commit"></a>撤销 commit</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> revert HEAD
+<h3 id="在-blog-和-product-视图页使用共享的数据"><a href="#在-blog-和-product-视图页使用共享的数据" class="headerlink" title="在 blog 和 product 视图页使用共享的数据"></a>在 blog 和 product 视图页使用共享的数据</h3><p>resources/views/blog.blade.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token variable">$sitename</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+文章页
 </code></pre>
-<p>commit 代码以后，你突然意识到这个 commit 有问题，应该撤销掉，这时执行该命令就可以了。该命令会新生成一个 commit 提交记录，并不改变其他内容，在 log 中可查看到撤销记录。基本属于撤销操作的首先方案。</p>
-<blockquote>
-<p>该命令还有两个常用参数</p>
-</blockquote>
+<p>resources/views/product.blade.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token variable">$sitename</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+产品页
+</code></pre>
+<h3 id="验证效果"><a href="#验证效果" class="headerlink" title="验证效果"></a>验证效果</h3><p><img src="http://static.xiangdangnian.net.cn/20200914105715.png" alt=""><br><img src="http://static.xiangdangnian.net.cn/20200914105738.png" alt=""></p>
+<h2 id="viewComposer"><a href="#viewComposer" class="headerlink" title="viewComposer"></a>viewComposer</h2><h3 id="设置-composer"><a href="#设置-composer" class="headerlink" title="设置 composer"></a>设置 composer</h3><p>有三种方式设置</p>
 <ul>
-<li>–no-edit：执行时不打开默认编辑器，直接使用 Git 自动生成的提交信息。</li>
-<li>–no-commit：只抵消暂存区和工作区的文件变化，不产生新的提交。</li>
+<li><p>使用新的provider</p>
+</li>
+<li><p>在 AppServiceProvider 中的 boot 方法使用基于 viewComposer 的闭包</p>
+</li>
+<li><p>在 AppServiceProvider 中的 boot 方法使用 viewComposer 成器</p>
+<h4 id="使用新的provider"><a href="#使用新的provider" class="headerlink" title="使用新的provider"></a>使用新的provider</h4><p>app/Providers/MenuComposerProvider.php</p>
+</li>
 </ul>
-<h2 id="撤销-add-操作"><a href="#撤销-add-操作" class="headerlink" title="撤销 add 操作"></a>撤销 add 操作</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> reset HEAD <span class="token punctuation">[</span>filename<span class="token punctuation">]</span>
-</code></pre>
-<p>可选参数</p>
-<p>filename 指定撤销的文件。（不使用该参数表示所有已经 add 了的文件全部取消 add 状态）</p>
-<h2 id="替换上一次-commit"><a href="#替换上一次-commit" class="headerlink" title="替换上一次 commit"></a>替换上一次 commit</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> commit --amend -m <span class="token string">"new Message"</span>
-</code></pre>
-<p>如果我们在 commit 之后发现信息写错了，这是可以使用该命令修改信息。</p>
-<p><strong>这时如果暂存区有发生变化的文件（也就是有文件被 add 了），会一起提交到仓库。所以，–amend不仅可以修改提交信息，还可以整个把上一次提交替换掉。</strong></p>
-<h2 id="暂时将未提交的变化移除，稍后再移入"><a href="#暂时将未提交的变化移除，稍后再移入" class="headerlink" title="暂时将未提交的变化移除，稍后再移入"></a>暂时将未提交的变化移除，稍后再移入</h2><p>$ git stash<br>$ git stash pop</p>
-<p>如果我们在修改了一些文件后发现不应该在这个分支上操作，那么我们可以使用 git stash 将当前工作区的文件保存一下，然后切换的新分支，执行 git stash pop 将保存的内容恢复到新分支。</p>
-<h2 id="时光机"><a href="#时光机" class="headerlink" title="时光机"></a>时光机</h2><pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> reflog
-</code></pre>
-<p>只要HEAD发生了变化, 就会在reflog里面看得到。</p>
-<p>配合 git reset 命令可以将代码切换到任意状态。</p>
-<h2 id="取消已经-push-的行为（强制-PUSH）"><a href="#取消已经-push-的行为（强制-PUSH）" class="headerlink" title="取消已经 push 的行为（强制 PUSH）"></a>取消已经 push 的行为（强制 PUSH）</h2><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># 查询 git 所有变化日志</span>
-<span class="token function">git</span> reflog 
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
 
-<span class="token comment" spellcheck="true"># 本地仓库回退到某一版本</span>
-<span class="token function">git</span> reset -hard xxxx
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Providers</span><span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true"># 强制 PUSH，此时远程分支已经恢复成指定的 commit 了</span>
-<span class="token function">git</span> push origin master --force
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>View<span class="token punctuation">\</span>Composers<span class="token punctuation">\</span>MenuComposer</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>View</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>ServiceProvider</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MenuComposerProvider</span> <span class="token keyword">extends</span> <span class="token class-name">ServiceProvider</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">boot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        View<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">composer</span><span class="token punctuation">(</span><span class="token string">'menu'</span><span class="token punctuation">,</span>MenuComposer<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 </code></pre>
+<h4 id="在-AppServiceProvider-中的-boot-方法使用基于-viewComposer-的闭包-逻辑比较简单的话使用该方法"><a href="#在-AppServiceProvider-中的-boot-方法使用基于-viewComposer-的闭包-逻辑比较简单的话使用该方法" class="headerlink" title="在 AppServiceProvider 中的 boot 方法使用基于 viewComposer 的闭包(逻辑比较简单的话使用该方法)"></a>在 AppServiceProvider 中的 boot 方法使用基于 viewComposer 的闭包(逻辑比较简单的话使用该方法)</h4><p>app/Providers/MenuComposerProvider.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Providers</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>ServiceProvider</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>View</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AppServiceProvider</span> <span class="token keyword">extends</span> <span class="token class-name">ServiceProvider</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">boot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// 使用基于合成器的闭包</span>
+        View<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">composer</span><span class="token punctuation">(</span><span class="token string">'menu'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token variable">$view</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token variable">$view</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">with</span><span class="token punctuation">(</span><span class="token string">'list'</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'首页'</span><span class="token punctuation">,</span> <span class="token string">'文章'</span><span class="token punctuation">,</span> <span class="token string">'产品'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="在-AppServiceProvider-中的-boot-方法使用-viewComposer"><a href="#在-AppServiceProvider-中的-boot-方法使用-viewComposer" class="headerlink" title="在 AppServiceProvider 中的 boot 方法使用 viewComposer"></a>在 AppServiceProvider 中的 boot 方法使用 viewComposer</h4><p>app/Providers/MenuComposerProvider.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Providers</span><span class="token punctuation">;</span>
+
+<span class="token keyword">use</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>View<span class="token punctuation">\</span>Composers<span class="token punctuation">\</span>MenuComposer</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>ServiceProvider</span><span class="token punctuation">;</span>
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>View</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">AppServiceProvider</span> <span class="token keyword">extends</span> <span class="token class-name">ServiceProvider</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">boot</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        View<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">composer</span><span class="token punctuation">(</span><span class="token string">'menu'</span><span class="token punctuation">,</span>MenuComposer<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="注册-Provider-（后两种方式不用注册）"><a href="#注册-Provider-（后两种方式不用注册）" class="headerlink" title="注册 Provider （后两种方式不用注册）"></a>注册 Provider （后两种方式不用注册）</h3><p>config/app.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  <span class="token string">'providers'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">[</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+        App\<span class="token package">Providers<span class="token punctuation">\</span>MenuComposerProvider</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token keyword">class</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<h3 id="创建-MenuComposer"><a href="#创建-MenuComposer" class="headerlink" title="创建 MenuComposer"></a>创建 MenuComposer</h3><p>app/Http/View/Composers/MenuComposer.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+
+<span class="token keyword">namespace</span> <span class="token package">App<span class="token punctuation">\</span>Http<span class="token punctuation">\</span>View<span class="token punctuation">\</span>Composers</span><span class="token punctuation">;</span>
+
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>View<span class="token punctuation">\</span>View</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MenuComposer</span>
+<span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">compose</span><span class="token punctuation">(</span>View <span class="token variable">$view</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token variable">$view</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">with</span><span class="token punctuation">(</span><span class="token string">'list'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">'首页'</span><span class="token punctuation">,</span> <span class="token string">'文章'</span><span class="token punctuation">,</span> <span class="token string">'产品'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="创建-menu-视图文件"><a href="#创建-menu-视图文件" class="headerlink" title="创建 menu 视图文件"></a>创建 menu 视图文件</h3><p>resources/views/menu.blade.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">></span></span></span>
+    @<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$list</span> <span class="token keyword">as</span> <span class="token variable">$menu</span><span class="token punctuation">)</span>
+        <span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">></span></span></span><span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token variable">$menu</span><span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span></span>
+    @<span class="token keyword">endforeach</span>
+<span class="token markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span></span>
+</code></pre>
+<h3 id="设置路由"><a href="#设置路由" class="headerlink" title="设置路由"></a>设置路由</h3><p>routes/web.php</p>
+<pre class=" language-php"><code class="language-php"><span class="token delimiter">&lt;?php</span>
+
+<span class="token keyword">use</span> <span class="token package">Illuminate<span class="token punctuation">\</span>Support<span class="token punctuation">\</span>Facades<span class="token punctuation">\</span>Route</span><span class="token punctuation">;</span>
+
+Route<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/product'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">view</span><span class="token punctuation">(</span><span class="token string">'product'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+Route<span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'/blog'</span><span class="token punctuation">,</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token function">view</span><span class="token punctuation">(</span><span class="token string">'blog'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="在-product、blog-视图文件中引入-menu-视图"><a href="#在-product、blog-视图文件中引入-menu-视图" class="headerlink" title="在 product、blog 视图文件中引入 menu 视图"></a>在 product、blog 视图文件中引入 menu 视图</h3><p>resources/views/product.blade.php</p>
+<pre class=" language-php"><code class="language-php">@<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string">'menu'</span><span class="token punctuation">)</span>
+产品页
+</code></pre>
+<p>resources/views/blog.blade.php</p>
+<pre class=" language-php"><code class="language-php">@<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string">'menu'</span><span class="token punctuation">)</span>
+
+文章页
+</code></pre>
+<h3 id="查看效果"><a href="#查看效果" class="headerlink" title="查看效果"></a>查看效果</h3><p><img src="http://static.xiangdangnian.net.cn/20200914143225.png" alt=""></p>
+<p><img src="http://static.xiangdangnian.net.cn/20200914143247.png" alt=""></p>
 <p><img src="http://static.xiangdangnian.net.cn/4vB3ZRunrw8VzSW6cLpJyaibKfYTNCU0.png" alt="程序员的艺术人生"></p>
 
             </div>
@@ -513,7 +657,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/09/12/git撤销相关操作/">http://blog.xiangdangnian.net.cn/2020/09/12/git撤销相关操作/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/09/13/laravel视图数据共享/">http://blog.xiangdangnian.net.cn/2020/09/13/laravel视图数据共享/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -551,8 +695,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/laravel/">
+                                    <span class="chip bg-color">laravel</span>
                                 </a>
                             
                         </div>
@@ -983,7 +1127,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2020/09/13/laravel视图数据共享/">
                     <div class="card-image">
@@ -1000,9 +1145,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1015,6 +1160,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1033,40 +1179,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/06/docker学习笔记十（swarm）/">
+                <a href="/2020/09/12/git撤销相关操作/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/2020/09/08/21-27-37-bac515a9f2b23f137a55b053ca6d883e-974f63.jpg" class="responsive-img" alt="docker 学习笔记（十）">
+                        <img src="http://static.xiangdangnian.net.cn/blog/2020/09/12/19-33-32-a75c69a1c097a6ae4fffdf88b69eb2dc-b631d4.jpg" class="responsive-img" alt="git 撤销相关操作">
                         
-                        <span class="card-title">docker 学习笔记（十）</span>
+                        <span class="card-title">git 撤销相关操作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-Swarm 是 Docker 引擎内置（原生）的集群管理和编排工具
+                            每次使用 git 需要进行版本回退相关的操作都要在搜索引擎重新查询相关命令，很是费时间，今天有空总结一下，算是记笔记方便以后使用。
+撤销本地当前所有修改git reset --hard
 
-学习 swarm 一定要理解的几个重要概念
-
-节点
-服务
-任务
-
-节点一台物理或云主机加入 docker 集群，那么这台主机就是一个节点。
-节点分为管理 (manage
+如果本地文件修改得一团乱，但是还没有 commit，
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-12
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Docker/" class="post-category">
-                                    Docker
+                            <a href="/categories/git/" class="post-category">
+                                    git
                                 </a>
                             
                             
@@ -1076,8 +1215,8 @@ Swarm 是 Docker 引擎内置（原生）的集群管理和编排工具
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/docker/">
-                        <span class="chip bg-color">docker</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>

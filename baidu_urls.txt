@@ -1,5 +1,5 @@
+http://blog.xiangdangnian.net.cn/2020/09/13/laravel视图数据共享/
 http://blog.xiangdangnian.net.cn/2020/09/12/git撤销相关操作/
 http://blog.xiangdangnian.net.cn/2020/09/06/docker学习笔记十（swarm）/
 http://blog.xiangdangnian.net.cn/2020/08/30/docker学习笔记九（Laradock使用）/
 http://blog.xiangdangnian.net.cn/2020/08/27/docker学习笔记八（docker-compose）/
-http://blog.xiangdangnian.net.cn/2020/08/25/docker学习笔记七（搭建LNMP开发环境）/
