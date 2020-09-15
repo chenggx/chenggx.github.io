@@ -4,11 +4,11 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="ipad-mini2 降级记录, 想当年,php,php技术分享">
-    <meta name="description" content="
-主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程
+    <meta name="keywords" content="composer 版本约束使用方法, 想当年,php,php技术分享">
+    <meta name="description" content="composer 在平常的开发中是经常的使用，但是从来没有特别注意过 composer 包的版本约束，只是知道个大概，秉着活到老学到老的态度再次重新系统的学习下 composer 版本约束的具体规则。
+##语义化版本
 
-最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用狗子搜索">
+首先我们需要先了解一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +16,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ipad-mini2 降级记录 | 想当年的博客</title>
+    <title>composer 版本约束使用方法 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,13 +272,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2020/09/15/19-56-24-443f94b329f420233f05fa2454bc416c-719cf6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ipad-mini2 降级记录
+                        composer 版本约束使用方法
                     </div>
                 </div>
             </div>
@@ -390,8 +390,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/ios/">
-                                <span class="chip bg-color">ios</span>
+                            <a href="/tags/php/">
+                                <span class="chip bg-color">php</span>
+                            </a>
+                        
+                            <a href="/tags/composer/">
+                                <span class="chip bg-color">composer</span>
                             </a>
                         
                     </div>
@@ -402,8 +406,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/ios/" class="post-category">
-                                ios
+                            <a href="/categories/php/" class="post-category">
+                                php
                             </a>
                         
                     </div>
@@ -415,7 +419,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-01-13
+                    2020-09-15
                 </div>
                 
 
@@ -424,14 +428,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    736
+                    994
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    3 分
                 </div>
                 
 				
@@ -447,33 +451,60 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>主要记录下 Ipad mini2 ios12.3.1 降级为 ios10.3.3 的过程</p>
-</blockquote>
-<p>最近因为想着手好好读读书，翻出了压箱底的ipad。（因为曾经手欠，把系统升级成了 ios12.3.1 导致巨卡无比，只能压箱底了）。然后用<a href="https://www.dogedoge.com" target="_blank" rel="noopener">狗子</a>搜索了一下。竟然让我找到了<a href="https://www.v2ex.com/t/608874" target="_blank" rel="noopener">V2ex上的一个讨论</a>，仔细一看感觉挺靠谱，接下来就搞了。</p>
+                <p>composer 在平常的开发中是经常的使用，但是从来没有特别注意过 composer 包的版本约束，只是知道个大概，秉着活到老学到老的态度再次重新系统的学习下 composer 版本约束的具体规则。</p>
+<p>##语义化版本</p>
 <blockquote>
-<p>下面基本上都是废话，会玩直接看 v2 的帖子应该就可以搞定了，上面贴出了 GitHub 上项目的地址，基本上就是一键操作。</p>
+<p>首先我们需要先了解一下语义化版本</p>
 </blockquote>
-<p>根据的帖子给出的 github 链接查看项目，发现该项目已经不再维护了，但是好在项目又给出了一个新的地址。赶紧进入新的项目看一下。</p>
-<p>项目提示中指明了可以降级到10.3.3 的设备为 iPhone 5s, iPad Air, iPad Mini 2 (Not iPad4,6)。</p>
-<p>其他还有可以降级到8.4.1 的设备为iPhone 5, iPhone 4s, iPad 2, iPad 3, iPad 4, iPad Mini 1, iPod 5。</p>
-<p>以及可以降级到 6.1.3 的设备 iPhone 4s, iPad 2 (Not iPad2,4)。</p>
-<p>需要的小伙伴们自取。我只实验了ipad mini2 可以成功降级，其他的大家烧香祷告吧。^_^</p>
-<p>首先将项目克隆到本地，接着进入项目目录，并执行 <code>pip3 install -r requirements.txt</code> 安装项目需要的扩展。（确保当前系统中已经安装了python3，至少为3.5）</p>
-<p>下载 ios 10.3.3 的镜像文件。可以使用<a href="https://www.i4.cn/firmware_iPad_iPad%20mini%202__A1489_10.3.3__.html" target="_blank" rel="noopener">爱思助手</a>提供的镜像，下载速度那是杠杠的。</p>
-<p>接下来就是将 ipad 进入 DFU 模式。（这里吐槽一下，因为我不怎么用 ios 的设备，不知道 DFU 到底是个什么鬼，搜索了半天，很多人给出的方法根本不是进入 DFU的方法，最后还是在刚才那个 V2 讨论里面看到有朋友的回复，才明白了该怎么进入 DFU 模式。）</p>
-<p><strong> 这里说一下进入 DFU 模式的方法， </strong></p>
-<ol>
-<li>将 ipad 链接电脑</li>
-<li>经 ipad 关机</li>
-<li>长按电源键和 home 键 10 秒以上然后只松开电源键并保持 home 一直按着，当电脑上提示已经进入恢复模式则可以松开 home 键了。这个时候 ipad 屏幕是黑的。</li>
-</ol>
-<p><img src="http://static.xiangdangnian.net.cn/blog/sssdfsdfsdjkl23jk23j4lk23j423lklkwfjs.png" alt="DFU 模式"></p>
-<p>然后在项目里面执行 <code>./vieux -i .....ipsw</code>。 后面的省略号表示刚才下载的 ios10.3.3 的镜像文件。</p>
-<p>最后尽是等待了。</p>
-<p>我的一次成功，所以也没有什么好分享的啦，就先记录到这里啦。</p>
-<p>对了，最后说一下这个项目应该是只能在 macOS 下操作，windows 是不支持的。在一个就是最好可以使用梯子，要不然项目下载的一下东西可能会很慢，或者完全下不来。</p>
-<p>最后感谢 V2ex，啦啦啦啦又可以愉快地使用 Ipad 啦。</p>
+<p>这里有一篇介绍<a href="https://semver.org/lang/zh-CN" target="_blank" rel="noopener">语义化版本</a>的文章，有时间的小伙伴可以看一下。下面总结一下：</p>
+<ul>
+<li>版本格式： 主版本号.次版本号.修订版本号</li>
+<li>主版本号：当你做了不兼容的 API 修改，</li>
+<li>次版本号：当你做了向下兼容的功能性新增，</li>
+<li>修订号：当你做了向下兼容的问题修正。</li>
+<li>先行版本号及版本编译信息可以加到“主版本号.次版本号.修订号”的后面，作为延伸。</li>
+</ul>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>1.2.34</p>
+<ul>
+<li>1 为主版本号</li>
+<li>2 为次版本号</li>
+<li>34 为修订号</li>
+</ul>
+<p>1.0.0-alpha1 这种在后面添加修饰符的表示先行版本。</p>
+<h2 id="写法"><a href="#写法" class="headerlink" title="写法"></a>写法</h2><h3 id="不指定版本号（使用-号）"><a href="#不指定版本号（使用-号）" class="headerlink" title="不指定版本号（使用 * 号）"></a>不指定版本号（使用 * 号）</h3><p><strong>一般不建议使用</strong></p>
+<pre><code>&quot;require&quot;: {
+        &quot;overtrue/wechat&quot;: &quot;*&quot;
+    }
+</code></pre><p>使用 * 号在进行composer 更新的时候会安装最新版本，如果第三方包的作者做了不兼容的版本的更新，那么更新后项目就跑步起来了。</p>
+<h3 id="使用-dev-前缀加分支名"><a href="#使用-dev-前缀加分支名" class="headerlink" title="使用 dev- 前缀加分支名"></a>使用 dev- 前缀加分支名</h3><p><strong>一般在开发包的时候会使用</strong></p>
+<pre><code>  &quot;require&quot;: {
+        &quot;overtrue/wechat&quot;: &quot;dev-master&quot;
+    }
+</code></pre><p>它表示使用该分支下最新的提交。</p>
+<h3 id="符号约束小版本"><a href="#符号约束小版本" class="headerlink" title="~ 符号约束小版本"></a>~ 符号约束小版本</h3><p><strong>这种方式比较常用</strong></p>
+<pre><code>&quot;require&quot;: {
+        &quot;overtrue/wechat&quot;: &quot;~1.2&quot;
+    }
+</code></pre><p>以上内容表示安装 &gt;= 1.2 且 &lt;2.0 的版本。（1.3、1.4、1.5等 不大于 2.0 的版本）</p>
+<p>如果写成 “~1.2.3”，该约束表示 &gt;=1.2.3 且 &lt;1.2 (1.2.3、1.2.4、1.2.5 不大于 1.2 的版本)</p>
+<p><em>~ 的作用是允许表达式中最后一位变到最大值</em></p>
+<h2 id="符号约束大版本"><a href="#符号约束大版本" class="headerlink" title="^ 符号约束大版本"></a>^ 符号约束大版本</h2><p><strong>这种方式也比较常用</strong></p>
+<pre><code>&quot;require&quot;: {
+        &quot;overtrue/wechat&quot;: &quot;^1.2&quot;
+    }
+</code></pre><p>以上内容表示可以安装 &gt;=1.2 且 &lt;2.0.0 版本。</p>
+<p>如果写成 “^1.2.3” 则表示 &gt;=1.2.3 且 &lt;2.0.0 版本。</p>
+<p><em>也就是说 ^ 锁定不允许变的第一位</em></p>
+<h2 id="锁定版本范围"><a href="#锁定版本范围" class="headerlink" title="锁定版本范围"></a>锁定版本范围</h2><p>有时候我们的使用场景要求只能安装某些版本范围内的时候，可以使用 &gt;、&lt;、&gt;=、&lt;=、| 这些符号来组合，比如：&gt;= 1.3 &lt;1.6、&gt;=1.3 | &gt;=1.7 、3.0|4.0 等。这样的使用场景并不多，根据你的情况来调整用法就好。</p>
+<h2 id="锁定具体版本"><a href="#锁定具体版本" class="headerlink" title="锁定具体版本"></a>锁定具体版本</h2><pre><code>&quot;require&quot;: {
+        &quot;overtrue/wechat&quot;: &quot;1.2&quot;
+    }
+</code></pre><p>以上内容表示必须为 1.2 的版本。</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>如果你的版本是 1.0 以下，0.0.1，0.9.99999 等这样的版本的时候， ^ 的作用与 ~ 一样，也就是说：</p>
+<p>^0.0.3 与 ~0.0.3 一样，都表示：&gt;=0.0.3 &lt; 0.0.4</p>
+<p>因为主版本号为零（0.y.z）的软件一般处于开发初始阶段，一切都可能随时被改变。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>通过上面的学习我们知道了语义化版本的重要性，composer 在执行 update 的时候会根据我们定义的版本约束进行升级，如果我们使用的第三方包没有按照语义化版本来定义版本号，那么在升级之后就会出现项目无法运行的情况。所以我们在使用第三方的包的时候一定要注意该包是否使用语义化版本来定义版本号(不知道怎么选的，一般选择用得人比较多的第三方包)。在有一点就是我们自己在开发扩展包的时候也需要安装语义化版本来定义扩展包的版本号。</p>
+<p><img src="http://static.xiangdangnian.net.cn/4vB3ZRunrw8VzSW6cLpJyaibKfYTNCU0.png" alt="程序员的艺术人生"></p>
 
             </div>
             <hr>
@@ -499,7 +530,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/01/13/降级记录/">http://blog.xiangdangnian.net.cn/2020/01/13/降级记录/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/09/15/composer版本约束使用方式/">http://blog.xiangdangnian.net.cn/2020/09/15/composer版本约束使用方式/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -537,8 +568,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/ios/">
-                                    <span class="chip bg-color">ios</span>
+                                <a href="/tags/php/">
+                                    <span class="chip bg-color">php</span>
+                                </a>
+                            
+                                <a href="/tags/composer/">
+                                    <span class="chip bg-color">composer</span>
                                 </a>
                             
                         </div>
@@ -969,48 +1004,52 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/01/15/laravel通过关联模型实现无限极分类/">
+                <a href="/2020/09/15/composer版本约束使用方式/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/kuala-lumpur-1820944_1280.jpg" class="responsive-img" alt="laravel通过关联模型实现无限极分类">
+                        <img src="http://static.xiangdangnian.net.cn/blog/2020/09/15/19-56-24-443f94b329f420233f05fa2454bc416c-719cf6.jpg" class="responsive-img" alt="composer 版本约束使用方法">
                         
-                        <span class="card-title">laravel通过关联模型实现无限极分类</span>
+                        <span class="card-title">composer 版本约束使用方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Laravel 通过关联模型实现无限极分类
-这个内容是在 Laravel-China 论坛上看到的，怕以后不好找，这里记录一下。原文地址为：https://learnku.com/articles/14068/simple-practice
+                            composer 在平常的开发中是经常的使用，但是从来没有特别注意过 composer 包的版本约束，只是知道个大概，秉着活到老学到老的态度再次重新系统的学习下 composer 版本约束的具体规则。
+##语义化版本
+
+首先我们需要先了解一
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-01-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/mysql/" class="post-category">
-                                    mysql
+                            <a href="/categories/php/" class="post-category">
+                                    php
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/laravel/">
-                        <span class="chip bg-color">laravel</span>
-                    </a>
-                    
                     <a href="/tags/php/">
                         <span class="chip bg-color">php</span>
+                    </a>
+                    
+                    <a href="/tags/composer/">
+                        <span class="chip bg-color">composer</span>
                     </a>
                     
                 </div>
@@ -1024,35 +1063,30 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2019/12/26/redis学习笔记-基本数据类型之有序集合/">
+                <a href="/2020/09/13/laravel视图数据共享/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/5cf317e5f53f34ab0b141e3ca0b3f2eff04f92ab.jpg" class="responsive-img" alt="redis学习笔记-----基本数据类型之有序集合">
+                        <img src="http://static.xiangdangnian.net.cn/blog/2020/09/14/21-30-35-d84e9c675dc1332aa70a59158eef496d-91c21f.jpg" class="responsive-img" alt="laravel 视图数据共享">
                         
-                        <span class="card-title">redis学习笔记-----基本数据类型之有序集合</span>
+                        <span class="card-title">laravel 视图数据共享</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            有序集合（sort sets）
-与集合类型，区别是集合不能字段排序，而有序集合可以设置额外的优先级(score)参数来为成员排序。
-使用场景：当你需要一个有序并且不重复的集合列表的时候，使用有序集合。 
-
-ZADD
-将一个或多个元素以及其 
+                            在我们做网站的时候有些数据是每个视图页面都需要的（导航、侧边栏等内容），但如果我们在每个视图的控制器里面都写向视图传递数据的操作则会显得代码比较冗余。那么在 laravel 中我们一般可以使用 viewShare 和 viewCompose
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2019-12-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category">
-                                    redis
+                            <a href="/categories/laravel/" class="post-category">
+                                    laravel
                                 </a>
                             
                             
@@ -1062,8 +1096,8 @@ ZADD
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/laravel/">
+                        <span class="chip bg-color">laravel</span>
                     </a>
                     
                 </div>
