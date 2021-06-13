@@ -4,11 +4,10 @@
 
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="composer 版本约束使用方法, 想当年,php,php技术分享">
-    <meta name="description" content="composer 在平常的开发中是经常的使用，但是从来没有特别注意过 composer 包的版本约束，只是知道个大概，秉着活到老学到老的态度再次重新系统的学习下 composer 版本约束的具体规则。
-##语义化版本
+    <meta name="keywords" content="《从点子到产品》读书笔记, 想当年,php,php技术分享">
+    <meta name="description" content="简介豆瓣地址 https://book.douban.com/subject/26927349/
 
-首先我们需要先了解一">
+内容简介：《从点子到产品：产品经理的价值观与方法论》以产品经理的方法论与价值观为主线，讲述了产品经理在从点子到产品的过程中应该考虑的问题、思">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +15,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>composer 版本约束使用方法 | 想当年的博客</title>
+    <title>《从点子到产品》读书笔记 | 想当年的博客</title>
     <link rel="icon" type="image/png" href="http://static.xiangdangnian.net.cn/source/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -272,13 +271,13 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2020/09/15/19-56-24-443f94b329f420233f05fa2454bc416c-719cf6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://static.xiangdangnian.net.cn/blog/2021/06/13/18-00-11-a76ae924b6148700aac1fa138e37ae1b-7d1a25.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        composer 版本约束使用方法
+                        《从点子到产品》读书笔记
                     </div>
                 </div>
             </div>
@@ -390,27 +389,18 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/php/">
-                                <span class="chip bg-color">php</span>
+                            <a href="/tags/随笔/">
+                                <span class="chip bg-color">随笔</span>
                             </a>
                         
-                            <a href="/tags/composer/">
-                                <span class="chip bg-color">composer</span>
+                            <a href="/tags/读书笔记/">
+                                <span class="chip bg-color">读书笔记</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/php/" class="post-category">
-                                php
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -419,7 +409,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-15
+                    2021-06-13
                 </div>
                 
 
@@ -428,14 +418,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    994
+                    214
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 				
@@ -451,60 +441,10 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>composer 在平常的开发中是经常的使用，但是从来没有特别注意过 composer 包的版本约束，只是知道个大概，秉着活到老学到老的态度再次重新系统的学习下 composer 版本约束的具体规则。</p>
-<p>##语义化版本</p>
-<blockquote>
-<p>首先我们需要先了解一下语义化版本</p>
-</blockquote>
-<p>这里有一篇介绍<a href="https://semver.org/lang/zh-CN" target="_blank" rel="noopener">语义化版本</a>的文章，有时间的小伙伴可以看一下。下面总结一下：</p>
-<ul>
-<li>版本格式： 主版本号.次版本号.修订版本号</li>
-<li>主版本号：当你做了不兼容的 API 修改，</li>
-<li>次版本号：当你做了向下兼容的功能性新增，</li>
-<li>修订号：当你做了向下兼容的问题修正。</li>
-<li>先行版本号及版本编译信息可以加到“主版本号.次版本号.修订号”的后面，作为延伸。</li>
-</ul>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><p>1.2.34</p>
-<ul>
-<li>1 为主版本号</li>
-<li>2 为次版本号</li>
-<li>34 为修订号</li>
-</ul>
-<p>1.0.0-alpha1 这种在后面添加修饰符的表示先行版本。</p>
-<h2 id="写法"><a href="#写法" class="headerlink" title="写法"></a>写法</h2><h3 id="不指定版本号（使用-号）"><a href="#不指定版本号（使用-号）" class="headerlink" title="不指定版本号（使用 * 号）"></a>不指定版本号（使用 * 号）</h3><p><strong>一般不建议使用</strong></p>
-<pre><code>&quot;require&quot;: {
-        &quot;overtrue/wechat&quot;: &quot;*&quot;
-    }
-</code></pre><p>使用 * 号在进行composer 更新的时候会安装最新版本，如果第三方包的作者做了不兼容的版本的更新，那么更新后项目就跑步起来了。</p>
-<h3 id="使用-dev-前缀加分支名"><a href="#使用-dev-前缀加分支名" class="headerlink" title="使用 dev- 前缀加分支名"></a>使用 dev- 前缀加分支名</h3><p><strong>一般在开发包的时候会使用</strong></p>
-<pre><code>  &quot;require&quot;: {
-        &quot;overtrue/wechat&quot;: &quot;dev-master&quot;
-    }
-</code></pre><p>它表示使用该分支下最新的提交。</p>
-<h3 id="符号约束小版本"><a href="#符号约束小版本" class="headerlink" title="~ 符号约束小版本"></a>~ 符号约束小版本</h3><p><strong>这种方式比较常用</strong></p>
-<pre><code>&quot;require&quot;: {
-        &quot;overtrue/wechat&quot;: &quot;~1.2&quot;
-    }
-</code></pre><p>以上内容表示安装 &gt;= 1.2 且 &lt;2.0 的版本。（1.3、1.4、1.5等 不大于 2.0 的版本）</p>
-<p>如果写成 “~1.2.3”，该约束表示 &gt;=1.2.3 且 &lt;1.2 (1.2.3、1.2.4、1.2.5 不大于 1.2 的版本)</p>
-<p><em>~ 的作用是允许表达式中最后一位变到最大值</em></p>
-<h2 id="符号约束大版本"><a href="#符号约束大版本" class="headerlink" title="^ 符号约束大版本"></a>^ 符号约束大版本</h2><p><strong>这种方式也比较常用</strong></p>
-<pre><code>&quot;require&quot;: {
-        &quot;overtrue/wechat&quot;: &quot;^1.2&quot;
-    }
-</code></pre><p>以上内容表示可以安装 &gt;=1.2 且 &lt;2.0.0 版本。</p>
-<p>如果写成 “^1.2.3” 则表示 &gt;=1.2.3 且 &lt;2.0.0 版本。</p>
-<p><em>也就是说 ^ 锁定不允许变的第一位</em></p>
-<h2 id="锁定版本范围"><a href="#锁定版本范围" class="headerlink" title="锁定版本范围"></a>锁定版本范围</h2><p>有时候我们的使用场景要求只能安装某些版本范围内的时候，可以使用 &gt;、&lt;、&gt;=、&lt;=、| 这些符号来组合，比如：&gt;= 1.3 &lt;1.6、&gt;=1.3 | &gt;=1.7 、3.0|4.0 等。这样的使用场景并不多，根据你的情况来调整用法就好。</p>
-<h2 id="锁定具体版本"><a href="#锁定具体版本" class="headerlink" title="锁定具体版本"></a>锁定具体版本</h2><pre><code>&quot;require&quot;: {
-        &quot;overtrue/wechat&quot;: &quot;1.2&quot;
-    }
-</code></pre><p>以上内容表示必须为 1.2 的版本。</p>
-<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>如果你的版本是 1.0 以下，0.0.1，0.9.99999 等这样的版本的时候， ^ 的作用与 ~ 一样，也就是说：</p>
-<p>^0.0.3 与 ~0.0.3 一样，都表示：&gt;=0.0.3 &lt; 0.0.4</p>
-<p>因为主版本号为零（0.y.z）的软件一般处于开发初始阶段，一切都可能随时被改变。</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>通过上面的学习我们知道了语义化版本的重要性，composer 在执行 update 的时候会根据我们定义的版本约束进行升级，如果我们使用的第三方包没有按照语义化版本来定义版本号，那么在升级之后就会出现项目无法运行的情况。所以我们在使用第三方的包的时候一定要注意该包是否使用语义化版本来定义版本号(不知道怎么选的，一般选择用得人比较多的第三方包)。在有一点就是我们自己在开发扩展包的时候也需要安装语义化版本来定义扩展包的版本号。</p>
-<p><img src="http://static.xiangdangnian.net.cn/4vB3ZRunrw8VzSW6cLpJyaibKfYTNCU0.png" alt="程序员的艺术人生"></p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>豆瓣地址 <a href="https://book.douban.com/subject/26927349/" target="_blank" rel="noopener">https://book.douban.com/subject/26927349/</a></p>
+<p><img src="http://static.xiangdangnian.net.cn/blog/2021/06/13/17-57-31-e130fa171cbb0fa6a7afea12c9466106-59554f.jpg" alt="从点子到产品"></p>
+<h3 id="内容简介："><a href="#内容简介：" class="headerlink" title="内容简介："></a>内容简介：</h3><p>《从点子到产品：产品经理的价值观与方法论》以产品经理的方法论与价值观为主线，讲述了产品经理在从点子到产品的过程中应该考虑的问题、思考问题的思路，以及如何解决问题的方法。第一部分主要讲述从粗略的点子到具体的方案，要经历的步骤。第二部分主要讲述如何落实方案，以及如何进行用户研究、需求分析和产品设计。第三部分主要讲述在落实方案的过程中要掌握的方法和管理技巧。最后一部分主要讲述产品经理在工作和成长过程中要考虑的一些问题</p>
+<h2 id="思维导图"><a href="#思维导图" class="headerlink" title="思维导图"></a>思维导图</h2><p><img src="http://static.xiangdangnian.net.cn/blog/2021/06/13/17-54-38-efd83c3a94b8cc8e02993d36fd134392-6b9e7d.png" alt=""></p>
 
             </div>
             <hr>
@@ -530,7 +470,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/09/15/composer版本约束使用方式/">http://blog.xiangdangnian.net.cn/2020/09/15/composer版本约束使用方式/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2021/06/13/从点子到产品读书笔记/">http://blog.xiangdangnian.net.cn/2021/06/13/从点子到产品读书笔记/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -568,12 +508,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/php/">
-                                    <span class="chip bg-color">php</span>
+                                <a href="/tags/随笔/">
+                                    <span class="chip bg-color">随笔</span>
                                 </a>
                             
-                                <a href="/tags/composer/">
-                                    <span class="chip bg-color">composer</span>
+                                <a href="/tags/读书笔记/">
+                                    <span class="chip bg-color">读书笔记</span>
                                 </a>
                             
                         </div>
@@ -1004,7 +944,8 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/06/13/从点子到产品读书笔记/">
                     <div class="card-image">
@@ -1023,9 +964,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1034,6 +975,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1056,30 +998,33 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/09/13/laravel视图数据共享/">
+                <a href="/2020/09/15/composer版本约束使用方式/">
                     <div class="card-image">
                         
-                        <img src="http://static.xiangdangnian.net.cn/blog/2020/09/14/21-30-35-d84e9c675dc1332aa70a59158eef496d-91c21f.jpg" class="responsive-img" alt="laravel 视图数据共享">
+                        <img src="http://static.xiangdangnian.net.cn/blog/2020/09/15/19-56-24-443f94b329f420233f05fa2454bc416c-719cf6.jpg" class="responsive-img" alt="composer 版本约束使用方法">
                         
-                        <span class="card-title">laravel 视图数据共享</span>
+                        <span class="card-title">composer 版本约束使用方法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            在我们做网站的时候有些数据是每个视图页面都需要的（导航、侧边栏等内容），但如果我们在每个视图的控制器里面都写向视图传递数据的操作则会显得代码比较冗余。那么在 laravel 中我们一般可以使用 viewShare 和 viewCompose
+                            composer 在平常的开发中是经常的使用，但是从来没有特别注意过 composer 包的版本约束，只是知道个大概，秉着活到老学到老的态度再次重新系统的学习下 composer 版本约束的具体规则。
+##语义化版本
+
+首先我们需要先了解一
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-09-15
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/laravel/" class="post-category">
-                                    laravel
+                            <a href="/categories/php/" class="post-category">
+                                    php
                                 </a>
                             
                             
@@ -1089,8 +1034,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/laravel/">
-                        <span class="chip bg-color">laravel</span>
+                    <a href="/tags/php/">
+                        <span class="chip bg-color">php</span>
+                    </a>
+                    
+                    <a href="/tags/composer/">
+                        <span class="chip bg-color">composer</span>
                     </a>
                     
                 </div>
