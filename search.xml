@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>laravel 使用 sail 开发技巧</title>
+      <link href="/20204/02/29/laravel%E5%BC%80%E5%8F%91%E4%BD%BF%E7%94%A8%20sail%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/"/>
+      <url>/20204/02/29/laravel%E5%BC%80%E5%8F%91%E4%BD%BF%E7%94%A8%20sail%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><ol><li>首先需要需要确保当前系统已经安装好了 docker 环境。</li><li>当前系统的 php 版本于所需 laravel 的依赖版本不一致。</li></ol><h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol><li>安装 laravel 项目</li></ol><blockquote><p>在系统中使用如下命令安装 laravel 项目 <em>my-laravel-app</em>，其中的 <em>php83</em> 可更换为所需的 php 版本，如 74、80、81。</p></blockquote><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># docker run --rm -v $(pwd):/var/www -w /var/www laravelsail/php83-composer:latest composer create-project --prefer-dist laravel/laravel my-laravel-app</span></code></pre><ol start="2"><li>安装所需的 sail 服务<ol><li>进入容器</li><li>进入项目目录</li><li>使用命令添加 sail 服务</li><li>使用空格键选择所需的服务后，按回车键后安装，项目目录中会生成 <em>docker-compose.yml</em> 文件</li></ol></li></ol><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># docker run -it --rm -v $(pwd):/var/www -w /var/www laravelsail/php83-composer:latest bash</span><span class="token comment" spellcheck="true"># cd my-laravel-app</span><span class="token comment" spellcheck="true"># php artisan sail:add</span></code></pre><ol start="3"><li><p>查看 <em>docker-compose.yml</em> 文件内容并根据需要进行修改（一般不需要修改）</p></li><li><p>修改 <em>.env</em> 文件</p><blockquote><p>因系统端口号可能有冲突，可以在 <em>.env</em> 根据 <em>docker-compose.yml</em> 中的变量进行添加，以下是常用的几个变量需要修改，其他的根据具体需求进行修改。</p></blockquote><ul><li>APP_PORT 为项目的端口号</li><li>FORWARD_DB_PORT 为数据库的端口号</li><li>FORWARD_REDIS_PORT 为 redis 的端口号</li></ul></li><li><p>运行项目</p><blockquote><p>使用下面的命令以后台的方式运行项目</p></blockquote></li></ol><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># ./vendor/bin/sail up -d</span></code></pre><ol start="6"><li>查看项目是否正常<ol><li>使用浏览器打开 127.0.0.1:APP_PORT 查看页面是否正常</li><li>使用数据库工具连接 mysql</li><li>使用数据库工具连接 redis</li></ol></li></ol><h2 id="其他是用技巧"><a href="#其他是用技巧" class="headerlink" title="其他是用技巧"></a>其他是用技巧</h2><h3 id="配置-sail-别名访问"><a href="#配置-sail-别名访问" class="headerlink" title="配置 sail 别名访问"></a>配置 sail 别名访问</h3><p>将以下内容添加到 ~/.zshrc 或 ~/.bashrc ，然后重新启动你的 shell，就可以是用 sail 来执行命令了。</p><pre class=" language-bash"><code class="language-bash"><span class="token function">alias</span> sail<span class="token operator">=</span><span class="token string">'[ -f sail ] &amp;&amp; sh sail || sh vendor/bin/sail'</span></code></pre><h3 id="执行-php-命令"><a href="#执行-php-命令" class="headerlink" title="执行 php 命令"></a>执行 php 命令</h3><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># sail php --version</span><span class="token comment" spellcheck="true"># sail php script.php</span></code></pre><h3 id="执行-Composer-命令"><a href="#执行-Composer-命令" class="headerlink" title="执行 Composer 命令"></a>执行 Composer 命令</h3><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># sail composer require laravel/sanctum</span></code></pre><h3 id="执行-Artisan-命令"><a href="#执行-Artisan-命令" class="headerlink" title="执行 Artisan 命令"></a>执行 Artisan 命令</h3><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># sail artisan queue:work</span></code></pre><h3 id="执行-Node-NPM-命令"><a href="#执行-Node-NPM-命令" class="headerlink" title="执行 Node/NPM 命令"></a>执行 Node/NPM 命令</h3><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># sail node --version</span><span class="token comment" spellcheck="true"># sail npm run dev</span></code></pre><h3 id="容器-cli"><a href="#容器-cli" class="headerlink" title="容器 cli"></a>容器 cli</h3><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># sail shell</span><span class="token comment" spellcheck="true"># sail root-shell</span></code></pre><h3 id="执行-tinker"><a href="#执行-tinker" class="headerlink" title="执行 tinker"></a>执行 tinker</h3><pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># sail tinker</span></code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> php </tag>
+            
+            <tag> sail </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《从点子到产品》读书笔记</title>
       <link href="/2021/06/13/%E4%BB%8E%E7%82%B9%E5%AD%90%E5%88%B0%E4%BA%A7%E5%93%81%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
       <url>/2021/06/13/%E4%BB%8E%E7%82%B9%E5%AD%90%E5%88%B0%E4%BA%A7%E5%93%81%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/</url>
@@ -456,9 +477,9 @@
       
         <tags>
             
-            <tag> php </tag>
-            
             <tag> laravel </tag>
+            
+            <tag> php </tag>
             
         </tags>
       
@@ -685,9 +706,9 @@
       
         <tags>
             
-            <tag> php </tag>
-            
             <tag> laravel </tag>
+            
+            <tag> php </tag>
             
         </tags>
       
