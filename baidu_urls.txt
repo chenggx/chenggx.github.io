@@ -1,4 +1,4 @@
-http://blog.xiangdangnian.net.cn/20204/02/29/laravel开发使用 sail开发技巧/
+http://blog.xiangdangnian.net.cn/2024/02/29/laravel开发使用 sail开发技巧/
 http://blog.xiangdangnian.net.cn/2021/06/13/从点子到产品读书笔记/
 http://blog.xiangdangnian.net.cn/2020/09/15/composer版本约束使用方式/
 http://blog.xiangdangnian.net.cn/2020/09/13/laravel视图数据共享/
