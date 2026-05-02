@@ -17,7 +17,7 @@
 安装Hexo
 使用npm全局安装hexo
 
-  1sud">
+  sudo">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -38,7 +38,7 @@
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -436,7 +436,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    601
+                    600
                 </div>
                 
 
@@ -471,15 +471,15 @@
 <h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><ol>
 <li>使用npm全局安装hexo</li>
 </ol>
-  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">sudo</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">sudo</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">-g</span> <span class="string">hexo-cli</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>使用hexo init 初始化项目</li>
 </ol>
-  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">init</span> <span class="string">blog</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">init</span> <span class="string">blog</span></span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>使用hexo s查看状态(默认访问该地址<a href="http://localhost:4000/">http://localhost:4000 </a>)</li>
 </ol>
-  <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure>
+  <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">s</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="关联Github"><a href="#关联Github" class="headerlink" title="关联Github"></a>关联Github</h3><ol>
 <li>创建仓库</li>
@@ -487,26 +487,26 @@
 <li>选择分支</li>
 </ol>
 <h3 id="修改全局配置-注意：每个冒号后面都有个空格"><a href="#修改全局配置-注意：每个冒号后面都有个空格" class="headerlink" title="修改全局配置(注意：每个冒号后面都有个空格)"></a>修改全局配置(注意：每个冒号后面都有个空格)</h3><p>在项目中找到_config.yml文件，在文件最后添加如下内容：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="attr">repository:</span> <span class="string">https://github.com/xxx/xxx.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">    <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">    <span class="attr">repository:</span> <span class="string">https://github.com/xxx/xxx.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
 <h3 id="生成静态页面"><a href="#生成静态页面" class="headerlink" title="生成静态页面"></a>生成静态页面</h3><ol>
 <li>执行生成静态文件命令</li>
 </ol>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">g</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>安装git上传插件</li>
 </ol>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-deployer-git</span> <span class="string">--save</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-deployer-git</span> <span class="string">--save</span></span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>执行上传静态文件命令</li>
 </ol>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">hexo</span> <span class="string">d</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;文章标题&quot;         //新建文章</span><br><span class="line">hexo new page &quot;页面名&quot;      //新建页面</span><br><span class="line">hexo g                     //生成静态文件至public目录</span><br><span class="line">hexo server                //开启本地访问</span><br><span class="line">hexo deploy                //部署到github</span><br></pre></td></tr></table></figure>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">hexo new &quot;文章标题&quot;         //新建文章</span><br><span class="line">hexo new page &quot;页面名&quot;      //新建页面</span><br><span class="line">hexo g                     //生成静态文件至public目录</span><br><span class="line">hexo server                //开启本地访问</span><br><span class="line">hexo deploy                //部署到github</span><br></pre></td></tr></table></figure>
 
 <h2 id="主题使用"><a href="#主题使用" class="headerlink" title="主题使用"></a>主题使用</h2><blockquote>
 <p>具体详细内容查看项目链接 <a href="https://github.com/blinkfox/hexo-theme-matery/blob/develop/README_CN.md">hexo-theme-matery</a></p>
 </blockquote>
-<h3 id="文章头部示例"><a href="#文章头部示例" class="headerlink" title="文章头部示例"></a>文章头部示例</h3><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">typora-vue-theme主题介绍</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-09-07 09:25:00</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">赵奇</span></span><br><span class="line"><span class="attr">img:</span> <span class="string">/source/images/xxx.jpg</span> <span class="comment"># 或者:http://xxx.com/xxx.jpg</span></span><br><span class="line"><span class="attr">top:</span> <span class="literal">true</span> <span class="comment"># 如果top值为true，则会是首页推荐文章</span></span><br><span class="line"><span class="comment"># 如果要对文章设置阅读验证密码的话，就可以在设置password的值，该值必须是用SHA256加密后的密码，防止被他人识破</span></span><br><span class="line"><span class="attr">password:</span> <span class="string">8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span></span><br><span class="line"><span class="comment"># 本文章是否开启mathjax，且需要在主题的_config.yml文件中也需要开启才行</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">Markdown</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Typora</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Markdown</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<h3 id="文章头部示例"><a href="#文章头部示例" class="headerlink" title="文章头部示例"></a>文章头部示例</h3><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">typora-vue-theme主题介绍</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2018-09-07 09:25:00</span></span><br><span class="line"><span class="attr">author:</span> <span class="string">赵奇</span></span><br><span class="line"><span class="attr">img:</span> <span class="string">/source/images/xxx.jpg</span> <span class="comment"># 或者:http://xxx.com/xxx.jpg</span></span><br><span class="line"><span class="attr">top:</span> <span class="literal">true</span> <span class="comment"># 如果top值为true，则会是首页推荐文章</span></span><br><span class="line"><span class="comment"># 如果要对文章设置阅读验证密码的话，就可以在设置password的值，该值必须是用SHA256加密后的密码，防止被他人识破</span></span><br><span class="line"><span class="attr">password:</span> <span class="string">8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92</span></span><br><span class="line"><span class="comment"># 本文章是否开启mathjax，且需要在主题的_config.yml文件中也需要开启才行</span></span><br><span class="line"><span class="attr">mathjax:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">categories:</span> <span class="string">Markdown</span></span><br><span class="line"><span class="attr">tags:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Typora</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">Markdown</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <ol>
 <li>如果img属性不填写的话，文章特色图会根据文章标题的hashcode的值取余，然后选取主题中对应的特色图片，从而达到让所有文章都的特色图各有特色。</li>
@@ -1088,7 +1088,7 @@ cgi、fast-cgi 都是协议，规定了 web server 需要传递那些数据给 p
 安装Hexo
 使用npm全局安装hexo
 
-  1sud
+  sudo
                         
                     </div>
                     <div class="publish-info">

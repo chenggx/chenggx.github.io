@@ -34,7 +34,7 @@
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -427,7 +427,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    505
+                    498
                 </div>
                 
 
@@ -460,7 +460,7 @@
 <blockquote>
 <p>在系统中使用如下命令安装 laravel 项目 <em>my-laravel-app</em>，其中的 <em>php83</em> 可更换为所需的 php 版本，如 74、80、81。</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run --rm -v $(pwd):/var/www -w /var/www laravelsail/php83-composer:latest composer create-project --prefer-dist laravel/laravel my-laravel-app</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># docker run --rm -v $(pwd):/var/www -w /var/www laravelsail/php83-composer:latest composer create-project --prefer-dist laravel/laravel my-laravel-app</span></span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>安装所需的 sail 服务<ol>
@@ -471,7 +471,7 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run -it --rm -v $(pwd):/var/www -w /var/www laravelsail/php83-composer:latest bash</span></span><br><span class="line"><span class="comment"># cd my-laravel-app</span></span><br><span class="line"><span class="comment"># php artisan sail:add</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># docker run -it --rm -v $(pwd):/var/www -w /var/www laravelsail/php83-composer:latest bash</span></span><br><span class="line"><span class="comment"># cd my-laravel-app</span></span><br><span class="line"><span class="comment"># php artisan sail:add</span></span><br></pre></td></tr></table></figure>
 
 <ol start="3">
 <li><p>查看 <em>docker-compose.yml</em> 文件内容并根据需要进行修改（一般不需要修改）</p>
@@ -492,7 +492,7 @@
 </blockquote>
 </li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ./vendor/bin/sail up -d</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ./vendor/bin/sail up -d</span></span><br></pre></td></tr></table></figure>
 
 <ol start="6">
 <li>查看项目是否正常<ol>
@@ -503,19 +503,19 @@
 </li>
 </ol>
 <h2 id="其他是用技巧"><a href="#其他是用技巧" class="headerlink" title="其他是用技巧"></a>其他是用技巧</h2><h3 id="配置-sail-别名访问"><a href="#配置-sail-别名访问" class="headerlink" title="配置 sail 别名访问"></a>配置 sail 别名访问</h3><p>将以下内容添加到 ~&#x2F;.zshrc 或 ~&#x2F;.bashrc ，然后重新启动你的 shell，就可以是用 sail 来执行命令了。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> sail=<span class="string">&#x27;[ -f sail ] &amp;&amp; sh sail || sh vendor/bin/sail&#x27;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">alias</span> sail=<span class="string">&#x27;[ -f sail ] &amp;&amp; sh sail || sh vendor/bin/sail&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="执行-php-命令"><a href="#执行-php-命令" class="headerlink" title="执行 php 命令"></a>执行 php 命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sail php --version</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sail php script.php</span></span><br></pre></td></tr></table></figure>
+<h3 id="执行-php-命令"><a href="#执行-php-命令" class="headerlink" title="执行 php 命令"></a>执行 php 命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sail php --version</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sail php script.php</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="执行-Composer-命令"><a href="#执行-Composer-命令" class="headerlink" title="执行 Composer 命令"></a>执行 Composer 命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sail composer require laravel/sanctum</span></span><br></pre></td></tr></table></figure>
+<h3 id="执行-Composer-命令"><a href="#执行-Composer-命令" class="headerlink" title="执行 Composer 命令"></a>执行 Composer 命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sail composer require laravel/sanctum</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="执行-Artisan-命令"><a href="#执行-Artisan-命令" class="headerlink" title="执行 Artisan 命令"></a>执行 Artisan 命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sail artisan queue:work</span></span><br></pre></td></tr></table></figure>
+<h3 id="执行-Artisan-命令"><a href="#执行-Artisan-命令" class="headerlink" title="执行 Artisan 命令"></a>执行 Artisan 命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sail artisan queue:work</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="执行-Node-NPM-命令"><a href="#执行-Node-NPM-命令" class="headerlink" title="执行 Node&#x2F;NPM 命令"></a>执行 Node&#x2F;NPM 命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sail node --version</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sail npm run dev</span></span><br></pre></td></tr></table></figure>
+<h3 id="执行-Node-NPM-命令"><a href="#执行-Node-NPM-命令" class="headerlink" title="执行 Node&#x2F;NPM 命令"></a>执行 Node&#x2F;NPM 命令</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sail node --version</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sail npm run dev</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="容器-cli"><a href="#容器-cli" class="headerlink" title="容器 cli"></a>容器 cli</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sail shell</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sail root-shell</span></span><br></pre></td></tr></table></figure>
+<h3 id="容器-cli"><a href="#容器-cli" class="headerlink" title="容器 cli"></a>容器 cli</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sail shell</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># sail root-shell</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="执行-tinker"><a href="#执行-tinker" class="headerlink" title="执行 tinker"></a>执行 tinker</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sail tinker</span></span><br></pre></td></tr></table></figure>
+<h3 id="执行-tinker"><a href="#执行-tinker" class="headerlink" title="执行 tinker"></a>执行 tinker</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sail tinker</span></span><br></pre></td></tr></table></figure>
 
             </div>
             <hr/>

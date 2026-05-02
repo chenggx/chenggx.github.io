@@ -29,7 +29,7 @@
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -481,7 +481,7 @@
 <li>持久性（Durability）：事物提交之后即持久化到磁盘中不会丢失。</li>
 </ul>
 <p><em><strong>锁只是实现隔离级别的几种方式之一，除了锁，实现并发问题的方式还有时间戳，多版本控制等等，这些也可以称为无锁的并发控制。</strong></em></p>
-<h3 id="四种隔离级别"><a href="#四种隔离级别" class="headerlink" title="四种隔离级别"></a>四种隔离级别</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> @<span class="variable">@tx_isolation</span>;  #查询当前隔离级别</span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@global</span>.tx_isolation;  #查询全局隔离级别</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> transaction isolation level read uncommitted;   #设置当前隔离级别为 RU</span><br><span class="line"><span class="keyword">set</span> transaction isolation level read committed;   #设置当前隔离级别为 RC</span><br><span class="line"><span class="keyword">set</span> transaction isolation level repeatable read;   #设置当前隔离级别为 RR</span><br><span class="line"><span class="keyword">set</span> transaction isolation level serializable;   #设置当前隔离级别为 RS</span><br></pre></td></tr></table></figure>
+<h3 id="四种隔离级别"><a href="#四种隔离级别" class="headerlink" title="四种隔离级别"></a>四种隔离级别</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> @<span class="variable">@tx_isolation</span>;  #查询当前隔离级别</span><br><span class="line"><span class="keyword">select</span> @<span class="variable">@global</span>.tx_isolation;  #查询全局隔离级别</span><br><span class="line"></span><br><span class="line"><span class="keyword">set</span> transaction isolation level read uncommitted;   #设置当前隔离级别为 RU</span><br><span class="line"><span class="keyword">set</span> transaction isolation level read committed;   #设置当前隔离级别为 RC</span><br><span class="line"><span class="keyword">set</span> transaction isolation level repeatable read;   #设置当前隔离级别为 RR</span><br><span class="line"><span class="keyword">set</span> transaction isolation level serializable;   #设置当前隔离级别为 RS</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>读未提交（Read Uncommitted）：事务的读不阻塞其他事务的读和写，事务的写只阻塞其他事务的写，但不阻塞读。<strong>通过对写操作加“持续 X 锁”，对读操作不加锁实现。</strong></li>

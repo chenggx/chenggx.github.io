@@ -1,5 +1,63 @@
 /* Here is your custom css styles. */
 
+/* 代码块：Mac 终端风格 */
+figure.highlight {
+    background: #272822;
+    border-radius: 8px;
+    margin: 1rem 0;
+    overflow: hidden;
+    position: relative;
+}
+figure.highlight::before {
+    content: " ";
+    display: block;
+    height: 32px;
+    background: #3a3a3a;
+    border-radius: 8px 8px 0 0;
+}
+figure.highlight::after {
+    content: " ";
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ff5f56;
+    box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
+}
+figure.highlight pre {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0.8rem 1rem 1rem !important;
+    border-radius: 0 !important;
+    border: none !important;
+    overflow-x: auto;
+    color: #f8f8f2 !important;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+figure.highlight table {
+    width: 100%;
+    border: none !important;
+    margin: 0 !important;
+    border-collapse: collapse;
+}
+figure.highlight td.gutter {
+    display: none;
+}
+figure.highlight td.code {
+    padding: 0;
+    vertical-align: top;
+    border: none;
+}
+
+/* 文章底部链接自动换行 */
+.article-info p {
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
 /* hexo-filter-github-emojis */
 .github-emoji{
     height: 2em;

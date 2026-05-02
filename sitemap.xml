@@ -466,6 +466,13 @@
   </url>
   
   <url>
+    <loc>http://blog.xiangdangnian.net.cn/tags/%E8%A7%82%E5%90%8E%E6%84%9F/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://blog.xiangdangnian.net.cn/tags/LaraDock/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -480,7 +487,7 @@
   </url>
   
   <url>
-    <loc>http://blog.xiangdangnian.net.cn/tags/%E8%A7%82%E5%90%8E%E6%84%9F/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/tags/mysql/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -488,13 +495,6 @@
   
   <url>
     <loc>http://blog.xiangdangnian.net.cn/tags/frp/</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.xiangdangnian.net.cn/tags/mysql/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -529,27 +529,6 @@
   </url>
   
   <url>
-    <loc>http://blog.xiangdangnian.net.cn/tags/swoole/</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.xiangdangnian.net.cn/tags/%E6%91%98%E5%BD%95/</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://blog.xiangdangnian.net.cn/tags/ios/</loc>
-    <lastmod>2026-05-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://blog.xiangdangnian.net.cn/tags/AI-Agent/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -565,6 +544,27 @@
   
   <url>
     <loc>http://blog.xiangdangnian.net.cn/tags/LLM/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.xiangdangnian.net.cn/tags/swoole/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.xiangdangnian.net.cn/tags/%E6%91%98%E5%BD%95/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://blog.xiangdangnian.net.cn/tags/ios/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -657,14 +657,14 @@
   </url>
   
   <url>
-    <loc>http://blog.xiangdangnian.net.cn/categories/ios/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/categories/AI/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://blog.xiangdangnian.net.cn/categories/AI/</loc>
+    <loc>http://blog.xiangdangnian.net.cn/categories/ios/</loc>
     <lastmod>2026-05-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

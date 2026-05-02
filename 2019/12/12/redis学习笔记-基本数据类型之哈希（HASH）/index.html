@@ -34,7 +34,7 @@ HSET、HMSET
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -432,7 +432,7 @@ HSET、HMSET
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    668
+                    658
                 </div>
                 
 
@@ -465,50 +465,50 @@ HSET、HMSET
 <blockquote>
 <p>经过测试当前版本5.0.4，hset 也可以一次设置多个 key</p>
 </blockquote>
-<h3 id="hset-设置多个-key"><a href="#hset-设置多个-key" class="headerlink" title="hset 设置多个 key"></a>hset 设置多个 key</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; hset user:1 name jack email jack@qq.com</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">&gt; hget user:1 name</span><br><span class="line">&quot;jack&quot;</span><br><span class="line"></span><br><span class="line">&gt; hget user:1 email</span><br><span class="line">&quot;jack@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="hset-设置多个-key"><a href="#hset-设置多个-key" class="headerlink" title="hset 设置多个 key"></a>hset 设置多个 key</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hset user:1 name jack email jack@qq.com</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">&gt; hget user:1 name</span><br><span class="line">&quot;jack&quot;</span><br><span class="line"></span><br><span class="line">&gt; hget user:1 email</span><br><span class="line">&quot;jack@qq.com&quot;</span><br></pre></td></tr></table></figure>
 
-<h3 id="hset-设置单个-key"><a href="#hset-设置单个-key" class="headerlink" title="hset 设置单个 key"></a>hset 设置单个 key</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; hset user:2 name tom email tom@qq.com</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 name</span><br><span class="line">&quot;tom&quot;</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 email</span><br><span class="line">&quot;tom@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="hset-设置单个-key"><a href="#hset-设置单个-key" class="headerlink" title="hset 设置单个 key"></a>hset 设置单个 key</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hset user:2 name tom email tom@qq.com</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 name</span><br><span class="line">&quot;tom&quot;</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 email</span><br><span class="line">&quot;tom@qq.com&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="HGET、HMGET"><a href="#HGET、HMGET" class="headerlink" title="HGET、HMGET"></a>HGET、HMGET</h2><ul>
 <li>hget 获取单个 key 的值</li>
 <li>hmget 一次获取多个 key 的值</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hmget user:2 name email</span><br><span class="line">1) &quot;tom&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hmget user:2 name email</span><br><span class="line">1) &quot;tom&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="HEDL"><a href="#HEDL" class="headerlink" title="HEDL"></a>HEDL</h2><ul>
 <li>删除一个或多个指定的key</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; hdel user:2 name</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 name</span><br><span class="line">(nil)</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 email</span><br><span class="line">&quot;tom@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hdel user:2 name</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 name</span><br><span class="line">(nil)</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 email</span><br><span class="line">&quot;tom@qq.com&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="HSETNX"><a href="#HSETNX" class="headerlink" title="HSETNX"></a>HSETNX</h2><ul>
 <li>设置指定key的值，如果可以已经存在，则不进行任何操作</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; hsetnx user:2 email 2@qq.com</span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">&gt; hsetnx user:2 name tome</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">&gt; hmget user:2 name email</span><br><span class="line">1) &quot;tome&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hsetnx user:2 email 2@qq.com</span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">&gt; hsetnx user:2 name tome</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">&gt; hmget user:2 name email</span><br><span class="line">1) &quot;tome&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="HVALS"><a href="#HVALS" class="headerlink" title="HVALS"></a>HVALS</h2><p>-返回所有格值</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hvals user:2</span><br><span class="line">1) &quot;tom@qq.com&quot;</span><br><span class="line">2) &quot;tome&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hvals user:2</span><br><span class="line">1) &quot;tom@qq.com&quot;</span><br><span class="line">2) &quot;tome&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="HKEYS"><a href="#HKEYS" class="headerlink" title="HKEYS"></a>HKEYS</h2><ul>
 <li>返回所有的键</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; hkeys user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;name&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hkeys user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;name&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="HGETALL"><a href="#HGETALL" class="headerlink" title="HGETALL"></a>HGETALL</h2><ul>
 <li>返回所有的键和值</li>
 <li>返回值中，每个字段名的下一个就是他的值</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; hgetall user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br><span class="line">3) &quot;name&quot;</span><br><span class="line">4) &quot;tome&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hgetall user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br><span class="line">3) &quot;name&quot;</span><br><span class="line">4) &quot;tome&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="HEXISTS"><a href="#HEXISTS" class="headerlink" title="HEXISTS"></a>HEXISTS</h2><ul>
 <li>检查指定键是否存在</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexists user:2 class</span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">&gt; hexists user:2 email</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hexists user:2 class</span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">&gt; hexists user:2 email</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
 
 <h2 id="HINCRBY"><a href="#HINCRBY" class="headerlink" title="HINCRBY"></a>HINCRBY</h2><ul>
 <li>对哈希中指定的键进行自增操作，如果对应的键不存在，则创建。如果存在，直接新增</li>
 <li>所操作的键的值必须为整型</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&gt; hincrby user:2 old 1</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">&gt; hgetall user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br><span class="line">3) &quot;name&quot;</span><br><span class="line">4) &quot;tome&quot;</span><br><span class="line">5) &quot;sex&quot;</span><br><span class="line">6) &quot;man&quot;</span><br><span class="line">7) &quot;old&quot;</span><br><span class="line">8) &quot;1&quot;</span><br><span class="line"></span><br><span class="line">&gt; hincrby user:2 old 2</span><br><span class="line">(integer) 3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; hgetall user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br><span class="line">3) &quot;name&quot;</span><br><span class="line">4) &quot;tome&quot;</span><br><span class="line">5) &quot;sex&quot;</span><br><span class="line">6) &quot;man&quot;</span><br><span class="line">7) &quot;old&quot;</span><br><span class="line">8) &quot;3&quot;</span><br><span class="line"></span><br><span class="line">&gt; hincrby user:2 name 1</span><br><span class="line">(error) ERR hash value is not an integer</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hincrby user:2 old 1</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">&gt; hgetall user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br><span class="line">3) &quot;name&quot;</span><br><span class="line">4) &quot;tome&quot;</span><br><span class="line">5) &quot;sex&quot;</span><br><span class="line">6) &quot;man&quot;</span><br><span class="line">7) &quot;old&quot;</span><br><span class="line">8) &quot;1&quot;</span><br><span class="line"></span><br><span class="line">&gt; hincrby user:2 old 2</span><br><span class="line">(integer) 3</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt; hgetall user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br><span class="line">3) &quot;name&quot;</span><br><span class="line">4) &quot;tome&quot;</span><br><span class="line">5) &quot;sex&quot;</span><br><span class="line">6) &quot;man&quot;</span><br><span class="line">7) &quot;old&quot;</span><br><span class="line">8) &quot;3&quot;</span><br><span class="line"></span><br><span class="line">&gt; hincrby user:2 name 1</span><br><span class="line">(error) ERR hash value is not an integer</span><br></pre></td></tr></table></figure>
 
 <h2 id="HINCRBYFLOAT"><a href="#HINCRBYFLOAT" class="headerlink" title="HINCRBYFLOAT"></a>HINCRBYFLOAT</h2><ul>
 <li>同上面的 hincrby，只不过支持的值是 float 类型</li>
@@ -516,13 +516,13 @@ HSET、HMSET
 <h2 id="HLEN"><a href="#HLEN" class="headerlink" title="HLEN"></a>HLEN</h2><ul>
 <li>返回指定哈希所包含的字段数量（key 的数量）</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; hlen user:2</span><br><span class="line">(integer) 4</span><br><span class="line"></span><br><span class="line">&gt; hgetall user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br><span class="line">3) &quot;name&quot;</span><br><span class="line">4) &quot;tome&quot;</span><br><span class="line">5) &quot;sex&quot;</span><br><span class="line">6) &quot;man&quot;</span><br><span class="line">7) &quot;old&quot;</span><br><span class="line">8) &quot;3&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hlen user:2</span><br><span class="line">(integer) 4</span><br><span class="line"></span><br><span class="line">&gt; hgetall user:2</span><br><span class="line">1) &quot;email&quot;</span><br><span class="line">2) &quot;tom@qq.com&quot;</span><br><span class="line">3) &quot;name&quot;</span><br><span class="line">4) &quot;tome&quot;</span><br><span class="line">5) &quot;sex&quot;</span><br><span class="line">6) &quot;man&quot;</span><br><span class="line">7) &quot;old&quot;</span><br><span class="line">8) &quot;3&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="HSTRLEN"><a href="#HSTRLEN" class="headerlink" title="HSTRLEN"></a>HSTRLEN</h2><ul>
 <li>返回指定 key 的 value 的字符串长度</li>
 <li>如果 value 或 哈希不存在，则返回0</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; hstrlen user:2 name</span><br><span class="line">(integer) 4</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 name</span><br><span class="line">&quot;tome&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&gt; hstrlen user:2 name</span><br><span class="line">(integer) 4</span><br><span class="line"></span><br><span class="line">&gt; hget user:2 name</span><br><span class="line">&quot;tome&quot;</span><br></pre></td></tr></table></figure>
             </div>
             <hr/>
 

@@ -34,7 +34,7 @@
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -436,7 +436,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    752
+                    748
                 </div>
                 
 
@@ -478,22 +478,22 @@
 <h3 id="配置-frp-服务端"><a href="#配置-frp-服务端" class="headerlink" title="配置 frp 服务端"></a>配置 frp 服务端</h3><ol>
 <li>在服务器上解压下载好的 frp 包。</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf frp_0.24.1_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar zxvf frp_0.24.1_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>进入解压好的目录，编辑 frp 服务器端配置文件 <strong>frps.ini</strong>。</li>
 </ol>
- <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span>             <span class="comment">#frp 绑定的端口</span></span><br><span class="line"><span class="attr">vhost_http_port</span> = <span class="number">8000</span>       <span class="comment">#http 访问端口</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">bind_port</span> = <span class="number">7000</span>             <span class="comment">#frp 绑定的端口</span></span><br><span class="line"><span class="attr">vhost_http_port</span> = <span class="number">8000</span>       <span class="comment">#http 访问端口</span></span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li>启动服务端 frp</li>
 </ol>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frps -c ./frps.ini</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./frps -c ./frps.ini</span><br></pre></td></tr></table></figure>
 
 <h2 id="解析域名"><a href="#解析域名" class="headerlink" title="解析域名"></a>解析域名</h2><p>在域名服务商配置域名解析，将域名解析到上面的服务器 ip 地址上。</p>
 <h2 id="配置-nginx-反向代理进行-frp-端口的转发"><a href="#配置-nginx-反向代理进行-frp-端口的转发" class="headerlink" title="配置 nginx 反向代理进行 frp 端口的转发"></a>配置 nginx 反向代理进行 frp 端口的转发</h2><ol>
 <li>配置 nginx</li>
 </ol>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> wx.domain.com; <span class="comment"># 绑定域名</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://localhost:8000; <span class="comment"># 转发至本机8000,即在frps.ini中配置&gt;的vhost_http_port</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> wx.domain.com; <span class="comment"># 绑定域名</span></span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">proxy_pass</span> http://localhost:8000; <span class="comment"># 转发至本机8000,即在frps.ini中配置&gt;的vhost_http_port</span></span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">        <span class="attribute">proxy_set_header</span> X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ol start="2">
 <li>重启 nginx</li>
@@ -505,13 +505,13 @@
 <li>根据本地系统环境下载对应的  <a href="https://github.com/fatedier/frp/releases">frp</a> 包。</li>
 <li>编辑 frp 客户端配置文件 <strong>frpc.ini</strong>。</li>
 </ol>
- <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = x.x.x.x     <span class="comment">#frps 所在的服务器的 IP</span></span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span>        <span class="comment">#frps 绑定的端口</span></span><br><span class="line"><span class="attr">use_encryption</span> = <span class="literal">true</span>     <span class="comment">#将 frpc 与 frps 之间的通信内容加密传输，将会有效防止流量被拦截。 </span></span><br><span class="line"><span class="attr">use_compression</span> = <span class="literal">true</span>     <span class="comment"># 对传输内容进行压缩，可以有效减小 frpc 与 frps 之间的网络流量，加快流量转发速度，但是会额外消耗一些 cpu 资源。</span></span><br><span class="line"></span><br><span class="line"><span class="section">[web]</span></span><br><span class="line"><span class="attr">type</span> = http</span><br><span class="line"><span class="attr">local_port</span> = <span class="number">80</span>   <span class="comment">#为本地机器上 web 服务对应的端口</span></span><br><span class="line"><span class="attr">custom_domains</span> = wx.domain.com   <span class="comment">#上一步中解析好的域名</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight ini"><table><tr><td class="code"><pre><span class="line"><span class="section">[common]</span></span><br><span class="line"><span class="attr">server_addr</span> = x.x.x.x     <span class="comment">#frps 所在的服务器的 IP</span></span><br><span class="line"><span class="attr">server_port</span> = <span class="number">7000</span>        <span class="comment">#frps 绑定的端口</span></span><br><span class="line"><span class="attr">use_encryption</span> = <span class="literal">true</span>     <span class="comment">#将 frpc 与 frps 之间的通信内容加密传输，将会有效防止流量被拦截。 </span></span><br><span class="line"><span class="attr">use_compression</span> = <span class="literal">true</span>     <span class="comment"># 对传输内容进行压缩，可以有效减小 frpc 与 frps 之间的网络流量，加快流量转发速度，但是会额外消耗一些 cpu 资源。</span></span><br><span class="line"></span><br><span class="line"><span class="section">[web]</span></span><br><span class="line"><span class="attr">type</span> = http</span><br><span class="line"><span class="attr">local_port</span> = <span class="number">80</span>   <span class="comment">#为本地机器上 web 服务对应的端口</span></span><br><span class="line"><span class="attr">custom_domains</span> = wx.domain.com   <span class="comment">#上一步中解析好的域名</span></span><br></pre></td></tr></table></figure>
 
 
 <ol start="3">
 <li>启动 frp 客户端</li>
 </ol>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./frpc -c ./frpc.ini</span><br></pre></td></tr></table></figure>
+ <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./frpc -c ./frpc.ini</span><br></pre></td></tr></table></figure>
 
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>如果一切正常那么现在随便找一台设备，访问刚才的域名就可以访问到本地的项目了。</p>
 
@@ -1029,7 +1029,7 @@
                             
 内容不定期更新
 
-自己常用的 git alias 可以在命令行中更好的显示 log 信息123alias gl=&quot;git log --graph --pretty=format:&#x27;%Cred%h%Creset -%C(
+自己常用的 git alias 可以在命令行中更好的显示 log 信息alias gl=&quot;git log --graph --pretty=format:&#x27;%Cred%h%Creset -%C(yel
                         
                     </div>
                     <div class="publish-info">

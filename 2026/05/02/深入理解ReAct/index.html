@@ -27,7 +27,7 @@
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -456,7 +456,7 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="/react-deep-dive-cover.png" alt="深入理解 ReAct 范式"></p>
+                <p><img src="/2026/05/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ReAct/react-deep-dive-cover.png" alt="深入理解 ReAct 范式"></p>
 <h2 id="1-引言：两条分开走的路"><a href="#1-引言：两条分开走的路" class="headerlink" title="1. 引言：两条分开走的路"></a>1. 引言：两条分开走的路</h2><p>2022 年 10 月，普林斯顿大学的 Shunyu Yao 和 Google Research 的合作者们提交了 ReAct 论文。当时的研究现状是：推理和行动是两条完全独立的研究路线，还没有人把它们放到同一个模型里。</p>
 <p>一边是 Chain-of-Thought（Wei et al., 2022.1），让 LLM 在输出答案之前插入一段推理过程。模型在文本框里一步步想，但无法获取外部信息——没有搜索，没有 API 调用，纯靠模型内部的参数记忆。</p>
 <p>另一边是行动导向的研究。WebGPT（OpenAI, 2021）通过微调让模型能搜索互联网；SayCan（Google, 2022）让语言模型驱动机器人执行物理动作。但这些都需要专门微调，不是通用 LLM 直接能做到的。</p>
@@ -502,7 +502,7 @@
 <td>拿到信息但不知道怎么用</td>
 </tr>
 </tbody></table>
-<p><img src="/react-deep-dive-4.png" alt="两条路各自卡在哪里？"></p>
+<p><img src="/2026/05/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ReAct/react-deep-dive-4.png" alt="两条路各自卡在哪里？"></p>
 <hr>
 <h2 id="3-ReAct-的核心思想"><a href="#3-ReAct-的核心思想" class="headerlink" title="3. ReAct 的核心思想"></a>3. ReAct 的核心思想</h2><p>ReAct 的做法是让模型在推理和行动之间交替切换：推理为行动提供方向，行动为推理提供事实依据。</p>
 <p>具体来说，模型在生成过程中会交替产出两种内容：</p>
@@ -512,14 +512,14 @@
 </ul>
 <p>环境会返回 <strong>Observation（观察）</strong>：工具调用的结果，比如搜索结果、页面内容、数据库查询结果。</p>
 <p>然后模型基于 Observation 产生下一个 Thought，如此循环，直到得出最终答案。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Question: 邓紫棋的男朋友是什么星座的？</span><br><span class="line">Thought 1: 我需要先搜索邓紫棋的男朋友是谁。</span><br><span class="line">Action 1: Search[G.E.M. 邓紫棋 男友]</span><br><span class="line">Observation 1: [搜索结果：邓紫棋的男朋友是 Mark Ngai...]</span><br><span class="line">Thought 2: 根据搜索结果，邓紫棋的男朋友是 Mark Ngai。我需要搜索他的星座。</span><br><span class="line">Action 2: Search[Mark Ngai 星座]</span><br><span class="line">Observation 2: [搜索结果：Mark Ngai 是天蝎座...]</span><br><span class="line">Thought 3: Mark Ngai 是天蝎座，我可以回答这个问题了。</span><br><span class="line">Action 3: Finish[天蝎座]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Question: 邓紫棋的男朋友是什么星座的？</span><br><span class="line">Thought 1: 我需要先搜索邓紫棋的男朋友是谁。</span><br><span class="line">Action 1: Search[G.E.M. 邓紫棋 男友]</span><br><span class="line">Observation 1: [搜索结果：邓紫棋的男朋友是 Mark Ngai...]</span><br><span class="line">Thought 2: 根据搜索结果，邓紫棋的男朋友是 Mark Ngai。我需要搜索他的星座。</span><br><span class="line">Action 2: Search[Mark Ngai 星座]</span><br><span class="line">Observation 2: [搜索结果：Mark Ngai 是天蝎座...]</span><br><span class="line">Thought 3: Mark Ngai 是天蝎座，我可以回答这个问题了。</span><br><span class="line">Action 3: Finish[天蝎座]</span><br></pre></td></tr></table></figure>
 
 <p>Thought 为 Action 提供方向，Observation 为 Thought 提供事实。推理靠行动获取真实信息，行动靠推理找到正确方向。</p>
-<p><img src="/react-deep-dive-1.png" alt="ReAct 框架：思考-行动-观察循环"></p>
+<p><img src="/2026/05/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ReAct/react-deep-dive-1.png" alt="ReAct 框架：思考-行动-观察循环"></p>
 <hr>
 <h2 id="4-方法论详解：Thought-Action-Observation-循环"><a href="#4-方法论详解：Thought-Action-Observation-循环" class="headerlink" title="4. 方法论详解：Thought-Action-Observation 循环"></a>4. 方法论详解：Thought-Action-Observation 循环</h2><h3 id="Prompt-模板设计"><a href="#Prompt-模板设计" class="headerlink" title="Prompt 模板设计"></a>Prompt 模板设计</h3><p>ReAct 使用 few-shot prompting。研究者手工编写几个完整的 Thought-Action-Observation 轨迹作为示例，放在 prompt 中，让模型在推理时参照这些格式。</p>
 <p>一个典型的 HotpotQA prompt 结构如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Question: [具体问题]</span><br><span class="line"></span><br><span class="line">Thought 1: [对问题的分析，确定需要什么信息]</span><br><span class="line">Action 1: Search[搜索关键词]</span><br><span class="line">Observation 1: [搜索返回的结果]</span><br><span class="line"></span><br><span class="line">Thought 2: [基于 Observation 1 的推理，确定下一步]</span><br><span class="line">Action 2: Search[新的搜索关键词] 或 Lookup[查找关键词]</span><br><span class="line">Observation 2: [结果]</span><br><span class="line"></span><br><span class="line">... （循环）</span><br><span class="line"></span><br><span class="line">Thought N: [最终推理]</span><br><span class="line">Action  Finish[最终答案]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Question: [具体问题]</span><br><span class="line"></span><br><span class="line">Thought 1: [对问题的分析，确定需要什么信息]</span><br><span class="line">Action 1: Search[搜索关键词]</span><br><span class="line">Observation 1: [搜索返回的结果]</span><br><span class="line"></span><br><span class="line">Thought 2: [基于 Observation 1 的推理，确定下一步]</span><br><span class="line">Action 2: Search[新的搜索关键词] 或 Lookup[查找关键词]</span><br><span class="line">Observation 2: [结果]</span><br><span class="line"></span><br><span class="line">... （循环）</span><br><span class="line"></span><br><span class="line">Thought N: [最终推理]</span><br><span class="line">Action  Finish[最终答案]</span><br></pre></td></tr></table></figure>
 
 <h3 id="三要素定义"><a href="#三要素定义" class="headerlink" title="三要素定义"></a>三要素定义</h3><p><strong>Thought</strong>：纯文本推理。Thought 不直接产出答案，而是帮模型想清楚下一步该做什么。论文原话是”induce, track, and update action plans, and handle exceptions”。</p>
 <p><strong>Action</strong>：格式化的工具调用。在 HotpotQA 中，Action 有三种：</p>
@@ -531,18 +531,18 @@
 <p>在 ALFWorld（交互式游戏环境）中，Action 对应的是游戏操作，如 <code>go to countertop 1</code>、<code>put egg 1 in/on countertop 2</code>。</p>
 <p><strong>Observation</strong>：环境的返回值。这是 Action 的执行结果，以文本形式呈现。模型读取 Observation 后产生下一个 Thought。</p>
 <h3 id="实际运行示例"><a href="#实际运行示例" class="headerlink" title="实际运行示例"></a>实际运行示例</h3><p>以论文中的一个 HotpotQA 例子为例（简化）：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Question: What is the elevation range for the area that the eastern </span><br><span class="line">sector of the Colorado orogeny extends into?</span><br><span class="line"></span><br><span class="line">Thought 1: The eastern sector of the Colorado orogeny extends into </span><br><span class="line">the High Plains. I need to find the elevation range of the High Plains.</span><br><span class="line">Action 1: Search[High Plains]</span><br><span class="line">Observation 1: The High Plains are a subregion of the Great Plains, </span><br><span class="line">elevation from around 1,800 to 7,000 ft...</span><br><span class="line"></span><br><span class="line">Thought 2: The High Plains has an elevation range of approximately </span><br><span class="line">1,800 to 7,000 ft. I can answer this now.</span><br><span class="line">Action 2: Finish[1,800 to 7,000 ft]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Question: What is the elevation range for the area that the eastern </span><br><span class="line">sector of the Colorado orogeny extends into?</span><br><span class="line"></span><br><span class="line">Thought 1: The eastern sector of the Colorado orogeny extends into </span><br><span class="line">the High Plains. I need to find the elevation range of the High Plains.</span><br><span class="line">Action 1: Search[High Plains]</span><br><span class="line">Observation 1: The High Plains are a subregion of the Great Plains, </span><br><span class="line">elevation from around 1,800 to 7,000 ft...</span><br><span class="line"></span><br><span class="line">Thought 2: The High Plains has an elevation range of approximately </span><br><span class="line">1,800 to 7,000 ft. I can answer this now.</span><br><span class="line">Action 2: Finish[1,800 to 7,000 ft]</span><br></pre></td></tr></table></figure>
 
 <p>Thought 1 做了两件事：理解问题（东部科罗拉多造山带延伸到哪个区域？）并确定下一步行动（搜索 High Plains）。Thought 2 基于 Observation 1 的信息得出了结论。</p>
 <h3 id="与-CoT-和-Act-only-的对比"><a href="#与-CoT-和-Act-only-的对比" class="headerlink" title="与 CoT 和 Act-only 的对比"></a>与 CoT 和 Act-only 的对比</h3><p>论文设计了消融实验来证明 ReAct 的优势：</p>
 <p><strong>纯 CoT（Reason-only）</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thought 1: The eastern sector of the Colorado orogeny extends into </span><br><span class="line">the High Plains. The High Plains have an elevation of approximately </span><br><span class="line">5,000 ft...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Thought 1: The eastern sector of the Colorado orogeny extends into </span><br><span class="line">the High Plains. The High Plains have an elevation of approximately </span><br><span class="line">5,000 ft...</span><br></pre></td></tr></table></figure>
 <p>模型直接凭记忆回答，不查证。论文指出，这种方式”没有与外部环境连接来获取和更新知识”，导致事实错误。</p>
 <p><strong>纯 Action（Act-only）</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Action 1: Search[elevation range eastern sector Colorado orogeny]</span><br><span class="line">Observation 1: ...</span><br><span class="line">Action 2: Finish[...]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Action 1: Search[elevation range eastern sector Colorado orogeny]</span><br><span class="line">Observation 1: ...</span><br><span class="line">Action 2: Finish[...]</span><br></pre></td></tr></table></figure>
 <p>模型能搜到信息，但没有推理过程来综合多个来源，也无法处理搜索结果不直接回答问题的情况。</p>
 <p><strong>ReAct</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Thought 1: 需要先确定东部科罗拉多造山带延伸到哪个区域。</span><br><span class="line">Action 1: Search[...]</span><br><span class="line">Observation 1: ...</span><br><span class="line">Thought 2: 它延伸到 High Plains。需要查 High Plains 的海拔。</span><br><span class="line">Action 2: Search[...]</span><br><span class="line">Observation 2: ...</span><br><span class="line">Thought 3: 海拔范围是 1,800-7,000 ft。</span><br><span class="line">Action 3: Finish[1,800-7,000 ft]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Thought 1: 需要先确定东部科罗拉多造山带延伸到哪个区域。</span><br><span class="line">Action 1: Search[...]</span><br><span class="line">Observation 1: ...</span><br><span class="line">Thought 2: 它延伸到 High Plains。需要查 High Plains 的海拔。</span><br><span class="line">Action 2: Search[...]</span><br><span class="line">Observation 2: ...</span><br><span class="line">Thought 3: 海拔范围是 1,800-7,000 ft。</span><br><span class="line">Action 3: Finish[1,800-7,000 ft]</span><br></pre></td></tr></table></figure>
 
 <hr>
 <h2 id="5-实验验证：四个基准测试"><a href="#5-实验验证：四个基准测试" class="headerlink" title="5. 实验验证：四个基准测试"></a>5. 实验验证：四个基准测试</h2><p>ReAct 在四个不同类型的基准测试上进行了验证，覆盖了问答、事实验证和交互式决策三大场景。</p>
@@ -611,16 +611,16 @@
 </tbody></table>
 <h3 id="微调实验"><a href="#微调实验" class="headerlink" title="微调实验"></a>微调实验</h3><p>论文还做了一个重要发现：用 ReAct 格式的轨迹来微调模型，效果优于用 CoT 或 Act-only 格式微调。微调后的小模型甚至能超越 prompting 的大模型。</p>
 <hr>
-<h2 id="6-为什么推理和行动必须结合"><a href="#6-为什么推理和行动必须结合" class="headerlink" title="6. 为什么推理和行动必须结合"></a>6. 为什么推理和行动必须结合</h2><p><img src="/react-deep-dive-2.png" alt="推理与行动：为什么要结合？"></p>
+<h2 id="6-为什么推理和行动必须结合"><a href="#6-为什么推理和行动必须结合" class="headerlink" title="6. 为什么推理和行动必须结合"></a>6. 为什么推理和行动必须结合</h2><p><img src="/2026/05/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ReAct/react-deep-dive-2.png" alt="推理与行动：为什么要结合？"></p>
 <h3 id="推理为行动提供方向"><a href="#推理为行动提供方向" class="headerlink" title="推理为行动提供方向"></a>推理为行动提供方向</h3><p>在 ALFWorld 中，纯行动基线不知道”先去台面找锅”比”先去冰箱找锅”更合理。Thought 步骤让模型能规划行动序列，而不是随机尝试。</p>
 <h3 id="行动为推理提供事实"><a href="#行动为推理提供事实" class="headerlink" title="行动为推理提供事实"></a>行动为推理提供事实</h3><p>在 HotpotQA 中，纯推理基线凭记忆回答问题，编造了错误的事实。Action 步骤让模型能查证事实，推理不再基于虚构的前提。</p>
 <h3 id="循环中的自我纠正"><a href="#循环中的自我纠正" class="headerlink" title="循环中的自我纠正"></a>循环中的自我纠正</h3><p>当 Observation 返回了意外结果，比如搜索没找到相关信息，模型的下一个 Thought 会意识到问题并调整策略。论文提到，”ReAct format allows easy human inspection and behavior correction by changing a couple of model thoughts”。这种自我纠正能力是纯 CoT 和纯 Action 都不具备的。</p>
 <h3 id="可调试性"><a href="#可调试性" class="headerlink" title="可调试性"></a>可调试性</h3><p>ReAct 生成的轨迹是人类可读的。你可以看到模型在想什么、做了什么、得到了什么结果。模型出错时，能定位是 Thought 出了问题还是 Action 出了问题。</p>
 <hr>
 <h2 id="7-工业实现：从论文到框架"><a href="#7-工业实现：从论文到框架" class="headerlink" title="7. 工业实现：从论文到框架"></a>7. 工业实现：从论文到框架</h2><h3 id="LangGraph：图结构的-ReAct"><a href="#LangGraph：图结构的-ReAct" class="headerlink" title="LangGraph：图结构的 ReAct"></a>LangGraph：图结构的 ReAct</h3><p>LangChain 团队在 2024 年将 Agent 架构迁移到了 LangGraph——一个基于图的状态机框架。LangGraph 提供了 <code>create_react_agent</code> 预构建函数，核心是一个循环图：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户输入 → LLM（生成 Thought + Action）→ Tool Node（执行 Action）</span><br><span class="line">    ↑                                              ↓</span><br><span class="line">    ←←←←←←←←←←← Observation ←←←←←←←←←←←←←←←←←←←←←←</span><br><span class="line">    ↓</span><br><span class="line">当 Action 为 Finish 或无更多工具调用时 → 输出最终答案</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">用户输入 → LLM（生成 Thought + Action）→ Tool Node（执行 Action）</span><br><span class="line">    ↑                                              ↓</span><br><span class="line">    ←←←←←←←←←←← Observation ←←←←←←←←←←←←←←←←←←←←←←</span><br><span class="line">    ↓</span><br><span class="line">当 Action 为 Finish 或无更多工具调用时 → 输出最终答案</span><br></pre></td></tr></table></figure>
 
-<p><img src="/react-deep-dive-5.png" alt="LangGraph ReAct 循环架构"></p>
+<p><img src="/2026/05/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ReAct/react-deep-dive-5.png" alt="LangGraph ReAct 循环架构"></p>
 <p>LangGraph 的实现比论文原始版本更灵活：</p>
 <ul>
 <li>支持多个工具并行调用</li>
@@ -740,7 +740,7 @@
 </tbody></table>
 <p>ReAct 是这些模式中最基础的——其他模式几乎都可以看作 ReAct 的变体或扩展。Plan-then-Execute 是 ReAct 的”先全局规划再执行”版本；Multi-Agent 是 ReAct 的”分工协作”版本；Reflection 是 ReAct 的”加入自我反思”版本。</p>
 <h3 id="为什么-ReAct-成为了基础范式"><a href="#为什么-ReAct-成为了基础范式" class="headerlink" title="为什么 ReAct 成为了基础范式"></a>为什么 ReAct 成为了基础范式</h3><p>Thought-Action-Observation 循环足够简单，用 prompt engineering 就能实现，不需要复杂框架。它适用于几乎所有需要工具调用的任务——问答、搜索、代码执行、API 调用。而且很容易和其他技术组合：加 Memory 变成持久化 Agent，加 Planning 变成 Plan-then-Execute，多个 Agent 各自跑 ReAct 就是 Multi-Agent 系统。</p>
-<h3 id="2025-2026-年的演进趋势"><a href="#2025-2026-年的演进趋势" class="headerlink" title="2025-2026 年的演进趋势"></a>2025-2026 年的演进趋势</h3><p><img src="/react-deep-dive-3.png" alt="ReAct 的演进：从论文到产业"></p>
+<h3 id="2025-2026-年的演进趋势"><a href="#2025-2026-年的演进趋势" class="headerlink" title="2025-2026 年的演进趋势"></a>2025-2026 年的演进趋势</h3><p><img src="/2026/05/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ReAct/react-deep-dive-3.png" alt="ReAct 的演进：从论文到产业"></p>
 <p>ReAct 论文发表三年后，推理-行动循环已经从一个 prompting 技巧演变为整个 AI Agent 产业的底层范式。几个可验证的变化：</p>
 <p><strong>Extended Thinking + Tool Use：推理重新可见</strong></p>
 <p>Anthropic 在 2025 年 5 月发布的 Claude Opus 4 和 Sonnet 4 中，将 Extended Thinking 与 Tool Use 结合——模型在思考过程中可以调用工具，观察结果，再继续思考。这正是 ReAct 的 Thought-Action-Observation 循环，只不过实现方式从 prompt 模板变成了模型原生能力。到 2026 年 4 月的 Claude Opus 4.7，上下文窗口扩展到 1M token，模型可以连续执行数千步、持续数小时的复杂任务。</p>

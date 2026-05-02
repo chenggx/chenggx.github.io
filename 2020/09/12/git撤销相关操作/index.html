@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta name="keywords" content="git 撤销相关操作, 想当年,php,php技术分享">
     <meta name="description" content="每次使用 git 需要进行版本回退相关的操作都要在搜索引擎重新查询相关命令，很是费时间，今天有空总结一下，算是记笔记方便以后使用。
-撤销本地当前所有修改1git reset --hard
+撤销本地当前所有修改git reset --hard
 
-如果本地文件修改得一团乱，但是还没有 commit">
+如果本地文件修改得一团乱，但是还没有 commit，">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -29,7 +29,7 @@
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -427,7 +427,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    641
+                    640
                 </div>
                 
 
@@ -451,13 +451,13 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>每次使用 git 需要进行版本回退相关的操作都要在搜索引擎重新查询相关命令，很是费时间，今天有空总结一下，算是记笔记方便以后使用。</p>
-<h2 id="撤销本地当前所有修改"><a href="#撤销本地当前所有修改" class="headerlink" title="撤销本地当前所有修改"></a>撤销本地当前所有修改</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
+<h2 id="撤销本地当前所有修改"><a href="#撤销本地当前所有修改" class="headerlink" title="撤销本地当前所有修改"></a>撤销本地当前所有修改</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset --hard</span><br></pre></td></tr></table></figure>
 
 <p>如果本地文件修改得一团乱，但是还没有 commit，可以通过这个命令恢复到上次 commit 的状态。</p>
-<h2 id="丢弃-commit"><a href="#丢弃-commit" class="headerlink" title="丢弃 commit"></a>丢弃 commit</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard commitID</span><br></pre></td></tr></table></figure>
+<h2 id="丢弃-commit"><a href="#丢弃-commit" class="headerlink" title="丢弃 commit"></a>丢弃 commit</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset --hard commitID</span><br></pre></td></tr></table></figure>
 
 <p>将代码恢复到指定的 commitID 处。如果不指定 –hard 参数，那么不会改变工作区的文件。（一般使用都会带上该参数）</p>
-<h2 id="撤销-commit"><a href="#撤销-commit" class="headerlink" title="撤销 commit"></a>撤销 commit</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git revert HEAD</span><br></pre></td></tr></table></figure>
+<h2 id="撤销-commit"><a href="#撤销-commit" class="headerlink" title="撤销 commit"></a>撤销 commit</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git revert HEAD</span><br></pre></td></tr></table></figure>
 
 <p>commit 代码以后，你突然意识到这个 commit 有问题，应该撤销掉，这时执行该命令就可以了。该命令会新生成一个 commit 提交记录，并不改变其他内容，在 log 中可查看到撤销记录。基本属于撤销操作的首先方案。</p>
 <blockquote>
@@ -467,20 +467,20 @@
 <li>–no-edit：执行时不打开默认编辑器，直接使用 Git 自动生成的提交信息。</li>
 <li>–no-commit：只抵消暂存区和工作区的文件变化，不产生新的提交。</li>
 </ul>
-<h2 id="撤销-add-操作"><a href="#撤销-add-操作" class="headerlink" title="撤销 add 操作"></a>撤销 add 操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset HEAD [filename]</span><br></pre></td></tr></table></figure>
+<h2 id="撤销-add-操作"><a href="#撤销-add-操作" class="headerlink" title="撤销 add 操作"></a>撤销 add 操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reset HEAD [filename]</span><br></pre></td></tr></table></figure>
 <p>可选参数</p>
 <p>filename 指定撤销的文件。（不使用该参数表示所有已经 add 了的文件全部取消 add 状态）</p>
-<h2 id="替换上一次-commit"><a href="#替换上一次-commit" class="headerlink" title="替换上一次 commit"></a>替换上一次 commit</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit --amend -m <span class="string">&quot;new Message&quot;</span></span><br></pre></td></tr></table></figure>
+<h2 id="替换上一次-commit"><a href="#替换上一次-commit" class="headerlink" title="替换上一次 commit"></a>替换上一次 commit</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git commit --amend -m <span class="string">&quot;new Message&quot;</span></span><br></pre></td></tr></table></figure>
 
 <p>如果我们在 commit 之后发现信息写错了，这是可以使用该命令修改信息。</p>
 <p><strong>这时如果暂存区有发生变化的文件（也就是有文件被 add 了），会一起提交到仓库。所以，–amend不仅可以修改提交信息，还可以整个把上一次提交替换掉。</strong></p>
 <h2 id="暂时将未提交的变化移除，稍后再移入"><a href="#暂时将未提交的变化移除，稍后再移入" class="headerlink" title="暂时将未提交的变化移除，稍后再移入"></a>暂时将未提交的变化移除，稍后再移入</h2><p>$ git stash<br>$ git stash pop</p>
 <p>如果我们在修改了一些文件后发现不应该在这个分支上操作，那么我们可以使用 git stash 将当前工作区的文件保存一下，然后切换的新分支，执行 git stash pop 将保存的内容恢复到新分支。</p>
-<h2 id="时光机"><a href="#时光机" class="headerlink" title="时光机"></a>时光机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
+<h2 id="时光机"><a href="#时光机" class="headerlink" title="时光机"></a>时光机</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git reflog</span><br></pre></td></tr></table></figure>
 
 <p>只要HEAD发生了变化, 就会在reflog里面看得到。</p>
 <p>配合 git reset 命令可以将代码切换到任意状态。</p>
-<h2 id="取消已经-push-的行为（强制-PUSH）"><a href="#取消已经-push-的行为（强制-PUSH）" class="headerlink" title="取消已经 push 的行为（强制 PUSH）"></a>取消已经 push 的行为（强制 PUSH）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询 git 所有变化日志</span></span><br><span class="line">git reflog </span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地仓库回退到某一版本</span></span><br><span class="line">git reset -hard xxxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制 PUSH，此时远程分支已经恢复成指定的 commit 了</span></span><br><span class="line">git push origin master --force</span><br></pre></td></tr></table></figure>
+<h2 id="取消已经-push-的行为（强制-PUSH）"><a href="#取消已经-push-的行为（强制-PUSH）" class="headerlink" title="取消已经 push 的行为（强制 PUSH）"></a>取消已经 push 的行为（强制 PUSH）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查询 git 所有变化日志</span></span><br><span class="line">git reflog </span><br><span class="line"></span><br><span class="line"><span class="comment"># 本地仓库回退到某一版本</span></span><br><span class="line">git reset -hard xxxx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 强制 PUSH，此时远程分支已经恢复成指定的 commit 了</span></span><br><span class="line">git push origin master --force</span><br></pre></td></tr></table></figure>
 
 <p><img src="http://static.xiangdangnian.net.cn/4vB3ZRunrw8VzSW6cLpJyaibKfYTNCU0.png" alt="程序员的艺术人生"></p>
 

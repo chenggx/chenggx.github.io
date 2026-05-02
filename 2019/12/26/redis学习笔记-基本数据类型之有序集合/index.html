@@ -31,7 +31,7 @@ ZADD
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
 
 
 <body>
@@ -429,7 +429,7 @@ ZADD
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    844
+                    843
                 </div>
                 
 
@@ -461,24 +461,24 @@ ZADD
 <li>如果某个元素已经在有序集合中，则更新该元素的 score 值。</li>
 <li>score 值可以是整数或双精度浮点数。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zadd language 100 php 90 java 80 js</span><br><span class="line">(integer) 3</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zadd language 100 php 90 java 80 js</span><br><span class="line">(integer) 3</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZCARD"><a href="#ZCARD" class="headerlink" title="ZCARD"></a>ZCARD</h2><ul>
 <li>返回有序集合 key 的值得个数</li>
 <li>如果 key 不存在，则返回 0</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zcard language</span><br><span class="line">(integer) 3</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zcard xxxxx</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zcard language</span><br><span class="line">(integer) 3</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zcard xxxxx</span><br><span class="line">(integer) 0</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZCOUNT"><a href="#ZCOUNT" class="headerlink" title="ZCOUNT"></a>ZCOUNT</h2><ul>
 <li>返回有序集合 key 中，score 的值在 min 和 max 直接的成员个数。（包含 min 和 max）</li>
 <li>如果在统计时，不需要包含某个 score时 ，则添加一个 ( 即可。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zcount language 80 100</span><br><span class="line">(integer) 3</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zcount language 80 (100</span><br><span class="line">(integer) 2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zcount language 80 100</span><br><span class="line">(integer) 3</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zcount language 80 (100</span><br><span class="line">(integer) 2</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZSCORE"><a href="#ZSCORE" class="headerlink" title="ZSCORE"></a>ZSCORE</h2><ul>
 <li>返回有序集合 key 中，成员的score值</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zscore language php</span><br><span class="line">&quot;100&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zscore language php</span><br><span class="line">&quot;100&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZRANGE"><a href="#ZRANGE" class="headerlink" title="ZRANGE"></a>ZRANGE</h2><ul>
 <li>格式：zrange key start stop [withscores]</li>
@@ -486,41 +486,41 @@ ZADD
 <li>withscores 参数可以连同元素的 score 一起返回。</li>
 <li>start 为 0，stop 为 -1，即可返回整个有序集合。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrange language 0 2</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;java&quot;</span><br><span class="line">3) &quot;php&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrange language 0 2 withscores</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;80&quot;</span><br><span class="line">3) &quot;java&quot;</span><br><span class="line">4) &quot;90&quot;</span><br><span class="line">5) &quot;php&quot;</span><br><span class="line">6) &quot;100&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrange language 0 2</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;java&quot;</span><br><span class="line">3) &quot;php&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrange language 0 2 withscores</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;80&quot;</span><br><span class="line">3) &quot;java&quot;</span><br><span class="line">4) &quot;90&quot;</span><br><span class="line">5) &quot;php&quot;</span><br><span class="line">6) &quot;100&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZREVRANGE"><a href="#ZREVRANGE" class="headerlink" title="ZREVRANGE"></a>ZREVRANGE</h2><ul>
 <li>同 zrange 基本一致，区别是 zrevrange 是反者来的。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrevrange language 0 2</span><br><span class="line">1) &quot;php&quot;</span><br><span class="line">2) &quot;java&quot;</span><br><span class="line">3) &quot;js&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrevrange language 0 2 withscores</span><br><span class="line">1) &quot;php&quot;</span><br><span class="line">2) &quot;100&quot;</span><br><span class="line">3) &quot;java&quot;</span><br><span class="line">4) &quot;90&quot;</span><br><span class="line">5) &quot;js&quot;</span><br><span class="line">6) &quot;80&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrevrange language 0 2</span><br><span class="line">1) &quot;php&quot;</span><br><span class="line">2) &quot;java&quot;</span><br><span class="line">3) &quot;js&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrevrange language 0 2 withscores</span><br><span class="line">1) &quot;php&quot;</span><br><span class="line">2) &quot;100&quot;</span><br><span class="line">3) &quot;java&quot;</span><br><span class="line">4) &quot;90&quot;</span><br><span class="line">5) &quot;js&quot;</span><br><span class="line">6) &quot;80&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZRANGEBYSCORE"><a href="#ZRANGEBYSCORE" class="headerlink" title="ZRANGEBYSCORE"></a>ZRANGEBYSCORE</h2><ul>
 <li>返回有序集合 key 中，score 的值在 min 和 max 直接的成员。（包含 min 和 max）</li>
 <li>如果不需要包含某个 score时 ，则添加一个 ( 即可。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrangebyscore language 80 100</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;java&quot;</span><br><span class="line">3) &quot;php&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrangebyscore language 80 100 withscores</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;80&quot;</span><br><span class="line">3) &quot;java&quot;</span><br><span class="line">4) &quot;90&quot;</span><br><span class="line">5) &quot;php&quot;</span><br><span class="line">6) &quot;100&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrangebyscore language 80 (100</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;java&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrangebyscore language 80 100</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;java&quot;</span><br><span class="line">3) &quot;php&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrangebyscore language 80 100 withscores</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;80&quot;</span><br><span class="line">3) &quot;java&quot;</span><br><span class="line">4) &quot;90&quot;</span><br><span class="line">5) &quot;php&quot;</span><br><span class="line">6) &quot;100&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrangebyscore language 80 (100</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;java&quot;</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZRANK"><a href="#ZRANK" class="headerlink" title="ZRANK"></a>ZRANK</h2><ul>
 <li>返回有序集合 key 中成员 member 在集合中的排名序号。（排名按 score 值从小到大的顺序）。</li>
 <li>排名序号从 0 开始。(即 序号为 0 的 score 值最小)</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrank language php</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrank language js</span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrank language java</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrank language php</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrank language js</span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrank language java</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZREVRANK"><a href="#ZREVRANK" class="headerlink" title="ZREVRANK"></a>ZREVRANK</h2><ul>
 <li>同上面的 zrank。区别是 zrevrank 的排序是从大到小</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrevrank language php</span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrevrank language js</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrevrank language java</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zrevrank language php</span><br><span class="line">(integer) 0</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrevrank language js</span><br><span class="line">(integer) 2</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrevrank language java</span><br><span class="line">(integer) 1</span><br></pre></td></tr></table></figure>
 
 <h2 id="ZINCRBY"><a href="#ZINCRBY" class="headerlink" title="ZINCRBY"></a>ZINCRBY</h2><ul>
 <li>格式：zincrby key increment member</li>
 <li>向有序集合 key 中的成员 member 的 score 值进行增加。</li>
 <li>如果 key 中不存在 member，则在 key 中创建一个 member，并且该 member 的 score 为 设置的值。</li>
 </ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zincrby language 100 php</span><br><span class="line">&quot;200&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zincrby language 100 python</span><br><span class="line">&quot;100&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">127.0.0.1:6379&gt; zincrby language 100 php</span><br><span class="line">&quot;200&quot;</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zincrby language 100 python</span><br><span class="line">&quot;100&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h2 id="ZREM"><a href="#ZREM" class="headerlink" title="ZREM"></a>ZREM</h2><ul>
 <li>从集合中删除指定 member。</li>
 </ul>
- <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> 127.0.0.1:6379&gt; zrem language python</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrange language 0 -1 withscores</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;80&quot;</span><br><span class="line">3) &quot;java&quot;</span><br><span class="line">4) &quot;90&quot;</span><br><span class="line">5) &quot;php&quot;</span><br><span class="line">6) &quot;200&quot;</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"> 127.0.0.1:6379&gt; zrem language python</span><br><span class="line">(integer) 1</span><br><span class="line"></span><br><span class="line">127.0.0.1:6379&gt; zrange language 0 -1 withscores</span><br><span class="line">1) &quot;js&quot;</span><br><span class="line">2) &quot;80&quot;</span><br><span class="line">3) &quot;java&quot;</span><br><span class="line">4) &quot;90&quot;</span><br><span class="line">5) &quot;php&quot;</span><br><span class="line">6) &quot;200&quot;</span><br></pre></td></tr></table></figure>
             </div>
             <hr/>
 
