@@ -1,5 +1,5 @@
+http://blog.xiangdangnian.net.cn/2026/05/02/%E4%BD%BF%E7%94%A8LaraDock%E9%85%8D%E7%BD%AElaravel-echo-sever%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/
 http://blog.xiangdangnian.net.cn/2026/05/02/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3ReAct/
 http://blog.xiangdangnian.net.cn/2024/03/06/python%E5%B8%B8%E7%94%A8%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E5%B7%A5%E5%85%B7/
 http://blog.xiangdangnian.net.cn/2024/02/29/laravel%E5%BC%80%E5%8F%91%E4%BD%BF%E7%94%A8%20sail%E5%BC%80%E5%8F%91%E6%8A%80%E5%B7%A7/
 http://blog.xiangdangnian.net.cn/2021/06/13/%E4%BB%8E%E7%82%B9%E5%AD%90%E5%88%B0%E4%BA%A7%E5%93%81%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/
-http://blog.xiangdangnian.net.cn/2020/09/15/composer%E7%89%88%E6%9C%AC%E7%BA%A6%E6%9D%9F%E4%BD%BF%E7%94%A8%E6%96%B9%E5%BC%8F/
