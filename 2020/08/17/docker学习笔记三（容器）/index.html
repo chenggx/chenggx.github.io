@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 
 
-<head><meta name="generator" content="Hexo 3.8.0">
+<head>
     <meta charset="utf-8">
     <meta name="keywords" content="docker 学习笔记（三）, 想当年,php,php技术分享">
     <meta name="description" content="docker 容器容器是通过 image 创建的进程。
@@ -28,7 +28,7 @@
     
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 8.1.1"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
 <body>
@@ -242,11 +242,14 @@
     }
 </style>
 
-<a href="https://github.com/chenggx" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewbox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/>
+<a href="https://github.com/chenggx" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
     </svg>
 </a>
         
@@ -423,7 +426,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    701
+                    703
                 </div>
                 
 
@@ -450,10 +453,9 @@
 <blockquote>
 <p>镜像（Image）和容器（Container）的关系，就像是面向对象程序设计中的 类 和 实例 一样，镜像是静态的定义，容器是镜像运行时的实体。容器可以被创建、启动、停止、删除、暂停等。</p>
 </blockquote>
-<h3 id="新建并启动容器"><a href="#新建并启动容器" class="headerlink" title="新建并启动容器"></a>新建并启动容器</h3><p>下面的命令的含义：通过 Ubuntu:18.04 这个 image 创建一个容器并运行 /bin/echo ‘Hello world’，完成后停止该容器。</p>
-<pre class=" language-bash"><code class="language-bash">$ docker run ubuntu:18.04 /bin/echo <span class="token string">'Hello world'</span>
-Hello world
-</code></pre>
+<h3 id="新建并启动容器"><a href="#新建并启动容器" class="headerlink" title="新建并启动容器"></a>新建并启动容器</h3><p>下面的命令的含义：通过 Ubuntu:18.04 这个 image 创建一个容器并运行 &#x2F;bin&#x2F;echo ‘Hello world’，完成后停止该容器。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker run ubuntu:18.04 /bin/echo <span class="string">&#x27;Hello world&#x27;</span></span><br><span class="line">Hello world</span><br></pre></td></tr></table></figure>
+
 <p>使用 docker run 命令，后台实际上执行的内容为：</p>
 <ol>
 <li>检查本地是否存在指定的镜像，不存在就从公有仓库下载</li>
@@ -466,40 +468,14 @@ Hello world
 </ol>
 <p>上面的示例执行完以后会终止，但是一般我们在使用一个提供服务的容器的时候，不想让它停止，那么可以使用 -d 参数，使容器保持在后台运行。但是需要注意——<strong>容器是否会长久运行，是和 docker run 指定的命令有关，和 -d 参数无关</strong></p>
 <p>如下命令执行完后，容器依然会停止</p>
-<pre class=" language-bash"><code class="language-bash">$ docker run -d ubuntu
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d ubuntu</span><br></pre></td></tr></table></figure>
 <p><img src="http://static.xiangdangnian.net.cn/XF6zB8vbNWw9uPLGrSkiIt3YdZaHc0K7.png" alt="已停止"></p>
 <p>而如下命令执行完后，容器则在后台保持运行</p>
-<pre class=" language-bash"><code class="language-bash">$ docker run -d ubuntu /bin/sh -c <span class="token string">"while true; do echo hello world; sleep 1; done"</span>
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -d ubuntu /bin/sh -c <span class="string">&quot;while true; do echo hello world; sleep 1; done&quot;</span></span><br></pre></td></tr></table></figure>
 <p><img src="http://static.xiangdangnian.net.cn/VcoLwKIYlG65etAO1bCWNfHUES9FpBza.png" alt="运行中"></p>
-<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><h4 id="attach-命令"><a href="#attach-命令" class="headerlink" title="attach 命令"></a>attach 命令</h4><pre class=" language-bash"><code class="language-bash">$ docker run -dit ubuntu
-ffff9516c6151ef3b436df1bccc70ba9da2d0f57bbec5afe19353fe481e12702
-
-$ docker container <span class="token function">ls</span>
-CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                      NAMES
-ffff9516c615        ubuntu                  <span class="token string">"/bin/bash"</span>              7 seconds ago       Up 6 seconds                                                   elegant_hypatia
-
-$ docker attach ffff9516c615
-root@ffff9516c615:/<span class="token comment" spellcheck="true">#</span>
-</code></pre>
+<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><h4 id="attach-命令"><a href="#attach-命令" class="headerlink" title="attach 命令"></a>attach 命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dit ubuntu</span><br><span class="line">ffff9516c6151ef3b436df1bccc70ba9da2d0f57bbec5afe19353fe481e12702</span><br><span class="line"></span><br><span class="line">$ docker container <span class="built_in">ls</span></span><br><span class="line">CONTAINER ID        IMAGE                   COMMAND                  CREATED             STATUS              PORTS                                      NAMES</span><br><span class="line">ffff9516c615        ubuntu                  <span class="string">&quot;/bin/bash&quot;</span>              7 seconds ago       Up 6 seconds                                                   elegant_hypatia</span><br><span class="line"></span><br><span class="line">$ docker attach ffff9516c615</span><br><span class="line">root@ffff9516c615:/#</span><br></pre></td></tr></table></figure>
 <p><strong>注意： 如果从这个 stdin 中 exit，会导致容器的停止。</strong></p>
-<h4 id="exec-命令-推荐使用，一般配合-it-参数"><a href="#exec-命令-推荐使用，一般配合-it-参数" class="headerlink" title="exec 命令(推荐使用，一般配合 -it 参数)"></a>exec 命令(推荐使用，一般配合 -it 参数)</h4><pre class=" language-bash"><code class="language-bash">$ docker run -dit ubuntu
-15fc4d97c1b4ea25d76e568fb4e695d5b48d7f13ebbb6d718a80b86a4764a005
-
-// 只用 -i 参数时，由于没有分配伪终端，界面没有我们熟悉的 Linux 命令提示符，但命令执行结果仍然可以返回。
-$ docker <span class="token function">exec</span> -i 15fc4d97c1b4ea25 <span class="token function">bash</span>
-<span class="token function">ls</span>
-bin
-boot
-dev
-etc
-<span class="token punctuation">..</span>.
-
-//当 -i -t 参数一起使用时，则可以看到我们熟悉的 Linux 命令提示符。
-$ docker <span class="token function">exec</span> -it 15fc4d97c1b4ea25 <span class="token function">bash</span>
-root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
-</code></pre>
+<h4 id="exec-命令-推荐使用，一般配合-it-参数"><a href="#exec-命令-推荐使用，一般配合-it-参数" class="headerlink" title="exec 命令(推荐使用，一般配合 -it 参数)"></a>exec 命令(推荐使用，一般配合 -it 参数)</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">$ docker run -dit ubuntu</span><br><span class="line">15fc4d97c1b4ea25d76e568fb4e695d5b48d7f13ebbb6d718a80b86a4764a005</span><br><span class="line"></span><br><span class="line">// 只用 -i 参数时，由于没有分配伪终端，界面没有我们熟悉的 Linux 命令提示符，但命令执行结果仍然可以返回。</span><br><span class="line">$ docker <span class="built_in">exec</span> -i 15fc4d97c1b4ea25 bash</span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line">bin</span><br><span class="line">boot</span><br><span class="line">dev</span><br><span class="line">etc</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">//当 -i -t 参数一起使用时，则可以看到我们熟悉的 Linux 命令提示符。</span><br><span class="line">$ docker <span class="built_in">exec</span> -it 15fc4d97c1b4ea25 bash</span><br><span class="line">root@15fc4d97c1b4:/#</span><br></pre></td></tr></table></figure>
 <p><strong>注意：如果从这个 stdin 中 exit，不会导致容器的停止。</strong></p>
 <h4 id="容器常用命令"><a href="#容器常用命令" class="headerlink" title="容器常用命令"></a>容器常用命令</h4><ol>
 <li>docker container ls –all        <strong>查看当前系统中的所有（运行中、已停止的）容器</strong> </li>
@@ -511,7 +487,7 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
 <p><img src="http://static.xiangdangnian.net.cn/4vB3ZRunrw8VzSW6cLpJyaibKfYTNCU0.png" alt="程序员的艺术人生"></p>
 
             </div>
-            <hr>
+            <hr/>
 
             
 
@@ -534,7 +510,7 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://blog.xiangdangnian.net.cn/2020/08/17/docker学习笔记三（容器）/">http://blog.xiangdangnian.net.cn/2020/08/17/docker学习笔记三（容器）/</a>
+                    <a href="http://blog.xiangdangnian.net.cn/2020/08/17/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89%EF%BC%88%E5%AE%B9%E5%99%A8%EF%BC%89/">http://blog.xiangdangnian.net.cn/2020/08/17/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%89%EF%BC%88%E5%AE%B9%E5%99%A8%EF%BC%89/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1006,7 +982,7 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/08/19/docker学习笔记四（网络）/">
+                <a href="/2020/08/19/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E5%9B%9B%EF%BC%88%E7%BD%91%E7%BB%9C%EF%BC%89/">
                     <div class="card-image">
                         
                         <img src="http://static.xiangdangnian.net.cn/f5c136ac294b8e7aed0078eaa1baf41377ed5cada858d9afee927b100d223022.png" class="responsive-img" alt="docker 学习笔记（四）">
@@ -1055,7 +1031,7 @@ root@15fc4d97c1b4:/<span class="token comment" spellcheck="true">#</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/08/10/docker学习笔记二（image）/">
+                <a href="/2020/08/10/docker%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C%EF%BC%88image%EF%BC%89/">
                     <div class="card-image">
                         
                         <img src="http://static.xiangdangnian.net.cn/blog/2020/08/10/21-07-53-16d1a6fa8852ba7541126a8803fb37bb-75f883.jpg" class="responsive-img" alt="docker 学习笔记（二）">
@@ -1245,12 +1221,14 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             
             
             <span id="busuanzi_container_site_pv">
-                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv" class="white-color"></span>&nbsp;次
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
             </span>
             
             
             <span id="busuanzi_container_site_uv">
-                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv" class="white-color"></span>&nbsp;人
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
             </span>
             
             <br>
@@ -1332,7 +1310,8 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
     <div class="modal-content">
         <div class="search-header">
             <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
-            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
         </div>
         <div id="searchResult"></div>
     </div>
