@@ -1,5 +1,6 @@
 ---
 title: 使用LaraDock配置laravel-echo-sever遇到的坑
+date: 2026-05-02 10:00:00
 author: chenggx
 img: http://static.xiangdangnian.net.cn/blog/0eb30f2442a7d9337119f7dba74bd11372f001e0.jpg
 top: false
