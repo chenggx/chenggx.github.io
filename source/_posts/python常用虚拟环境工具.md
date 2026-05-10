@@ -13,6 +13,8 @@ tags:
 
 Python 虚拟环境是一种用于隔离不同项目所需 Python 版本和第三方库的工具，通过虚拟环境，您可以在同一台计算机上创建多个独立的 Python 环境，每个环境都可以拥有不同的 Python 版本和安装的库，从而 避免不同项目之间的版本冲突。
 
+![Python 虚拟环境概念图](https://static.xiangdangnian.net.cn/blog/01-flowchart-venv-concept.png?v=2)
+
 ## 常见的虚拟环境工具
 
 > 不用所有的工具都会熟练是用，但每种工具都要了解，以确保看到第三方项目可以知道使用了那种工具，并可以进行是用。
@@ -62,6 +64,8 @@ drwxr-xr-x  6 cc  staff   192B  3  6 16:19 myvenv
 (myvenv)# deactivate
 #
 ```
+
+![venv 操作流程图](https://static.xiangdangnian.net.cn/blog/02-flowchart-venv-workflow.png?v=2)
 
 ### virtualenv
 
@@ -163,6 +167,8 @@ total 8
 ```bash
 # pipenv --python /usr/bin/python2.7
 ```
+
+![pipenv 对比图](https://static.xiangdangnian.net.cn/blog/03-comparison-pipenv-comparison.png?v=2)
 
 #### pipfile 示例
 
